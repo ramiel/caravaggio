@@ -5,7 +5,7 @@ module.exports = {
   persistor: {
     type: 'file', // availabe: file
     options: {
-      basePath: path.resolve('../cache'),
+      basePath: path.resolve(__dirname, '../cache'),
     },
   },
 };
