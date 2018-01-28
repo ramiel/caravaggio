@@ -40,8 +40,8 @@ and can be used sending a set of options and an image:
 
 ## Options
 
-| operation | params                      | Optional | default | example   |
-|-----------|-----------------------------|----------|---------|-----------|
-| rotate    | 90 multiple angle           | ✔       | null    | rotate_90 |
-| flip      | x, y                        | ✔       | x       | flip_y    |
-| blur      | radius between 0,3 and 1000 | ✔       | null    | blur_10   |
+| Operation | Parameters                  | Is optional | Default | Example   |
+|-----------|-----------------------------|-------------|---------|-----------|
+| rotate    | 90° multiple angle          | ✔           | null    | rotate_90 |
+| flip      | x, y                        | ✔           | x       | flip_y    |
+| blur      | radius between 0,3 and 1000 | ✔           | null    | blur_10   |
