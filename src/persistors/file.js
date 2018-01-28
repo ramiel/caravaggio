@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-module.eports = ({ basePath } = { basePath: '.' }) => ({
+module.exports = ({ basePath } = { basePath: '.' }) => ({
   exists: filename => new Promise((resolve, reject) => {
     fs.access(
       path.join(basePath, filename),
@@ -12,7 +12,10 @@ module.eports = ({ basePath } = { basePath: '.' }) => ({
 
   read: filename => new Promise((resolve, reject) => {
     fs.readFile(path.join(basePath, filename), (err, buffer) => {
-      if (err) return reject(err);
+      if (err) {
+        if (err.code === 'ENOENT') return resolve(null);
+        return reject(err);
+      }
       // TODO if the error is "file not exists", resolve to null
       resolve({
         type: 'buffer',
