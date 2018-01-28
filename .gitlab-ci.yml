@@ -1,0 +1,7 @@
+image: node:8
+
+test:
+  script:
+   - npm i
+   - npm run test
+  coverage: /All files\s*\|\s*([\d\.]+)/
