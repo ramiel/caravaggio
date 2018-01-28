@@ -17,7 +17,7 @@ module.exports = ({ basePath } = { basePath: '.' }) => ({
         return reject(err);
       }
       // TODO if the error is "file not exists", resolve to null
-      resolve({
+      return resolve({
         type: 'buffer',
         buffer,
       });
