@@ -17,6 +17,8 @@ module.exports = (persistor) => {
 
     get: (url, options) => persistor.read(cache.getFileName(url, options)),
 
+    set: (url, options, buffer) => persistor.save(cache.getFileName(url, options), buffer),
+
   };
   return cache;
 };
