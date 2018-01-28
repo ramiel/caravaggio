@@ -20,6 +20,6 @@ module.exports = cache => async (req, res) => {
     sendImage(createdResource, options, res);
   } catch (e) {
     console.error(e);
-    send(res, e.statusCode || 500);
+    send(res, e.statusCode || 500, e.message);
   }
 };
