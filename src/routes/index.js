@@ -21,18 +21,16 @@ module.exports = cache => async (req, res) => {
     const url = new URL(req.params._);
     const options = parseOptions(req.params.options);
     const resource = await cache.get(url, options);
-    console.log('here', resource);
     if (resource) {
       return sendResource(resource, res);
     }
 
-    console.log('and here');
+    // If the resource is missing, let's create it and serve
     const imageBuffer = await pipeline.convert(url, options);
-    console.log('buffer', imageBuffer);
     const createdResource = await cache.set(url, options, imageBuffer);
     return sendResource(createdResource, res);
   } catch (e) {
     send(res, e.statusCode || 500);
-    throw (e);
+    console.error(e);
   }
 };
