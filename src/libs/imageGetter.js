@@ -1,3 +1,3 @@
-module.exports = url => {
-  
-}
+module.exports = (url) => {
+
+};
