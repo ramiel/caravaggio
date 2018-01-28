@@ -1,3 +1,5 @@
+const normalizer = require('./normalizers');
+
 const parser = {
 
   parseOptions: (opts) => {
@@ -11,11 +13,11 @@ const parser = {
       ...defaultOptions,
       ...parsedOptions,
     };
-    return options;
+    return normalizer(options);
   },
 
-  createCallStack: (options) => {
-    const callStack = Object.entries(parser.parseOptions(options)).map(([option, param]) => {
+  createCallStack: (parsedOptions) => {
+    const callStack = Object.entries(parsedOptions).map(([option, param]) => {
       switch (option.toLowerCase()) {
         case 'rotate':
           return ['rotate', (param && param * 1) || null];
