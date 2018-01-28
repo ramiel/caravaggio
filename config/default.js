@@ -7,5 +7,6 @@ module.exports = {
       basePath: path.resolve(__dirname, '../cache'),
     },
   },
+  compress: true,
 };
 
