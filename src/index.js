@@ -1,5 +1,4 @@
 const config = require('config');
-// const micro = require('micro');
 const { router, get } = require('microrouter');
 const indexRoute = require('./routes/index');
 const Cache = require('./cache');
