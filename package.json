@@ -6,7 +6,7 @@
   "scripts": {
     "start": "micro",
     "dev": "micro-dev",
-    "test": "npm lint && npm run test-only",
+    "test": "npm run lint && npm run test-only -- --coverage",
     "test-only": "NODE_ENV=test jest",
     "test-watch": "npm run test-only -- --watch",
     "lint": "eslint ."
