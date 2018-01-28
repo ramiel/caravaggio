@@ -13,12 +13,19 @@ module.exports = (persistor) => {
       return `${filename}${extension}`;
     },
 
-    exists: (url, options) => persistor.exists(cache.getFileName(url, options)),
+    get: async (url, options) => {
+      const resource = await persistor.read(cache.getFileName(url, options));
+      return resource && {
+        ...resource,
+        name: cache.getFileName(url, options),
+      };
+    },
 
-    get: (url, options) => persistor.read(cache.getFileName(url, options)),
-
-    set: (url, options, buffer) => persistor.save(cache.getFileName(url, options), buffer),
-
+    set: async (url, options, buffer) => ({
+      ...(await persistor.save(cache.getFileName(url, options), buffer)),
+      name: cache.getFileName(url, options),
+    }),
   };
+
   return cache;
 };
