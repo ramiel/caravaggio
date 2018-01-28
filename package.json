@@ -1,0 +1,32 @@
+{
+  "name": "caravaggio",
+  "version": "1.0.0",
+  "description": "A blazing fast image processor service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/ramiel/caravaggio.git"
+  },
+  "keywords": [
+    "image",
+    "processor",
+    "service"
+  ],
+  "author": "Fabrizio Ruggeri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/ramiel/caravaggio/issues"
+  },
+  "homepage": "https://gitlab.com/ramiel/caravaggio#README",
+  "dependencies": {
+    "config": "^1.29.2",
+    "micro": "^9.1.0",
+    "sharp": "^0.19.0"
+  },
+  "devDependencies": {
+    "jest": "^22.1.4"
+  }
+}
