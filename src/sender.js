@@ -1,4 +1,5 @@
 const redirect = require('micro-redirect');
+const { send } = require('micro');
 
 const getMimeType = (options) => {
   const type = 'jpeg';
@@ -12,9 +13,8 @@ module.exports = {
   sendImage: (resource, options, res) => {
     switch (resource.type) {
       case 'buffer':
-        res.statusCode = 200;
         res.setHeader('Content-type', getMimeType(options));
-        return res.end(resource.buffer);
+        return send(res, 200, resource.buffer);
       case 'location':
         return redirect(res, 301, resource.location);
       default:

@@ -10,15 +10,16 @@ module.exports = cache => async (req, res) => {
     const options = parseOptions(req.params.options);
     const resource = await cache.get(url, options);
     if (resource) {
-      return sendImage(resource, options, res);
+      sendImage(resource, options, res);
+      return;
     }
 
     // If the resource is missing, let's create it and serve
     const imageBuffer = await pipeline.convert(url, options);
     const createdResource = await cache.set(url, options, imageBuffer);
-    return sendImage(createdResource, options, res);
+    sendImage(createdResource, options, res);
   } catch (e) {
     console.error(e);
-    return send(res, e.statusCode || 500);
+    send(res, e.statusCode || 500);
   }
 };
