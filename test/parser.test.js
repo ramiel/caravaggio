@@ -1,12 +1,12 @@
-const { createCallStack, parseOptions } = require('../../src/libs/parser');
+const { createCallStack, parseOptions } = require('../src/parser');
 
 describe('Parser', () => {
   describe('option parser', () => {
     test('parser "rotate"', () => {
       const parsedOtpions = parseOptions('rotate_90');
-      expect(parsedOtpions).toEqual({
+      expect(parsedOtpions).toEqual(expect.objectContaining({
         rotate: 90,
-      });
+      }));
     });
   });
 
