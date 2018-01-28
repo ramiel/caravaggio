@@ -14,6 +14,11 @@ switch (persistorType) {
     persistor = require('./persistors/file')(persistorOptions);
     break;
 
+  case 'memory':
+    // eslint-disable-next-line global-require
+    persistor = require('./persistors/memory')(persistorOptions);
+    break;
+
   default:
     throw new Error(`Invalid persistor ${persistorType}. Check your configuration`);
 }
