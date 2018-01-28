@@ -1,2 +1,4 @@
-module.exports = value => value && value * 1;
+module.exports = value => [
+  ['rotate', value && value * 1],
+];
 

@@ -1,12 +1,19 @@
 const rotateNormalizer = require('./rotate');
+const flipNormalizer = require('./flip');
 
 const normalizers = {
   rotate: rotateNormalizer,
+  flip: flipNormalizer,
 };
-module.exports = parsedOptions => Object.keys(parsedOptions).reduce((acc, operation) => ({
-  ...acc,
-  [operation]: normalizers[operation]
-    ? normalizers[operation](parsedOptions[operation])
-    : parsedOptions[operation]
-  ,
-}), {});
+
+
+module.exports = operations => operations.reduce((acc, [name, params]) => {
+  const normalized = normalizers[name]
+    ? normalizers[name](params)
+    : [[name, params]];
+  return [
+    ...acc,
+    ...normalized,
+  ];
+}, []);
+

@@ -37,3 +37,11 @@ The service is avaiable at `http://localhost:8565/`
 
 and can be used sending a set of options and an image:    
 `http://localhost:8565/rotate_90/https://image.com/pony.jpg`
+
+## Options
+
+| operation | params                      | Optional | default | example   |
+|-----------|-----------------------------|----------|---------|-----------|
+| rotate    | 90 multiple angle           | ✔       | null    | rotate_90 |
+| flip      | x, y                        | ✔       | x       | flip_y    |
+| blur      | radius between 0,3 and 1000 | ✔       | null    | blur_10   |
