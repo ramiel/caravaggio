@@ -103,3 +103,9 @@ GitHub.sublime-settings
 
 
 # End of https://www.gitignore.io/api/node,code,sublimetext
+
+# All the cache except the folder itself
+
+/cache/*
+!/cache/.empty
+/coverage
