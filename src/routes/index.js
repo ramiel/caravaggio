@@ -1,20 +1,8 @@
 const { URL } = require('url');
 const { send } = require('micro');
-const redirect = require('micro-redirect');
 const { parseOptions } = require('../parser');
 const pipeline = require('../pipeline');
-
-const sendResource = (resource, res) => {
-  console.log('rendering', resource);
-  switch (resource.type) {
-    case 'buffer':
-      return send(res, 200, resource.buffer);
-    case 'location':
-      return redirect(res, 301, resource.location);
-    default:
-      throw new Error(`Invalid type of resource ${resource.type}`);
-  }
-};
+const { sendImage } = require('../sender');
 
 module.exports = cache => async (req, res) => {
   try {
@@ -22,15 +10,15 @@ module.exports = cache => async (req, res) => {
     const options = parseOptions(req.params.options);
     const resource = await cache.get(url, options);
     if (resource) {
-      return sendResource(resource, res);
+      return sendImage(resource, options, res);
     }
 
     // If the resource is missing, let's create it and serve
     const imageBuffer = await pipeline.convert(url, options);
     const createdResource = await cache.set(url, options, imageBuffer);
-    return sendResource(createdResource, res);
+    return sendImage(createdResource, options, res);
   } catch (e) {
-    send(res, e.statusCode || 500);
     console.error(e);
+    return send(res, e.statusCode || 500);
   }
 };
