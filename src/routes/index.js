@@ -6,9 +6,10 @@ const { sendImage } = require('../sender');
 
 module.exports = cache => async (req, res) => {
   try {
-    const url = new URL(req.params._);
-    const options = parseOptions(req.params.options);
+    const options = parseOptions(req.params._[0]);
+    const url = new URL(req.params._[1]);
     const resource = await cache.get(url, options);
+
     if (resource) {
       sendImage(resource, options, res);
       return;

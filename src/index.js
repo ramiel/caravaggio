@@ -22,4 +22,4 @@ switch (persistorType) {
     throw new Error(`Invalid persistor ${persistorType}. Check your configuration`);
 }
 
-module.exports = router(get('/:options/*', indexRoute(Cache(persistor))));
+module.exports = router(get('/*/*', indexRoute(Cache(persistor))));
