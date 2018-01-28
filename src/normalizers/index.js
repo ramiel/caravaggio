@@ -5,5 +5,8 @@ const normalizers = {
 };
 module.exports = parsedOptions => Object.keys(parsedOptions).reduce((acc, operation) => ({
   ...acc,
-  [operation]: normalizers[operation](parsedOptions[operation]),
+  [operation]: normalizers[operation]
+    ? normalizers[operation](parsedOptions[operation])
+    : parsedOptions[operation]
+  ,
 }), {});

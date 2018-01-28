@@ -28,6 +28,7 @@
   "homepage": "https://gitlab.com/ramiel/caravaggio#README",
   "dependencies": {
     "config": "^1.29.2",
+    "md5": "^2.2.1",
     "micro": "^9.1.0",
     "microrouter": "^3.0.0",
     "node-fetch": "^2.0.0-alpha.9",
