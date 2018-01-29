@@ -15,6 +15,9 @@ describe('Parser', () => {
       const parsedOtpions = parseOptions('o_jpg');
       expect(parsedOtpions).toEqual(expect.objectContaining({
         o: 'jpg',
+        operations: [
+          ['jpeg', []],
+        ],
       }));
     });
 
@@ -23,6 +26,7 @@ describe('Parser', () => {
       expect(parsedOtpions).toEqual(expect.objectContaining({
         o: 'jpg',
         operations: [
+          ['jpeg', []],
           ['rotate', [90]],
         ],
       }));
