@@ -7,7 +7,7 @@ const parser = {
     const options = {
       o: 'original',
       operations: normalizer(optsAsArray.map(o => o.split('_'))),
-      rawNormalizedOptions: optsAsArray.sort().join(','),
+      rawNormalizedOptions: opts,
     };
     return options;
   },
