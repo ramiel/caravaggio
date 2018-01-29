@@ -26,7 +26,4 @@ module.exports = (value) => {
       throw new Error(`Format not supported ${value}`);
   }
 };
-// ({
-//   o: value,
-// });
 

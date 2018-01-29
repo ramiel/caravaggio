@@ -6,7 +6,6 @@ module.exports = (persistor) => {
     getKey: (url, rawOptions) => md5(`url_${url}_options_${rawOptions}`),
 
     getFileName: (url, options) => {
-      console.log(url.toString(), options.rawNormalizedOptions);
       const filename = cache.getKey(url.toString(), options.rawNormalizedOptions);
       const extension = options.o === 'original'
         ? path.extname(url.pathname)
