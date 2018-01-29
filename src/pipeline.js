@@ -8,7 +8,7 @@ module.exports = {
         if (!acc[operation]) {
           throw new Error(`Invalid operation: ${operation}`);
         }
-        return acc[operation](params);
+        return acc[operation](...params);
       },
       pipeline,
     ))
