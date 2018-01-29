@@ -1,4 +1,6 @@
-module.exports = value => [
-  ['rotate', [value && value * 1]],
-];
+module.exports = value => ({
+  operations: [
+    ['rotate', [value && value * 1]],
+  ],
+});
 

@@ -6,10 +6,10 @@ const parser = {
     const optsAsArray = opts.split(',');
     const options = {
       o: 'original',
-      operations: normalizer(optsAsArray.map(o => o.split('_'))),
+      operations: optsAsArray.map(o => o.split('_')),
       rawNormalizedOptions: opts,
     };
-    return options;
+    return normalizer(options);
   },
 };
 
