@@ -6,7 +6,7 @@ describe('Parser', () => {
       const parsedOtpions = parseOptions('rotate_90');
       expect(parsedOtpions).toEqual(expect.objectContaining({
         operations: [
-          ['rotate', 90],
+          ['rotate', [90]],
         ],
       }));
     });
