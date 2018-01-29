@@ -25,7 +25,7 @@ module.exports = (options) => {
         ...(normalized.operations || []),
       ],
     };
-  }, { operations: [] });
+  }, { ...options, operations: [] });
 
   return result;
 };
