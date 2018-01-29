@@ -1,4 +1,4 @@
 module.exports = value => [
-  ['rotate', value && value * 1],
+  ['rotate', [value && value * 1]],
 ];
 
