@@ -9,7 +9,7 @@ module.exports = {
      * file:     Save images on local disk. On by default is the easiest to configure
      * memory:   Save images in memory. Useful on development, can drain a lot of memory. Do not use
      *           on production
-     * diskless: Never save the images. The images will be re-calculated each time. Very useful if
+     * none: Never save the images. The images will be re-calculated each time. Very useful if
      *           you plan to put a cache on front of this service, like CloudFront or CloudFlare.
      * s3:       Save the images on Amazon S3
      */
@@ -26,7 +26,7 @@ module.exports = {
 
     /**
      * Disk-less
-     * type: 'diskless',
+     * type: 'none',
      * options: {}
      */
 
