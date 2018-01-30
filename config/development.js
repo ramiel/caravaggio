@@ -1,7 +1,7 @@
 
 module.exports = {
   persistor: {
-    type: 'memory',
+    type: 'none',
     options: {},
   },
 };
