@@ -1,23 +1,7 @@
 image: node:8
 
-services:
-  - docker:dind
-
-variables:
-  DOCKER_DRIVER: overlay2
-
-.test:
+test:
   script:
    - npm i
    - npm run test
   coverage: /All files\s*\|\s*([\d\.]+)/
-
-deploy-docker-hub:
-  stage: deploy
-  before_script:
-    - docker info
-    - docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
-  script:
-    - export VERSION=$(node -p -e "require('./package.json').version")
-    - docker build --tag ramielcreations/caravaggio:latest --tag ramielcreations/caravaggio:$VERSION  .
-    - docker push
