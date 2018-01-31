@@ -47,4 +47,13 @@ describe('Memory persistor', () => {
 
     expect(result).not.toBeNull();
   });
+
+  test('do not drop the last inserted file is the only one and the limit is reached', async () => {
+    const buf2 = Buffer.alloc(1400);
+    const mem = memory({ limit: 1 });
+    await mem.save('bfile.png', buf2);
+    const result = await mem.read('bfile.png');
+
+    expect(result).not.toBeNull();
+  });
 });

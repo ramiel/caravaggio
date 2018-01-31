@@ -4,12 +4,14 @@ const persisted = {
   size: 0,
 };
 
-const checkMemory = (limit) => {
+const checkMemory = (limit, filename) => {
   if (limit && limit > 0) {
     const { size, files } = persisted;
     if (size > limit) {
       const first = Object.keys(files)[0];
-      delete persisted.files[first];
+      if (first !== filename) {
+        delete persisted.files[first];
+      }
     }
   }
 };
@@ -39,7 +41,7 @@ module.exports = ({ limit } = { limit: false }) => ({
   save: (filename, buffer) => {
     persisted.files[filename] = buffer;
     increaseSize(buffer.length);
-    checkMemory(limit);
+    checkMemory(limit, filename);
     return Promise.resolve({
       type: 'buffer',
       buffer,
