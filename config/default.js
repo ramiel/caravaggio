@@ -21,7 +21,9 @@ module.exports = {
     /**
      * Memory
      * type: 'memory',
-     * options: {}
+     * options: {
+     *  limit: 100,                       // The limit expressed in MB. Can be false for no limit
+     * }
      */
 
     /**
