@@ -1,8 +1,10 @@
 
 module.exports = {
   persistor: {
-    type: 'none',
-    options: {},
+    type: 'memory',
+    options: {
+      limit: 100,
+    },
   },
 };
 
