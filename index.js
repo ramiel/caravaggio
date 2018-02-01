@@ -1,7 +1,15 @@
 const config = require('config');
 const micro = require('micro');
-const router = require('./src');
+const app = require('./src');
 
-const server = micro(router);
+const port = config.get('port');
 
-server.listen(config.get('port'));
+const server = micro(app);
+server.listen(port);
+
+console.log(`Server started.
+Listen on port: ${port}.`);
+// Persistor: ${persistorType}
+// Persistor Options: ${Object.entries(persistorOptions).map(([key, value]) => `
+//   ${key}: ${value}`).join('')}
+
