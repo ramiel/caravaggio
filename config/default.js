@@ -19,20 +19,24 @@ module.exports = {
     },
 
     /**
+     * File
+     * type: 'file',
+     * options: {
+     *  basPath: '/tmp/',                 // The folder to store the images in.
+     * }
+     *
+     *
      * Memory
      * type: 'memory',
      * options: {
      *  limit: 100,                       // The limit expressed in MB. Can be false for no limit
      * }
-     */
-
-    /**
+     *
      * Disk-less
      * type: 'none',
      * options: {}
-     */
-
-    /**
+     *
+     *
      * S3 persistor
      *
      * type: 's3',
