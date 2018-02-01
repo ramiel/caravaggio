@@ -1,4 +1,4 @@
-const { send, createError } = require('micro');
+const { createError } = require('micro');
 const { URL } = require('url');
 
 const buildRegex = domains => domains && domains.map(domain => new RegExp(`^${domain
