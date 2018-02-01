@@ -22,5 +22,7 @@ server.listen(port);
 console.log(`Server started.
 Listen on port: ${port}.
 Persistor: ${persistorType}
+Persistor Options: ${Object.entries(persistorOptions).map(([key, value]) => `
+  ${key}: ${value}`).join('')}
 `);
 

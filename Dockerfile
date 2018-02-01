@@ -12,4 +12,6 @@ RUN npm install --production
 
 COPY . /caravaggio
 
+ENV NODE_ENV=docker
+
 CMD ["npm", "start"]
