@@ -2,7 +2,9 @@
 module.exports = {
   persistor: {
     type: 'memory',
-    options: {},
+    options: {
+      limit: 100,
+    },
   },
 };
 
