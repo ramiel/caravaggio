@@ -5,6 +5,7 @@ const router = require('./src');
 
 const persistorType = config.get('persistor.type');
 const persistorOptions = config.get('persistor.options');
+const port = config.get('port');
 
 let persistor;
 
@@ -16,5 +17,10 @@ try {
 }
 
 const server = micro(router(persistor));
+server.listen(port);
 
-server.listen(config.get('port'));
+console.log(`Server started.
+Listen on port: ${port}.
+Persistor: ${persistorType}
+`);
+
