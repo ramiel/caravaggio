@@ -48,6 +48,12 @@ module.exports = {
      * }
     */
   },
+  /**
+   * Allow only files in the domain whitelist.
+   * This can be an array of domains and wildcard are supported
+   * whitelist: ["images.google.com", "*.mydomain.net"]
+   */
+  whitelist: false,
   compress: true,
 };
 

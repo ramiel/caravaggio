@@ -42,10 +42,19 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.7.0",
     "jest": "^22.1.4",
-    "micro-dev": "^2.2.0"
+    "micro-dev": "^2.2.0",
+    "request-promise": "^4.2.2",
+    "test-listen": "^1.1.0"
   },
   "jest": {
-    "collectCoverageFrom": ["src/**/*.js"],
-    "coverageReporters": ["json", "lcov", "text", "html"]
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ]
   }
 }

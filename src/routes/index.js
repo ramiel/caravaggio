@@ -1,5 +1,5 @@
 const { URL } = require('url');
-const { send } = require('micro');
+const { createError } = require('micro');
 const { parseOptions } = require('../parser');
 const pipeline = require('../pipeline');
 const { sendImage } = require('../sender');
@@ -9,7 +9,6 @@ module.exports = cache => async (req, res) => {
     const options = parseOptions(req.params._[0]);
     const url = new URL(req.params._[1]);
     const resource = await cache.get(url, options);
-
     if (resource) {
       sendImage(resource, options, res);
       return;
@@ -21,6 +20,6 @@ module.exports = cache => async (req, res) => {
     sendImage(createdResource, options, res);
   } catch (e) {
     console.error(e);
-    send(res, e.statusCode || 500, e.message);
+    throw createError(e.statusCode, e.message);
   }
 };
