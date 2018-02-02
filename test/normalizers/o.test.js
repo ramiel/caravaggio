@@ -11,7 +11,11 @@ describe('Output', () => {
     expect(result).toEqual(expect.objectContaining({
       o: 'jpg',
       output: [
-        ['jpeg', []],
+        {
+          name: 'o',
+          operation: 'jpeg',
+          params: [],
+        },
       ],
     }));
   });
@@ -21,7 +25,11 @@ describe('Output', () => {
     expect(result).toEqual(expect.objectContaining({
       o: 'jpeg',
       output: [
-        ['jpeg', []],
+        {
+          name: 'o',
+          operation: 'jpeg',
+          params: [],
+        },
       ],
     }));
   });
@@ -31,7 +39,11 @@ describe('Output', () => {
     expect(result).toEqual(expect.objectContaining({
       o: 'png',
       output: [
-        ['png', []],
+        {
+          name: 'o',
+          operation: 'png',
+          params: [],
+        },
       ],
     }));
   });
@@ -41,7 +53,11 @@ describe('Output', () => {
     expect(result).toEqual(expect.objectContaining({
       o: 'webp',
       output: [
-        ['webp', []],
+        {
+          name: 'o',
+          operation: 'webp',
+          params: [],
+        },
       ],
     }));
   });
@@ -51,7 +67,11 @@ describe('Output', () => {
     expect(result).toEqual(expect.objectContaining({
       o: 'tiff',
       output: [
-        ['tiff', []],
+        {
+          name: 'o',
+          operation: 'tiff',
+          params: [],
+        },
       ],
     }));
   });

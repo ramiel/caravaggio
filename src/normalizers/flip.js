@@ -1,5 +1,11 @@
 module.exports = value => ({
   transformations: [
-    [!value || value.toLowerCase() === 'x' ? 'flop' : 'flip', [true]],
+    [
+      {
+        name: 'flip',
+        operation: !value || value.toLowerCase() === 'x' ? 'flop' : 'flip',
+        params: [true],
+      },
+    ],
   ],
 });

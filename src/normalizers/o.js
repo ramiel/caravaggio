@@ -10,7 +10,11 @@ module.exports = (value) => {
       return {
         o: value,
         output: [
-          ['jpeg', []],
+          {
+            name: 'o',
+            operation: 'jpeg',
+            params: [],
+          },
         ],
       };
     case 'png':
@@ -19,7 +23,11 @@ module.exports = (value) => {
       return {
         o: value,
         output: [
-          [value, []],
+          {
+            name: 'o',
+            operation: value,
+            params: [],
+          },
         ],
       };
     default:
