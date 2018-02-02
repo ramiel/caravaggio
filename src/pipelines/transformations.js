@@ -1,10 +1,10 @@
 module.exports = (url, options) => pipeline => options.transformations.reduce(
-  (acc, [transformation, params]) => {
-    if (!acc[transformation]) {
-      throw new Error(`Invalid transformation: ${transformation}`);
+  (acc, { /* name,  */operation, params }) => {
+    console.log(`Applying transformation "${operation}" with parameters: ${params}`);
+    if (!acc[operation]) {
+      throw new Error(`Invalid transformation: ${operation}`);
     }
-    console.log(`Applying transformation "${transformation}" with parameters: ${params}`);
-    return acc[transformation](...params);
+    return acc[operation](...params);
   },
   pipeline,
 );

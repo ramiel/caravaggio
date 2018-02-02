@@ -1,6 +1,10 @@
 module.exports = value => ({
   transformations: [
-    ['rotate', [value && value * 1]],
+    {
+      name: 'rotate',
+      operation: 'rotate',
+      params: [value && value * 1],
+    },
   ],
 });
 
