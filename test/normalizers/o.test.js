@@ -3,14 +3,14 @@ const o = require('../../src/normalizers/o');
 describe('Output', () => {
   test('original does not add an operation', () => {
     const result = o('original');
-    expect(result).not.toHaveProperty('operations');
+    expect(result).not.toHaveProperty('output');
   });
 
   test('"jpg" is handled', () => {
     const result = o('jpg');
     expect(result).toEqual(expect.objectContaining({
       o: 'jpg',
-      operations: [
+      output: [
         ['jpeg', []],
       ],
     }));
@@ -20,7 +20,7 @@ describe('Output', () => {
     const result = o('jpeg');
     expect(result).toEqual(expect.objectContaining({
       o: 'jpeg',
-      operations: [
+      output: [
         ['jpeg', []],
       ],
     }));
@@ -30,7 +30,7 @@ describe('Output', () => {
     const result = o('png');
     expect(result).toEqual(expect.objectContaining({
       o: 'png',
-      operations: [
+      output: [
         ['png', []],
       ],
     }));
@@ -40,7 +40,7 @@ describe('Output', () => {
     const result = o('webp');
     expect(result).toEqual(expect.objectContaining({
       o: 'webp',
-      operations: [
+      output: [
         ['webp', []],
       ],
     }));
@@ -50,7 +50,7 @@ describe('Output', () => {
     const result = o('tiff');
     expect(result).toEqual(expect.objectContaining({
       o: 'tiff',
-      operations: [
+      output: [
         ['tiff', []],
       ],
     }));

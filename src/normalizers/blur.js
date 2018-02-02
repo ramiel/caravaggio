@@ -1,5 +1,5 @@
 module.exports = value => ({
-  operations: [
+  transformations: [
     ['blur', [value && parseFloat(value, 10)]],
   ],
 });

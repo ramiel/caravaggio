@@ -1,7 +1,7 @@
 module.exports = (value) => {
   const [width, height] = value.split('x');
   return {
-    operations: [
+    transformations: [
       [
         'resize', [
           (width && parseInt(width, 10)) || null,
