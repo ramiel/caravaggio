@@ -9,7 +9,7 @@ module.exports = (value) => {
     case 'jpeg':
       return {
         o: value,
-        operations: [
+        output: [
           ['jpeg', []],
         ],
       };
@@ -18,7 +18,7 @@ module.exports = (value) => {
     case 'tiff':
       return {
         o: value,
-        operations: [
+        output: [
           [value, []],
         ],
       };

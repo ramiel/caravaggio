@@ -20,12 +20,22 @@ module.exports = (options) => {
     return {
       ...acc,
       ...normalized,
-      operations: [
-        ...acc.operations,
-        ...(normalized.operations || []),
+      input: [
+        ...acc.input,
+        ...(normalized.input || []),
+      ],
+      transformations: [
+        ...acc.transformations,
+        ...(normalized.transformations || []),
+      ],
+      output: [
+        ...acc.output,
+        ...(normalized.output || []),
       ],
     };
-  }, { ...options, operations: [] });
+  }, {
+    ...options, input: [], transformations: [], output: [],
+  });
 
   return result;
 };

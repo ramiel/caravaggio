@@ -1,5 +1,5 @@
-const { parseOptions } = require('../src/parser');
-const { convert } = require('../src/pipeline');
+const { parseOptions } = require('../../src/parser');
+const { convert } = require('../../src/pipelines/index');
 
 const imageUrl = 'http://res.cloudinary.com/ramiel/image/upload/v1478374142/gomitolo2_bxd1ti.png';
 

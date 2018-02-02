@@ -1,7 +1,7 @@
 const { URL } = require('url');
 const { createError } = require('micro');
 const { parseOptions } = require('../parser');
-const pipeline = require('../pipeline');
+const pipeline = require('../pipelines');
 const { sendImage } = require('../sender');
 
 module.exports = cache => async (req, res) => {

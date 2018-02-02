@@ -5,7 +5,7 @@ describe('Parser', () => {
     test('parse "rotate"', () => {
       const parsedOtpions = parseOptions('rotate_90');
       expect(parsedOtpions).toEqual(expect.objectContaining({
-        operations: [
+        transformations: [
           ['rotate', [90]],
         ],
       }));
@@ -15,7 +15,7 @@ describe('Parser', () => {
       const parsedOtpions = parseOptions('o_jpg');
       expect(parsedOtpions).toEqual(expect.objectContaining({
         o: 'jpg',
-        operations: [
+        output: [
           ['jpeg', []],
         ],
       }));
@@ -25,9 +25,11 @@ describe('Parser', () => {
       const parsedOtpions = parseOptions('o_jpg,rotate_90');
       expect(parsedOtpions).toEqual(expect.objectContaining({
         o: 'jpg',
-        operations: [
-          ['jpeg', []],
+        transformations: [
           ['rotate', [90]],
+        ],
+        output: [
+          ['jpeg', []],
         ],
       }));
     });
@@ -35,11 +37,11 @@ describe('Parser', () => {
     test('ignore unknown operations', () => {
       const parsedOtpions = parseOptions('unknown_50');
       expect(parsedOtpions).toEqual(expect.objectContaining({
-        operations: [],
+        transformations: [],
       }));
 
       expect(parsedOtpions).not.toEqual(expect.objectContaining({
-        operations: [
+        transformations: [
           ['unknown', [50]],
         ],
       }));

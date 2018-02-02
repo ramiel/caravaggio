@@ -1,5 +1,5 @@
 module.exports = value => ({
-  operations: [
+  transformations: [
     ['rotate', [value && value * 1]],
   ],
 });

@@ -1,5 +1,5 @@
 module.exports = value => ({
-  operations: [
+  transformations: [
     [!value || value.toLowerCase() === 'x' ? 'flop' : 'flip', [true]],
   ],
 });
