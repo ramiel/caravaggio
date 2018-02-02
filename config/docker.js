@@ -25,7 +25,7 @@ switch (persistorType) {
     throw new Error(`Persistor ${persistorType} is not valid. Check your env variable "CARAVAGGIO_PERSISTOR_TYPE"`);
 }
 module.exports = {
-  port: parseInt(process.env.CARAVAGGIO_PORT, 10) || 8565,
+  port: parseInt(process.env.CARAVAGGIO_PORT, 10) || 80,
   persistor: {
     type: persistorType,
     options: persistorOptions,
