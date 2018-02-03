@@ -11,6 +11,7 @@ module.exports = cache => async (req, res) => {
     const url = new URL(req.params._[1]);
     const resource = await cache.get(url, options);
     if (resource) {
+      logger.debug(`Cache hit for resource ${url.toString()} with options ${options.rawNormalizedOptions}`);
       sendImage(resource, options, res);
       return;
     }
