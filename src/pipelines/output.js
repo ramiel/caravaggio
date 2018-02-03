@@ -1,3 +1,4 @@
+const logger = require('../logger');
 const { getPipelineOperationSortFunction } = require('../utils');
 
 const OPERATION_ORDER = [
@@ -13,7 +14,7 @@ const reducer = (url, options) => (acc, { /* name, */ operation, params }) => {
   if (!acc[operation]) {
     throw new Error(`Invalid operation: ${operation}`);
   }
-  console.log(`Applying output operation "${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
+  logger.debug(`Applying output operation "${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
   return acc[operation](...params);
 };
 
