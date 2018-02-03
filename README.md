@@ -50,10 +50,11 @@ and can be used sending a set of options and an image:
 
 | operation 	| Description                                                                                                      	| example                                                  	|
 |-----------	|------------------------------------------------------------------------------------------------------------------	|----------------------------------------------------------	|
-| resize    	| Resize the image. Both width and height can be specified. If only one is specified the other is auto-scaled      	| resize_640x480<br /> resize_640x<br /> resize_x480<br /> 	|
-| rotate    	| Rotate the image of a multiple of 90° If nothing is specified it rotates depending on the exif Orientation value 	| rotate<br /> rotate_90<br /> rotate_270                  	|
-| flip      	| Flip the image horizontally or vertically                                                                        	| flip_x<br /> flip_y                                      	|
-| blur      	| Add a blur effect to the image                                                                                   	| blur_10<br /> blur_0.4                                   	|
+| resize    	| Resize the image. Both width and height can be specified. If only one is specified the other is auto-scaled      	| resize_640x480<br />resize_640x<br /> resize_x480<br /> 	|
+| q         	| Set the quality for the resulting image (1 to 100). Default is 80.<br />**Note**: this has no effect on PNGs     	| q_65<br />q_10                                          	|
+| rotate    	| Rotate the image of a multiple of 90° If nothing is specified it rotates depending on the exif Orientation value 	| rotate<br />rotate_90<br /> rotate_270                  	|
+| flip      	| Flip the image horizontally or vertically                                                                        	| flip_x<br />flip_y                                      	|
+| blur      	| Add a blur effect to the image                                                                                   	| blur_10<br />blur_0.4                                   	|
 
 
 ## Thank you
