@@ -3,6 +3,7 @@ const flipNormalizer = require('./flip');
 const blurNormalizer = require('./blur');
 const resizeNormalizer = require('./resize');
 const oNormalizer = require('./o');
+const qNormalizer = require('./q');
 
 const normalizers = {
   rotate: rotateNormalizer,
@@ -10,6 +11,7 @@ const normalizers = {
   blur: blurNormalizer,
   resize: resizeNormalizer,
   o: oNormalizer,
+  q: qNormalizer,
 };
 
 module.exports = (options) => {
