@@ -1,6 +1,6 @@
 {
   "name": "caravaggio",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A blazing fast image processor service",
   "main": "index.js",
   "scripts": {
@@ -57,6 +57,9 @@
       "text",
       "html"
     ],
-    "testPathIgnorePatterns": ["<rootDir>/config/", "<rootDir>/node_modules/"]
+    "testPathIgnorePatterns": [
+      "<rootDir>/config/",
+      "<rootDir>/node_modules/"
+    ]
   }
 }
