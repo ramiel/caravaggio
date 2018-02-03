@@ -6,5 +6,8 @@ module.exports = {
       limit: 100,
     },
   },
+  logger: {
+    level: 'debug',
+  },
 };
 

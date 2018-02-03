@@ -1,5 +1,7 @@
+const logger = require('../logger');
+
 module.exports = (/* url, options */) => (pipeline) => {
-  console.log('pretending applying input operations');
+  logger.debug('pretending applying input operations');
   return pipeline;
 };
 

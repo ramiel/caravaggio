@@ -24,11 +24,20 @@ switch (persistorType) {
   default:
     throw new Error(`Persistor ${persistorType} is not valid. Check your env variable "CARAVAGGIO_PERSISTOR_TYPE"`);
 }
+const whitelist = process.env.CARAVAGGIO_WHITELIST
+  ? process.env.CARAVAGGIO_WHITELIST.split(',').map(d => d.trim())
+  : false;
+
 module.exports = {
   port: parseInt(process.env.CARAVAGGIO_PORT, 10) || 80,
   persistor: {
     type: persistorType,
     options: persistorOptions,
+  },
+  whitelist,
+  logger: {
+    level: process.env.CARAVAGGIO_LOGGER_LEVEL || 'error',
+    stream: process.env.CARAVAGGIO_LOGGER_STREAM || 'stdout',
   },
   compress: process.env.CARAVAGGIO_COMPRESS === 'true',
 };

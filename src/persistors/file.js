@@ -27,7 +27,6 @@ module.exports = ({ basePath } = { basePath: '.' }) => {
     }),
 
     save: (filename, buffer) => new Promise((resolve, reject) => {
-      console.log('writing file ', getCompleteFilename(filename));
       fs.writeFile(
         getCompleteFilename(filename),
         buffer,

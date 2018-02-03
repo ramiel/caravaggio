@@ -1,5 +1,6 @@
 const { URL } = require('url');
 const { createError } = require('micro');
+const logger = require('../logger');
 const { parseOptions } = require('../parser');
 const pipeline = require('../pipelines');
 const { sendImage } = require('../sender');
@@ -19,7 +20,7 @@ module.exports = cache => async (req, res) => {
     const createdResource = await cache.set(url, options, imageBuffer);
     sendImage(createdResource, options, res);
   } catch (e) {
-    console.error(e);
+    logger.error(e);
     throw createError(e.statusCode, e.message);
   }
 };
