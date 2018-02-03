@@ -1,5 +1,7 @@
 const path = require('path');
 
+const ONE_YEAR = 60 * 60 * 24 * 365;
+
 module.exports = {
   port: parseInt(process.env.PORT, 10) || 8565,
   persistor: {
@@ -66,6 +68,17 @@ module.exports = {
   logger: {
     level: 'info',
     stream: 'stdout',
+  },
+
+  /**
+   * Define the cache directive sent in the response
+   * browserCache: false    // Set no cache directive
+   * browserCache: {
+   *    maxAge: 60,         // Define the max-age in seconds
+   * }
+   */
+  browserCache: {
+    maxAge: ONE_YEAR,
   },
   compress: true,
 };
