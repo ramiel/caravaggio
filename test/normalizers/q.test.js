@@ -1,4 +1,5 @@
 const { URL } = require('url');
+const { createPipeline } = require('../mocks/pipeline');
 const q = require('../../src/normalizers/q');
 
 describe('Quality', () => {
@@ -33,7 +34,8 @@ describe('Quality', () => {
           },
         ],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -55,7 +57,8 @@ describe('Quality', () => {
           },
         ],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -77,7 +80,8 @@ describe('Quality', () => {
           },
         ],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -99,7 +103,8 @@ describe('Quality', () => {
           },
         ],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -121,7 +126,8 @@ describe('Quality', () => {
           },
         ],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toHaveLength(0);
     });
   });
@@ -135,7 +141,8 @@ describe('Quality', () => {
         o: 'original',
         output: [],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -151,7 +158,8 @@ describe('Quality', () => {
         o: 'original',
         output: [],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -167,7 +175,8 @@ describe('Quality', () => {
         o: 'original',
         output: [],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -183,7 +192,8 @@ describe('Quality', () => {
         o: 'original',
         output: [],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -199,7 +209,8 @@ describe('Quality', () => {
         o: 'original',
         output: [],
       };
-      const operations = qualityGenerator(url, options);
+      const pipeline = createPipeline(url, options);
+      const operations = qualityGenerator(pipeline);
       expect(operations).toHaveLength(0);
     });
   });

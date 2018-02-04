@@ -7,21 +7,21 @@ const OPERATION_ORDER = [
 ];
 const sortFunction = getPipelineOperationSortFunction(OPERATION_ORDER);
 
-const reducer = (url, options) => (acc, { /* name, */ operation, params }) => {
+const reducer = pipeline => (acc, { /* name, */ operation, params }) => {
   if (operation instanceof Function) {
-    return operation(url, options).reduce(reducer(url, options), acc);
+    return operation(pipeline).reduce(reducer(pipeline), acc);
   }
-  if (!acc[operation]) {
+  if (!acc.hasOperation(operation)) {
     throw new Error(`Invalid operation: ${operation}`);
   }
   logger.debug(`Applying output operation "${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
-  return acc[operation](...params);
+  return acc.applyOperation(operation, ...params);
 };
 
-module.exports = (url, options) => pipeline => options.output
+module.exports = pipeline => pipeline.getOptions().output
   .sort(sortFunction)
   .reduce(
-    reducer(url, options),
+    reducer(pipeline),
     pipeline,
   );
 

@@ -1,11 +1,11 @@
 const path = require('path');
 
-const getOutputType = (url, options) => (options.o !== 'original'
-  ? options.o
-  : path.extname(url.pathname).slice(1));
+const getOutputType = pipeline => (pipeline.getOptions().o !== 'original'
+  ? pipeline.getOptions().o
+  : path.extname(pipeline.getUrl().pathname).slice(1));
 
-const subOperationGenerator = value => (url, options) => {
-  const type = getOutputType(url, options);
+const subOperationGenerator = value => (pipeline) => {
+  const type = getOutputType(pipeline);
   switch (type) {
     case 'jpeg':
     case 'jpg':
