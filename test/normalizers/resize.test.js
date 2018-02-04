@@ -77,5 +77,38 @@ describe('Resize', () => {
       }],
     });
   });
+
+  test('return a function when trying to resie in percentage (width and height)', () => {
+    const result = resize('0.8x0.9');
+    expect(result).toEqual({
+      transformations: [{
+        name: 'resize',
+        operation: expect.any(Function),
+        params: [],
+      }],
+    });
+  });
+
+  test('return a function when trying to resie in percentage (width only)', () => {
+    const result = resize('0.8x');
+    expect(result).toEqual({
+      transformations: [{
+        name: 'resize',
+        operation: expect.any(Function),
+        params: [],
+      }],
+    });
+  });
+
+  test('return a function when trying to resie in percentage (height only)', () => {
+    const result = resize('x0.8');
+    expect(result).toEqual({
+      transformations: [{
+        name: 'resize',
+        operation: expect.any(Function),
+        params: [],
+      }],
+    });
+  });
 });
 
