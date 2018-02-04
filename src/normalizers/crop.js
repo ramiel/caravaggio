@@ -43,5 +43,6 @@ module.exports = (value) => {
       transformations: getCoordinatesCrop(params),
     };
   }
+  throw new Error(`Invalid parameter for crop ${value}`);
 };
 
