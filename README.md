@@ -53,7 +53,7 @@ and can be used sending a set of options and an image:
 |-----------	|------------------------------------------------------------------------------------------------------------------	|----------------------------------------------------------	|
 | resize    	| Resize the image. Both width and height can be specified. If only one is specified the other is auto-scaled.     	| resize_640x480<br />resize_640x<br /> resize_x480<br /> 	|
 |             | Values between 0 and 1 will be considered percentage of the image size                                            | resize_0.6x0.3<br />resize_0.5x<br />resize_x0.5          |
-| crop      	| Crop the image. Coordinates or gravity can be specified<br />                                                   	| resize_640x480<br />resize_640x<br /> resize_x480<br /> 	|
+| crop      	| Crop the image. Coordinates or gravity can be specified<br />                                                   	|                                                           |
 |             | Gravity: north, northeast, east, southeast, south, southwest, west, northwest, center and centre.                 | crop_200x200xeast Crop the resized image (200wx200h) with gravity at east|
 |             | Otherwise you can specify x, y, width and height                                                                  | crop_50x60x200x200 starting from x=50 y=60 drop a subimage of 200w and 200h|
 | q         	| Set the quality for the resulting image (1 to 100). Default is 80.<br />**Note**: this has no effect on PNGs     	| q_65<br />q_10                                          	|
