@@ -2,14 +2,29 @@ const redirect = require('micro-redirect');
 const { send } = require('micro');
 const path = require('path');
 const config = require('config');
+const sharp = require('sharp');
 
 const browserCache = config.get('browserCache');
 
-const getTypeByUrl = resourceName => path.extname(resourceName).replace('.', '');
+const getTypeByUrl = resourceName => path.extname(resourceName)
+  .replace('.', '')
+  .replace('jpg', 'jpeg');
 
-const getMimeType = (resource, options) => {
+const getTypeByMetadata = async resource => sharp(resource.buffer)
+  .metadata()
+  .then(({ format }) => format);
+
+const getTypeByResource = async (resource) => {
+  const extension = getTypeByUrl(resource.name);
+  if (!extension) {
+    return getTypeByMetadata(resource);
+  }
+  return extension;
+};
+
+const getMimeType = async (resource, options) => {
   const type = options.o === 'original'
-    ? getTypeByUrl(resource.name)
+    ? await getTypeByResource(resource)
     : options.o;
   return `image/${type}`;
 };
@@ -17,14 +32,14 @@ const getMimeType = (resource, options) => {
 const getCacheControlHeader = () => browserCache && `max-age=${browserCache.maxAge}`;
 
 module.exports = {
-  sendImage: (resource, options, res) => {
+  sendImage: async (resource, options, res) => {
     switch (resource.type) {
       case 'buffer': {
         const cacheHeader = getCacheControlHeader();
         if (cacheHeader) {
           res.setHeader('cache-control', cacheHeader);
         }
-        res.setHeader('Content-type', getMimeType(resource, options));
+        res.setHeader('Content-type', await getMimeType(resource, options));
         return send(res, 200, resource.buffer);
       }
       case 'location':

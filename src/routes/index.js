@@ -12,14 +12,14 @@ module.exports = cache => async (req, res) => {
     const resource = await cache.get(url, options);
     if (resource) {
       logger.debug(`Cache hit for resource ${url.toString()} with options ${options.rawNormalizedOptions}`);
-      sendImage(resource, options, res);
+      await sendImage(resource, options, res);
       return;
     }
 
     // If the resource is missing, let's create it and serve
     const imageBuffer = await pipeline.convert(url, options);
     const createdResource = await cache.set(url, options, imageBuffer);
-    sendImage(createdResource, options, res);
+    await sendImage(createdResource, options, res);
   } catch (e) {
     logger.error(e);
     throw createError(e.statusCode, e.message);
