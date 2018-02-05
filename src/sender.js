@@ -5,6 +5,7 @@ const config = require('config');
 const sharp = require('sharp');
 
 const browserCache = config.get('browserCache');
+const guessTypeByExtension = config.get('guessTypeByExtension');
 
 const getTypeByUrl = resourceName => path.extname(resourceName)
   .replace('.', '')
@@ -15,6 +16,9 @@ const getTypeByMetadata = async resource => sharp(resource.buffer)
   .then(({ format }) => format);
 
 const getTypeByResource = async (resource) => {
+  if (!guessTypeByExtension) {
+    return getTypeByMetadata(resource);
+  }
   const extension = getTypeByUrl(resource.name);
   if (!extension) {
     return getTypeByMetadata(resource);

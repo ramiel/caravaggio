@@ -39,6 +39,7 @@ module.exports = {
     level: process.env.CARAVAGGIO_LOGGER_LEVEL || 'error',
     stream: process.env.CARAVAGGIO_LOGGER_STREAM || 'stdout',
   },
+  guessTypeByExtension: process.env.CARAVAGGIO_GUESS_TYPE_BY_EXTENSION === 'true' || false,
   compress: process.env.CARAVAGGIO_COMPRESS === 'true',
 };
 

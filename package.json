@@ -7,7 +7,7 @@
     "start": "node .",
     "dev": "NODE_ENV=development micro-dev src/ -s | bunyan",
     "test": "npm run lint && npm run test-only -- --coverage --colors=false",
-    "test-only": "NODE_ENV=test jest",
+    "test-only": "NODE_ENV=test ALLOW_CONFIG_MUTATIONS=true jest",
     "test-watch": "npm run test-only -- --watch",
     "lint": "eslint ."
   },

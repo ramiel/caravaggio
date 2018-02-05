@@ -80,6 +80,14 @@ module.exports = {
   browserCache: {
     maxAge: ONE_YEAR,
   },
+  /**
+   * Try to guess the file type from extension. This could speed up a process but consider that
+   * - it is not always applicable (file without extension)
+   * - Sometimes it gains nothing (because, i.e., the file metadata have been already red)
+   *
+   * In general it's safe to leave this option false
+   */
+  guessTypeByExtension: false,
   compress: true,
 };
 
