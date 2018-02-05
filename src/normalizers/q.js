@@ -1,12 +1,10 @@
-const path = require('path');
-
-const getOutputType = pipeline => (pipeline.getOptions().o !== 'original'
+const getOutputType = async pipeline => (pipeline.getOptions().o !== 'original'
   ? pipeline.getOptions().o
-  : path.extname(pipeline.getUrl().pathname).slice(1));
+  : (await pipeline.getMetadata()).format);
 
-const subOperationGenerator = value => (pipeline) => {
-  const type = getOutputType(pipeline);
-  switch (type) {
+const subOperationGenerator = value => async (pipeline) => {
+  const format = await getOutputType(pipeline);
+  switch (format) {
     case 'jpeg':
     case 'jpg':
       return [
@@ -21,7 +19,7 @@ const subOperationGenerator = value => (pipeline) => {
       return [
         {
           name: 'q',
-          operation: type,
+          operation: format,
           params: [{ quality: value }],
         },
       ];

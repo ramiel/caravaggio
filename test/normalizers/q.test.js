@@ -22,7 +22,7 @@ describe('Quality', () => {
   describe('Given an output has been specified', () => {
     const qualityGenerator = q(90).output[0].operation;
 
-    test('add quality if the output is jpeg', () => {
+    test('add quality if the output is jpeg', async () => {
       const url = new URL('https://image.com/image.jpg');
       const options = {
         o: 'jpeg',
@@ -35,7 +35,7 @@ describe('Quality', () => {
         ],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -45,7 +45,7 @@ describe('Quality', () => {
       ]));
     });
 
-    test('add quality if the output is jpg', () => {
+    test('add quality if the output is jpg', async () => {
       const url = new URL('https://image.com/image.jpg');
       const options = {
         o: 'jpg',
@@ -58,7 +58,7 @@ describe('Quality', () => {
         ],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -68,7 +68,7 @@ describe('Quality', () => {
       ]));
     });
 
-    test('add quality if the output is webp', () => {
+    test('add quality if the output is webp', async () => {
       const url = new URL('https://image.com/image.jpg');
       const options = {
         o: 'webp',
@@ -81,7 +81,7 @@ describe('Quality', () => {
         ],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -91,7 +91,7 @@ describe('Quality', () => {
       ]));
     });
 
-    test('add quality if the output is tiff', () => {
+    test('add quality if the output is tiff', async () => {
       const url = new URL('https://image.com/image.jpg');
       const options = {
         o: 'tiff',
@@ -103,8 +103,8 @@ describe('Quality', () => {
           },
         ],
       };
-      const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      const pipeline = await createPipeline(url, options);
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -114,7 +114,7 @@ describe('Quality', () => {
       ]));
     });
 
-    test('does nothing in case the output is png', () => {
+    test('does nothing in case the output is png', async () => {
       const url = new URL('https://image.com/image.jpg');
       const options = {
         o: 'png',
@@ -127,7 +127,7 @@ describe('Quality', () => {
         ],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toHaveLength(0);
     });
   });
@@ -135,14 +135,14 @@ describe('Quality', () => {
   describe('Given the output as "original"', () => {
     const qualityGenerator = q(90).output[0].operation;
 
-    test('add quality if the output is jpeg', () => {
+    test('add quality if the output is jpeg', async () => {
       const url = new URL('https://image.com/image.jpeg');
       const options = {
         o: 'original',
         output: [],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -152,14 +152,14 @@ describe('Quality', () => {
       ]));
     });
 
-    test('add quality if the output is jpg', () => {
+    test('add quality if the output is jpg', async () => {
       const url = new URL('https://image.com/image.jpg');
       const options = {
         o: 'original',
         output: [],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -169,14 +169,15 @@ describe('Quality', () => {
       ]));
     });
 
-    test('add quality if the output is webp', () => {
+    test('add quality if the output is webp', async () => {
       const url = new URL('https://image.com/image.webp');
       const options = {
         o: 'original',
         output: [],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      pipeline.setMetadata({ format: 'webp' });
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -186,14 +187,15 @@ describe('Quality', () => {
       ]));
     });
 
-    test('add quality if the output is tiff', () => {
+    test('add quality if the output is tiff', async () => {
       const url = new URL('https://image.com/image.tiff');
       const options = {
         o: 'original',
         output: [],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      pipeline.setMetadata({ format: 'tiff' });
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toEqual(expect.arrayContaining([
         expect.objectContaining({
           name: 'q',
@@ -203,15 +205,33 @@ describe('Quality', () => {
       ]));
     });
 
-    test('does nothing in case the output is png', () => {
+    test('does nothing in case the output is png', async () => {
       const url = new URL('https://image.com/image.png');
       const options = {
         o: 'original',
         output: [],
       };
       const pipeline = createPipeline(url, options);
-      const operations = qualityGenerator(pipeline);
+      pipeline.setMetadata({ format: 'png' });
+      const operations = await qualityGenerator(pipeline);
       expect(operations).toHaveLength(0);
+    });
+
+    test('add quality even if the url has no extension', async () => {
+      const url = new URL('https://image.com/image');
+      const options = {
+        o: 'original',
+        output: [],
+      };
+      const pipeline = createPipeline(url, options);
+      const operations = await qualityGenerator(pipeline);
+      expect(operations).toEqual(expect.arrayContaining([
+        expect.objectContaining({
+          name: 'q',
+          operation: 'jpeg',
+          params: [{ quality: 90 }],
+        }),
+      ]));
     });
   });
 });

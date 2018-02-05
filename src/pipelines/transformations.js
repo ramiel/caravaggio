@@ -1,18 +1,18 @@
 const logger = require('../logger');
 
-const reducer = pipeline => async (acc, { /* name, */ operation, params }) => {
+const reducer = async (acc, { /* name, */ operation, params }) => acc.then(async (pipeline) => {
   if (operation instanceof Function) {
-    return (await operation(pipeline)).reduce(reducer(pipeline), acc);
+    return (await operation(pipeline)).reduce(reducer, Promise.resolve(pipeline));
   }
-  if (!acc.hasOperation(operation)) {
+  if (!pipeline.hasOperation(operation)) {
     throw new Error(`Invalid operation: ${operation}`);
   }
   logger.debug(`Applying transformation "${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
-  return acc.applyOperation(operation, ...params);
-};
+  return pipeline.applyOperation(operation, ...params);
+});
 
 module.exports = pipeline => pipeline.getOptions().transformations
   .reduce(
-    reducer(pipeline),
-    pipeline,
+    reducer,
+    Promise.resolve(pipeline),
   );

@@ -7,21 +7,21 @@ const OPERATION_ORDER = [
 ];
 const sortFunction = getPipelineOperationSortFunction(OPERATION_ORDER);
 
-const reducer = pipeline => (acc, { /* name, */ operation, params }) => {
+const reducer = async (acc, { name, operation, params }) => acc.then(async (pipeline) => {
   if (operation instanceof Function) {
-    return operation(pipeline).reduce(reducer(pipeline), acc);
+    return (await operation(pipeline)).reduce(reducer, Promise.resolve(pipeline));
   }
-  if (!acc.hasOperation(operation)) {
+  if (!pipeline.hasOperation(operation)) {
     throw new Error(`Invalid operation: ${operation}`);
   }
-  logger.debug(`Applying output operation "${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
-  return acc.applyOperation(operation, ...params);
-};
+  logger.debug(`Applying output operation "${name} -> ${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
+  return pipeline.applyOperation(operation, ...params);
+});
 
 module.exports = pipeline => pipeline.getOptions().output
   .sort(sortFunction)
   .reduce(
-    reducer(pipeline),
-    pipeline,
+    reducer,
+    Promise.resolve(pipeline),
   );
 
