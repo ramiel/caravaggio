@@ -4,6 +4,7 @@ const { getPipelineOperationSortFunction } = require('../utils');
 const OPERATION_ORDER = [
   'o',
   'q',
+  'progressive',
 ];
 const sortFunction = getPipelineOperationSortFunction(OPERATION_ORDER);
 

@@ -3,5 +3,6 @@ module.exports = {
     level: 'fatal',
     stream: 'stdout',
   },
+  defaultTransformations: [],
 };
 

@@ -60,6 +60,7 @@ and can be used sending a set of options and an image:
 | rotate    	| Rotate the image of a multiple of 90° If nothing is specified it rotates depending on the exif Orientation value 	| rotate<br />rotate_90<br /> rotate_270                  	|
 | flip      	| Flip the image horizontally or vertically                                                                        	| flip_x<br />flip_y                                      	|
 | blur      	| Add a blur effect to the image                                                                                   	| blur_10<br />blur_0.4                                   	|
+| progressive	| Return the image as progressive.                                                                                 	| progressive_true<br />progressive_false                   |
 
 
 ## Thank you

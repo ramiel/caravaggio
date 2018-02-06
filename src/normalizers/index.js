@@ -1,3 +1,4 @@
+const config = require('config');
 const blurNormalizer = require('./blur');
 const cropNormalizer = require('./crop');
 const flipNormalizer = require('./flip');
@@ -5,6 +6,7 @@ const oNormalizer = require('./o');
 const qNormalizer = require('./q');
 const resizeNormalizer = require('./resize');
 const rotateNormalizer = require('./rotate');
+const progressiveNormalizer = require('./progressive');
 
 const normalizers = {
   blur: blurNormalizer,
@@ -14,10 +16,29 @@ const normalizers = {
   q: qNormalizer,
   resize: resizeNormalizer,
   rotate: rotateNormalizer,
+  progressive: progressiveNormalizer,
 };
 
+const defaultTransformations = config.get('defaultTransformations');
+
+const findSameNameOperation = name => element => element[0] === name;
+
+const addDefaultsTransformations = operations => defaultTransformations
+  .reduce(
+    (acc, [name, params]) => {
+      if (acc.findIndex(findSameNameOperation(name)) !== -1) {
+        return acc;
+      }
+      return [
+        ...acc,
+        [name, params],
+      ];
+    },
+    operations,
+  );
+
 module.exports = (options) => {
-  const result = options.operations.reduce((acc, [name, params]) => {
+  const result = addDefaultsTransformations(options.operations).reduce((acc, [name, params]) => {
     const normalized = normalizers[name]
       ? normalizers[name](params)
       : {};

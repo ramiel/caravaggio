@@ -88,6 +88,18 @@ module.exports = {
    * In general it's safe to leave this option false
    */
   guessTypeByExtension: false,
+
+  /**
+   * Some transformations can be applied by default
+   */
+  defaultTransformations: [
+    /**
+     * Serve the image as progressive (jpg, png only) by default. The user does not need to pass
+     * a progressive option to have this feature enabled.
+     * This is a good default for images which will be served through the browser
+     */
+    ['progressive', 'true'],
+  ],
   compress: true,
 };
 

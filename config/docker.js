@@ -28,6 +28,12 @@ const whitelist = process.env.CARAVAGGIO_WHITELIST
   ? process.env.CARAVAGGIO_WHITELIST.split(',').map(d => d.trim())
   : false;
 
+const defaultTransformations = [];
+
+if (!process.env.CARAVAGGIO_FEATURE_PROGRESSIVE_OFF || process.env.CARAVAGGIO_FEATURE_PROGRESSIVE_OFF === 'false') {
+  defaultTransformations.push(['progressive', 'true']);
+}
+
 module.exports = {
   port: parseInt(process.env.CARAVAGGIO_PORT, 10) || 80,
   persistor: {
@@ -41,5 +47,6 @@ module.exports = {
   },
   guessTypeByExtension: process.env.CARAVAGGIO_GUESS_TYPE_BY_EXTENSION === 'true' || false,
   compress: process.env.CARAVAGGIO_COMPRESS === 'true',
+  defaultTransformations,
 };
 
