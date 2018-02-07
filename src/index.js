@@ -15,5 +15,5 @@ try {
   throw new Error(`Invalid persistor ${persistorType}. Check your configuration: ${e.message}`);
 }
 
-module.exports = router({ persistor, whitelist });
+module.exports = router(config)({ persistor, whitelist });
 

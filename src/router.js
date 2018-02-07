@@ -5,10 +5,10 @@ const errorHandler = require('./middlewares/errorHandler');
 const domainWhitelist = require('./middlewares/domainWhitelist');
 const { compose } = require('./utils');
 
-module.exports = ({ persistor, whitelist }) => router(get(
+module.exports = config => ({ persistor, whitelist }) => router(get(
   '/*/*',
   compose(
     errorHandler,
     domainWhitelist(whitelist),
-  )(indexRoute(Cache(persistor))),
+  )(indexRoute(config)(Cache(persistor))),
 ));

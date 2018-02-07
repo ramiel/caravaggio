@@ -1,4 +1,5 @@
-const { parseOptions } = require('../../src/parser');
+const config = require('config');
+const { parseOptions } = require('../../src/parser')(config);
 const { convert } = require('../../src/pipelines/index');
 
 describe('Pipeline - quality', () => {

@@ -2,6 +2,7 @@ const micro = require('micro');
 const listen = require('test-listen');
 const request = require('request-promise');
 const { router, get } = require('microrouter');
+const config = require('config');
 const memoryPersistor = require('../../src/persistors/memory');
 const Cache = require('../../src/cache');
 const route = require('../../src/routes/index');
@@ -10,7 +11,7 @@ describe('Index route - getting images', () => {
   const cache = Cache(memoryPersistor({}));
   const handler = router(get(
     '/*/*',
-    route(cache),
+    route(config)(cache),
   ));
 
   const imageUrl = 'http://res.cloudinary.com/ramiel/image/upload/v1478374142/gomitolo2_bxd1ti.jpg';

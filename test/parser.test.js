@@ -1,4 +1,5 @@
-const { parseOptions } = require('../src/parser');
+const config = require('config');
+const { parseOptions } = require('../src/parser')(config);
 
 describe('Parser', () => {
   describe('option parser', () => {

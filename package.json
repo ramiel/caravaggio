@@ -4,7 +4,7 @@
   "description": "A blazing fast image processor service",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "NODE_ENV=production node .",
     "dev": "NODE_ENV=development micro-dev src/ -s | bunyan",
     "test": "npm run lint && npm run test-only -- --coverage --colors=false",
     "test-only": "NODE_ENV=test ALLOW_CONFIG_MUTATIONS=true jest",
