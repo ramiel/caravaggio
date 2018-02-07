@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0
+
+- Crop support
+- Resize with percentage values
+- Read file metadata
+- Correctly handle extensionless files
+- Progressive images support
+- Documentation
+
 ## 1.2.0
 
 - ✨ C'mon, a logo!
