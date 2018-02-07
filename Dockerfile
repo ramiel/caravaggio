@@ -14,4 +14,6 @@ COPY . /caravaggio
 
 ENV NODE_ENV=docker
 
+EXPOSE 8565
+
 CMD ["npm", "start"]

@@ -5,4 +5,6 @@ yarn-debug.log*
 yarn-error.log*
 node_modules/
 .npm
-/coverage
+coverage/
+__mocks__/
+test/
