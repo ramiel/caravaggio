@@ -1,3 +1,19 @@
+/**
+ * This is the default configuration file.
+ * If you are running caravaggio through docker you should read instructions
+ * here (https://store.docker.com/community/images/ramielcreations/caravaggio)
+ * on how to configure it.
+ *
+ * This file is intended for developers or deeper customizations.
+ *
+ * The configuration is based on `config` (https://github.com/lorenwest/node-config)
+ * and it can be extended and overwritten in several ways as explained here (https://github.com/lorenwest/node-config/wiki/Configuration-Files)
+ *
+ * The quickest way to overwrite it with your own configuration is to create a `local.json`
+ * file in the `/config` folder, as sibling of this file, and to override only the changed
+ * properties.
+*/
+
 const path = require('path');
 
 const ONE_YEAR = 60 * 60 * 24 * 365;
