@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://gitlab.com/ramiel/caravaggio/issues"
   },
-  "homepage": "https://gitlab.com/ramiel/caravaggio#README",
+  "homepage": "https://gitlab.com/ramiel/caravaggio",
   "dependencies": {
     "bunyan": "^1.8.12",
     "config": "^1.29.2",
