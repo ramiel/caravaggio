@@ -1,19 +1,14 @@
 const config = require('config');
-const bunyan = require('bunyan');
+const pino = require('pino');
 
-const { level, stream } = config.get('logger');
-const streams = ['stderr', 'stdout'].indexOf(stream.toLowerCase())
-  ? [{
-    level,
-    stream: process[stream.toLowerCase()],
-  }]
-  : [{
-    level,
-    path: stream,
-  }];
+const { level, stream, pretty } = config.get('logger');
+const outStream = ['stderr', 'stdout'].indexOf(stream.toLowerCase())
+  ? process[stream.toLowerCase()]
+  : process.stdout;
 
-module.exports = bunyan.createLogger({
+module.exports = pino({
   name: 'caravaggio',
-  streams,
-});
+  level,
+  prettyPrint: pretty,
+}, outStream);
 

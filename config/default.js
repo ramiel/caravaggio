@@ -75,15 +75,17 @@ module.exports = {
 
   /**
    * Logger definition. Define how the application should log event
-   * level: The log level. One among: fatal, error, warn, info, debug
+   * level: The log level. One among: fatal, error, warn, info, debug, trace, silent
    *        The log will appear from your choosen level and upon, i.e.
    *        (error -> error, fatal)
    *        (info -> info, warn, error, fatal)
    * stream: Where to stream the log. Can be `stdout`, `stderr` or a file path
+   * pretty: Print a pretty out instead of the json one
    */
   logger: {
     level: 'info',
     stream: 'stdout',
+    pretty: false,
   },
 
   /**

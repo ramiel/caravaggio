@@ -1,0 +1,116 @@
+#!/usr/bin/env node
+
+const os = require('os');
+const yargs = require('yargs');
+
+const options = yargs // eslint-disable-line no-unused-expressions
+  .option('port', {
+    alias: 'p',
+    default: 8565,
+    describe: 'the server will listen to this port',
+    type: 'number',
+  })
+  .option('cache', {
+    default: 'memory',
+    describe: 'Set the cache system',
+    type: 'string',
+    choices: ['memory', 'file', 'none'],
+    group: 'cache',
+  })
+  .option('cache-filepath', {
+    describe: '[when --cache=file] The file path for the file cache',
+    type: 'string',
+    default: os.tmpdir(),
+    group: 'cache',
+  })
+  .option('cache-limit', {
+    default: 100,
+    describe: '[when --cache=memory] The maximum amount of memory to use in MB',
+    type: 'number',
+    group: 'cache',
+  })
+  .option('whitelist', {
+    describe: 'Restrict the images to a list of domains',
+    type: 'array',
+    group: 'security',
+  })
+  .option('verbose', {
+    alias: 'v',
+    describe: 'Increase the verbosity of the application',
+    type: 'boolean',
+    // conflicts: 'quiet',
+    group: 'log',
+  })
+  .option('quiet', {
+    alias: 'q',
+    describe: 'Do not output anything',
+    type: 'boolean',
+    // conflicts: 'verbose',
+    group: 'log',
+  })
+  .option('json', {
+    describe: 'Output logs in json format.',
+    type: 'boolean',
+    default: false,
+    group: 'log',
+  })
+  // .conflicts('verbose', 'quiet')
+  .options('guess-type-by-extension', {
+    describe: 'use the file extension to guess the file type instead of reading metadata (when possible)',
+    type: 'boolean',
+    default: false,
+    group: 'image manipulation',
+  })
+  .options('progressive', {
+    describe: 'the output images are progressive by default (when applicable)',
+    type: 'boolean',
+    default: true,
+    group: 'image manipulation',
+  })
+  .argv;
+
+const defaultTransformations = [];
+if (options.progressive) {
+  defaultTransformations.push(['progressive', 'true']);
+}
+
+let cacheOptions;
+switch (options.cache) {
+  case 'file':
+    cacheOptions = {
+      basePath: options['cache-filepath'],
+    };
+    break;
+  case 'memory':
+    cacheOptions = {
+      limit: options['cache-limit'],
+    };
+    break;
+  default:
+    cacheOptions = {};
+    break;
+}
+
+const configuration = {
+  port: options.port,
+  persistor: {
+    type: options.cache,
+    options: cacheOptions,
+  },
+  logger: {
+    pretty: !options.json,
+    level: options.verbose
+      ? 'debug'
+      : options.quiet
+        ? 'silent'
+        : 'info',
+  },
+  whitelist: options.whitelist || false,
+  guessTypeByExtension: options['guess-type-by-extension'],
+  defaultTransformations,
+};
+
+process.env.NODE_CONFIG = JSON.stringify(configuration);
+
+require('../index');
+
