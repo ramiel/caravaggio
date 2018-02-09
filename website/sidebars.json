@@ -1,0 +1,13 @@
+{
+  "docs": {
+    "Getting started": [
+      "docs",
+      "installation",
+      "configuration"
+    ],
+    "Usage": [
+      "general-usage",
+      "resize"
+    ]
+  }
+}

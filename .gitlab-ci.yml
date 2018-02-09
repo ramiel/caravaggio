@@ -5,3 +5,15 @@ test:
    - npm i
    - npm run test
   coverage: /All files\s*\|\s*([\d\.]+)/
+
+pages:
+  only:
+    - tags
+  script:
+    - cd website
+    - npm install
+    - npm run build
+    - cp -r build/caravaggio ../public
+  artifacts:
+    paths:
+      - public

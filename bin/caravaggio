@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const os = require('os');
+const path = require('path');
 const yargs = require('yargs');
 
 const options = yargs // eslint-disable-line no-unused-expressions
@@ -110,7 +111,9 @@ const configuration = {
   defaultTransformations,
 };
 
+process.env.NODE_CONFIG_DIR = path.join(__dirname, '..', '/config');
 process.env.NODE_CONFIG = JSON.stringify(configuration);
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 require('../index');
 
