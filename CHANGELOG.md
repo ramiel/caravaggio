@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1
+
+- Cli global program
+- Documentation on master
+
 ## 1.3.0
 
 - Crop support
