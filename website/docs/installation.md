@@ -4,21 +4,10 @@ title: Install
 sidebar_label: Install
 ---
 
-Caravaggio can be installed in different ways, through docker or with npm. Depending on your needs you find here the install options
+Caravaggio can be installed in different ways, through docker or with npm. Depending on your needs you find here your way.
 
-## Docker
-
-The easiest way to install Carvaggio si through docker. It's the suggested way of installing it in production since it can be easily scaled and restarted.
-
-```bash
-docker pull ramielcreations/caravaggio
-docker run --name caravaggio -dti ramielcreations/caravaggio
-```
-
-Now Caravaggio will be available on port **8565**. To change the port or to run it with different options, refer to the [docker documentation](https://store.docker.com/community/images/ramielcreations/caravaggio).
 ## Npm
 
-_This mode is not yet available_    
 You can install caravaggio globally with
 
 ```bash
@@ -31,10 +20,21 @@ and then run it with
 caravaggio
 ```
 
-Pass _--help_ to discover the available options
+Pass `--help` to discover the available options
+
+## Docker
+
+The easiest way to install Carvaggio is through docker. It's the suggested way of installing it in production since it can be easily scaled and restarted.
+
+```bash
+docker pull ramielcreations/caravaggio
+docker run --name caravaggio -dti ramielcreations/caravaggio
+```
+
+Now Caravaggio will be available on port **`8565`**. To change the port or to run it with different options, refer to the [docker documentation](https://store.docker.com/community/images/ramielcreations/caravaggio).
 ## Git
 
-Youo can clone from the git repository stored on gitlab.
+Developers can clone from the gitlab repository.
 
 ```bash
 git clone git@gitlab.com:ramiel/caravaggio.git
