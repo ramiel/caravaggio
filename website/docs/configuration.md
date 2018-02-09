@@ -6,139 +6,106 @@ sidebar_label: Configuration
 
 Caravaggio try to meet the most common needs, so when you start it you already have a fully working system. Nonetheless caravaggio is highly customizable.
 
-Depending on the way you choose to install caravaggio there migth be differences in the way it can be configured. We try to cover all of these here but please, refer to the [docker documentation](https://store.docker.com/community/images/ramielcreations/caravaggio) to configure your containers, or the _cli_ inline help.
+Depending on the way you choose to install caravaggio there migth be differences in the way it can be configured. 
+
+## Docker
+
+Refer to the [docker documentation](https://store.docker.com/community/images/ramielcreations/caravaggio) to configure your containers.
 
 ## Developers
 
 If you are a developer or run caravaggio directly from the source, the default configuration file contains a lot of instructions. You can read it in <a href="https://gitlab.com/ramiel/caravaggio/blob/master/config/default.js" target="_blank">`config/default.js`</a>.
 
-## Server parameters
+## Cli / global installation
+
+When you install caravaggio globally the cli accept various configuration parameters. You can read the inline help running `caravaggio --help`.    
+Here a deeper look to the parameter
+
+### Server parameters
 
 Caravaggio listen to port **8565** by default. You can change to the value you want
 
-| cli         | docker (env variable) | config file  |
-|-------------|-----------------------|--------------|
-| --port 1234 | CARAVAGGIO_PORT=1234  | "port": 1234 |
-## Cache
+`caravaggio --port 1234`
 
-Caravaggio can cache the request to serve file already processed fast. There are several different kind of available cache.
+### Cache
+
+Caravaggio can cache the requests to serve file already processed faster. There are several different kinds of available cache.
 
 **_None_**
 
-This special cache do not store nothing. Each request will be re-processed by caravaggio. This is extremely useful if you want to use a CDN in front of caravaggio which will take care of caching requests
+This special cache do not store nothing. Each request will be re-processed by Caravaggio.    
+This is extremely useful if you want to use a CDN in front of caravaggio which will take care of caching requests.
 
-| cli         | docker (env variable)           | config file                   |
-|-------------|---------------------------------|-------------------------------|
-| --cache none| CARAVAGGIO_PERSISTOR_TYPE=none  | "peristor":{ "type": "none" } |
+`caravaggio --cache none`
 
 **_File_**
 
-In this case the processed file will be saved on the local filesystem.
+The cached images will be stored on your local file system.
 
-<table>
-  <tr>
-    <th>cli</th>
-    <th>docker (env variable)</th>
-    <th>config file</th>
-  </tr>
-  <tr>
-    <td>
-      --cache file
-      --cache-filepath "path/to/cache/folder/"
-    </td>
-    <td>
-      CARAVAGGIO_PERSISTOR_TYPE=file
-      CARAVAGGIO_PERSISTOR_FILE_PATH="path/to/cache/folder/"
-    </td>
-    <td>
-      <pre>
-"persistor": {
-  "type": "file",
-  "options": {
-    "basePath": "path/to/cache/folder/"
-  }
-}
-      </pre>
-    </td>
-  </tr>
-</table>
+`caravaggio --cache file`
+
+The processed images will be saved on the operating system default temporary folder.    
+You can change this path if you want:
+
+`caravaggio --cache file --cache-filepath "path/to/cache/folder/"`
 
 **_Memory_**
 
-The cache will be in memory. It will be delete when the service is restarted.
-By default the limit is to 100Mb, after this limit the older images will be removed.
-The limit can be changed or removed
+Enabled by default.    
+In this case the cache will be stored in memory. It will be delete when the service is restarted.
+This give you a fully working cache system with the speed of in-memory storage.
 
-<table>
-  <tr>
-    <th>cli</th>
-    <th>docker (env variable)</th>
-    <th>config file</th>
-  </tr>
-  <tr>
-    <td>
-      --cache memory  <br />
-      --cache-limit 250 <br />
-      the limit will to 250Mb
-      <br />
-      <p>
-      --cache-limit=false
-      remove the limit
-      </p>
-    </td>
-    <td>
-      CARAVAGGIO_PERSISTOR_TYPE=memory
-      CARAVAGGIO_PERSISTOR_MEMORY_LIMIT=false 
-      // remove the limit
-    </td>
-    <td>
-      <pre>
-"persistor": {
-  "type": "memory",
-  "options": {
-    "limit": 1024 // 1GB limit
-  }
-}
-      </pre>
-    </td>
-  </tr>
-</table>
+`caravaggio --cache memory`
 
-## Domain whitelist
+By default the limit is to 100Mb, after this limit the older images will be removed.     
+The limit can be changed:    
+
+`caravaggio --cache memory --cache-limit 250`
+
+or removed
+
+`caravaggio --cache memory --cache-limit false`
+
+**_S3_**
+
+Amazon S3 cache will be implemented soon.
+
+### Domain whitelist
 
 By default caravaggio transform any image you feed him.     
-If your service is publicly exposed you maybe want to restrict the list of domain from where the images can be taken.
+If your service is publicly exposed you maybe want to restrict the list of domains from where the images can be taken.
 This can be a list of domains and they can contain wildcards.
 
-<table>
-  <tr>
-    <th>cli</th>
-    <th>docker (env variable)</th>
-    <th>config file</th>
-  </tr>
-  <tr>
-    <td>
-      --whitelist myapp.s3.amazon.com, *.myapp.com
-    </td>
-    <td>
-      CARAVAGGIO_WHITELIST="myapp.s3.amazon.com, *.myapp.com"
-    </td>
-    <td>
-      <pre>
-"whitelist": ["myapp.s3.amazon.com", "*.myapp.com"]
-      </pre>
-    </td>
-  </tr>
-</table>
+`caravaggio --whitelist myapp.s3.amazon.com, *.myapp.com`
 
-## Logger
+### Logger
 
-TBD
+The amount of log can be increased
 
-## Guess file type by extension
+`caravaggio -v`
 
-TBD
+or reduced to nothing
 
-## Default transformations
+`caravaggio -q`
 
-TDB
+Caravaggio, by default, prints very readable messages on standard out. It can be configured to produce json instead
+
+`caravaggio --json`
+
+### Guess file type by extension
+
+Caravaggio reads the file metadata to retrieve information about the file type. It can be configured to use the file extensions instead
+
+`caravaggio --guess-type-by-extension`
+
+In case the file extension is missing, caravaggio will fallback to metadata. For some transformation, reading the metadata is mandatory.    
+Caravaggio does not access metadata more than once per file so, most of the times, enabling this options is useless.    
+By default this option is disabled
+
+### Progressive images
+
+For the image formats where this is applicable, Caravaggio produces progressive images. This is the best choice on the web since the images
+can start to render before being entirely downloaded.    
+This behavior can be disabled
+
+`caravaggio --progressive false`

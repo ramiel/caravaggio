@@ -5,7 +5,7 @@ const { level, stream, pretty } = config.get('logger');
 const outStream = ['stderr', 'stdout'].indexOf(stream.toLowerCase())
   ? process[stream.toLowerCase()]
   : process.stdout;
-
+console.log(config);
 module.exports = pino({
   name: 'caravaggio',
   level,
