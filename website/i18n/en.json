@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A blazing fast ⚡ image manipulation service",
+    "tagline": "A blazing fast image manipulation service",
     "configuration": "Configuration",
     "Configuration": "Configuration",
     "docs": "What is caravaggio",
@@ -15,6 +15,7 @@
     "resize": "Reizing",
     "Resize": "Resize",
     "Docs": "Docs",
+    "GitLab": "GitLab",
     "Getting started": "Getting started",
     "Usage": "Usage"
   },

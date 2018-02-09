@@ -12,12 +12,13 @@ const users = [
 
 const siteConfig = {
   title: 'Caravaggio' /* title for your website */,
-  tagline: 'A blazing fast ⚡ image manipulation service',
+  tagline: 'A blazing fast image manipulation service',
   url: 'https://caravaggio.gitlab.io' /* your website url */,
   baseUrl: '/caravaggio/' /* base url for your project */,
   projectName: 'caravaggio',
   headerLinks: [
-    {doc: 'docs', label: 'Docs'},
+    { doc: 'docs', label: 'Docs' },
+    { href: "https://gitlab.com/ramiel/caravaggio", label: "GitLab"},
     // {page: 'help', label: 'Help'},
     // {blog: true, label: 'Blog'},
   ],

@@ -80,7 +80,8 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href="#try">Try It now</Button>
+            <Button href={docUrl('docs.html', language)}>What is?</Button>
+            <Button href={docUrl('installation.html', language)}>Install me now</Button>
             {/* <Button href={docUrl('docs.html', language)}>Example Link</Button>
             <Button href={docUrl('doc2.html', language)}>Example Link 2</Button> */}
           </PromoSection>
@@ -100,24 +101,36 @@ const Block = props => (
 );
 
 const Features = props => (
-  <Block layout="fourColumn">
+  <Block layout="twoColumn">
     {[
       {
-        content: `Caravaggio aims to be as fast as possible. It is designed from the beginning to integrate seamlessly
-with the cache system you like.
-`,
-        image: imgUrl('docusaurus.svg'),
+        title: 'Speed',
+        content: `Caravaggio aims to be as fast as possible`,
+        image: imgUrl('speed.png'),
         imageAlign: 'top',
-        title: 'Blazing fast',
       },
       {
-        content: `Start caravaggio, it simply works. The basic configuration is good for most use cases but
-you can tweak it for your needs.
-`,
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'top',
         title: 'Easy to use, highly configurable',
+        content: `Start caravaggio, it simply works. The basic configuration is good for most use cases but
+you can tweak it for your needs
+`,
+        image: imgUrl('easy.png'),
+        imageAlign: 'top',
       },
+      {
+        title: 'Seamless integration',
+        content: `It has been designed, since the beginning, to integrate easily with any other brick
+of your syste: cache, CDN, web-proxy, orchestrators...
+`,
+        image: imgUrl('integration.png'),
+        imageAlign: 'top',
+      },
+      {
+        title: 'Reliable',
+        content: `Clear error messages, robust and easily maintanable code `,
+        image: imgUrl('reliable.png'),
+        imageAlign: 'top',
+      },      
     ]}
   </Block>
 );

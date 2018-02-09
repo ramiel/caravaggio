@@ -6,7 +6,7 @@ sidebar_label: What is caravaggio
 
 Caravaggio is a fast image proxy written in node.js.    
 
-It is basically a webservice which let you manipulate images before serving them to your audience on your website or in your application. It can be used with an external CDN like [CloudFlare](https://www.cloudflare.com/) or it can cache the images itself.
+It is basically a webservice which let you manipulate images before serving them to your audience on your website or in your application. It can be used with an external CDN like <a href="https://www.cloudflare.com/" target="_blank">CloudFlare</a> or it can cache the images itself.
 
 ## What it's not
 

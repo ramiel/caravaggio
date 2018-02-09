@@ -8,7 +8,7 @@ test:
 
 pages:
   only:
-    - tags
+    - master
   script:
     - cd website
     - npm install
