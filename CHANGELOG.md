@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.2
+
+- Docker image is now based on Alpine
+- Documentation update
+- Remove console.log from code
+- Docker listen to port 8565 by default. For real now.
 ## 1.3.1
 
 - Cli global program
