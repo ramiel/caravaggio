@@ -6,6 +6,8 @@
     "tagline": "A blazing fast image manipulation service",
     "configuration": "Configuration",
     "Configuration": "Configuration",
+    "crop": "Crop",
+    "Crop": "Crop",
     "docs": "What is caravaggio",
     "What is caravaggio": "What is caravaggio",
     "general-usage": "Using Caravaggio",
