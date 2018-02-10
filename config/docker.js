@@ -35,7 +35,7 @@ if (!process.env.CARAVAGGIO_FEATURE_PROGRESSIVE_OFF || process.env.CARAVAGGIO_FE
 }
 
 module.exports = {
-  port: parseInt(process.env.CARAVAGGIO_PORT, 10) || 80,
+  port: parseInt(process.env.CARAVAGGIO_PORT, 10) || 8565,
   persistor: {
     type: persistorType,
     options: persistorOptions,
