@@ -6,6 +6,14 @@ test:
    - npm run test
   coverage: /All files\s*\|\s*([\d\.]+)/
 
+publish:  
+  stage: deploy
+  only:
+    - tags
+  script:
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - npm publish
+
 pages:
   only:
     - master
