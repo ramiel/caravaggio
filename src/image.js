@@ -1,5 +1,8 @@
 const fetch = require('node-fetch');
 const sharp = require('sharp');
+const config = require('config');
+
+sharp.cache(config.get('sharp.cache'));
 
 const Image = {
   get: url => fetch(url)

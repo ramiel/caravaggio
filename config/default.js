@@ -118,6 +118,14 @@ module.exports = {
      */
     ['progressive', 'true'],
   ],
+
+  /**
+   * Options for sharp.
+   * cache: true|false|object  Refer to the official documentation http://sharp.pixelplumbing.com/en/stable/api-utility/#cache
+   */
+  sharp: {
+    cache: true,
+  },
   compress: true,
 };
 

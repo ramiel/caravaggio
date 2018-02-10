@@ -48,5 +48,8 @@ module.exports = {
   guessTypeByExtension: process.env.CARAVAGGIO_GUESS_TYPE_BY_EXTENSION === 'true' || false,
   compress: process.env.CARAVAGGIO_COMPRESS === 'true',
   defaultTransformations,
+  sharp: {
+    cache: false,
+  },
 };
 
