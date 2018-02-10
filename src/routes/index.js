@@ -11,7 +11,7 @@ module.exports = (config) => {
   return cache => async (req, res) => {
     try {
       const options = parseOptions(req.params._[0]);
-      const url = new URL(req.params._[1]);
+      const url = new URL(decodeURIComponent(req.params._[1]));
       const resource = await cache.get(url, options);
       if (resource) {
         logger.debug(`Cache hit for resource ${url.toString()} with options ${options.rawNormalizedOptions}`);
