@@ -1,6 +1,6 @@
 ---
 id: resize
-title: Reizing
+title: Resize
 sidebar_label: Resize
 ---
 
