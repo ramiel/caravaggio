@@ -2,6 +2,8 @@ const { URL } = require('url');
 const { createPipeline } = require('../mocks/pipeline');
 const q = require('../../src/normalizers/q');
 
+const normalizeQ = quality => (quality * 80) / 100;
+
 describe('Quality', () => {
   test('q is a function', () => {
     expect(q).toBeInstanceOf(Function);
@@ -19,8 +21,33 @@ describe('Quality', () => {
     }));
   });
 
+  test('round the quality', async () => {
+    const qualityGenerator = q(47).output[0].operation;
+    const url = new URL('https://image.com/image.jpg');
+    const options = {
+      o: 'jpeg',
+      output: [
+        {
+          name: 'o',
+          operation: 'jpeg',
+          params: [],
+        },
+      ],
+    };
+    const pipeline = createPipeline(url, options);
+    const operations = await qualityGenerator(pipeline);
+    expect(operations).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        name: 'q',
+        operation: 'jpeg',
+        params: [{ quality: 38 }],
+      }),
+    ]));
+  });
+
   describe('Given an output has been specified', () => {
-    const qualityGenerator = q(90).output[0].operation;
+    const passedQuality = 90;
+    const qualityGenerator = q(passedQuality).output[0].operation;
 
     test('add quality if the output is jpeg', async () => {
       const url = new URL('https://image.com/image.jpg');
@@ -40,7 +67,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'jpeg',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(passedQuality) }],
         }),
       ]));
     });
@@ -63,7 +90,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'jpeg',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(passedQuality) }],
         }),
       ]));
     });
@@ -86,7 +113,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'webp',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(passedQuality) }],
         }),
       ]));
     });
@@ -109,7 +136,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'tiff',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(passedQuality) }],
         }),
       ]));
     });
@@ -147,7 +174,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'jpeg',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(90) }],
         }),
       ]));
     });
@@ -164,7 +191,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'jpeg',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(90) }],
         }),
       ]));
     });
@@ -182,7 +209,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'webp',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(90) }],
         }),
       ]));
     });
@@ -200,7 +227,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'tiff',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(90) }],
         }),
       ]));
     });
@@ -229,7 +256,7 @@ describe('Quality', () => {
         expect.objectContaining({
           name: 'q',
           operation: 'jpeg',
-          params: [{ quality: 90 }],
+          params: [{ quality: normalizeQ(90) }],
         }),
       ]));
     });

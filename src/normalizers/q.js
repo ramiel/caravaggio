@@ -1,3 +1,5 @@
+const normalizeQ = value => Math.round((value * 80) / 100);
+
 const getOutputType = async pipeline => (pipeline.getOptions().o !== 'original'
   ? pipeline.getOptions().o
   : (await pipeline.getMetadata()).format);
@@ -11,7 +13,7 @@ const subOperationGenerator = value => async (pipeline) => {
         {
           name: 'q',
           operation: 'jpeg',
-          params: [{ quality: value }],
+          params: [{ quality: normalizeQ(value) }],
         },
       ];
     case 'webp':
@@ -20,7 +22,7 @@ const subOperationGenerator = value => async (pipeline) => {
         {
           name: 'q',
           operation: format,
-          params: [{ quality: value }],
+          params: [{ quality: normalizeQ(value) }],
         },
       ];
     default:
