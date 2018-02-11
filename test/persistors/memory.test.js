@@ -16,6 +16,11 @@ describe('Memory persistor', () => {
     expect(result).toBe(null);
   });
 
+  test('tells if an element exists', async () => {
+    const result = await memory().exists('afile.png');
+    expect(result).toBe(false);
+  });
+
   test('returns a previously saved file', async () => {
     const buf = Buffer.alloc(1024);
     const mem = memory();

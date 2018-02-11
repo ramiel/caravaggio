@@ -6,6 +6,10 @@ describe('Output', () => {
     expect(result).not.toHaveProperty('output');
   });
 
+  test('throws if the format is not supported', () => {
+    expect(() => o('exotic')).toThrow();
+  });
+
   test('"jpg" is handled', () => {
     const result = o('jpg');
     expect(result).toEqual(expect.objectContaining({

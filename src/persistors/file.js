@@ -1,44 +1,37 @@
-const fs = require('fs');
+const fs = require('fs-extra');
+const os = require('os');
 const path = require('path');
 
-module.exports = ({ basePath } = { basePath: '.' }) => {
-  const getCompleteFilename = filename => path.join(basePath, filename);
+module.exports = ({ basePath, subdir } = { basePath: os.tmpdir(), subdir: 'caravaggioCache' }) => {
+  const baseDir = path.join(basePath, subdir);
+  const getCompleteFilename = filename => path.join(baseDir, filename);
+
   return {
-    exists: filename => new Promise((resolve, reject) => {
-      fs.access(
-        getCompleteFilename(filename),
-        fs.constants.R_OK,
-        err => (err ? reject(err) : resolve(true)),
-      );
-    }),
+    flush: () => fs.emptyDir(baseDir),
 
-    read: filename => new Promise((resolve, reject) => {
-      fs.readFile(getCompleteFilename(filename), (err, buffer) => {
-        if (err) {
-          if (err.code === 'ENOENT') return resolve(null);
-          return reject(err);
-        }
-        // TODO if the error is "file not exists", resolve to null
-        return resolve({
-          type: 'buffer',
-          buffer,
-        });
-      });
-    }),
+    exists: filename => fs.access(
+      getCompleteFilename(filename),
+      fs.constants.R_OK,
+    )
+      .then(() => true)
+      .catch(() => false),
 
-    save: (filename, buffer) => new Promise((resolve, reject) => {
-      fs.writeFile(
-        getCompleteFilename(filename),
+    read: filename => fs.readFile(getCompleteFilename(filename))
+      .then(buffer => ({
+        type: 'buffer',
         buffer,
-        { encoding: null },
-        (err) => {
-          if (err) return reject(err);
-          return resolve({
-            type: 'buffer',
-            buffer,
-          });
-        },
-      );
-    }),
+      }))
+      .catch((err) => {
+        if (err.code === 'ENOENT') return null;
+        throw err;
+      }),
+
+    save: (filename, buffer) => fs
+      .outputFile(getCompleteFilename(filename), buffer, { encoding: null })
+      .then(() => ({
+        type: 'buffer',
+        buffer,
+      })),
+
   };
 };
