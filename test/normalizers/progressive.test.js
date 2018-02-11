@@ -7,6 +7,14 @@ describe('Progressive', () => {
     expect(progressive).toBeInstanceOf(Function);
   });
 
+  test('progressive throw if the value is not a boolean', () => {
+    expect(() => progressive('hello')).toThrow();
+  });
+
+  test('progressive does NOT throw if the value is missing', () => {
+    expect(() => progressive()).not.toThrow();
+  });
+
   test('progressive returns a function as operation', () => {
     expect(progressive('true')).toEqual(expect.objectContaining({
       output: [
@@ -21,6 +29,29 @@ describe('Progressive', () => {
 
   describe('Given an output has been specified', () => {
     const progressiveGenerator = progressive('true').output[0].operation;
+
+    test('force to false if progressive is false', async () => {
+      const url = new URL('https://image.com/image.jpg');
+      const options = {
+        o: 'jpeg',
+        output: [
+          {
+            name: 'progressive',
+            operation: 'jpeg',
+            params: [],
+          },
+        ],
+      };
+      const pipeline = createPipeline(url, options);
+      const operations = await progressive('false').output[0].operation(pipeline);
+      expect(operations).toEqual(expect.arrayContaining([
+        expect.objectContaining({
+          name: 'progressive',
+          operation: 'jpeg',
+          params: [{ progressive: false }],
+        }),
+      ]));
+    });
 
     test('add progressive if the output is jpeg', async () => {
       const url = new URL('https://image.com/image.jpg');
@@ -128,6 +159,23 @@ describe('Progressive', () => {
 
   describe('Given the output as "original"', () => {
     const progressiveGenerator = progressive('true').output[0].operation;
+
+    test('force to false if progressive is false', async () => {
+      const url = new URL('https://image.com/image.jpg');
+      const options = {
+        o: 'original',
+        output: [],
+      };
+      const pipeline = createPipeline(url, options);
+      const operations = await progressive('false').output[0].operation(pipeline);
+      expect(operations).toEqual(expect.arrayContaining([
+        expect.objectContaining({
+          name: 'progressive',
+          operation: 'jpeg',
+          params: [{ progressive: false }],
+        }),
+      ]));
+    });
 
     test('add progressive if the output is jpeg', async () => {
       const url = new URL('https://image.com/image.jpeg');

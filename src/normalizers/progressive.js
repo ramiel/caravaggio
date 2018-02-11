@@ -1,10 +1,15 @@
+const cohercer = require('../cohercer');
+
 const getOutputType = async pipeline => (pipeline.getOptions().o !== 'original'
   ? pipeline.getOptions().o
   : (await pipeline.getMetadata()).format);
 
 
 module.exports = (value) => {
-  const progressive = value === 'true';
+  const progressive = cohercer(value, 'Progressive value is not valid')
+    .toBool()
+    .value();
+
   return {
     output: [
       {

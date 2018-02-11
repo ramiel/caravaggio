@@ -1,14 +1,17 @@
+const cohercer = require('../cohercer');
+
 module.exports = (value) => {
-  if (value === 'original') {
-    return {
-      o: 'original',
-    };
-  }
-  switch (value) {
+  const format = cohercer(value, 'Accepted values are "original", jpg", "jpeg", "png", "webp", "tiff"')
+    .toString()
+    .enum(['original', 'jpg', 'jpeg', 'png', 'webp', 'tiff'])
+    .value()
+    .toLowerCase();
+
+  switch (format) {
     case 'jpg':
     case 'jpeg':
       return {
-        o: value,
+        o: format,
         output: [
           {
             name: 'o',
@@ -21,17 +24,19 @@ module.exports = (value) => {
     case 'webp':
     case 'tiff':
       return {
-        o: value,
+        o: format,
         output: [
           {
             name: 'o',
-            operation: value,
+            operation: format,
             params: [],
           },
         ],
       };
     default:
-      throw new Error(`Format not supported ${value}`);
+      return {
+        o: 'original',
+      };
   }
 };
 

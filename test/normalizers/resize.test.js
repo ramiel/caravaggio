@@ -34,7 +34,7 @@ describe('Resize', () => {
     });
   });
 
-  test('just a number is inended as width', () => {
+  test('just a number is intended as width', () => {
     const result = resize('300');
     expect(result).toEqual({
       transformations: [{
@@ -45,37 +45,16 @@ describe('Resize', () => {
     });
   });
 
-  test('a non number return nothing (the opeartion will do nothing)', () => {
-    const result = resize('abc');
-    expect(result).toEqual({
-      transformations: [{
-        name: 'resize',
-        operation: 'resize',
-        params: [null, null],
-      }],
-    });
+  test('a non number throws an error', () => {
+    expect(() => resize('abc')).toThrow();
   });
 
-  test('a wrong height will ignore it', () => {
-    const result = resize('200xABCF');
-    expect(result).toEqual({
-      transformations: [{
-        name: 'resize',
-        operation: 'resize',
-        params: [200, null],
-      }],
-    });
+  test('a wrong height will throw', () => {
+    expect(() => resize('200xABC')).toThrow();
   });
 
-  test('a wrong height and a missing "x" will ignore it', () => {
-    const result = resize('200ABCF');
-    expect(result).toEqual({
-      transformations: [{
-        name: 'resize',
-        operation: 'resize',
-        params: [200, null],
-      }],
-    });
+  test('a wrong height and a missing "x" will throw', () => {
+    expect(() => resize('200abc')).toThrow();
   });
 
   test('return a function when trying to resie in percentage (width and height)', () => {
