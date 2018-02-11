@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.4
+
+- Wrong values in operation result in 400 response
+- Quality is normalized
+
 ## 1.3.2
 
 - Docker image is now based on Alpine
