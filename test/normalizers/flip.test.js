@@ -38,7 +38,7 @@ describe('Flip', () => {
   });
 
   test('throw if an invalid value is passed', () => {
-    expect(() => flip('h')).toThrow('Accepted values are "x" and "y"');
+    expect(() => flip('h')).toThrow();
   });
 });
 
