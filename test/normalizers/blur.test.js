@@ -12,5 +12,10 @@ describe('Blur', () => {
       ],
     }));
   });
+
+  test('throw if value is not valid', () => {
+    expect(() => blur(-10)).toThrow();
+    expect(() => blur(10e6)).toThrow();
+  });
 });
 

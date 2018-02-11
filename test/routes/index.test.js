@@ -6,6 +6,8 @@ const config = require('config');
 const memoryPersistor = require('../../src/persistors/memory');
 const Cache = require('../../src/cache');
 const route = require('../../src/routes/index');
+const { compose } = require('../../src/utils');
+const errorHandlerMiddleware = require('../../src/middlewares/errorHandler');
 
 describe('Index route - getting images', () => {
   const cache = Cache(memoryPersistor({}));
@@ -62,6 +64,19 @@ describe('Index route - getting images', () => {
     });
 
     expect(response.headers).toHaveProperty('content-type', 'image/jpeg');
+    service.close();
+  });
+
+  test('respond 400 if the options are invalid', async () => {
+    const service = micro(compose(errorHandlerMiddleware)(handler));
+    const url = `${await listen(service)}/q_abc/${imageUrl}`;
+    const response = await request({
+      url,
+      resolveWithFullResponse: true,
+      simple: false,
+    });
+
+    expect(response.statusCode).toBe(400);
     service.close();
   });
 });

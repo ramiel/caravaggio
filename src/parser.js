@@ -11,7 +11,12 @@ module.exports = (config) => {
         operations: optsAsArray.map(o => o.split('_')),
         rawNormalizedOptions: opts,
       };
-      return normalizer(options);
+      try {
+        return normalizer(options);
+      } catch (e) {
+        e.statusCode = 400;
+        throw e;
+      }
     },
   };
 };

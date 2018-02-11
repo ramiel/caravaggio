@@ -1,3 +1,5 @@
+const cohercer = require('../cohercer');
+
 const normalizeQ = value => Math.round((value * 80) / 100);
 
 const getOutputType = async pipeline => (pipeline.getOptions().o !== 'original'
@@ -30,12 +32,19 @@ const subOperationGenerator = value => async (pipeline) => {
   }
 };
 
-module.exports = value => ({
-  output: [
-    {
-      name: 'q',
-      operation: subOperationGenerator(Math.min(100, Math.max(1, value * 1))),
-      params: [],
-    },
-  ],
-});
+module.exports = (value) => {
+  const v = cohercer(value, 'Quality must be a value between 1 and 100')
+    .toInt()
+    .min(1)
+    .max(100)
+    .value();
+  return {
+    output: [
+      {
+        name: 'q',
+        operation: subOperationGenerator(v),
+        params: [],
+      },
+    ],
+  };
+};
