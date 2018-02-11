@@ -62,7 +62,7 @@ module.exports = (config) => {
     }, {
       ...options, input: [], transformations: [], output: [],
     });
-
+    // console.log(JSON.stringify(result, null, ' '));
     return result;
   };
 };

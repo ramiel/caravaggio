@@ -144,14 +144,17 @@ const FeatureCallout = props => (
   </div>
 );
 
-const LearnHow = props => (
-  <Block background="light">
+const BaseProjects = props => (
+  <Block background="white">
     {[
       {
-        content: 'Talk about learning how to use this',
-        image: imgUrl('docusaurus.svg'),
+        content: `Caravaggio put its feets on solid ground.<br />
+Based on other amazing project as<br />
+<a href="http://sharp.pixelplumbing.com">sharp</a> and <a href="https://github.com/zeit/micro">zeit micro</a> to name few.
+`,
+        image: imgUrl('zeit.png'),
         imageAlign: 'right',
-        title: 'Learn How',
+        title: 'Based on amazing projects',
       },
     ]}
   </Block>
@@ -222,11 +225,11 @@ class Index extends React.Component {
         <HomeSplash language={language} />
         <div className="mainContainer">
           <Features />
-          {/* <FeatureCallout />
-          <LearnHow />
-          <TryOut />
-          <Description /> */}
-          <Showcase language={language} />
+          {/* <FeatureCallout /> */}
+          <BaseProjects />
+          {/* <TryOut />
+          <Description />
+          <Showcase language={language} /> */}
         </div>
       </div>
     );
