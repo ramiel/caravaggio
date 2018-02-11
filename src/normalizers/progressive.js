@@ -1,4 +1,5 @@
 const cohercer = require('../cohercer');
+const { buildDocumentationLink } = require('../utils');
 
 const getOutputType = async pipeline => (pipeline.getOptions().o !== 'original'
   ? pipeline.getOptions().o
@@ -6,7 +7,9 @@ const getOutputType = async pipeline => (pipeline.getOptions().o !== 'original'
 
 
 module.exports = (value) => {
-  const progressive = cohercer(value, 'Progressive value is not valid')
+  const progressive = cohercer(value, `Progressive value is not valid.
+See ${buildDocumentationLink('progressive.html')}
+  `)
     .toBool()
     .value();
 

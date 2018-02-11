@@ -7,6 +7,8 @@
     ],
     "Usage": [
       "general-usage",
+      "output",
+      "progressive",
       "resize",
       "crop",
       "quality",

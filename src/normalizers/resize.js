@@ -1,9 +1,12 @@
 const cohercer = require('../cohercer');
+const { buildDocumentationLink } = require('../utils');
 
 const RESIZE_PATTERN = /^(\d+(.\d)?x\d+(.\d)?|\d+(.\d)?x?|x\d+(.\d)?)$/;
 
 module.exports = (value) => {
-  const values = cohercer(value, 'Resize parameter in in the wrong format')
+  const values = cohercer(value, `Resize parameter in in the wrong format.
+See ${buildDocumentationLink('resize.html')}
+  `)
     .toString()
     .match(RESIZE_PATTERN)
     .value()

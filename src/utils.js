@@ -6,5 +6,7 @@ module.exports = {
     const bIndex = order.indexOf(b.name);
     return aIndex - bIndex;
   },
+
+  buildDocumentationLink: doc => `https://ramiel.gitlab.io/caravaggio/docs/${doc}`,
 };
 

@@ -15,6 +15,11 @@ by the next through a comma **`,`**
 
 The url instead, **`https://image.com/landscape.png`** is simply a fully qualifid address of the image to fetch and transform.
 
+## Live examples ⚠️
+
+Most of the examples in this documentation have a link to a test deploy of Caravaggio. The server is not intended for production use and when a certain bandwith limit 
+is reached it becomes unavailable or slow. We do this to prevent people using it as their conversion machine. Please be kind using it... 😏
+
 ## Complex urls
 
 If the url of the image to transform contains query parameters, you must encode it.    
@@ -22,7 +27,7 @@ In example, the url `https://image.com/landscape.png?user=joe` must be sent as
 
 <code>https&#8203;:&#8203;//caravaggio.now.sh/q_90/https%3A%2F%2Fimage.com%2Flandscape.png%3Fuser%3Djoe</code>
 
-or
+or at least
 
 <code>https&#8203;:&#8203;//caravaggio.now.sh/q_90/https&#8203;:&#8203;//image.com/landscape.png%3Fuser%3Djoe</code>
 
