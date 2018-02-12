@@ -16,9 +16,14 @@ const siteConfig = {
   url: 'https://caravaggio.gitlab.io' /* your website url */,
   baseUrl: '/caravaggio/' /* base url for your project */,
   projectName: 'caravaggio',
+  algolia: {
+    apiKey: "b1085f3ee8af3859485e41ac71d93f8b",
+    indexName: "caravaggio"
+  },
   headerLinks: [
     { doc: 'docs', label: 'Docs' },
     { href: "https://gitlab.com/ramiel/caravaggio", label: "GitLab"},
+    { search: true },
     // {page: 'help', label: 'Help'},
     // {blog: true, label: 'Blog'},
   ],
