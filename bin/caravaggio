@@ -4,7 +4,7 @@ const os = require('os');
 const path = require('path');
 const yargs = require('yargs');
 
-['SIGINT', 'SIGTERM'].forEach(signal => {
+['SIGINT', 'SIGTERM'].forEach((signal) => {
   process.on(signal, () => process.exit(0));
 });
 

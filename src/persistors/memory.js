@@ -21,7 +21,7 @@ const increaseSize = (length) => {
   persisted.size += lengthInMb;
 };
 
-module.exports = ({ limit } = { limit: false }) => ({
+module.exports = ({ limit } = { limit: 100 }) => ({
   flush: () => {
     persisted.files = {};
     persisted.size = 0;

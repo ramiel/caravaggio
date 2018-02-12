@@ -14,8 +14,6 @@
  * properties.
 */
 
-const path = require('path');
-
 const ONE_YEAR = 60 * 60 * 24 * 365;
 
 module.exports = {
@@ -31,10 +29,8 @@ module.exports = {
      *           you plan to put a cache on front of this service, like CloudFront or CloudFlare.
      * s3:       Save the images on Amazon S3
      */
-    type: 'file',
-    options: {
-      basePath: path.resolve(__dirname, '../cache'),
-    },
+    type: 'memory',
+    options: {},
 
     /**
      * File
@@ -47,7 +43,8 @@ module.exports = {
      * Memory
      * type: 'memory',
      * options: {
-     *  limit: 100,                       // The limit expressed in MB. Can be false for no limit
+     *  limit: 100,                       // The limit expressed in MB. Can be false for no limit.
+     *                                    // Default to 100
      * }
      *
      * Disk-less
