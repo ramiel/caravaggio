@@ -3,15 +3,11 @@ const micro = require('micro');
 const logger = require('./src/logger');
 const app = require('./src');
 
-
+logger.debug(config, 'configuration:');
 const port = config.get('port');
 
 const server = micro(app);
 server.listen(port);
 
-logger.info(`Server started.
-Listen on port: ${port}.`);
-// Persistor: ${persistorType}
-// Persistor Options: ${Object.entries(persistorOptions).map(([key, value]) => `
-//   ${key}: ${value}`).join('')}
+logger.info(`Server started. Listen on port: ${port}.`);
 

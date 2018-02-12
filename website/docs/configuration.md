@@ -4,21 +4,15 @@ title: Configuration
 sidebar_label: Configuration
 ---
 
-Caravaggio try to meet the most common needs, so when you start it you already have a fully working system. Nonetheless caravaggio is highly customizable.
-
-Depending on the way you choose to install caravaggio there migth be differences in the way it can be configured. 
-
-## Docker
-
-Refer to the [docker documentation](https://store.docker.com/community/images/ramielcreations/caravaggio) to configure your containers.
+Caravaggio try to meet the most common needs, so when you start it you already have a fully working system. Nonetheless Caravaggio is highly customizable.
 
 ## Developers
 
-If you are a developer or run caravaggio directly from the source, the default configuration file contains a lot of instructions. You can read it in <a href="https://gitlab.com/ramiel/caravaggio/blob/master/config/default.js" target="_blank">`config/default.js`</a>.
+If you are a developer or run Caravaggio directly from the source, the default configuration file contains a lot of instructions. You can read it in <a href="https://gitlab.com/ramiel/caravaggio/blob/master/config/default.js" target="_blank">`config/default.js`</a>.
 
 ## Cli / global installation
 
-When you install caravaggio globally the cli accept various configuration parameters. You can read the inline help running `caravaggio --help`.    
+When you install caravaggio globally, the cli accepts various configuration parameters. You can read the inline help running `caravaggio --help`.    
 Here a deeper look to the parameter
 
 ### Server parameters

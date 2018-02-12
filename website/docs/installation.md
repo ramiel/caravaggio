@@ -28,7 +28,7 @@ The easiest way to install Carvaggio is through docker. It's the suggested way o
 
 ```bash
 docker pull ramielcreations/caravaggio
-docker run --name caravaggio -p 8565:8565 -dti ramielcreations/caravaggio
+docker run --name caravaggio -p 8565:8565 -dti ramielcreations/caravaggio:latest
 ```
 
 Now Caravaggio will be available on port **`8565`**. To change the port or to run it with different options, refer to the [docker documentation](https://store.docker.com/community/images/ramielcreations/caravaggio).

@@ -4,6 +4,11 @@ const os = require('os');
 const path = require('path');
 const yargs = require('yargs');
 
+['SIGINT', 'SIGTERM'].forEach(signal => {
+  process.on(signal, () => process.exit(0));
+});
+
+
 const options = yargs // eslint-disable-line no-unused-expressions
   .option('port', {
     alias: 'p',
