@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.5
+
+- ✨ Docker is much, much simpler!
+- Documentation have now integrated search...thanks [algolia](https://www.algolia.com/)! 🔍
+- Errors have link to documentation...so nice! 👩‍⚕️
 ## 1.3.4
 
 - Wrong values in operation result in 400 response
