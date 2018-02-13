@@ -6,13 +6,29 @@ test:
    - npm run test
   coverage: /All files\s*\|\s*([\d\.]+)/
 
-publish:  
+npm:
   stage: deploy
   only:
     - tags
   script:
     - npm config set "//registry.npmjs.org/:_authToken" $NPM_TOKEN
     - npm publish
+
+dockerhub:
+  stage: deploy
+  image: gitlab/dind
+  only:
+    - tags
+  script:
+    - VERSION=$(cat package.json | grep version | head -1 | awk -F= "{ print $2 }" | sed 's/[version:,\",]//g' | tr -d '[[:space:]]')
+    - echo $VERSION
+    - docker info
+    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+    - docker build -t ramielcreations/caravaggio:$VERSION .
+    - docker tag ramielcreations/caravaggio:$VERSION ramielcreations/caravaggio:latest
+    - docker images
+    - docker push ramielcreations/caravaggio:$VERSION
+    - docker push ramielcreations/caravaggio:latest
 
 pages:
   only:
