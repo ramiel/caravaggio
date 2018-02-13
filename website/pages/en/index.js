@@ -145,7 +145,7 @@ const FeatureCallout = props => (
 );
 
 const BaseProjects = props => (
-  <Block background="white">
+  <Block background="light">
     {[
       {
         content: `Caravaggio put its feets on solid ground.<br />
