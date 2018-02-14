@@ -43,7 +43,8 @@ module.exports = {
         if (cacheHeader) {
           res.setHeader('cache-control', cacheHeader);
         }
-        res.setHeader('content-type', await getMimeType(resource, options));
+        res.setHeader('Content-Type', await getMimeType(resource, options));
+        res.setHeader('Content-Length', resource.buffer.length);
         return send(res, 200, resource.buffer);
       }
       case 'location':

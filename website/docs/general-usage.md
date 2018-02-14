@@ -19,6 +19,7 @@ The url instead, **`https://image.com/landscape.png`** is simply a fully qualifi
 
 Most of the examples in this documentation have a link to a test deploy of Caravaggio. The server is not intended for production use and when a certain bandwith limit 
 is reached it becomes unavailable or slow. We do this to prevent people using it as their conversion machine. Please be kind using it... 😏
+Also, tiff format is not available.
 
 ## Complex urls
 
