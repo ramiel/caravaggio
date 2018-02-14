@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.6
+
+- Removed now example link in documentation until it's clear what to do about it
+- Now deploy is easier
+- Publish on npm and docker hub automatically!
 ## 1.3.5
 
 - ✨ Docker is much, much simpler!
