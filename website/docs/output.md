@@ -12,8 +12,8 @@ supports the image formats you need. See the <a href="http://sharp.pixelplumbing
 
 ## Example
 
-<code>https&#8203;:&#8203;//caravaggio.now.sh/<strong>out_jpeg</strong>/https&#8203;:&#8203;//goo.gl/EXv4MP</code>   
+<code>https&#8203;:&#8203;//caravaggio.host/<strong>out_jpeg</strong>/https&#8203;:&#8203;//goo.gl/EXv4MP</code>   
 
-<code>https&#8203;:&#8203;//caravaggio.now.sh/<strong>out_webp</strong>/https&#8203;:&#8203;//goo.gl/EXv4MP</code>
+<code>https&#8203;:&#8203;//caravaggio.host/<strong>out_webp</strong>/https&#8203;:&#8203;//goo.gl/EXv4MP</code>
 
 If you specify nothing or you enter `o_original`, the same format as the input image will be returned.

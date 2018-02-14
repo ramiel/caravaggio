@@ -15,7 +15,7 @@ The gravity values are `north, northeast, east, southeast, south, southwest, wes
 
 In this example we are cropping a 200x200 portion of the image at west
 
-<code>https&#8203;:&#8203;//caravaggio.now.sh/<strong>crop_200x200xwest</strong>/https&#8203;:&#8203;//goo.gl/Pe7YrK</code>&nbsp;<a href="https://caravaggio.now.sh/crop_150x10x200x200/https://goo.gl/Pe7YrK" alt="go" target="_blank"><img style="display:inline" src="assets/external.png" width="12" /></a>
+<code>https&#8203;:&#8203;//caravaggio.host/<strong>crop_200x200xwest</strong>/https&#8203;:&#8203;//goo.gl/Pe7YrK</code>
 
 **Original** (width 640px)    
 <img width="320" src="assets/example/girls.jpeg" />
@@ -27,8 +27,7 @@ In this example we are cropping a 200x200 portion of the image at west
 
 In this case you can specify `x`, `y`, `width` and `height` of the crop
 
-<code>https&#8203;:&#8203;//caravaggio.now.sh/<strong>crop_150x10x200x200</strong>/https&#8203;:&#8203;//goo.gl/Pe7YrK</code>&nbsp;<a href="https://caravaggio.now.sh/crop_150x10x200x200/https://goo.gl/Pe7YrK" alt="go" target="_blank"><img style="display:inline" src="assets/external.png" width="12" /></a>
-
+<code>https&#8203;:&#8203;//caravaggio.host/<strong>crop_150x10x200x200</strong>/https&#8203;:&#8203;//goo.gl/Pe7YrK</code>
 
 The image will be cropped at position x=150, y=10 and then a square of 200x200 pixel will be extracted
 
