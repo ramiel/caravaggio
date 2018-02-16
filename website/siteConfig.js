@@ -23,8 +23,8 @@ const siteConfig = {
   headerLinks: [
     { doc: 'docs', label: 'Docs' },
     { href: "https://gitlab.com/ramiel/caravaggio", label: "GitLab"},
-    {page: 'versions', label: 'Versions'},
     { search: true },
+    // {page: 'help', label: 'Help'},
     // {blog: true, label: 'Blog'},
   ],
   users,
