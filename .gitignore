@@ -110,3 +110,4 @@ GitHub.sublime-settings
 !/cache/.empty
 /coverage
 website/build
+ignoreme.*

@@ -1,0 +1,20 @@
+{
+  "version-1.x-docs": {
+    "Getting started": [
+      "version-1.x-docs",
+      "version-1.x-installation",
+      "version-1.x-configuration"
+    ],
+    "Usage": [
+      "version-1.x-general-usage",
+      "version-1.x-output",
+      "version-1.x-progressive",
+      "version-1.x-resize",
+      "version-1.x-crop",
+      "version-1.x-quality",
+      "version-1.x-rotate",
+      "version-1.x-flip",
+      "version-1.x-blur"
+    ]
+  }
+}
