@@ -8,7 +8,7 @@ const reducer = async (acc, { name, operation, params }) => acc.then(async (pipe
   if (!pipeline.hasOperation(operation)) {
     throw new Error(`Invalid operation: ${name}:${operation}`);
   }
-  logger.debug(`Applying transformation "${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
+  logger.debug(`Applying transformation "${name}:${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
   return pipeline.applyOperation(operation, ...params);
 });
 

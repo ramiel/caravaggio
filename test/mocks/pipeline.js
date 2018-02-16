@@ -1,5 +1,5 @@
 module.exports = {
-  createPipeline: (url, options) => {
+  createPipeline: (url, options = {}) => {
     let pipelineMethod;
     let metadata = {
       format: 'jpeg',
@@ -12,7 +12,7 @@ module.exports = {
     const pipeline = {
       getOptions: () => options,
       getUrl: () => url,
-      getMetadata: () => Promise.resolve(metadata),
+      metadata: () => Promise.resolve(metadata),
       hasOperation: operation => operation !== 'notexist',
       applyOperation: (operation, ...params) => {
         pipelineMethod(...params);
@@ -20,6 +20,7 @@ module.exports = {
       },
       // Mock methods only. These are not present in the original pipeline
       getMock: () => pipelineMethod.mock,
+      getMetadata: () => Promise.resolve(metadata), // the same as `metadata`
       setMetadata: (data) => {
         metadata = {
           ...metadata,

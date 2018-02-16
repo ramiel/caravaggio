@@ -51,11 +51,12 @@ describe('Parser', () => {
       }));
     });
 
-    test('ignore unknown operations', () => {
-      const parsedOtpions = parseOptions('unknown_50');
-      expect(parsedOtpions).toEqual(expect.objectContaining({
-        transformations: [],
-      }));
+    test('throw on unknown operation', () => {
+      expect(() => parseOptions('unknown_50')).toThrow('Unknown operation "unknown"');
+      // const parsedOtpions = parseOptions('unknown_50');
+      // expect(parsedOtpions).toEqual(expect.objectContaining({
+      //   transformations: [],
+      // }));
     });
   });
 });

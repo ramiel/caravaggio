@@ -10,7 +10,7 @@
       "output",
       "progressive",
       "resize",
-      "crop",
+      "extract",
       "quality",
       "rotate",
       "flip",

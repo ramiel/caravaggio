@@ -7,7 +7,7 @@
   "scripts": {
     "start": "NODE_ENV=production node .",
     "now-start": "bin/caravaggio --cache memory",
-    "dev": "NODE_ENV=development micro-dev src/ -s | pino",
+    "dev": "NODE_ENV=development micro-dev -p 3001 src/ -s | pino",
     "test": "npm run lint && npm run test-only -- --coverage --colors=false",
     "test-only": "NODE_ENV=test ALLOW_CONFIG_MUTATIONS=true jest",
     "test-watch": "npm run test-only -- --watch",
@@ -67,6 +67,11 @@
     "testPathIgnorePatterns": [
       "<rootDir>/config/",
       "<rootDir>/node_modules/"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src",
+      "test"
     ]
   }
 }

@@ -15,7 +15,7 @@ const reducer = async (acc, { name, operation, params }) => acc.then(async (pipe
   if (!pipeline.hasOperation(operation)) {
     throw new Error(`Invalid operation: ${operation}`);
   }
-  logger.debug(`Applying output operation "${name} -> ${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
+  logger.debug(`Applying output operation "${name}:${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
   return pipeline.applyOperation(operation, ...params);
 });
 

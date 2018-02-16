@@ -8,5 +8,8 @@ module.exports = {
   },
 
   buildDocumentationLink: doc => `https://ramiel.gitlab.io/caravaggio/docs/${doc}`,
+
+  isPercentage: percentage => `${percentage}`.indexOf('.') !== -1,
+  percentageToPixel: (percentage, size) => Math.round(percentage * size),
 };
 
