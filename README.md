@@ -9,12 +9,17 @@ A blazing fast ⚡ image manipulation service.
 
 ## Note
 
-This is an early release of this software! This is **not** yet suitable for production.    
-The docker image is not yet production ready.    
-The api can change without any warning.    
-Feel free to contribute to make this an amazing project!
+From version `2.x` this project is ready for production. If you have still version 1.x, upgrade. There is no migration guide since
+the first version was intended for test only
 
 ## Installation
+
+### NPM
+
+```
+npm i -g caravaggio
+caravaggio
+```
 
 ### Docker
 
@@ -24,12 +29,6 @@ An image is provided
 
 Refer to the [page](https://store.docker.com/community/images/ramielcreations/caravaggio) on the docker store for its configuration
 
-### Node
-
-```
-npm i -g caravaggio
-caravaggio
-```
 
 ### Git
 
@@ -58,3 +57,4 @@ This project is possible thanks to
 - [sharp](http://sharp.pixelplumbing.com/en/stable/) - A js image processing library
 - [micro](https://github.com/zeit/micro) - A fast microservice library 
 - A lot of other great developers
+- The amazing photographers on [pexels.com](https://www.pexels.com/)
