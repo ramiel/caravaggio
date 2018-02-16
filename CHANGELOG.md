@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0
+
+- ✨ Ready to play hard!
+- Resize methods implemented, a lot, check the documentation
+- Extract method implemented
+- Ready for production!!
+
 ## 1.3.6
 
 - Removed now example link in documentation until it's clear what to do about it
