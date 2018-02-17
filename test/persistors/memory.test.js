@@ -32,8 +32,8 @@ describe('Memory persistor', () => {
   });
 
   test('drop an old file if the limit is reached', async () => {
-    const buf = Buffer.alloc(512);
-    const buf2 = Buffer.alloc(1024);
+    const buf = Buffer.alloc(512 * 1024);
+    const buf2 = Buffer.alloc(1024 * 1024);
     const mem = memory({ limit: 1 });
     await mem.save('afile.png', buf);
     await mem.save('bfile.png', buf2);
@@ -43,8 +43,8 @@ describe('Memory persistor', () => {
   });
 
   test('do not drop the last inserted file if the limit is reached', async () => {
-    const buf = Buffer.alloc(512);
-    const buf2 = Buffer.alloc(1024);
+    const buf = Buffer.alloc(512 * 1024);
+    const buf2 = Buffer.alloc(1024 * 1024);
     const mem = memory({ limit: 1 });
     await mem.save('afile.png', buf);
     await mem.save('bfile.png', buf2);
@@ -54,7 +54,7 @@ describe('Memory persistor', () => {
   });
 
   test('do not drop the last inserted file is the only one and the limit is reached', async () => {
-    const buf2 = Buffer.alloc(1400);
+    const buf2 = Buffer.alloc(1400 * 1024);
     const mem = memory({ limit: 1 });
     await mem.save('bfile.png', buf2);
     const result = await mem.read('bfile.png');

@@ -4,6 +4,8 @@ const persisted = {
   size: 0,
 };
 
+const BToMB = B => Math.round((B / 1024 / 1024) * 100) / 100;
+
 const checkMemory = (limit, filename) => {
   if (limit && limit > 0) {
     const { size, files } = persisted;
@@ -17,8 +19,7 @@ const checkMemory = (limit, filename) => {
 };
 
 const increaseSize = (length) => {
-  const lengthInMb = Math.round((length / 1024) * 100) / 100;
-  persisted.size += lengthInMb;
+  persisted.size += BToMB(length);
 };
 
 module.exports = ({ limit } = { limit: 100 }) => ({
