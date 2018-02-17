@@ -9,7 +9,7 @@ A blazing fast ⚡ image manipulation service.
 
 ## Note
 
-From version `2.x` this project is ready for production. If you have still version 1.x, upgrade. There is no migration guide since
+From version `2.x` this project is ready for production. If you have still version 1.x, upgrade please. There is no migration guide since
 the first version was intended for test only
 
 ## Installation
@@ -48,7 +48,7 @@ and can be used sending a set of options and an image:
 
 ## Available operations
 
-Please, refer to the [documentation](http://localhost:3000/caravaggio/docs/general-usage.html) to know what are the available operations
+Please, refer to the [documentation](https://ramiel.gitlab.io/caravaggio/docs/docs.html) to know what are the available operations
 
 
 ## Thank you
