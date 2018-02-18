@@ -1,4 +1,4 @@
-const blur = require('../../src/normalizers/blur');
+const blur = require('normalizers/blur');
 
 describe('Blur', () => {
   test('blur returns a transformation', () => {

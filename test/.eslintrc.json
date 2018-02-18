@@ -4,9 +4,10 @@
     "jest": true,
     "jest/globals": true
   },
-  "extends": ["plugin:jest/recommended"],
-  "rules": {
-    "import/no-extraneous-dependencies": 0,
-    "import/no-unresolved": 0
-  }
+  "settings": {
+    "import/resolver": {
+      "jest": {}
+    }
+  },
+  "extends": ["plugin:jest/recommended"]
 }
