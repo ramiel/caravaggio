@@ -6,8 +6,6 @@ sidebar_label: Quality
 
 This parameter define the quality of the output image. It's a value between `0` and `100`.
 
-## Pixel
-
 <code>https&#8203;:&#8203;//caravaggio.host/<strong>q_10</strong>/https&#8203;:&#8203;//goo.gl/EXv4MP</code>
 
 **Original**     
