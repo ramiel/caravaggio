@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+- Fix memory persistor, now MB are MB, not kB!
+- A favicon is correctly shown
+- Minor fixes
+
 ## 2.0.0
 
 - ✨ Ready to play hard!
