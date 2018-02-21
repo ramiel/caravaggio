@@ -6,8 +6,8 @@ const errorHandler = require('./middlewares/errorHandler');
 const domainWhitelist = require('./middlewares/domainWhitelist');
 const { compose } = require('./utils');
 
-module.exports = config => async ({ persistor, whitelist }) => router(
-  get('/favicon.ico', await favicon()),
+module.exports = config => ({ persistor, whitelist }) => router(
+  get('/favicon.ico', favicon),
   get(
     '/*/*',
     compose(

@@ -8,7 +8,7 @@ describe('Favicon route', () => {
   test('respond 200', async () => {
     const handler = router(get(
       '/favicon.ico',
-      await favicon(),
+      favicon,
     ));
     const service = micro(handler);
     const url = `${await listen(service)}/favicon.ico`;
