@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+- :( Fixed a critical bug which prevent production to work
+
 ## 2.0.1
 
 - Fix memory persistor, now MB are MB, not kB!
