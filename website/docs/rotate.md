@@ -7,7 +7,7 @@ sidebar_label: Rotate
 This paramter let you rotate the image.    
 Any angle multiple of `90°` is accepted.
 
-<code>https&#8203;:&#8203;//caravaggio.host/<strong>rotate_270</strong>/https&#8203;:&#8203;//goo.gl/EXv4MP</code>
+<pre><code class="hljs css html">https://caravaggio.host/<strong>rotate_270</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **Original**     
 <img width="320" height="240" src="assets/example/girls.jpeg" />

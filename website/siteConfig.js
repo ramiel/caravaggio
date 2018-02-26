@@ -13,7 +13,7 @@ const users = [
 const siteConfig = {
   title: 'Caravaggio' /* title for your website */,
   tagline: 'A blazing fast image manipulation service',
-  url: 'https://caravaggio.gitlab.io' /* your website url */,
+  url: 'https://ramiel.gitlab.io' /* your website url */,
   baseUrl: '/caravaggio/' /* base url for your project */,
   projectName: 'caravaggio',
   algolia: {
