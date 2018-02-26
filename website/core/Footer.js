@@ -78,14 +78,12 @@ class Footer extends React.Component {
         </section>
 
         <a
-          href="http://www.opensource.org/"
+          href="http://www.ramielcreations.com/"
           target="_blank"
           className="fbOpenSource">
           <img
-            src={this.props.config.baseUrl + 'img/oss.png'}
-            alt="Open Source"
-            width="170"
-            height="45"
+            src="https://res.cloudinary.com/ramiel/image/upload/c_scale,w_200/v1519733773/gomitolo_transparent_ai0fq8.png"
+            alt="a ramiel creation"
           />
         </a>
         <section className="copyright">
