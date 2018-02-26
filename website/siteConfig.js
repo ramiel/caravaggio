@@ -50,7 +50,8 @@ const siteConfig = {
   scripts: ['https://buttons.github.io/buttons.js'],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://gitlab.com/ramiel/caravaggio',
-  customDocsPath: 'website/docs'
+  customDocsPath: 'website/docs',
+  gaTrackingId: 'UA-42285704-3'
 };
 
 module.exports = siteConfig;
