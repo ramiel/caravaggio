@@ -48,7 +48,7 @@ and can be used sending a set of options and an image:
 
 ## Available operations
 
-Please, refer to the [documentation](https://ramiel.gitlab.io/caravaggio/docs/docs.html) to know what are the available operations
+Please, refer to the [documentation](https://ramiel.gitlab.io/caravaggio/docs/docs.html) to know what are the available operations.
 
 
 ## Thank you
