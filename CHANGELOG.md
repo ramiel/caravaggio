@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0
+
+- 😍 Errors are now amazing. They can be shown as text, json, html and also contain link to the relevant documentation
+- ✨ Support gzip/deflate compression
+
 ## 2.0.2
 
 - :( Fixed a critical bug which prevent production to work
