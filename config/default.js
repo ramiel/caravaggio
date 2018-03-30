@@ -130,6 +130,12 @@ module.exports = {
    * Default to 'html'
    */
   errors: 'json',
-  compress: true,
+
+  /**
+   * Compress the response through deflate/gzip
+   * The requester must add `Accept-Encoding` header otherwise this option is ignored.
+   * By default is false because usually this behavior is delegated to CDNs
+   */
+  compress: false,
 };
 

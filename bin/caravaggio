@@ -80,6 +80,12 @@ const options = yargs // eslint-disable-line no-unused-expressions
     default: 'json',
     group: 'misc',
   })
+  .options('compress', {
+    describe: 'compress the response through gzip/deflate if the browser ask for it',
+    type: 'boolean',
+    default: false,
+    group: 'misc',
+  })
   .argv;
 
 const defaultTransformations = [];
@@ -122,6 +128,7 @@ const configuration = {
   guessTypeByExtension: options['guess-type-by-extension'],
   defaultTransformations,
   errors: options.errors,
+  compress: options.compress,
 };
 
 process.env.NODE_CONFIG_DIR = path.join(__dirname, '..', '/config');
