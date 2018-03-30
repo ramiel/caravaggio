@@ -1,25 +1,27 @@
+const BadRequestError = require('./errors/BadRequestError');
+
 /**
  * Create a set of chainable validators on values
  */
-const numberValidators = (parsed, errorMessage) => {
+const numberValidators = (parsed, errorMessage, docUri) => {
   const valuedValidators = {
     min: (min) => {
       if (parsed < min) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
       return valuedValidators;
     },
 
     max: (max) => {
       if (parsed > max) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
       return valuedValidators;
     },
 
     multipleOf: (divisor) => {
       if (parsed % divisor !== 0) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
       return valuedValidators;
     },
@@ -29,17 +31,17 @@ const numberValidators = (parsed, errorMessage) => {
   return valuedValidators;
 };
 
-const stringValidators = (parsed, errorMessage) => {
+const stringValidators = (parsed, errorMessage, docUri) => {
   const valueValidators = {
     enum: (accept = []) => {
       if (accept.indexOf(parsed) === -1) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
       return valueValidators;
     },
     match: (regex) => {
       if (!regex.test(parsed)) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
       return valueValidators;
     },
@@ -48,17 +50,17 @@ const stringValidators = (parsed, errorMessage) => {
   return valueValidators;
 };
 
-const boolValidators = (parsed, errorMessage) => {
+const boolValidators = (parsed, errorMessage, docUri) => {
   const valueValidators = {
     isTrue: () => {
       if (parsed !== true) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
       return valueValidators;
     },
     isFalse: () => {
       if (parsed !== false) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
       return valueValidators;
     },
@@ -67,7 +69,7 @@ const boolValidators = (parsed, errorMessage) => {
   return valueValidators;
 };
 
-module.exports = (value, errorMessage = 'The value is in the wrong format') => {
+module.exports = (value, errorMessage = 'The value is in the wrong format', docUri = 'docs.html') => {
   /**
    * Coherce a string to a typed value and return a set of validators on that value
   */
@@ -75,34 +77,34 @@ module.exports = (value, errorMessage = 'The value is in the wrong format') => {
     toNumber: () => {
       const res = value * 1;
       if (Number.isNaN(res)) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
-      return numberValidators(res, errorMessage);
+      return numberValidators(res, errorMessage, docUri);
     },
 
     toInt: (base = 10) => {
       const res = parseInt(value, base);
       if (Number.isNaN(res)) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
-      return numberValidators(res, errorMessage);
+      return numberValidators(res, errorMessage, docUri);
     },
 
     toFloat: (base = 10) => {
       const res = parseFloat(value, base);
       if (Number.isNaN(res)) {
-        throw new Error(errorMessage);
+        throw new BadRequestError(errorMessage, docUri);
       }
-      return numberValidators(res, errorMessage);
+      return numberValidators(res, errorMessage, docUri);
     },
 
-    toString: () => stringValidators(`${value}`, errorMessage),
+    toString: () => stringValidators(`${value}`, errorMessage, docUri),
 
     toBool: () => {
       const res = cohercer.toString(value)
         .enum(['true', 'false', 'undefined'])
         .value();
-      return boolValidators(res === 'true', errorMessage);
+      return boolValidators(res === 'true', errorMessage, docUri);
     },
   };
 

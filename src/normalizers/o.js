@@ -1,10 +1,7 @@
 const cohercer = require('../cohercer');
-const { buildDocumentationLink } = require('../utils');
 
 module.exports = (value) => {
-  const format = cohercer(value, `Accepted values are "original", jpg", "jpeg", "png", "webp", "tiff".
-See ${buildDocumentationLink('output.html')}
-  `)
+  const format = cohercer(value, 'Accepted values are "original", jpg", "jpeg", "png", "webp", "tiff".', 'output.html')
     .toString()
     .enum(['original', 'jpg', 'jpeg', 'png', 'webp', 'tiff'])
     .value()

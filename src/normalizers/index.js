@@ -1,6 +1,5 @@
-const { buildDocumentationLink } = require('../utils');
+const UnknownOperationError = require('../errors/UnknownOperationError');
 const blurNormalizer = require('./blur');
-const cropNormalizer = require('./crop');
 const flipNormalizer = require('./flip');
 const oNormalizer = require('./o');
 const qNormalizer = require('./q');
@@ -11,7 +10,6 @@ const progressiveNormalizer = require('./progressive');
 
 const normalizers = {
   blur: blurNormalizer,
-  crop: cropNormalizer,
   flip: flipNormalizer,
   o: oNormalizer,
   q: qNormalizer,
@@ -22,16 +20,6 @@ const normalizers = {
   rotate: rotateNormalizer,
   progressive: progressiveNormalizer,
 };
-
-class UnknownOperation extends Error {
-  constructor(operation) {
-    super(`Unknown operation "${operation}"
-See documentation at ${buildDocumentationLink('')}
-`);
-    this.statusCode = 400;
-  }
-}
-
 
 module.exports = (config) => {
   const defaultTransformations = config.get('defaultTransformations');
@@ -56,12 +44,9 @@ module.exports = (config) => {
     const result = addDefaultsTransformations(options.operations).reduce(
       (acc, [name, ...params]) => {
         if (!normalizers[name]) {
-          throw new UnknownOperation(name);
+          throw new UnknownOperationError(name);
         }
         const normalized = normalizers[name](...params);
-        // const normalized = normalizers[name]
-        //   ? normalizers[name](...params)
-        //   : {};
         return {
           ...acc,
           ...normalized,

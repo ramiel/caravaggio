@@ -1,5 +1,4 @@
 const cohercer = require('../../cohercer');
-const { buildDocumentationLink } = require('../../utils');
 const scale = require('./scale');
 const fit = require('./fit');
 const downfit = require('./downfit');
@@ -55,16 +54,12 @@ const getWidthAndHeight = async (sizes, pipeline) => {
  */
 module.exports = (size, mode = 'scale', ...modeParams) => {
   /* eslint-disable no-param-reassign */
-  size = cohercer(size, `Resize: the size parameter in in the wrong format.
-  See ${buildDocumentationLink('resize.html#sizes')}
-  `)
+  size = cohercer(size, 'Resize: the size parameter is in the wrong format.', 'resize.html#sizes')
     .toString()
     .match(RESIZE_PATTERN)
     .value();
 
-  mode = cohercer(mode, `Resize, the mode ${mode} is not valid.
-See ${buildDocumentationLink('resize.html')}
-`)
+  mode = cohercer(mode, `Resize, the mode ${mode} is not valid.`, 'resize.html')
     .toString()
     .enum(AVAILABLE_MODES)
     .value();

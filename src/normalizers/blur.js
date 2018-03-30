@@ -1,10 +1,7 @@
 const cohercer = require('../cohercer');
-const { buildDocumentationLink } = require('../utils');
 
 module.exports = (value) => {
-  const v = cohercer(value, `Blur must be a value between 0.3 and 1000. 
-See ${buildDocumentationLink('blur.html')}
-  `)
+  const v = cohercer(value, 'Blur must be a value between 0.3 and 1000.', 'blur.html')
     .toFloat()
     .min(0.3)
     .max(1000)

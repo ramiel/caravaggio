@@ -1,4 +1,3 @@
-const { buildDocumentationLink } = require('../../utils');
 const cohercer = require('../../cohercer');
 
 const GRAVITY_PARAM_REGEX = /^g?(c|n|ne|nw|e|w|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest)$/;
@@ -29,11 +28,9 @@ const GRAVITY_VALUES = {
 module.exports = {
   getGravityFromParameter: (
     gravity,
-    { acceptAuto, error } = { acceptAuto: false, error: null },
+    { acceptAuto, error } = { acceptAuto: false, error: `Invalid gravity parameter "${gravity}".` },
   ) => {
-    let value = gravity && cohercer(gravity, error || `Invalid gravity parameter "${gravity}".
-See ${buildDocumentationLink('resize.html#gravity')}
-`)
+    let value = gravity && cohercer(gravity, error, 'resize.html#gravity')
       .toString()
       .match(acceptAuto ? EXTENDED_GRAVITY_PARAM_REGEX : GRAVITY_PARAM_REGEX)
       .value();

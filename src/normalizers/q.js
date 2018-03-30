@@ -1,5 +1,4 @@
 const cohercer = require('../cohercer');
-const { buildDocumentationLink } = require('../utils');
 
 const normalizeQ = value => Math.round((value * 80) / 100);
 
@@ -34,9 +33,7 @@ const subOperationGenerator = value => async (pipeline) => {
 };
 
 module.exports = (value) => {
-  const v = cohercer(value, `Quality must be a value between 1 and 100.
-See ${buildDocumentationLink('quality.html')}
-`)
+  const v = cohercer(value, 'Quality must be a value between 1 and 100.', 'quality.html')
     .toInt()
     .min(1)
     .max(100)

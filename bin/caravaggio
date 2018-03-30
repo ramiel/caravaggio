@@ -73,6 +73,13 @@ const options = yargs // eslint-disable-line no-unused-expressions
     default: true,
     group: 'image manipulation',
   })
+  .options('errors', {
+    describe: 'set the error output format',
+    type: 'string',
+    choices: ['plain', 'html', 'json'],
+    default: 'json',
+    group: 'misc',
+  })
   .argv;
 
 const defaultTransformations = [];
@@ -114,6 +121,7 @@ const configuration = {
   whitelist: options.whitelist || false,
   guessTypeByExtension: options['guess-type-by-extension'],
   defaultTransformations,
+  errors: options.errors,
 };
 
 process.env.NODE_CONFIG_DIR = path.join(__dirname, '..', '/config');

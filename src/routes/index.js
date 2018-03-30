@@ -1,5 +1,4 @@
 const { URL } = require('url');
-const { createError } = require('micro');
 const logger = require('../logger');
 const parser = require('../parser');
 const pipeline = require('../pipelines');
@@ -25,7 +24,7 @@ module.exports = (config) => {
       await sendImage(createdResource, options, res);
     } catch (e) {
       logger.error(e);
-      throw createError(e.statusCode, e.message);
+      throw e;
     }
   };
 };

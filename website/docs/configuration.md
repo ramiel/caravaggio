@@ -103,3 +103,10 @@ can start to render before being entirely downloaded.
 This behavior can be disabled
 
 `caravaggio --progressive false`
+
+### Errors
+
+Caravaggio can report error in several format. By default the errors are reported in a `json` format to help machine parsing. The other accepted values
+are `plain`, for a simple text report, and `html` for a pretty formatted report.
+
+`caravaggio --errors plain`

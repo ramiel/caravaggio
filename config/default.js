@@ -123,6 +123,13 @@ module.exports = {
   sharp: {
     cache: true,
   },
+
+  /**
+   * Let you decide how to show errors.
+   * It can be 'html', 'json' and 'plain'
+   * Default to 'html'
+   */
+  errors: 'json',
   compress: true,
 };
 

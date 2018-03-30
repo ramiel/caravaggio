@@ -11,7 +11,7 @@ module.exports = config => ({ persistor, whitelist }) => router(
   get(
     '/*/*',
     compose(
-      errorHandler,
+      errorHandler(config),
       domainWhitelist(whitelist),
     )(indexRoute(config)(Cache(persistor))),
   ),

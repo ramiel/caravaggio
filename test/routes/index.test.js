@@ -9,6 +9,8 @@ const route = require('../../src/routes/index');
 const { compose } = require('../../src/utils');
 const errorHandlerMiddleware = require('../../src/middlewares/errorHandler');
 
+const errorHandler = errorHandlerMiddleware(config);
+
 describe('Index route - getting images', () => {
   const cache = Cache(memoryPersistor({}));
   const handler = router(get(
@@ -68,7 +70,7 @@ describe('Index route - getting images', () => {
   });
 
   test('respond 400 if the options are invalid', async () => {
-    const service = micro(compose(errorHandlerMiddleware)(handler));
+    const service = micro(compose(errorHandler)(handler));
     const url = `${await listen(service)}/q_abc/${imageUrl}`;
     const response = await request({
       url,

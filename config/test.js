@@ -4,5 +4,6 @@ module.exports = {
     stream: 'stdout',
   },
   defaultTransformations: [],
+  errors: 'plain',
 };
 

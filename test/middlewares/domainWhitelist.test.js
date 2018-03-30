@@ -2,9 +2,12 @@ const micro = require('micro');
 const listen = require('test-listen');
 const request = require('request-promise');
 const { router, get } = require('microrouter');
-const domainWhitelistMiddleware = require('../../src/middlewares/domainWhitelist');
-const errorHandlerMiddleware = require('../../src/middlewares/errorHandler');
-const { compose } = require('../../src/utils');
+const config = require('config');
+const domainWhitelistMiddleware = require('middlewares/domainWhitelist');
+const errorHandlerMiddleware = require('middlewares/errorHandler');
+const { compose } = require('utils');
+
+const errorHandler = errorHandlerMiddleware(config);
 
 describe('Domain whitelist middleware', () => {
   const handler = async (req, res) => {
@@ -39,7 +42,7 @@ describe('Domain whitelist middleware', () => {
     const service = micro(router(get(
       '/*/*',
       compose(
-        errorHandlerMiddleware,
+        errorHandler,
         domainWhitelistMiddleware(['domain.com']),
       )(handler),
     )));
@@ -64,7 +67,7 @@ describe('Domain whitelist middleware', () => {
     const service = micro(router(get(
       '/*/*',
       compose(
-        errorHandlerMiddleware,
+        errorHandler,
         domainWhitelistMiddleware(['domain.com']),
       )(handler),
     )));
@@ -78,7 +81,7 @@ describe('Domain whitelist middleware', () => {
     const service = micro(router(get(
       '/*/*',
       compose(
-        errorHandlerMiddleware,
+        errorHandler,
         domainWhitelistMiddleware(['domain.com']),
       )(handler),
     )));

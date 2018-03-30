@@ -1,4 +1,3 @@
-const { buildDocumentationLink } = require('../../utils');
 const cohercer = require('../../cohercer');
 
 const COLOR_REGEX = /^([A-Fa-f0-9]{6}|(0[0-9]{2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]){3})(\.\d+)?$/;
@@ -19,10 +18,8 @@ const color = {
     /* eslint-enable no-bitwise, no-mixed-operators */
   },
 
-  getColorFromParameter: (param, errorMessage) => {
-    const value = cohercer(param, errorMessage || `Invalid color paramter "${param}".
-See ${buildDocumentationLink('resize.html#colors')}
-`)
+  getColorFromParameter: (param, errorMessage = `Invalid color paramter "${param}".`, docUri = 'resize.html#colors') => {
+    const value = cohercer(param, errorMessage, docUri)
       .toString()
       .match(COLOR_REGEX)
       .value();
