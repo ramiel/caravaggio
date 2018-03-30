@@ -2,10 +2,11 @@ const { URL } = require('url');
 const logger = require('../logger');
 const parser = require('../parser');
 const pipeline = require('../pipelines');
-const { sendImage } = require('../sender');
+const sender = require('../sender');
 
 module.exports = (config) => {
   const { parseOptions } = parser(config);
+  const { sendImage } = sender(config);
 
   return cache => async (req, res) => {
     try {
@@ -14,14 +15,14 @@ module.exports = (config) => {
       const resource = await cache.get(url, options);
       if (resource) {
         logger.debug(`Cache hit for resource ${url.toString()} with options ${options.rawNormalizedOptions}`);
-        await sendImage(resource, options, res);
+        await sendImage(resource, options, req, res);
         return;
       }
 
       // If the resource is missing, let's create it and serve
       const imageBuffer = await pipeline.convert(url, options);
       const createdResource = await cache.set(url, options, imageBuffer);
-      await sendImage(createdResource, options, res);
+      await sendImage(createdResource, options, req, res);
     } catch (e) {
       logger.error(e);
       throw e;

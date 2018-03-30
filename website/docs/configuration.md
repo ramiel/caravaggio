@@ -110,3 +110,10 @@ Caravaggio can report error in several format. By default the errors are reporte
 are `plain`, for a simple text report, and `html` for a pretty formatted report.
 
 `caravaggio --errors plain`
+
+### Compress
+
+Caravaggio can compress the response through `deflate/gzip` if the requester (the browser usually), asks for it through `Accept-encoding` header.    
+By default this option is turned off because it's common to setup a CDN to compress the result. To enable it:
+
+`caravaggio --compress`
