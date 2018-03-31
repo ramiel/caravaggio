@@ -27,6 +27,7 @@ const siteConfig = {
     // {page: 'help', label: 'Help'},
     // {blog: true, label: 'Blog'},
   ],
+  onPageNav: 'separate',
   users,
   /* path to images for header/footer */
   headerIcon: 'img/caravaggio-logo.jpeg',

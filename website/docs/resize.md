@@ -14,7 +14,7 @@ In general a resize command take this shape
 Where __rs__ means you want change the final dimension of your image, __size__ is the new size (it can be expressed in several ways as explaned [here](#sizes)).    
 `mode` define how to resize, Mayve you want to stretch the image, or take just a portion; `mode_params` are the parameters accepted byt the specific mode and can also be empty
 
-### `Scale`
+## Scale
 
 In scale mode the image will have the dimension of the size you specified. The aspect ration is maintained unless you pass `iar` as additional parameter.    
 Since `scale` is the default resize mode, you can avoid specifiying it.
@@ -35,7 +35,7 @@ Scale the image to 200x300 px width ignoring the aspect ratio the aspect ratio.
 **Resized**   
 <img width="160" height="120" src="assets/example/girls.jpeg" />
 
-### `Fit`
+## Fit
 
 The image will take the maximum available space up to the specified size, keeping the aspect ratio.    
 For example this will resize the image up to 300x300 pixels and all the image will be visible.
@@ -46,7 +46,7 @@ For example this will resize the image up to 300x300 pixels and all the image wi
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
-### `Down fit`
+## Down fit
 
 Like fit but only if the image is **larger** than the desired size (width _or_ height), otherwise it will be left untouched.
 
@@ -54,7 +54,7 @@ Like fit but only if the image is **larger** than the desired size (width _or_ h
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
-### `Up fit`
+## Up fit
 
 Like fit but only if the image is **smaller** than the desired size (__both__ the width and height must be smaller), otherwise it will be left untouched.
 
@@ -62,7 +62,7 @@ Like fit but only if the image is **smaller** than the desired size (__both__ th
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
-### `Fill`
+## Fill
 
 Give a new image of specified width and height. The original image is then filled inside those dimensions. The excess part will be excluded.    
 You can specify a [gravity](#gravity) to decide which part of the original image should be excluded. If nothing is specified the default gravity is `center`.
@@ -92,7 +92,7 @@ Gravity auto (**rs_200x300_fill_auto**)
 <a href="assets/example/fill_auto.png" target="_blank"><img src="assets/example/fill_auto.png" /></a>
 
 
-### `Down fill`
+## Down fill
 
 Same as fill but only if the image is larger than the target size (width _and_ height).
 
@@ -100,7 +100,7 @@ Same as fill but only if the image is larger than the target size (width _and_ h
 
 <pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_downfill_west</strong>/https://goo.gl/EXv4MP</code></pre>
 
-### `Embed`
+## Embed
 
 This embed the image in the specified dimension. The entire image is taken and aspect ratio is kept. If the image doesn't
 fit well in the dimension the output will be padded with a color of your choice (or black by default).
@@ -126,17 +126,17 @@ You can spcify the gravity
 
 <a href="assets/example/girls_embed_gravity.jpeg" target="_blank"><img src="assets/example/girls_embed_gravity.jpeg" /></a>
 
-### `Sizes`
+## Sizes
 
 The size parameter can be specified in several format in each resize mode. 
 
-#### Pixel
+### Pixel
 
 `rs_200x300` is 200 x 300 px    
 `rs_200` is 200 px width, height auto    
 `rs_x300` is 200 px height, width auto    
 
-#### Percentage
+### Percentage
 
 You can specify the width and height as percentage value of the input image
 
@@ -144,13 +144,13 @@ You can specify the width and height as percentage value of the input image
 `rs_0.2` is 20% of the width    
 `rs_x0.3` is 30% of the height  
 
-#### Mixed
+### Mixed
 
 Pixel and percentage can be mixed.
 
 `rs_200x0.3` is 200px of width and 30% of height
 
-### `Gravity`
+## Gravity
 
 For those operations which support gravity, those value can be specified
 
@@ -163,7 +163,7 @@ and can be abbreviated in
 Some operation, such as `fill` and `downfill` accept the `auto` gravity. This automatically focus on the most important region of the image. 
 Look [here](#auto) for an example
 
-### `Colors`
+## Colors
 
 The colors accepetd by some operations can be expressed as:
 
