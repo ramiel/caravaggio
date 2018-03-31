@@ -10,7 +10,7 @@ Caravaggio accept the input image to transform and the transformation to apply.
 
 In this case the image reachable at `https://image.com/landscape.png` will be rotated of **`90° clockwise`** and the result will be in the **`webp`** format.
 
-In general each transformation is expressed in the form **`transformation_parameter`** and can be separated
+In general, each transformation is expressed in the form **`transformation_parameter`** and can be separated
 by the next through a comma **`,`**
 
 The url instead, **`https://image.com/landscape.png`** is simply a fully qualifid address of the image to fetch and transform.
@@ -20,13 +20,13 @@ The url instead, **`https://image.com/landscape.png`** is simply a fully qualifi
 If the url of the image to transform contains query parameters, you must encode it.    
 In example, the url `https://image.com/landscape.png?user=joe` must be sent as
 
-<pre><code class="hljs css html">https://caravaggio.host/q_90/https%3A%2F%2Fimage.com%2Flandscape.png%3Fuser%3Djoe</code></pre>
+<pre><code class="hljs css html">https://caravaggio.host/q_90/<strong>https%3A%2F%2Fimage.com%2Flandscape.png%3Fuser%3Djoe</strong></code></pre>
 
 or at least
 
-<pre><code class="hljs css html">https://caravaggio.host/q_90/https://image.com/landscape.png%3Fuser%3Djoe</code></pre>
+<pre><code class="hljs css html">https://caravaggio.host/q_90/<strong>https://image.com/landscape.png%3Fuser%3Djoe</strong></code></pre>
 
-In javascript, to obtain this encoding you can run
+In javascript, to obtain this encoding, you can run
 
 ```js
 const url = 'https://image.com/landscape.png?user=joe';

@@ -11,12 +11,17 @@ In general a resize command take this shape
 
 **`rs_<size>_<mode>_<mode_params>`**
 
-Where __rs__ means you want change the final dimension of your image, __size__ is the new size (it can be expressed in several ways as explaned [here](#sizes)).    
-`mode` define how to resize, Mayve you want to stretch the image, or take just a portion; `mode_params` are the parameters accepted byt the specific mode and can also be empty
+Where:     
+__rs__ means you want change the final dimension of your image.    
+__size__ is the new size (it can be expressed in several ways as explaned [here](#sizes)).    
+__mode__ define how to resize. Maybe you want to stretch the image, or take just a portion;    
+__mode_params__ are the parameters accepted by the specific mode and can also be empty.
 
-## Scale
+## Resize methods
 
-In scale mode the image will have the dimension of the size you specified. The aspect ration is maintained unless you pass `iar` as additional parameter.    
+### Scale
+
+In scale mode the image will have the dimension of the size you specified. The aspect ratio is kept unless you pass __iar__ (ignore aspect ratio) as additional parameter.    
 Since `scale` is the default resize mode, you can avoid specifiying it.
 
 Scale the image to 200x300 px keeping the aspect ratio    
@@ -26,7 +31,7 @@ Scale the image to 200 px width keeping the aspect ratio. The height is calculat
 <pre><code class="hljs css html">http://caravaggio.host/<strong>rs_200</strong>/https://goo.gl/EXv4MP</code></pre>
 
 
-Scale the image to 200x300 px width ignoring the aspect ratio the aspect ratio.    
+Scale the image to 200x300 px width ignoring the aspect ratio.    
 <pre><code class="hljs css html">http://caravaggio.host/<strong>rs_200x300_scale_iar</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **Original**     
@@ -35,7 +40,7 @@ Scale the image to 200x300 px width ignoring the aspect ratio the aspect ratio.
 **Resized**   
 <img width="160" height="120" src="assets/example/girls.jpeg" />
 
-## Fit
+### Fit
 
 The image will take the maximum available space up to the specified size, keeping the aspect ratio.    
 For example this will resize the image up to 300x300 pixels and all the image will be visible.
@@ -46,7 +51,7 @@ For example this will resize the image up to 300x300 pixels and all the image wi
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
-## Down fit
+### Down fit
 
 Like fit but only if the image is **larger** than the desired size (width _or_ height), otherwise it will be left untouched.
 
@@ -54,7 +59,7 @@ Like fit but only if the image is **larger** than the desired size (width _or_ h
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
-## Up fit
+### Up fit
 
 Like fit but only if the image is **smaller** than the desired size (__both__ the width and height must be smaller), otherwise it will be left untouched.
 
@@ -62,9 +67,9 @@ Like fit but only if the image is **smaller** than the desired size (__both__ th
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
-## Fill
+### Fill
 
-Give a new image of specified width and height. The original image is then filled inside those dimensions. The excess part will be excluded.    
+Produce a new image of specified width and height. The original image is then filled inside those dimensions. The excess part will be excluded.    
 You can specify a [gravity](#gravity) to decide which part of the original image should be excluded. If nothing is specified the default gravity is `center`.
 
 In this example we fill the image in a 300x300 px space, with gravity on the center
@@ -92,7 +97,7 @@ Gravity auto (**rs_200x300_fill_auto**)
 <a href="assets/example/fill_auto.png" target="_blank"><img src="assets/example/fill_auto.png" /></a>
 
 
-## Down fill
+### Down fill
 
 Same as fill but only if the image is larger than the target size (width _and_ height).
 
@@ -100,9 +105,9 @@ Same as fill but only if the image is larger than the target size (width _and_ h
 
 <pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_downfill_west</strong>/https://goo.gl/EXv4MP</code></pre>
 
-## Embed
+### Embed
 
-This embed the image in the specified dimension. The entire image is taken and aspect ratio is kept. If the image doesn't
+This embeds the image in the specified dimensions. The entire image is taken and aspect ratio is kept. If the image doesn't
 fit well in the dimension the output will be padded with a color of your choice (or black by default).
 A [gravity](#gravity) can be specified to decide how to embed the image. Both `gravity` and `background color` are optional
 
@@ -110,7 +115,7 @@ A [gravity](#gravity) can be specified to decide how to embed the image. Both `g
 
 <a href="assets/example/girls_embed.jpeg" target="_blank"><img src="assets/example/girls_embed.jpeg" /></a>
 
-You can specify the color in RGB (red: 105, green:72, blue: 200). Each number must have 3 digits, you have to pad them.
+You can specify the color in RGB (red: 105, green: 72, blue: 200). Each number must have 3 digits, you have to pad them (so 72 must be written as 072).
 <pre><code class="hljs css html">http://caravaggio.host/<strong>rs_320x240_embed_b105072200</strong>/https://goo.gl/EXv4MP</code></pre>
 
 <a href="assets/example/girls_embed_color.jpeg" target="_blank"><img src="assets/example/girls_embed_color.jpeg" /></a>
