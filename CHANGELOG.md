@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.0
+
+- ✨ New input cache. Avoid re-download source images!
+- Update sharp
+- Secondary navigation on documentation
+- Some minor documentation fix
+
 ## 2.1.0
 
 - 😍 Errors are now amazing. They can be shown as text, json, html and also contain link to the relevant documentation
