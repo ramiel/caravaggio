@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.1
+
+- Minor fixes
+
 ## 2.2.0
 
 - ✨ New input cache. Avoid re-download source images!
