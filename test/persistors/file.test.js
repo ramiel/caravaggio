@@ -1,8 +1,16 @@
-const file = require('../../src/persistors/file');
+const file = require('persistors/file');
 
 
 describe('File persistor', () => {
   afterEach(() => file().flush());
+
+  test('can be instantiated if no option is passed', () => {
+    expect(() => file()).not.toThrow();
+  });
+
+  test('can be instantiated if empty option is passed', () => {
+    expect(() => file({})).not.toThrow();
+  });
 
   test('saves a buffer', async () => {
     const buf = Buffer.alloc(1024);

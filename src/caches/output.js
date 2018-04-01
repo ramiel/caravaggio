@@ -1,7 +1,16 @@
 const path = require('path');
 const md5 = require('md5');
+const PersistorFactory = require('../persistors');
 
-module.exports = (persistor) => {
+module.exports = (config) => {
+  let persistor;
+
+  try {
+    persistor = PersistorFactory.create(config.get('caches.input'));
+  } catch (e) {
+    throw e;
+  }
+
   const cache = {
     getKey: (url, rawOptions) => md5(`url_${url}_options_${rawOptions}`),
 
@@ -14,17 +23,21 @@ module.exports = (persistor) => {
     },
 
     get: async (url, options) => {
-      const resource = await persistor.read(cache.getFileName(url, options));
+      const filename = cache.getFileName(url, options);
+      const resource = await persistor.read(filename);
       return resource && {
         ...resource,
-        name: cache.getFileName(url, options),
+        name: filename,
       };
     },
 
-    set: async (url, options, buffer) => ({
-      ...(await persistor.save(cache.getFileName(url, options), buffer)),
-      name: cache.getFileName(url, options),
-    }),
+    set: async (url, options, buffer) => {
+      const filename = cache.getFileName(url, options);
+      return {
+        ...(await persistor.save(filename, buffer)),
+        name: filename,
+      };
+    },
   };
 
   return cache;

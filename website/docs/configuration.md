@@ -10,6 +10,9 @@ Caravaggio try to meet the most common needs, so when you start it you already h
 
 If you are a developer or run Caravaggio directly from the source, the default configuration file contains a lot of instructions. You can read it in <a href="https://gitlab.com/ramiel/caravaggio/blob/master/config/default.js" target="_blank">`config/default.js`</a>.
 
+> __Note__: Any change to the schema of this file is not considered a breaking change, so the keys can change also because of a minor release.
+> This is because it is intended for developers only, while the only stable interface is the `cli`.
+
 ## Cli / global installation
 
 When you install caravaggio globally, the cli accepts various configuration parameters. You can read the inline help running `caravaggio --help`.    
@@ -17,48 +20,66 @@ Here a deeper look to the parameter
 
 ### Server parameters
 
-Caravaggio listen to port **8565** by default. You can change to the value you want
+Caravaggio listen to port **8565** by default. You can change it to the value you prefer:
 
 `caravaggio --port 1234`
 
-### Cache
+### Caches
 
-Caravaggio can cache the requests to serve file already processed faster. There are several different kinds of available cache.
+Caravaggio has different cache levels and any can be disabled and configured indipendently from the others
+
+#### Output cache
+
+This cache store the resulting image. If you make a second request to get the same image with the same transformations, this cache will hit and the cached result will be returned. The image won't be processed again. By default this cache is set to `memory`.
+
+#### Input cache
+
+If you change your transformation the original image will be downloaded again unless you active the input cache. If this cache is activated the original image will be stored and therefore it won't be downloaded again. The image will be just re-processed to evaluate the new transformations to apply.    
+This cache by default is de-activated
+
+#### Cache configuration
+
+Each cache can use a different method to save/retrieve cached resources. All of those methods applies to any kind of cache.
 
 **_None_**
 
 This special cache do not store nothing. Each request will be re-processed by Caravaggio.    
 This is extremely useful if you want to use a CDN in front of caravaggio which will take care of caching requests.
 
-`caravaggio --cache none`
+`caravaggio --cache none`       For the output cache    
+`caravaggio --inputcache none`  For the input cache
 
 **_File_**
 
 The cached images will be stored on your local file system.
 
-`caravaggio --cache file`
+`caravaggio --cache file`      For the output cache    
+`caravaggio --inputcache file` For the input cache
 
 The processed images will be saved on the operating system default temporary folder.    
 You can change this path if you want:
 
-`caravaggio --cache file --cache-filepath "path/to/cache/folder/"`
+`caravaggio --cache file --cache-filepath "path/to/cache/folder/"`      For the output cache    
+`caravaggio --inputcache file --inputcache-filepath "path/to/cache/folder/"` For the input cache
 
 **_Memory_**
 
-Enabled by default.    
 In this case the cache will be stored in memory. It will be delete when the service is restarted.
 This give you a fully working cache system with the speed of in-memory storage.
 
-`caravaggio --cache memory`
+`caravaggio --cache memory`      For the output cache    
+`caravaggio --inputcache memory` For the input cache
 
 By default the limit is to 100Mb, after this limit the older images will be removed.     
 The limit can be changed:    
 
-`caravaggio --cache memory --cache-limit 250`
+`caravaggio --cache memory --cache-limit 250`           For the output cache    
+`caravaggio --inputcache memory --inputcache-limit 250` For the input cache
 
 or removed
 
-`caravaggio --cache memory --cache-limit false`
+`caravaggio --cache memory --cache-limit false`           For the output cache    
+`caravaggio --inputcache memory --inputcache-limit false` For the input cache
 
 **_S3_**
 

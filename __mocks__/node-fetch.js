@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 const path = require('path');
 const fs = require('fs');
 
@@ -8,7 +10,7 @@ const getImage = (name = 'caravaggio.jpg') => new Promise((resolve, reject) => {
   });
 });
 
-module.exports = (/* url */) => getImage()
+module.exports = jest.fn((/* url */) => getImage()
   .then(buffer => ({
     buffer: () => buffer,
-  }));
+  })));

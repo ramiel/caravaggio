@@ -2,7 +2,9 @@ const fs = require('fs-extra');
 const os = require('os');
 const path = require('path');
 
-module.exports = ({ basePath } = { basePath: os.tmpdir() }) => {
+const DEFAULT_TEMP_DIR = os.tmpdir();
+
+module.exports = ({ basePath = DEFAULT_TEMP_DIR } = { basePath: DEFAULT_TEMP_DIR }) => {
   const subdir = 'caravaggioCache';
   const baseDir = path.join(basePath, subdir);
   const getCompleteFilename = filename => path.join(baseDir, filename);

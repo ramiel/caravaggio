@@ -1,8 +1,10 @@
+const config = require('config');
 const input = require('./input');
 const transformations = require('./transformations');
 const output = require('./output');
-const image = require('../image');
+const Image = require('../image');
 
+const image = Image(config);
 
 const createPipeline = (url, options) => {
   let metadata = null;

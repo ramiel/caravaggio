@@ -18,51 +18,74 @@ const ONE_YEAR = 60 * 60 * 24 * 365;
 
 module.exports = {
   port: parseInt(process.env.PORT, 10) || 8565,
-  persistor: {
+
+  /**
+   * Caravaggio has several caches
+   */
+  caches: {
     /**
-     * Available types of persistors:
-     *
-     * file:     Save images on local disk. On by default is the easiest to configure
-     * memory:   Save images in memory. Useful on development, can drain a lot of memory. Do not use
-     *           on production
-     * none: Never save the images. The images will be re-calculated each time. Very useful if
-     *           you plan to put a cache on front of this service, like CloudFront or CloudFlare.
-     * s3:       Save the images on Amazon S3
+     * OUTPUT CACHE
+     * Cache for the transformed images.
+     * Given the same input url and the same transformation options,
+     * this cache saves the output buffer to avoir re-compute the transformations
      */
-    type: 'memory',
-    options: {},
+    output: {
+      /**
+       * Available types of persistors:
+       *
+       * file:     Save images on local disk. On by default is the easiest to configure
+       * memory:   Save images in memory. Useful on development, can drain a lot of memory.
+       * none:     Never save the images. The images will be re-calculated each time. Very useful if
+       *           you plan to put a cache on front of this service, like CloudFront or CloudFlare.
+       * s3:       Save the images on Amazon S3 (not yet available)
+       */
+      type: 'memory',
+      options: {},
+
+      /**
+       * File
+       * type: 'file',
+       * options: {
+       *  basPath: '/tmp/',                 // The folder to store the images in.
+       * }
+       *
+       *
+       * Memory
+       * type: 'memory',
+       * options: {
+       *  limit: 100,                       // The limit expressed in MB. Can be false for no limit.
+       *                                    // Default to 100
+       * }
+       *
+       * Disk-less
+       * type: 'none',
+       * options: {}
+       *
+       *
+       * S3 persistor (not yet available)
+       *
+       * type: 's3',
+       * options: {
+       *   key: process.env.S3_KEY,           // the aws key
+       *   secret: process.env.S3_KEY,        // the aws secret
+       *   bucket: process.env.S3_BUCKET,     // the bucket to use
+       *   redirect: false,                   // if true, serve the file from s3 directly
+       * }
+      */
+    },
 
     /**
-     * File
-     * type: 'file',
-     * options: {
-     *  basPath: '/tmp/',                 // The folder to store the images in.
-     * }
-     *
-     *
-     * Memory
-     * type: 'memory',
-     * options: {
-     *  limit: 100,                       // The limit expressed in MB. Can be false for no limit.
-     *                                    // Default to 100
-     * }
-     *
-     * Disk-less
-     * type: 'none',
-     * options: {}
-     *
-     *
-     * S3 persistor
-     *
-     * type: 's3',
-     * options: {
-     *   key: process.env.S3_KEY,           // the aws key
-     *   secret: process.env.S3_KEY,        // the aws secret
-     *   bucket: process.env.S3_BUCKET,     // the bucket to use
-     *   redirect: false,                   // if true, serve the file from s3 directly
-     * }
-    */
+     * INPUT CACHE
+     * This cache let you avoid download several time the same input image
+     * Given the same url, the original image is cached and not re-downloaded
+     * This accept the same type as the output cache
+     */
+    input: {
+      type: 'none',
+      options: {},
+    },
   },
+
   /**
    * Allow only files in the domain whitelist.
    * This can be an array of domains and wildcard are supported

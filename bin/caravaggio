@@ -16,6 +16,7 @@ const options = yargs // eslint-disable-line no-unused-expressions
     describe: 'the server will listen to this port',
     type: 'number',
   })
+
   .option('cache', {
     default: 'memory',
     describe: 'Set the cache system',
@@ -35,11 +36,33 @@ const options = yargs // eslint-disable-line no-unused-expressions
     type: 'number',
     group: 'cache',
   })
+
+  .option('inputcache', {
+    default: 'none',
+    describe: 'Set the input cache system. This cache save the original images to avoid re-download',
+    type: 'string',
+    choices: ['memory', 'file', 'none'],
+    group: 'input cache',
+  })
+  .option('inputcache-filepath', {
+    describe: '[when --cache=file] The file path for the file cache',
+    type: 'string',
+    default: os.tmpdir(),
+    group: 'input cache',
+  })
+  .option('inputcache-limit', {
+    default: 100,
+    describe: '[when --cache=memory] The maximum amount of memory to use in MB',
+    type: 'number',
+    group: 'input cache',
+  })
+
   .option('whitelist', {
     describe: 'Restrict the images to a list of domains',
     type: 'array',
     group: 'security',
   })
+
   .option('verbose', {
     alias: 'v',
     describe: 'Increase the verbosity of the application',
@@ -110,11 +133,34 @@ switch (options.cache) {
     break;
 }
 
+let inputCacheOptions;
+switch (options.inputcache) {
+  case 'file':
+    cacheOptions = {
+      basePath: options['inputcache-filepath'],
+    };
+    break;
+  case 'memory':
+    cacheOptions = {
+      limit: options['inputcache-limit'],
+    };
+    break;
+  default:
+    cacheOptions = {};
+    break;
+}
+
 const configuration = {
   port: options.port,
-  persistor: {
-    type: options.cache,
-    options: cacheOptions,
+  caches: {
+    output: {
+      type: options.cache,
+      options: cacheOptions,
+    },
+    input: {
+      type: options.inputcache,
+      option: inputCacheOptions,
+    },
   },
   logger: {
     pretty: !options.json,

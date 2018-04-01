@@ -3,8 +3,7 @@ const listen = require('test-listen');
 const request = require('request-promise');
 const { router, get } = require('microrouter');
 const config = require('config');
-const memoryPersistor = require('../../src/persistors/memory');
-const Cache = require('../../src/cache');
+const Cache = require('../../src/caches/output');
 const route = require('../../src/routes/index');
 const { compose } = require('../../src/utils');
 const errorHandlerMiddleware = require('../../src/middlewares/errorHandler');
@@ -12,7 +11,11 @@ const errorHandlerMiddleware = require('../../src/middlewares/errorHandler');
 const errorHandler = errorHandlerMiddleware(config);
 
 describe('Index route - getting images', () => {
-  const cache = Cache(memoryPersistor({}));
+  config.caches.output = {
+    type: 'memory',
+    options: {},
+  };
+  const cache = Cache(config);
   const handler = router(get(
     '/*/*',
     route(config)(cache),

@@ -1,9 +1,11 @@
 
 module.exports = {
-  persistor: {
-    type: 'memory',
-    options: {
-      limit: 100,
+  caches: {
+    output: {
+      type: 'memory',
+      options: {
+        limit: 100,
+      },
     },
   },
   logger: {
