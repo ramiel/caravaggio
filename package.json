@@ -1,6 +1,6 @@
 {
   "name": "caravaggio",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A blazing fast image processor service",
   "main": "index.js",
   "bin": "bin/caravaggio",
