@@ -7,7 +7,7 @@ module.exports = {
     return aIndex - bIndex;
   },
 
-  buildDocumentationLink: doc => `https://ramiel.gitlab.io/caravaggio/docs/${doc}`,
+  buildDocumentationLink: doc => `https://ramiel.gitlab.io/caravaggio/docs/${doc || 'docs.html'}`,
 
   isPercentage: percentage => `${percentage}`.indexOf('.') !== -1,
   percentageToPixel: (percentage, size) => Math.round(percentage * size),

@@ -136,17 +136,17 @@ switch (options.cache) {
 let inputCacheOptions;
 switch (options.inputcache) {
   case 'file':
-    cacheOptions = {
+    inputCacheOptions = {
       basePath: options['inputcache-filepath'],
     };
     break;
   case 'memory':
-    cacheOptions = {
+    inputCacheOptions = {
       limit: options['inputcache-limit'],
     };
     break;
   default:
-    cacheOptions = {};
+    inputCacheOptions = {};
     break;
 }
 
@@ -159,7 +159,7 @@ const configuration = {
     },
     input: {
       type: options.inputcache,
-      option: inputCacheOptions,
+      options: inputCacheOptions,
     },
   },
   logger: {
