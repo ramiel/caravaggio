@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 /* List of projects/orgs using your project for the users page */
 const users = [
   
@@ -52,7 +54,7 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://gitlab.com/ramiel/caravaggio',
   customDocsPath: 'website/docs',
-  gaTrackingId: 'UA-42285704-3'
+  gaTrackingId: isDevelopment ? null : 'UA-42285704-3'
 };
 
 module.exports = siteConfig;
