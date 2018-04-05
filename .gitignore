@@ -112,4 +112,3 @@ GitHub.sublime-settings
 website/build
 ignoreme.*
 .serverless
-dist
