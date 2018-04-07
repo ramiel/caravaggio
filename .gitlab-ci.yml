@@ -43,6 +43,7 @@ dockerhub:
     - docker push ramielcreations/caravaggio:$VERSION
     - docker push ramielcreations/caravaggio:latest
 
+# Gitlab Pages
 pages:
   only:
     - master
