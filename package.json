@@ -42,7 +42,7 @@
     "micro-redirect": "^1.0.0",
     "microrouter": "^3.1.1",
     "node-fetch": "^2.1.2",
-    "pino": "^4.15.3",
+    "pino": "^4.16.1",
     "sharp": "^0.20.1",
     "yargs": "^11.0.0"
   },
