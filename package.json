@@ -76,5 +76,8 @@
       "src",
       "test"
     ]
+  },
+  "pkg": {
+    "assets": "config/**/*"
   }
 }
