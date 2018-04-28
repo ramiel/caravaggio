@@ -54,7 +54,8 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://gitlab.com/ramiel/caravaggio',
   customDocsPath: 'website/docs',
-  gaTrackingId: isDevelopment ? null : 'UA-42285704-3'
+  gaTrackingId: isDevelopment ? null : 'UA-42285704-3',
+  gaGtag: true
 };
 
 module.exports = siteConfig;
