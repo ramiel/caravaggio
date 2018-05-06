@@ -17,10 +17,7 @@
     "public": true,
     "type": "npm"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/ramiel/caravaggio.git"
-  },
+  "repository": "gitlab:ramiel/caravaggio",
   "keywords": [
     "image",
     "proxy",
