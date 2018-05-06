@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.2
+
+- Various documentation fixes
+- Update dependencies
+
 ## 2.2.1
 
 - Minor fixes
