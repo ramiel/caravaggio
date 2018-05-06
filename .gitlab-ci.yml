@@ -29,7 +29,9 @@ npm:
 
 dockerhub:
   stage: deploy
-  image: gitlab/dind
+  image: docker:latest
+  services:
+      - docker:dind
   only:
     - tags
   script:
@@ -42,6 +44,7 @@ dockerhub:
     - docker images
     - docker push ramielcreations/caravaggio:$VERSION
     - docker push ramielcreations/caravaggio:latest
+
 
 # Gitlab Pages
 pages:
