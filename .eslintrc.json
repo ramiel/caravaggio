@@ -2,6 +2,9 @@
     "root": true,
     "extends": "airbnb-base",
     "rules": {
-        "no-nested-ternary": 0
+        "no-nested-ternary": 0,
+        "no-multiple-empty-lines": ["error",
+            { "max": 2, "maxEOF": 1 }
+        ]
     }
 }
