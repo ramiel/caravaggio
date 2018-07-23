@@ -33,7 +33,7 @@
   "homepage": "https://ramiel.gitlab.io/caravaggio/",
   "dependencies": {
     "config": "^1.30.0",
-    "fs-extra": "^6.0.0",
+    "fs-extra": "7.0.0",
     "md5": "^2.2.1",
     "micro": "^9.3.0",
     "micro-redirect": "^1.0.0",
