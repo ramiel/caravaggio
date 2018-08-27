@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.0
+
+- Dependencies security updates
+
+
 ## 2.2.2
 
 - Various documentation fixes
