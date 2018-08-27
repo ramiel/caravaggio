@@ -41,7 +41,7 @@
     "node-fetch": "^2.1.2",
     "pino": "^4.16.1",
     "sharp": "^0.20.2",
-    "yargs": "^11.0.0"
+    "yargs": "12.0.1"
   },
   "devDependencies": {
     "eslint": "5.2.0",
@@ -75,6 +75,10 @@
     ]
   },
   "pkg": {
-    "assets": "config/**/*"
+    "assets": [
+      "config/**/*",
+      "static/**/*",
+      "node_modules/config/**/*.*"
+    ]
   }
 }
