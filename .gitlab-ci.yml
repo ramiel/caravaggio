@@ -4,7 +4,7 @@ test:
   script:
    - npm i
    - npm run test
-  coverage: /All files\s*\|\s*([\d\.]+)/
+  coverage: /^Statements\s*:\s*([^%]+)/
 
 codequality:
   image: docker:latest
