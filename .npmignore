@@ -4,6 +4,5 @@ test/
 coverage/
 .serverless/
 __mocks__/
-bin/
 ignoreme.*
 caravaggio

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.2
+
+- Fix a deploy issue
+
 ## 2.3.0
 
 - Dependencies security updates
