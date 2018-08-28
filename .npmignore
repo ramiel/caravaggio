@@ -5,4 +5,4 @@ coverage/
 .serverless/
 __mocks__/
 ignoreme.*
-caravaggio
+/caravaggio
