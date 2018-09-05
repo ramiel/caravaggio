@@ -7,6 +7,8 @@
 
 A blazing fast ⚡ image manipulation service.
 
+Read the complete documentation at [ramiel.gitlab.io/caravaggio](https://ramiel.gitlab.io/caravaggio)
+
 ## Note
 
 From version `2.x` this project is ready for production. If you have still version 1.x, upgrade please. There is no migration guide since
