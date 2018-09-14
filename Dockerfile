@@ -1,4 +1,4 @@
-FROM node:8-alpine AS build
+FROM node:10-alpine AS build
 
 LABEL maintainer="Fabrizio Ruggeri"
 
@@ -23,7 +23,7 @@ RUN npm install --production
 
 COPY . /caravaggio
 
-RUN pkg -t node8-alpine-x64 .
+RUN pkg -t node10-alpine-x64 .
 
 RUN ls -l /caravaggio/node_modules/sharp/
 

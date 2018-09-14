@@ -1,8 +1,8 @@
-image: node:8
+image: node:10
 
 test:
   script:
-   - npm i
+   - npm ci
    - npm run test
   coverage: /^Statements\s*:\s*([^%]+)/
 
