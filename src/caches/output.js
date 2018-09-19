@@ -6,7 +6,7 @@ module.exports = (config) => {
   let persistor;
 
   try {
-    persistor = PersistorFactory.create(config.get('caches.input'));
+    persistor = PersistorFactory.create(config.get('caches.output'));
   } catch (e) {
     throw e;
   }
