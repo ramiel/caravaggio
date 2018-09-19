@@ -23,29 +23,27 @@ const increaseSize = (length) => {
 };
 
 module.exports = ({ limit } = { limit: 100 }) => ({
-  flush: () => {
+  flush: async () => {
     persisted.files = {};
     persisted.size = 0;
-    return Promise.resolve();
   },
 
-  exists: filename => Promise.resolve(!!persisted.files[filename]),
+  exists: async filename => !!persisted.files[filename],
 
-  read: filename => Promise.resolve(persisted.files[filename]
+  read: async filename => (persisted.files[filename]
     ? {
       type: 'buffer',
       buffer: persisted.files[filename],
     }
     : null),
 
-
-  save: (filename, buffer) => {
+  save: async (filename, buffer) => {
     persisted.files[filename] = buffer;
     increaseSize(buffer.length);
     checkMemory(limit, filename);
-    return Promise.resolve({
+    return {
       type: 'buffer',
       buffer,
-    });
+    };
   },
 });

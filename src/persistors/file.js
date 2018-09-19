@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const os = require('os');
 const path = require('path');
+const logger = require('../logger');
 
 const DEFAULT_TEMP_DIR = os.tmpdir();
 
@@ -29,12 +30,17 @@ module.exports = ({ basePath = DEFAULT_TEMP_DIR } = { basePath: DEFAULT_TEMP_DIR
         throw err;
       }),
 
-    save: (filename, buffer) => fs
-      .outputFile(getCompleteFilename(filename), buffer, { encoding: null })
-      .then(() => ({
+    save: async (filename, buffer) => {
+      const completeFilename = getCompleteFilename(filename);
+      fs.outputFile(completeFilename, buffer, { encoding: null })
+        .catch((e) => {
+          logger.error(e, `File persistor failed to save file ${completeFilename}`);
+        });
+      return {
         type: 'buffer',
         buffer,
-      })),
+      };
+    },
 
   };
 };

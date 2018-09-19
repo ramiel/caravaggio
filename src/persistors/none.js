@@ -1,9 +1,9 @@
 module.exports = () => ({
-  exists: Promise.resolve(false),
+  exists: async () => false,
 
-  read: () => Promise.resolve(null),
+  read: async () => null,
 
-  save: (filename, buffer) => Promise.resolve({
+  save: async (filename, buffer) => ({
     type: 'buffer',
     buffer,
   }),
