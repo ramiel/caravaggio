@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.5
+
+- Caches are faster. Now the policy is to return the cached value before saving if possible
+- Fixed a bug which prevent running verbose mode in production
+
+
 ## 2.3.4
 
 - Fix: output cache configuration is correctly read
