@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.4
+
+- Fix: output cache configuration is correctly read
+
 ## 2.3.3
 
 - Fix a deploy issue
