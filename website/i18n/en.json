@@ -4,34 +4,112 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "A blazing fast image manipulation service",
-    "blur": "Blur",
-    "Blur": "Blur",
-    "configuration": "Configuration",
-    "Configuration": "Configuration",
-    "docs": "What is caravaggio",
-    "What is caravaggio": "What is caravaggio",
-    "extract": "Extract",
-    "Extract": "Extract",
-    "flip": "Flip",
-    "Flip": "Flip",
-    "general-usage": "Using Caravaggio",
-    "General": "General",
-    "installation": "Install",
-    "Install": "Install",
-    "output": "Output",
-    "Output": "Output",
-    "progressive": "Progressive images",
-    "Progressive": "Progressive",
-    "quality": "Quality",
-    "Quality": "Quality",
-    "resize": "Resize",
-    "Resize": "Resize",
-    "rotate": "Rotate",
-    "Rotate": "Rotate",
-    "Docs": "Docs",
-    "GitLab": "GitLab",
-    "Getting started": "Getting started",
-    "Usage": "Usage"
+    "docs": {
+      "blur": {
+        "title": "Blur",
+        "sidebar_label": "Blur"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "sidebar_label": "Configuration"
+      },
+      "extract": {
+        "title": "Extract",
+        "sidebar_label": "Extract"
+      },
+      "flip": {
+        "title": "Flip",
+        "sidebar_label": "Flip"
+      },
+      "general-usage": {
+        "title": "Using Caravaggio",
+        "sidebar_label": "General"
+      },
+      "install": {
+        "title": "Install",
+        "sidebar_label": "Install"
+      },
+      "output": {
+        "title": "Output",
+        "sidebar_label": "Output"
+      },
+      "progressive": {
+        "title": "Progressive images",
+        "sidebar_label": "Progressive"
+      },
+      "quality": {
+        "title": "Quality",
+        "sidebar_label": "Quality"
+      },
+      "resize": {
+        "title": "Resize",
+        "sidebar_label": "Resize"
+      },
+      "rotate": {
+        "title": "Rotate",
+        "sidebar_label": "Rotate"
+      },
+      "whatis": {
+        "title": "What is caravaggio",
+        "sidebar_label": "What is caravaggio"
+      },
+      "version-2.3.5-blur": {
+        "title": "Blur",
+        "sidebar_label": "Blur"
+      },
+      "version-2.3.5-configuration": {
+        "title": "Configuration",
+        "sidebar_label": "Configuration"
+      },
+      "version-2.3.5-extract": {
+        "title": "Extract",
+        "sidebar_label": "Extract"
+      },
+      "version-2.3.5-flip": {
+        "title": "Flip",
+        "sidebar_label": "Flip"
+      },
+      "version-2.3.5-general-usage": {
+        "title": "Using Caravaggio",
+        "sidebar_label": "General"
+      },
+      "version-2.3.5-install": {
+        "title": "Install",
+        "sidebar_label": "Install"
+      },
+      "version-2.3.5-output": {
+        "title": "Output",
+        "sidebar_label": "Output"
+      },
+      "version-2.3.5-progressive": {
+        "title": "Progressive images",
+        "sidebar_label": "Progressive"
+      },
+      "version-2.3.5-quality": {
+        "title": "Quality",
+        "sidebar_label": "Quality"
+      },
+      "version-2.3.5-resize": {
+        "title": "Resize",
+        "sidebar_label": "Resize"
+      },
+      "version-2.3.5-rotate": {
+        "title": "Rotate",
+        "sidebar_label": "Rotate"
+      },
+      "version-2.3.5-whatis": {
+        "title": "What is caravaggio",
+        "sidebar_label": "What is caravaggio"
+      }
+    },
+    "links": {
+      "Docs": "Docs",
+      "GitLab": "GitLab"
+    },
+    "categories": {
+      "Getting started": "Getting started",
+      "Usage": "Usage"
+    }
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

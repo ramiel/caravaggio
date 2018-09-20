@@ -1,8 +1,8 @@
 {
   "docs": {
     "Getting started": [
-      "docs",
-      "installation",
+      "whatis",
+      "install",
       "configuration"
     ],
     "Usage": [

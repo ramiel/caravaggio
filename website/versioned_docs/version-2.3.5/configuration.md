@@ -1,7 +1,8 @@
 ---
-id: configuration
+id: version-2.3.5-configuration
 title: Configuration
 sidebar_label: Configuration
+original_id: configuration
 ---
 
 Caravaggio try to meet the most common needs, so when you start it you already have a fully working system. Nonetheless Caravaggio is highly customizable.

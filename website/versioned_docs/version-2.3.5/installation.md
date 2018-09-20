@@ -1,7 +1,8 @@
 ---
-id: install
+id: version-2.3.5-install
 title: Install
 sidebar_label: Install
+original_id: install
 ---
 
 Caravaggio can be installed in different ways, through docker or with npm. Depending on your needs you find here your way.

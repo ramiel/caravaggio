@@ -9,7 +9,11 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 /* List of projects/orgs using your project for the users page */
 const users = [
-  
+  // {
+  //   infoLink: 'https://hypersay.com',
+  //   image: 'https://s3-eu-west-1.amazonaws.com/hypersay-static/0.14.1/lib/images/home-hypersay-brand.svg',
+  //   caption: 'Hypersay'
+  // }
 ];
 
 const siteConfig = {
@@ -23,7 +27,7 @@ const siteConfig = {
     indexName: "caravaggio"
   },
   headerLinks: [
-    { doc: 'docs', label: 'Docs' },
+    { doc: 'whatis', label: 'Docs' },
     { href: "https://gitlab.com/ramiel/caravaggio", label: "GitLab"},
     { search: true },
     // {page: 'help', label: 'Help'},

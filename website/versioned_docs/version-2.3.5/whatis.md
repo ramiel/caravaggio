@@ -1,7 +1,8 @@
 ---
-id: docs
+id: version-2.3.5-whatis
 title: What is caravaggio
 sidebar_label: What is caravaggio
+original_id: whatis
 ---
 
 Caravaggio is a fast image proxy written in node.js.    
