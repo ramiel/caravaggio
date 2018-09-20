@@ -9,3 +9,4 @@ coverage/
 __mocks__/
 test/
 Dockerfile
+website/
