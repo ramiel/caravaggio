@@ -1,7 +1,7 @@
 const cohercer = require('../../cohercer');
 
-const GRAVITY_PARAM_REGEX = /^g?(c|n|ne|nw|e|w|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest)$/;
-const EXTENDED_GRAVITY_PARAM_REGEX = /^g?(c|n|ne|nw|e|w|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest|auto)$/;
+const GRAVITY_PARAM_REGEX = /^g?(c|n|ne|nw|e|w|s|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest)$/;
+const EXTENDED_GRAVITY_PARAM_REGEX = /^g?(c|n|ne|nw|e|w|s|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest|auto)$/;
 const GRAVITY_VALUES = {
   c: 'center',
   n: 'north',

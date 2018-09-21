@@ -10,6 +10,7 @@ module.exports = (/* pipeline */) => async (width, height, ...params) => {
     const rawColor = params.find(p => p.indexOf('b') === 0);
     const rawGravity = params.find(p => p.indexOf('g') === 0);
     color = (rawColor && getColorFromParameter(rawColor.slice(1))) || color;
+    console.log(rawGravity.slice(1));
     gravity = rawGravity && getGravityFromParameter(rawGravity.slice(1));
   }
   const operations = [
