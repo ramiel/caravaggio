@@ -10,10 +10,10 @@ Extract let you select an arbitrary portion of the input image specifying the co
 The parameters are, in the order, `x`, `y`, `width` and `height`.
 
 **Original**
-<a href="assets/example/cakes_original.jpeg" target="_blank"><img src="assets/example/cakes_original.jpeg" /></a>
+![A kitchen, somebody prepares a cake](assets/example/cakes_original.jpeg)
 
 <pre><code class="hljs css html" data-preview data-previewimage="https://ramiel.gitlab.io/caravaggio/docs/assets/example/cakes_original.jpeg">http://caravaggio.host/<strong>ex_95_35_100_100</strong>/https://goo.gl/wcnQSx</code></pre>
 
-<a href="assets/example/cakes_extracted.jpeg" target="_blank"><img src="assets/example/cakes_extracted.jpeg" /></a>
+![Same kitchen, only the cake is shown](assets/example/cakes_extracted.jpeg)
 
 Both dimension and coordinates can be specified as pixel or percentage. See [sizes](resize.html#sizes) documentation.

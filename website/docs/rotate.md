@@ -10,7 +10,7 @@ Any angle multiple of `90°` is accepted.
 <pre><code class="hljs css html" data-preview>https://caravaggio.host/<strong>rotate_270</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **Original**     
-<img width="320" height="240" src="assets/example/girls.jpeg" />
+![Two girls](assets/example/girls_small.jpeg)
 
 **Result**     
-<img width="180" height="320" src="assets/example/rotate.jpeg" />
+![Two girls](assets/example/rotate.jpeg)

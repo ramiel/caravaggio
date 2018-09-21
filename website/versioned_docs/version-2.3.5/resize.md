@@ -36,10 +36,10 @@ Scale the image to 200x300 px width ignoring the aspect ratio.
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_200x300_scale_iar</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **Original**     
-<img width="320" height="240" src="assets/example/girls.jpeg" />
+![Two girls](assets/example/girls.jpeg)
 
 **Resized**   
-<img width="160" height="120" src="assets/example/girls.jpeg" />
+![Smaller image of two girls](assets/example/girls_small.jpeg)
 
 ### Fit
 
@@ -48,7 +48,8 @@ For example this will resize the image up to 300x300 pixels and all the image wi
 
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fit</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<a href="assets/example/girls_300x300_fit.jpeg" target="_blank"><img src="assets/example/girls_300x300_fit.jpeg" /></a>
+![Two girls, the image is fitted](assets/example/girls_300x300_fit.jpeg)
+
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
@@ -77,25 +78,25 @@ In this example we fill the image in a 300x300 px space, with gravity on the cen
 
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fill</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<a href="assets/example/girls_300x300_fill_center.jpeg" target="_blank"><img src="assets/example/girls_300x300_fill_center.jpeg" /></a>
+![Two girls, image is filled. Gravity is on the center](assets/example/girls_300x300_fill_center.jpeg)
 
 Here instead we change the gravity to north-east
 
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fill_ne</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<a href="assets/example/girls_300x300_fill_ne.jpeg" target="_blank"><img src="assets/example/girls_300x300_fill_ne.jpeg" /></a>
+![Two girls, image is filled with north east gravity](assets/example/girls_300x300_fill_ne.jpeg)
 
 <span id="auto"></span>`Fill` also accept a special gravity parameter: **`auto`**. This let you automatically select a meaningfull region of the image.    
 Here an example
 
 Original    
-<a href="assets/example/fill_original.png" target="_blank"><img src="assets/example/fill_original.png" /></a>
+![One girl. She is on the left side of the picture. The rest of the image has no particulars](assets/example/fill_original.png)
 
 Gravity on center (**rs_200x300_fill_center**)  
-<a href="assets/example/fill_center.png" target="_blank"><img src="assets/example/fill_center.png" /></a>
+![One girl, filled with gravity on the center](assets/example/fill_center.png)
 
 Gravity auto (**rs_200x300_fill_auto**)  
-<a href="assets/example/fill_auto.png" target="_blank"><img src="assets/example/fill_auto.png" /></a>
+![One girl, filled auto, the girl is now centered in the image](assets/example/fill_auto.png)
 
 
 ### Down fill
@@ -114,12 +115,12 @@ A [gravity](#gravity) can be specified to decide how to embed the image. Both `g
 
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<a href="assets/example/girls_embed.jpeg" target="_blank"><img src="assets/example/girls_embed.jpeg" /></a>
+![Two girls. The picture is embedded and the remaining space is black](assets/example/girls_embed.jpeg)
 
 You can specify the color in RGB (red: 105, green: 72, blue: 200). Each number must have 3 digits, you have to pad them (so 72 must be written as 072).
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_b105072200</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<a href="assets/example/girls_embed_color.jpeg" target="_blank"><img src="assets/example/girls_embed_color.jpeg" /></a>
+![Two girls. The picture is embedded and the remaining space is purple](assets/example/girls_embed_color.jpeg)
 
 The color can be specified in RGBA. To add the alpha channel value append `.n` at the end. To have full transparency put `.0`, to have full opacity put nothing, just the color.    
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_b105072200.5</strong>/https://goo.gl/EXv4MP</code></pre>
@@ -130,7 +131,7 @@ The color can be specified in hexadecimal code (6 digit). Alpha can be specified
 You can spcify the gravity     
 <pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_bFF5400_gnorth</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<a href="assets/example/girls_embed_gravity.jpeg" target="_blank"><img src="assets/example/girls_embed_gravity.jpeg" /></a>
+![Two girls. The picture is embedded with gravity on north](assets/example/girls_embed_gravity.jpeg)
 
 ## Sizes
 

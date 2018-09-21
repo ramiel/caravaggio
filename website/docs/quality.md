@@ -9,7 +9,7 @@ This parameter define the quality of the output image. It's a value between `0` 
 <pre><code class="hljs css html" data-preview>https://caravaggio.host/<strong>q_10</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **Original**     
-<img width="320" height="240" src="assets/example/girls.jpeg" />
+![Image of two girls](assets/example/girls_small.jpeg)
 
 **Result**     
-<img width="320" height="240" src="assets/example/q10.jpeg" />
+![Image of two girls at low quality](assets/example/q10.jpeg)
