@@ -6,7 +6,7 @@ sidebar_label: General
 
 Caravaggio accept the input image to transform and the transformation to apply.
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>q_90,o_webp</strong>/https://image.com/landscape.png</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rotate_90,o_webp</strong>/https://image.com/landscape.png</code></pre>
 
 In this case the image reachable at `https://image.com/landscape.png` will be rotated of **`90° clockwise`** and the result will be in the **`webp`** format.
 

@@ -6,3 +6,4 @@ coverage/
 __mocks__/
 ignoreme.*
 /caravaggio
+.gitlab-ci.yml

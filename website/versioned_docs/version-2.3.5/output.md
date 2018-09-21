@@ -13,8 +13,8 @@ supports the image formats you need. See the <a href="http://sharp.pixelplumbing
 
 ## Example
 
-<pre><code class="hljs css html">https://caravaggio.host/<strong>o_jpeg</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.host/<strong>o_jpeg</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<pre><code class="hljs css html">https://caravaggio.host/<strong>o_webp</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.host/<strong>o_webp</strong>/https://goo.gl/EXv4MP</code></pre>
 
 If you specify nothing or you enter `o_original`, the same format as the input image will be returned.

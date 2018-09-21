@@ -16,12 +16,15 @@ const users = [
   // }
 ];
 
+const BASE_URL = '/caravaggio/';
+
 const siteConfig = {
   title: 'Caravaggio' /* title for your website */,
   tagline: 'A blazing fast image manipulation service',
   url: 'https://ramiel.gitlab.io' /* your website url */,
-  baseUrl: '/caravaggio/' /* base url for your project */,
+  baseUrl: BASE_URL /* base url for your project */,
   projectName: 'caravaggio',
+  cleanUrl: true,
   algolia: {
     apiKey: "b1085f3ee8af3859485e41ac71d93f8b",
     indexName: "caravaggio"
@@ -59,7 +62,11 @@ const siteConfig = {
   repoUrl: 'https://gitlab.com/ramiel/caravaggio',
   customDocsPath: 'website/docs',
   gaTrackingId: isDevelopment ? null : 'UA-42285704-3',
-  gaGtag: true
+  gaGtag: true,
+  enableUpdateTime: false,
+  scripts: [
+    `${BASE_URL}js/script.js`,
+  ],
 };
 
 module.exports = siteConfig;

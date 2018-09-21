@@ -25,27 +25,27 @@ In scale mode the image will have the dimension of the size you specified. The a
 Since `scale` is the default resize mode, you can avoid specifiying it.
 
 Scale the image to 200x300 px keeping the aspect ratio    
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_200x300</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_200x300</strong>/https://goo.gl/EXv4MP</code></pre>
 
 Scale the image to 200 px width keeping the aspect ratio. The height is calculated automatically    
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_200</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_200</strong>/https://goo.gl/EXv4MP</code></pre>
 
 
 Scale the image to 200x300 px width ignoring the aspect ratio.    
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_200x300_scale_iar</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_200x300_scale_iar</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **Original**     
-<img width="320" height="240" src="assets/example/girls.jpeg" />
+<img width="384" height="216" src="assets/example/girls.jpeg" />
 
 **Resized**   
-<img width="160" height="120" src="assets/example/girls.jpeg" />
+<img width="192" height="158" src="assets/example/girls.jpeg" />
 
 ### Fit
 
 The image will take the maximum available space up to the specified size, keeping the aspect ratio.    
 For example this will resize the image up to 300x300 pixels and all the image will be visible.
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_fit</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fit</strong>/https://goo.gl/EXv4MP</code></pre>
 
 <a href="assets/example/girls_300x300_fit.jpeg" target="_blank"><img src="assets/example/girls_300x300_fit.jpeg" /></a>
 
@@ -55,7 +55,7 @@ For example this will resize the image up to 300x300 pixels and all the image wi
 
 Like fit but only if the image is **larger** than the desired size (width _or_ height), otherwise it will be left untouched.
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_downfit</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_downfit</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
@@ -63,7 +63,7 @@ Like fit but only if the image is **larger** than the desired size (width _or_ h
 
 Like fit but only if the image is **smaller** than the desired size (__both__ the width and height must be smaller), otherwise it will be left untouched.
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_upfit</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_upfit</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
@@ -74,13 +74,13 @@ You can specify a [gravity](#gravity) to decide which part of the original image
 
 In this example we fill the image in a 300x300 px space, with gravity on the center
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_fill</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fill</strong>/https://goo.gl/EXv4MP</code></pre>
 
 <a href="assets/example/girls_300x300_fill_center.jpeg" target="_blank"><img src="assets/example/girls_300x300_fill_center.jpeg" /></a>
 
 Here instead we change the gravity to north-east
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_fill_ne</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fill_ne</strong>/https://goo.gl/EXv4MP</code></pre>
 
 <a href="assets/example/girls_300x300_fill_ne.jpeg" target="_blank"><img src="assets/example/girls_300x300_fill_ne.jpeg" /></a>
 
@@ -101,9 +101,9 @@ Gravity auto (**rs_200x300_fill_auto**)
 
 Same as fill but only if the image is larger than the target size (width _and_ height).
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_downfill</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_downfill</strong>/https://goo.gl/EXv4MP</code></pre>
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_300x300_downfill_west</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_downfill_west</strong>/https://goo.gl/EXv4MP</code></pre>
 
 ### Embed
 
@@ -111,23 +111,23 @@ This embeds the image in the specified dimensions. The entire image is taken and
 fit well in the dimension the output will be padded with a color of your choice (or black by default).
 A [gravity](#gravity) can be specified to decide how to embed the image. Both `gravity` and `background color` are optional
 
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_320x240_embed</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed</strong>/https://goo.gl/EXv4MP</code></pre>
 
 <a href="assets/example/girls_embed.jpeg" target="_blank"><img src="assets/example/girls_embed.jpeg" /></a>
 
 You can specify the color in RGB (red: 105, green: 72, blue: 200). Each number must have 3 digits, you have to pad them (so 72 must be written as 072).
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_320x240_embed_b105072200</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_b105072200</strong>/https://goo.gl/EXv4MP</code></pre>
 
 <a href="assets/example/girls_embed_color.jpeg" target="_blank"><img src="assets/example/girls_embed_color.jpeg" /></a>
 
 The color can be specified in RGBA. To add the alpha channel value append `.n` at the end. To have full transparency put `.0`, to have full opacity put nothing, just the color.    
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_320x240_embed_b105072200.5</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_b105072200.5</strong>/https://goo.gl/EXv4MP</code></pre>
 
 The color can be specified in hexadecimal code (6 digit). Alpha can be specified as well
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_320x240_embed_bFF5400.5</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_bFF5400.5</strong>/https://goo.gl/EXv4MP</code></pre>
 
 You can spcify the gravity     
-<pre><code class="hljs css html">http://caravaggio.host/<strong>rs_320x240_embed_bFF5400_gnorth</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_bFF5400_gnorth</strong>/https://goo.gl/EXv4MP</code></pre>
 
 <a href="assets/example/girls_embed_gravity.jpeg" target="_blank"><img src="assets/example/girls_embed_gravity.jpeg" /></a>
 
