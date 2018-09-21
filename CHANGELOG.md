@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.6
+
+- ✨📖 Documentation now has a useful "Try it" on each example!
+- Fix gravity issue: "s" is accepted as correct value
+
 ## 2.3.5
 
 - Caches are faster. Now the policy is to return the cached value before saving if possible
