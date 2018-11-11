@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.0
+
+- Add `overlay` option. Now you acn add watermarks to your images!
+
+
 ## 2.3.6
 
 - ✨📖 Documentation now has a useful "Try it" on each example!
