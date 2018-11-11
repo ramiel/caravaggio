@@ -5,11 +5,13 @@ LABEL maintainer="Fabrizio Ruggeri"
 RUN apk add \
         --update-cache \
         --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ \
+        --repository https://dl-3.alpinelinux.org/alpine/edge/main/ \
         vips-dev \
         binutils \
         fftw-dev \
         make \
-        g++\
+        g++ \
+        python \ 
     && rm -rf /var/cache/apk/*
 
 RUN npm i -g pkg
@@ -19,7 +21,6 @@ WORKDIR /caravaggio
 COPY package.json package-lock.json /caravaggio/
 
 RUN npm install --production
-
 
 COPY . /caravaggio
 
