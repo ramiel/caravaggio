@@ -11,6 +11,7 @@
       "progressive",
       "resize",
       "extract",
+      "overlay",
       "quality",
       "rotate",
       "flip",

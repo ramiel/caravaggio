@@ -1,3 +1,13 @@
+const jsonReplacer = (key, value) => {
+  if (Buffer.isBuffer(value)) {
+    return `<Buffer of ${value.length} bytes>`;
+  }
+  if (Array.isArray(value)) {
+    return value.map(v => jsonReplacer(null, v));
+  }
+  return value;
+};
+
 module.exports = {
   compose: (...fns) => fns.reduce((f, g) => (...args) => f(g(...args))),
 
@@ -11,5 +21,7 @@ module.exports = {
 
   isPercentage: percentage => `${percentage}`.indexOf('.') !== -1,
   percentageToPixel: (percentage, size) => Math.round(percentage * size),
+
+  stringifyParams: params => JSON.stringify(params, jsonReplacer, ''),
 };
 

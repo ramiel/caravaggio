@@ -33,6 +33,10 @@
         "title": "Output",
         "sidebar_label": "Output"
       },
+      "overlay": {
+        "title": "Overlay",
+        "sidebar_label": "Overlay (watermarks)"
+      },
       "progressive": {
         "title": "Progressive images",
         "sidebar_label": "Progressive"

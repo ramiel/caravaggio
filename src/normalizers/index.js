@@ -1,27 +1,29 @@
-const UnknownOperationError = require('../errors/UnknownOperationError');
 const blurNormalizer = require('./blur');
+const extractNormalizer = require('./extract');
 const flipNormalizer = require('./flip');
 const oNormalizer = require('./o');
+const overlayNormalizer = require('./overlay');
+const progressiveNormalizer = require('./progressive');
 const qNormalizer = require('./q');
 const resizeNormalizer = require('./resize');
-const extractNormalizer = require('./extract');
 const rotateNormalizer = require('./rotate');
-const progressiveNormalizer = require('./progressive');
+const UnknownOperationError = require('../errors/UnknownOperationError');
 
-const normalizers = {
-  blur: blurNormalizer,
-  flip: flipNormalizer,
-  o: oNormalizer,
-  q: qNormalizer,
-  rs: resizeNormalizer,
-  resize: resizeNormalizer,
-  ex: extractNormalizer,
-  extract: extractNormalizer,
-  rotate: rotateNormalizer,
-  progressive: progressiveNormalizer,
-};
 
 module.exports = (config) => {
+  const normalizers = {
+    blur: blurNormalizer,
+    ex: extractNormalizer,
+    extract: extractNormalizer,
+    flip: flipNormalizer,
+    o: oNormalizer,
+    overlay: overlayNormalizer(config),
+    progressive: progressiveNormalizer,
+    q: qNormalizer,
+    resize: resizeNormalizer,
+    rotate: rotateNormalizer,
+    rs: resizeNormalizer,
+  };
   const defaultTransformations = config.get('defaultTransformations');
 
   const findSameNameOperation = name => element => element[0] === name;

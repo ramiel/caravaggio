@@ -1,4 +1,5 @@
 const logger = require('../logger');
+const { stringifyParams } = require('../utils');
 
 const reducer = async (acc, { name, operation, params }) => acc.then(async (pipeline) => {
   if (operation instanceof Function) {
@@ -8,7 +9,7 @@ const reducer = async (acc, { name, operation, params }) => acc.then(async (pipe
   if (!pipeline.hasOperation(operation)) {
     throw new Error(`Invalid operation: ${name}:${operation}`);
   }
-  logger.debug(`Applying transformation "${name}:${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
+  logger.debug(`Applying transformation "${name}:${operation}" with parameters: ${stringifyParams(params)}`);
   return pipeline.applyOperation(operation, ...params);
 });
 

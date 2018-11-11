@@ -19,11 +19,11 @@ module.exports = (config) => {
       return `${filename}`;
     },
 
-    get: async (url, options) => {
+    get: async (url) => {
       const resource = await persistor.read(cache.getFileName(url));
       return resource && {
         ...resource,
-        name: cache.getFileName(url, options),
+        name: cache.getFileName(url),
       };
     },
 

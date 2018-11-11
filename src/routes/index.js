@@ -10,7 +10,7 @@ module.exports = (config) => {
 
   return cache => async (req, res) => {
     try {
-      const options = parseOptions(req.params._[0]);
+      const options = parseOptions(decodeURIComponent(req.params._[0]));
       const url = new URL(decodeURIComponent(req.params._[1]));
       const resource = await cache.get(url, options);
       if (resource) {
