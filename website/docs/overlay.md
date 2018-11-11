@@ -50,7 +50,7 @@ You can specify coordinates to position the overlay. In that case any gravity va
 
 The overlay can be repeated using `watermark` option.
 
-<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>overlay_"https%3A%2F%2Fgitlab.com%2Framiel%2Fcaravaggio%2Fraw%2F27-add-overlay-option%2Fwebsite%2Fstatic%2Fimg%2Foverlay.png%3Finline%3Dfalse"_watermark</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>overlay_"https%3A%2F%2Fgitlab.com%2Framiel%2Fcaravaggio%2Fraw%2Fmaster%2Fwebsite%2Fstatic%2Fimg%2Foverlay.png%3Finline%3Dfalse"_watermark</strong>/https://goo.gl/EXv4MP</code></pre>
 
 **Result**     
 ![Overlayed with](assets/example/overlay-watermark.jpeg)
