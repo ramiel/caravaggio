@@ -29,7 +29,7 @@ An image is provided
 
 `docker pull ramielcreations/caravaggio`
 
-Refer to the [page](https://store.docker.com/community/images/ramielcreations/caravaggio) on the docker store for its configuration
+Refer to the [page on the docker store](https://store.docker.com/community/images/ramielcreations/caravaggio) for its configuration
 
 
 ### Git
@@ -50,7 +50,7 @@ and can be used sending a set of options and an image:
 
 ## Available operations
 
-Please, refer to the [documentation](https://ramiel.gitlab.io/caravaggio/docs/docs.html) to know what are the available operations.
+Please, refer to the [documentation](https://ramiel.gitlab.io/caravaggio) to know what are the available operations.
 
 
 ## Thank you
