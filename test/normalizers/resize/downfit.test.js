@@ -14,17 +14,7 @@ describe('Downfit', () => {
       {
         name: 'resize_downfit',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'max',
-        params: [],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [300, 300, { fit: 'inside', withoutEnlargement: true }],
       },
     ]);
   });
@@ -37,17 +27,7 @@ describe('Downfit', () => {
       {
         name: 'resize_downfit',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'max',
-        params: [],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [300, 300, { fit: 'inside', withoutEnlargement: true }],
       },
     ]);
   });
@@ -60,17 +40,7 @@ describe('Downfit', () => {
       {
         name: 'resize_downfit',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'max',
-        params: [],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [300, 300, { fit: 'inside', withoutEnlargement: true }],
       },
     ]);
   });
@@ -83,17 +53,7 @@ describe('Downfit', () => {
       {
         name: 'resize_downfit',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'max',
-        params: [],
-      },
-      {
-        name: 'resize_downfit',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [300, 300, { fit: 'inside', withoutEnlargement: true }],
       },
     ]);
   });

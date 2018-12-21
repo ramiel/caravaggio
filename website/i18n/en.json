@@ -104,6 +104,10 @@
       "version-2.3.5-whatis": {
         "title": "What is caravaggio",
         "sidebar_label": "What is caravaggio"
+      },
+      "version-2.4.0-overlay": {
+        "title": "Overlay",
+        "sidebar_label": "Overlay (watermarks)"
       }
     },
     "links": {

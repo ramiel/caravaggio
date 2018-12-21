@@ -61,11 +61,7 @@ describe('Resize', () => {
     expect(result).toEqual([{
       name: 'resize',
       operation: 'resize',
-      params: [200, null],
-    }, {
-      name: 'resize',
-      operation: 'ignoreAspectRatio',
-      params: [],
+      params: [200, null, { fit: 'fill' }],
     }]);
   });
 

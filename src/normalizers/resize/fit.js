@@ -3,12 +3,7 @@ module.exports = (/* pipeline */) => async (width, height/* , modeParams */) => 
     {
       name: 'resize_fit',
       operation: 'resize',
-      params: [width, height],
-    },
-    {
-      name: 'resize_fit',
-      operation: 'max',
-      params: [],
+      params: [width, height, { fit: 'inside' }],
     },
   ];
 

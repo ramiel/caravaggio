@@ -5,12 +5,7 @@ module.exports = pipeline => async (width, height/* , ...modeParams */) => {
       {
         name: 'resize_upfit',
         operation: 'resize',
-        params: [width, height],
-      },
-      {
-        name: 'resize_upfit',
-        operation: 'max',
-        params: [],
+        params: [width, height, { fit: 'inside' }],
       },
     ];
   }

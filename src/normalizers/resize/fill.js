@@ -7,12 +7,7 @@ module.exports = (/* pipeline */) => async (width, height, gravity) => {
     {
       name: 'resize_fill',
       operation: 'resize',
-      params: [width, height],
-    },
-    {
-      name: 'resize_fill',
-      operation: 'crop',
-      params: gravityValue ? [gravityValue] : [],
+      params: [width, height, { fit: 'cover', position: gravityValue }],
     },
   ];
 

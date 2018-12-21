@@ -11,12 +11,7 @@ describe('Fill', () => {
       {
         name: 'resize_fill',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_fill',
-        operation: 'crop',
-        params: [],
+        params: [300, 300, { fit: 'cover' }],
       },
     ]);
   });
@@ -27,12 +22,7 @@ describe('Fill', () => {
       {
         name: 'resize_fill',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_fill',
-        operation: 'crop',
-        params: ['east'],
+        params: [300, 300, { fit: 'cover', position: 'east' }],
       },
     ]);
   });
@@ -43,12 +33,7 @@ describe('Fill', () => {
       {
         name: 'resize_fill',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_fill',
-        operation: 'crop',
-        params: ['attention'],
+        params: [300, 300, { fit: 'cover', position: 'attention' }],
       },
     ]);
   });

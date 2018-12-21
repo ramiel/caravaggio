@@ -15,17 +15,7 @@ describe('Down fill', () => {
       {
         name: 'resize_downfill',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'crop',
-        params: [],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [300, 300, { withoutEnlargement: true }],
       },
     ]);
   });
@@ -36,17 +26,7 @@ describe('Down fill', () => {
       {
         name: 'resize_downfill',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'crop',
-        params: ['east'],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [300, 300, { position: 'east', withoutEnlargement: true }],
       },
     ]);
   });
@@ -58,17 +38,7 @@ describe('Down fill', () => {
       {
         name: 'resize_downfill',
         operation: 'resize',
-        params: [800, 800],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'crop',
-        params: ['east'],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [800, 800, { position: 'east', withoutEnlargement: true }],
       },
     ]);
   });
@@ -83,17 +53,7 @@ describe('Down fill', () => {
       {
         name: 'resize_downfill',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'crop',
-        params: ['attention'],
-      },
-      {
-        name: 'resize_downfill',
-        operation: 'withoutEnlargement',
-        params: [],
+        params: [300, 300, { position: 'attention', withoutEnlargement: true }],
       },
     ]);
   });

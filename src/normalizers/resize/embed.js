@@ -16,17 +16,7 @@ module.exports = (/* pipeline */) => async (width, height, ...params) => {
     {
       name: 'resize_embed',
       operation: 'resize',
-      params: [width, height],
-    },
-    {
-      name: 'resize_embed',
-      operation: 'background',
-      params: [color],
-    },
-    {
-      name: 'resize_embed',
-      operation: 'embed',
-      params: gravity ? [gravity] : [],
+      params: [width, height, { fit: 'contain', position: gravity, background: color }],
     },
   ];
 

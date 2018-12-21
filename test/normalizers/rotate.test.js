@@ -37,12 +37,52 @@ describe('Rotate', () => {
     }));
   });
 
-  test('throw if the angle is not a number', () => {
-    expect(() => rotate('abc')).toThrow();
+  test('Accept a custom angle', () => {
+    expect(rotate('42')).toEqual(expect.objectContaining({
+      transformations: [
+        {
+          name: 'rotate',
+          operation: 'rotate',
+          params: [42],
+        },
+      ],
+    }));
   });
 
-  test('throw if the angle is not a multiple of 90°', () => {
-    expect(() => rotate('40')).toThrow();
+  test('Accept a background color', () => {
+    expect(rotate('42', 'ff00ff')).toEqual(expect.objectContaining({
+      transformations: [
+        {
+          name: 'rotate',
+          operation: 'rotate',
+          params: [42, {
+            background: {
+              r: 255, g: 0, b: 255, alpha: 1,
+            },
+          }],
+        },
+      ],
+    }));
+  });
+
+  test('Accept a background color with alpha', () => {
+    expect(rotate('42', 'ff00ff.9')).toEqual(expect.objectContaining({
+      transformations: [
+        {
+          name: 'rotate',
+          operation: 'rotate',
+          params: [42, {
+            background: {
+              r: 255, g: 0, b: 255, alpha: 0.9,
+            },
+          }],
+        },
+      ],
+    }));
+  });
+
+  test('throw if the angle is not a number', () => {
+    expect(() => rotate('abc')).toThrow();
   });
 });
 

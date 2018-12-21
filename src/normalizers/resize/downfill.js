@@ -7,17 +7,7 @@ module.exports = (/* pipeline */) => async (width, height, gravity) => {
     {
       name: 'resize_downfill',
       operation: 'resize',
-      params: [width, height],
-    },
-    {
-      name: 'resize_downfill',
-      operation: 'crop',
-      params: gravityValue ? [gravityValue] : [],
-    },
-    {
-      name: 'resize_downfill',
-      operation: 'withoutEnlargement',
-      params: [],
+      params: [width, height, { position: gravityValue, withoutEnlargement: true }],
     },
   ];
 

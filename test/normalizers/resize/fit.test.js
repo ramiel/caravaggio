@@ -9,12 +9,7 @@ describe('Fit', () => {
       {
         name: 'resize_fit',
         operation: 'resize',
-        params: [300, 300],
-      },
-      {
-        name: 'resize_fit',
-        operation: 'max',
-        params: [],
+        params: [300, 300, { fit: 'inside' }],
       },
     ]);
   });

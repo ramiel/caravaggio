@@ -1,17 +1,25 @@
 const cohercer = require('../cohercer');
+const { getColorFromParameter } = require('./resize/color');
 
-module.exports = (value) => {
-  const angle = cohercer(value, 'Angle must be multiple of 90°.', 'rotate.html')
+module.exports = (value, rawColor) => {
+  const angle = cohercer(value, 'Angle must be a number', 'rotate.html')
     .toInt()
-    .multipleOf(90)
     .value();
+
+  const params = [angle];
+  let background;
+  if (rawColor) {
+    background = (rawColor && getColorFromParameter(rawColor));
+    params.push({ background });
+  }
+
 
   return {
     transformations: [
       {
         name: 'rotate',
         operation: 'rotate',
-        params: [angle],
+        params,
       },
     ],
   };

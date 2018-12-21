@@ -1,21 +1,15 @@
 module.exports = (/* pipeline */) => async (width, height, modeParams) => {
+  const params = [width, height];
+  if (modeParams === 'iar') {
+    params.push({ fit: 'fill' });
+  }
   const operations = [
     {
       name: 'resize',
       operation: 'resize',
-      params: [
-        width,
-        height,
-      ],
+      params,
     },
   ];
-  if (modeParams === 'iar') {
-    operations.push({
-      name: 'resize',
-      operation: 'ignoreAspectRatio',
-      params: [],
-    });
-  }
   return operations;
 };
 
