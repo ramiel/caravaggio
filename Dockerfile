@@ -4,8 +4,8 @@ LABEL maintainer="Fabrizio Ruggeri"
 
 RUN apk add \
         --update-cache \
-        --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ \
-        --repository https://dl-3.alpinelinux.org/alpine/edge/main/ \
+        --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
+        --repository http://dl-3.alpinelinux.org/alpine/edge/main/ \
         vips-dev \
         binutils \
         fftw-dev \
@@ -41,7 +41,7 @@ RUN apk update \
     && apk add --no-cache libstdc++ libgcc \
     && apk add \
     --update-cache \
-    --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ \
+    --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
     vips \
     && rm -rf /var/cache/apk/*
 
