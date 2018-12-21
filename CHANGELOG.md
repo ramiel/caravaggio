@@ -1,8 +1,13 @@
 # Changelog
 
+## 2.5.0
+
+- Allow rotations of any angle 
+- Update sharp to version 0.21.1
+
 ## 2.4.0
 
-- Add `overlay` option. Now you acn add watermarks to your images!
+- Add `overlay` option. Now you can add watermarks to your images!
 
 
 ## 2.3.6
