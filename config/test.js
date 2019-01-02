@@ -4,5 +4,18 @@ module.exports = {
   },
   defaultTransformations: [],
   errors: 'plain',
+  compress: false,
+
+  caches: {
+    output: {
+      type: 'none',
+      options: {},
+
+    },
+    input: {
+      type: 'memory',
+      options: {},
+    },
+  },
 };
 
