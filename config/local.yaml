@@ -1,0 +1,8 @@
+# pluginPaths:
+#   - /home/fabrizio/Modelli/Projects
+# plugins:
+#   caravaggio-plugin-tokenauth:
+#     disabled: false
+#     options:
+#       tokens:
+#         - secrettoken

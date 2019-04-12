@@ -6,18 +6,23 @@ test:
    - npm run test
   coverage: /^Statements\s*:\s*([^%]+)/
 
-codequality:
-  image: docker:latest
+code_quality:
+  image: docker:stable
   variables:
-    DOCKER_DRIVER: overlay
+    DOCKER_DRIVER: overlay2
   allow_failure: true
   services:
-    - docker:dind
+    - docker:stable-dind
   script:
-    - docker pull codeclimate/codeclimate
-    - docker run --env CODECLIMATE_CODE="$PWD" --volume "$PWD":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate analyze -e nodesecurity -f json > codeclimate.json || true
+    - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
+    - docker run
+        --env SOURCE_CODE="$PWD"
+        --volume "$PWD":/code
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
   artifacts:
-    paths: [codeclimate.json]
+    reports:
+      codequality: gl-code-quality-report.json
 
 npm:
   stage: deploy

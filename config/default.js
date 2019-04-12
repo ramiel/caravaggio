@@ -160,5 +160,31 @@ module.exports = {
    * By default is false because usually this behavior is delegated to CDNs
    */
   compress: false,
+
+  /**
+   * Plugin section
+   */
+
+  // pluginsDisabled: false, // disable all the plugins
+
+  // Location where tolook for plugins
+  // pluginPaths: ['/path/to/plugin/folder'],
+
+  // Plugins can be specified here
+  plugins: {
+    /**
+     * Example plugin.
+     * This plugin checks authentication based on token passed through `token` query parameter
+     * It's an example after all :)
+     */
+    // 'caravaggio-plugin-tokenauth': { // The plugin name.It's the plugin folder name
+    //   disabled: true, // optional. an be handy to disable a plugin temporarly
+    //   options: { // Options passed to plugin. These depend on plugin
+    //     tokens: [
+    //       'secrettoken',
+    //     ],
+    //   },
+    // },
+  },
 };
 
