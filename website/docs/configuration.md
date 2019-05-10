@@ -87,7 +87,7 @@ By default caravaggio transforms any image you feed him.
 If your service is publicly exposed you may want to restrict the list of domains from where the images can be taken.
 This can be a list of domains and it can contain wildcards.
 
-`caravaggio --whitelist myapp.s3.amazon.com, *.myapp.com`
+`caravaggio --whitelist myapp.s3.amazon.com *.myapp.com`
 
 ### Logger
 
