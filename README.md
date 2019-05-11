@@ -27,7 +27,10 @@ caravaggio
 
 An image is provided
 
-`docker pull ramielcreations/caravaggio`
+```
+docker pull ramielcreations/caravaggio
+docker run --name caravaggio -p 8565:8565 -dti ramielcreations/caravaggio:latest
+```
 
 Refer to the [page on the docker store](https://store.docker.com/community/images/ramielcreations/caravaggio) for its configuration
 
