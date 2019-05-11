@@ -57,57 +57,65 @@
         "title": "What is caravaggio",
         "sidebar_label": "What is caravaggio"
       },
-      "version-2.3.5-blur": {
+      "version-2.3.5/version-2.3.5-blur": {
         "title": "Blur",
         "sidebar_label": "Blur"
       },
-      "version-2.3.5-configuration": {
+      "version-2.3.5/version-2.3.5-configuration": {
         "title": "Configuration",
         "sidebar_label": "Configuration"
       },
-      "version-2.3.5-extract": {
+      "version-2.3.5/version-2.3.5-extract": {
         "title": "Extract",
         "sidebar_label": "Extract"
       },
-      "version-2.3.5-flip": {
+      "version-2.3.5/version-2.3.5-flip": {
         "title": "Flip",
         "sidebar_label": "Flip"
       },
-      "version-2.3.5-general-usage": {
+      "version-2.3.5/version-2.3.5-general-usage": {
         "title": "Using Caravaggio",
         "sidebar_label": "General"
       },
-      "version-2.3.5-install": {
+      "version-2.3.5/version-2.3.5-install": {
         "title": "Install",
         "sidebar_label": "Install"
       },
-      "version-2.3.5-output": {
+      "version-2.3.5/version-2.3.5-output": {
         "title": "Output",
         "sidebar_label": "Output"
       },
-      "version-2.3.5-progressive": {
+      "version-2.3.5/version-2.3.5-progressive": {
         "title": "Progressive images",
         "sidebar_label": "Progressive"
       },
-      "version-2.3.5-quality": {
+      "version-2.3.5/version-2.3.5-quality": {
         "title": "Quality",
         "sidebar_label": "Quality"
       },
-      "version-2.3.5-resize": {
+      "version-2.3.5/version-2.3.5-resize": {
         "title": "Resize",
         "sidebar_label": "Resize"
       },
-      "version-2.3.5-rotate": {
+      "version-2.3.5/version-2.3.5-rotate": {
         "title": "Rotate",
         "sidebar_label": "Rotate"
       },
-      "version-2.3.5-whatis": {
+      "version-2.3.5/version-2.3.5-whatis": {
         "title": "What is caravaggio",
         "sidebar_label": "What is caravaggio"
       },
-      "version-2.4.0-overlay": {
+      "version-2.4.0/version-2.4.0-overlay": {
         "title": "Overlay",
         "sidebar_label": "Overlay (watermarks)"
+      },
+      "version-2.5.0/version-2.5.0-rotate": {
+        "title": "Rotate",
+        "sidebar_label": "Rotate"
+      },
+      "version-2.5.1/version-2.5.1-configuration": {
+        "title": "Configuration",
+        "sidebar_label": "Configuration"
       }
     },
     "links": {

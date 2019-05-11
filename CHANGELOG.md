@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.5.1
+  - Fix documentation for domain whitelist (@tobiah)
+  - Update readme
+  - Updated docusaurus
+
 ## 2.5.0
 
 - Allow rotations of any angle 
