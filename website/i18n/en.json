@@ -81,6 +81,10 @@
         "title": "Using Caravaggio",
         "sidebar_label": "General"
       },
+      "version-2.3.5/version-2.3.5-help": {
+        "title": "Getting help",
+        "sidebar_label": "Getting help"
+      },
       "version-2.3.5/version-2.3.5-install": {
         "title": "Install",
         "sidebar_label": "Install"
@@ -109,9 +113,21 @@
         "title": "What is caravaggio",
         "sidebar_label": "What is caravaggio"
       },
+      "version-2.3.6/version-2.3.6-help": {
+        "title": "Getting help",
+        "sidebar_label": "Getting help"
+      },
+      "version-2.4.0/version-2.4.0-help": {
+        "title": "Getting help",
+        "sidebar_label": "Getting help"
+      },
       "version-2.4.0/version-2.4.0-overlay": {
         "title": "Overlay",
         "sidebar_label": "Overlay (watermarks)"
+      },
+      "version-2.5.0/version-2.5.0-help": {
+        "title": "Getting help",
+        "sidebar_label": "Getting help"
       },
       "version-2.5.0/version-2.5.0-rotate": {
         "title": "Rotate",
