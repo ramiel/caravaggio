@@ -25,6 +25,10 @@
         "title": "Using Caravaggio",
         "sidebar_label": "General"
       },
+      "help": {
+        "title": "Getting help",
+        "sidebar_label": "Getting help"
+      },
       "install": {
         "title": "Install",
         "sidebar_label": "Install"
@@ -116,11 +120,24 @@
       "version-2.5.1/version-2.5.1-configuration": {
         "title": "Configuration",
         "sidebar_label": "Configuration"
+      },
+      "version-2.5.1/version-2.5.1-help": {
+        "title": "Getting help",
+        "sidebar_label": "Getting help"
+      },
+      "version-2.5.1/version-2.5.1-install": {
+        "title": "Install",
+        "sidebar_label": "Install"
+      },
+      "version-2.5.1/version-2.5.1-output": {
+        "title": "Output",
+        "sidebar_label": "Output"
       }
     },
     "links": {
       "Docs": "Docs",
-      "GitLab": "GitLab"
+      "GitLab": "GitLab",
+      "Help": "Help"
     },
     "categories": {
       "Getting started": "Getting started",

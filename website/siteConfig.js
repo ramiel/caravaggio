@@ -32,6 +32,7 @@ const siteConfig = {
   headerLinks: [
     { doc: 'whatis', label: 'Docs' },
     { href: "https://gitlab.com/ramiel/caravaggio", label: "GitLab"},
+    { doc: "help", label: "Help"},
     { search: true },
     // {page: 'help', label: 'Help'},
     // {blog: true, label: 'Blog'},
@@ -53,6 +54,7 @@ const siteConfig = {
   copyright: 'Made with 💚 by Fabrizio Ruggeri @ ramielcreations',
   organizationName: 'ramielcreations', // or set an env variable ORGANIZATION_NAME
   projectName: 'caravaggio', // or set an env variable PROJECT_NAME
+  usePrism: true,
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
     theme: 'default',

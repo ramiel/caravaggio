@@ -81,7 +81,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <PromoSection>
             <Button href={docUrl('whatis.html', language)}>What is?</Button>
-            <Button href={docUrl('install.html', language)}>Install me now</Button>
+            <Button href={docUrl('install.html', language)}>Install</Button>
             {/* <Button href={docUrl('docs.html', language)}>Example Link</Button>
             <Button href={docUrl('doc2.html', language)}>Example Link 2</Button> */}
           </PromoSection>
@@ -120,7 +120,7 @@ you can tweak it for your needs
       {
         title: 'Seamless integration',
         content: `It has been designed, since the beginning, to integrate easily with any other brick
-of your syste: cache, CDN, web-proxy, orchestrators...
+of your system: caches, CDNs, web-proxies, orchestrators...
 `,
         image: imgUrl('integration.png'),
         imageAlign: 'top',

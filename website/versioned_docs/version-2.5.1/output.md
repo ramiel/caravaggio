@@ -1,7 +1,8 @@
 ---
-id: output
+id: version-2.5.1-output
 title: Output
 sidebar_label: Output
+original_id: output
 ---
 
 Caravaggio can return your image in another format. You my want to transform a `png` image into a 

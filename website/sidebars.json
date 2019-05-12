@@ -3,7 +3,8 @@
     "Getting started": [
       "whatis",
       "install",
-      "configuration"
+      "configuration",
+      "help"
     ],
     "Usage": [
       "general-usage",
