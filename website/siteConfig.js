@@ -59,7 +59,6 @@ const siteConfig = {
     // Highlight.js theme to use for syntax highlighting in code blocks
     theme: 'default',
   },
-  scripts: ['https://buttons.github.io/buttons.js'],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://gitlab.com/ramiel/caravaggio',
   customDocsPath: 'website/docs',
@@ -67,7 +66,12 @@ const siteConfig = {
   gaGtag: true,
   enableUpdateTime: false,
   scripts: [
-    `${BASE_URL}js/script.js`,
+    // 'https://buttons.github.io/buttons.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    `${BASE_URL}js/code-block-buttons.js`,
+  ],
+  stylesheets: [
+    `${BASE_URL}css/code-block-buttons.css`
   ],
 };
 
