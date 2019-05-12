@@ -50,6 +50,7 @@ const siteConfig = {
     secondaryColor: '#0E9683',
     // secondaryColor: '#205C3B',
   },
+  scrollToTop: true,
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright: 'Made with 💚 by Fabrizio Ruggeri @ ramielcreations',
   organizationName: 'ramielcreations', // or set an env variable ORGANIZATION_NAME
