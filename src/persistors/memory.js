@@ -1,49 +1,49 @@
 
-const persisted = {
-  files: {},
-  size: 0,
-};
-
 const BToMB = B => Math.round((B / 1024 / 1024) * 100) / 100;
 
-const checkMemory = (limit, filename) => {
-  if (limit && limit > 0) {
-    const { size, files } = persisted;
-    if (size > limit) {
-      const first = Object.keys(files)[0];
-      if (first !== filename) {
-        delete persisted.files[first];
+module.exports = ({ limit } = { limit: 100 }) => {
+  const fileCache = new Map();
+  let size = 0;
+
+  const checkMemory = (filename) => {
+    if (limit && limit > 0 && size > limit) {
+      const next = fileCache.keys().next();
+      if (!next.done) {
+        const first = next.value;
+        if (first !== filename) {
+          fileCache.delete(first);
+        }
       }
     }
-  }
+  };
+
+  const increaseSize = (length) => {
+    size += BToMB(length);
+  };
+
+  return {
+    flush: async () => {
+      fileCache.clear();
+      size = 0;
+    },
+
+    exists: async filename => fileCache.has(filename),
+
+    read: async filename => (fileCache.has(filename)
+      ? {
+        type: 'buffer',
+        buffer: fileCache.get(filename),
+      }
+      : null),
+
+    save: async (filename, buffer) => {
+      fileCache.set(filename, buffer);
+      increaseSize(buffer.length);
+      checkMemory(filename);
+      return {
+        type: 'buffer',
+        buffer,
+      };
+    },
+  };
 };
-
-const increaseSize = (length) => {
-  persisted.size += BToMB(length);
-};
-
-module.exports = ({ limit } = { limit: 100 }) => ({
-  flush: async () => {
-    persisted.files = {};
-    persisted.size = 0;
-  },
-
-  exists: async filename => !!persisted.files[filename],
-
-  read: async filename => (persisted.files[filename]
-    ? {
-      type: 'buffer',
-      buffer: persisted.files[filename],
-    }
-    : null),
-
-  save: async (filename, buffer) => {
-    persisted.files[filename] = buffer;
-    increaseSize(buffer.length);
-    checkMemory(limit, filename);
-    return {
-      type: 'buffer',
-      buffer,
-    };
-  },
-});
