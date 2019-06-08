@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.5.2
+  - Improved documentation
+
 ## 2.5.1
   - Fix documentation for domain whitelist (@tobiah)
   - Update readme
