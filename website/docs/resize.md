@@ -25,14 +25,14 @@ In scale mode the image will have the dimension of the size you specified. The a
 Since `scale` is the default resize mode, you can avoid specifiying it.
 
 Scale the image to 200x300 px keeping the aspect ratio    
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_200x300</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_200x300</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 Scale the image to 200 px width keeping the aspect ratio. The height is calculated automatically    
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_200</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_200</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 
 Scale the image to 200x300 px width ignoring the aspect ratio.    
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_200x300_scale_iar</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_200x300_scale_iar</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 **Original**     
 ![Two girls](assets/example/girls.jpeg)
@@ -45,7 +45,7 @@ Scale the image to 200x300 px width ignoring the aspect ratio.
 The image will take the maximum available space up to the specified size, keeping the aspect ratio.    
 For example this will resize the image up to 300x300 pixels and all the image will be visible.
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fit</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_300x300_fit</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 ![Two girls, the image is fitted](assets/example/girls_300x300_fit.jpeg)
 
@@ -56,7 +56,7 @@ For example this will resize the image up to 300x300 pixels and all the image wi
 
 Like fit but only if the image is **larger** than the desired size (width _or_ height), otherwise it will be left untouched.
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_downfit</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_300x300_downfit</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
@@ -64,7 +64,7 @@ Like fit but only if the image is **larger** than the desired size (width _or_ h
 
 Like fit but only if the image is **smaller** than the desired size (__both__ the width and height must be smaller), otherwise it will be left untouched.
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_upfit</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_300x300_upfit</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 **NOTE**: both width and height must be passed. Nonetheless they can be expressed in percentage
 
@@ -75,13 +75,13 @@ You can specify a [gravity](#gravity) to decide which part of the original image
 
 In this example we fill the image in a 300x300 px space, with gravity on the center
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fill</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_300x300_fill</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 ![Two girls, image is filled. Gravity is on the center](assets/example/girls_300x300_fill_center.jpeg)
 
 Here instead we change the gravity to north-east
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_fill_ne</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_300x300_fill_ne</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 ![Two girls, image is filled with north east gravity](assets/example/girls_300x300_fill_ne.jpeg)
 
@@ -89,22 +89,25 @@ Here instead we change the gravity to north-east
 Here an example
 
 Original    
-![One girl. She is on the left side of the picture. The rest of the image has no particulars](assets/example/fill_original.png)
+<a href="https://cvg-res.now.sh/fill_original.png" target="_blank" alt="A girl in the wind">![One girl. She is on the left side of the picture. The rest of the image has no particulars](assets/example/fill_original.png)</a>
 
 Gravity on center (**rs_200x300_fill_center**)  
-![One girl, filled with gravity on the center](assets/example/fill_center.png)
+<a href="https://caravaggio.now.sh/rs_200x300_fill_center/https://cvg-res.now.sh/fill_original.png" target="_blank" alt="A girl in the wind, cropped">![One girl, filled with gravity on the center](assets/example/fill_center.png)</a>
 
 Gravity auto (**rs_200x300_fill_auto**)  
-![One girl, filled auto, the girl is now centered in the image](assets/example/fill_auto.png)
+<a href="https://caravaggio.now.sh/rs_200x300_fill_auto/https://cvg-res.now.sh/fill_original.png" target="_blank" alt="A girl in the wind. The image is centered on the face">![One girl, filled auto, the girl is now centered in the image](assets/example/fill_auto.png)
+
+<pre><code class="hljs css html" data-preview data-previewimage="https://cvg-res.now.sh/fill_original.png">https://caravaggio.now.sh/<strong>rs_200x300_fill_auto</strong>/https://cvg-res.now.sh/fill_original.png</code></pre>
+
 
 
 ### Down fill
 
 Same as fill but only if the image is larger than the target size (width _and_ height).
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_downfill</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_300x300_downfill</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_300x300_downfill_west</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_300x300_downfill_west</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 ### Embed
 
@@ -112,23 +115,23 @@ This embeds the image in the specified dimensions. The entire image is taken and
 fit well in the dimension the output will be padded with a color of your choice (or black by default).
 A [gravity](#gravity) can be specified to decide how to embed the image. Both `gravity` and `background color` are optional
 
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_320x240_embed</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 ![Two girls. The picture is embedded and the remaining space is black](assets/example/girls_embed.jpeg)
 
 You can specify the color in RGB (red: 105, green: 72, blue: 200). Each number must have 3 digits, you have to pad them (so 72 must be written as 072).
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_b105072200</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_320x240_embed_b105072200</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 ![Two girls. The picture is embedded and the remaining space is purple](assets/example/girls_embed_color.jpeg)
 
 The color can be specified in RGBA. To add the alpha channel value append `.n` at the end. To have full transparency put `.0`, to have full opacity put nothing, just the color.    
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_b105072200.5</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_320x240_embed_b105072200.5</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 The color can be specified in hexadecimal code (6 digit). Alpha can be specified as well
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_bFF5400.5</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_320x240_embed_bFF5400.5</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 You can spcify the gravity     
-<pre><code class="hljs css html" data-preview>http://caravaggio.host/<strong>rs_320x240_embed_bFF5400_gnorth</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rs_320x240_embed_bFF5400_gnorth</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 ![Two girls. The picture is embedded with gravity on north](assets/example/girls_embed_gravity.jpeg)
 

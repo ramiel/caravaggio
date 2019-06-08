@@ -1,10 +1,24 @@
 /* "Copy" code block button */
+span.external img {
+  width: 12px;
+  display: inline-block;
+}
+
 .hljs {
   padding: 2rem 1.5rem 1.5rem 1.5rem;
 }
 
 pre {
   position: relative;
+}
+
+pre code {
+  border-radius: 10px;
+}
+
+pre strong {
+  color: #3b978a;
+  font-size: 1.1rem;
 }
 
 pre .anchorBtn{
@@ -19,14 +33,16 @@ pre .btnIcon {
   border: 1px solid transparent;
   padding: 0;
   /* color: #fff; */
+  color: #68615e;
   background-color: transparent;
   height: 30px;
   transition: all .25s ease-out;
+  opacity: .4;
 }
 
 pre .btnIcon:hover {
   text-decoration: none;
-  opacity: .7;
+  opacity: 1;
 }
 
 .btnIcon__body {

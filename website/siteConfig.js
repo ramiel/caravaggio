@@ -31,8 +31,8 @@ const siteConfig = {
   },
   headerLinks: [
     { doc: 'whatis', label: 'Docs' },
-    { href: "https://gitlab.com/ramiel/caravaggio", label: "GitLab"},
-    { doc: "help", label: "Help"},
+    { href: "https://gitlab.com/ramiel/caravaggio", label: "GitLab" },
+    { doc: "help", label: "Help" },
     { search: true },
     // {page: 'help', label: 'Help'},
     // {blog: true, label: 'Blog'},
@@ -58,7 +58,8 @@ const siteConfig = {
   usePrism: true,
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: 'default',
+    theme: 'atelier-forest-light',
+    version: '9.15.8',
   },
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://gitlab.com/ramiel/caravaggio',

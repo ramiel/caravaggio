@@ -17,6 +17,9 @@
       "rotate",
       "flip",
       "blur"
+    ],
+    "More": [
+      "attributions"
     ]
   }
 }

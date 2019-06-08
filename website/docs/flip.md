@@ -14,8 +14,8 @@ Fli the image horizontally or vertically. The accepted values are
 
 **Flip x**     
 ![Image of two girls flipped horizontally](assets/example/flipx.jpeg)
-<pre><code class="hljs css html" data-preview>https://caravaggio.host/<strong>flip_x</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>flip_x</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 **Flip y**     
 ![Image of two girls flipped vertically](assets/example/flipy.jpeg)
-<pre><code class="hljs css html" data-preview>https://caravaggio.host/<strong>flip_y</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>flip_y</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>

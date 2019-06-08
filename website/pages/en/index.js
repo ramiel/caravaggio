@@ -130,7 +130,7 @@ of your system: caches, CDNs, web-proxies, orchestrators...
         content: `Clear error messages, robust and easily maintanable code `,
         image: imgUrl('reliable.png'),
         imageAlign: 'top',
-      },      
+      },
     ]}
   </Block>
 );
@@ -138,7 +138,7 @@ of your system: caches, CDNs, web-proxies, orchestrators...
 const FeatureCallout = props => (
   <div
     className="productShowcaseSection paddingBottom"
-    style={{textAlign: 'center'}}>
+    style={{ textAlign: 'center' }}>
     <h2>Feature Callout</h2>
     <MarkdownBlock>These are features of this project</MarkdownBlock>
   </div>

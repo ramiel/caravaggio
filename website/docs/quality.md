@@ -6,7 +6,7 @@ sidebar_label: Quality
 
 This parameter define the quality of the output image. It's a value between `0` and `100`.
 
-<pre><code class="hljs css html" data-preview>https://caravaggio.host/<strong>q_10</strong>/https://goo.gl/EXv4MP</code></pre>
+<pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>q_10</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
 **Original**     
 ![Image of two girls](assets/example/girls_small.jpeg)

@@ -6,7 +6,7 @@
   "bin": "bin/caravaggio",
   "scripts": {
     "start": "NODE_ENV=production node .",
-    "now-start": "bin/caravaggio --cache memory --cache-limit 1024 --inputcache memory --inputcache-limit 1024 --errors html --whitelist ramiel.gitlab.io --verbose",
+    "now-start": "bin/caravaggio --cache memory --cache-limit 1024 --inputcache memory --inputcache-limit 1024 --errors html --whitelist ramiel.gitlab.io cvg-res.now.sh --verbose",
     "dev": "NODE_ENV=development micro-dev -p 3001 src/ -s",
     "test": "npm run lint && npm run test-only -- --coverage --colors=false",
     "test-only": "NODE_ENV=test ALLOW_CONFIG_MUTATIONS=true jest",

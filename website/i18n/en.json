@@ -5,6 +5,10 @@
     "previous": "Previous",
     "tagline": "A blazing fast image manipulation service",
     "docs": {
+      "attributions": {
+        "title": "Attributions",
+        "sidebar_label": "Attributions"
+      },
       "blur": {
         "title": "Blur",
         "sidebar_label": "Blur"
@@ -157,7 +161,8 @@
     },
     "categories": {
       "Getting started": "Getting started",
-      "Usage": "Usage"
+      "Usage": "Usage",
+      "More": "More"
     }
   },
   "pages-strings": {
