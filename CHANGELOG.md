@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.6.0
+  - ⚖️ Use new licesezero.com prosperity license
+  - Improvement: use native Map as memory cache
+
 ## 2.5.2
   - Improved documentation
 
