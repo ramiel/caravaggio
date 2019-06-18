@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "licensezero": [
+    {
+      "agentSignature": "d16acde77611654729299fb15c51485f84f6b4c10916565a63cf141125601941fd3d17d376cdb4f15af4920aa14737e7cf0fe989379bb2900131203e08f07d05",
+      "license": {
+        "homepage": "https://ramiel.gitlab.io/caravaggio/",
+        "jurisdiction": "IT-ME",
+        "name": "Fabrizio Ruggeri",
+        "projectID": "0409c5bf-201d-49dd-af6e-2aa5169cf15a",
+        "publicKey": "806a3f6f784bebed76e55868e1700754579413298d39ddc19506ce0ea80a500e",
+        "terms": "prosperity",
+        "version": "2.0.0"
+      },
+      "licensorSignature": "fd75000ddbcac2b1900b34819ea3eb66c1c70714cd58e6a9783348e62beda27dca775db5a7cb4a2dd60828438f82c71d45bf0d72dd35356be2d0e8f8c60d9a0a"
+    }
+  ]
+}

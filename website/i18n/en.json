@@ -37,6 +37,10 @@
         "title": "Install",
         "sidebar_label": "Install"
       },
+      "license": {
+        "title": "License",
+        "sidebar_label": "License"
+      },
       "output": {
         "title": "Output",
         "sidebar_label": "Output"
@@ -152,6 +156,50 @@
       "version-2.5.1/version-2.5.1-output": {
         "title": "Output",
         "sidebar_label": "Output"
+      },
+      "version-2.5.2/version-2.5.2-attributions": {
+        "title": "Attributions",
+        "sidebar_label": "Attributions"
+      },
+      "version-2.5.2/version-2.5.2-blur": {
+        "title": "Blur",
+        "sidebar_label": "Blur"
+      },
+      "version-2.5.2/version-2.5.2-extract": {
+        "title": "Extract",
+        "sidebar_label": "Extract"
+      },
+      "version-2.5.2/version-2.5.2-flip": {
+        "title": "Flip",
+        "sidebar_label": "Flip"
+      },
+      "version-2.5.2/version-2.5.2-general-usage": {
+        "title": "Using Caravaggio",
+        "sidebar_label": "General"
+      },
+      "version-2.5.2/version-2.5.2-output": {
+        "title": "Output",
+        "sidebar_label": "Output"
+      },
+      "version-2.5.2/version-2.5.2-overlay": {
+        "title": "Overlay",
+        "sidebar_label": "Overlay (watermarks)"
+      },
+      "version-2.5.2/version-2.5.2-progressive": {
+        "title": "Progressive images",
+        "sidebar_label": "Progressive"
+      },
+      "version-2.5.2/version-2.5.2-quality": {
+        "title": "Quality",
+        "sidebar_label": "Quality"
+      },
+      "version-2.5.2/version-2.5.2-resize": {
+        "title": "Resize",
+        "sidebar_label": "Resize"
+      },
+      "version-2.5.2/version-2.5.2-rotate": {
+        "title": "Rotate",
+        "sidebar_label": "Rotate"
       }
     },
     "links": {

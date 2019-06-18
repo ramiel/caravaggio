@@ -31,7 +31,7 @@ docker pull ramielcreations/caravaggio
 docker run --name caravaggio -p 8565:8565 -dti ramielcreations/caravaggio:latest
 ```
 
-Caravaggio will be available on port **`8565`**. To change the port or to run it with different options, refer to the [docker documentation](https://store.docker.com/community/images/ramielcreations/caravaggio).
+Caravaggio will be available on port **`8565`**. To change the port or to run it with different options, refer to the [docker documentation](https://hub.docker.com/r/ramielcreations/caravaggio).
 
 ## Git
 
