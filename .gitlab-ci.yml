@@ -32,6 +32,18 @@ npm:
     - npm config set "//registry.npmjs.org/:_authToken" $NPM_TOKEN
     - npm publish
 
+docker-next:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  only:
+    - master
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:next .
+    - docker push $CI_REGISTRY_IMAGE:next
+
 dockerhub:
   stage: deploy
   image: docker:latest
@@ -40,7 +52,7 @@ dockerhub:
   only:
     - tags
   script:
-    - VERSION=$(cat package.json | grep version | head -1 | awk -F= "{ print $2 }" | sed 's/[version:,\",]//g' | tr -d '[[:space:]]')
+    - VERSION=$CI_COMMIT_TAG
     - echo $VERSION
     - docker info
     - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD

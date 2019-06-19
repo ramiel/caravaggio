@@ -3,9 +3,10 @@ FROM node:10-alpine AS build
 LABEL maintainer="Fabrizio Ruggeri"
 
 RUN apk add \
-        --update-cache \
+        --verbose \
         --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
-        --repository http://dl-3.alpinelinux.org/alpine/edge/main/ \
+        --repository http://dl-3.alpinelinux.org/alpine/edge/community/ \
+        --update-cache \
         vips-dev \
         binutils \
         fftw-dev \
@@ -42,6 +43,7 @@ RUN apk update \
     && apk add \
     --update-cache \
     --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
+    --repository http://dl-3.alpinelinux.org/alpine/edge/community/ \
     vips \
     && rm -rf /var/cache/apk/*
 
