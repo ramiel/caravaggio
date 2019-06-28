@@ -200,6 +200,14 @@
       "version-2.5.2/version-2.5.2-rotate": {
         "title": "Rotate",
         "sidebar_label": "Rotate"
+      },
+      "version-2.6.0/version-2.6.0-install": {
+        "title": "Install",
+        "sidebar_label": "Install"
+      },
+      "version-2.6.0/version-2.6.0-license": {
+        "title": "License",
+        "sidebar_label": "License"
       }
     },
     "links": {
