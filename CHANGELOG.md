@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.0
+  - ✨ New `duotone` effect. Shift your images to two color tones
+  - Pipeline faster and more powerful
+
 ## 2.6.0
   - ⚖️ Use new licesezero.com prosperity license
   - Improvement: use native Map as memory cache

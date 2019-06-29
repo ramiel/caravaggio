@@ -212,6 +212,18 @@
       "version-2.6.0/version-2.6.0-license": {
         "title": "License",
         "sidebar_label": "License"
+      },
+      "version-2.7.0/version-2.7.0-attributions": {
+        "title": "Attributions",
+        "sidebar_label": "Attributions"
+      },
+      "version-2.7.0/version-2.7.0-duotone": {
+        "title": "Duotone",
+        "sidebar_label": "Duotone"
+      },
+      "version-2.7.0/version-2.7.0-license": {
+        "title": "License",
+        "sidebar_label": "License"
       }
     },
     "links": {
