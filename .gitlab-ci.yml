@@ -6,8 +6,8 @@ test:
    - npm run test
   coverage: /^Statements\s*:\s*([^%]+)/
 
-include:
-  - template: Code-Quality.gitlab-ci.yml
+# include:
+#   - template: Code-Quality.gitlab-ci.yml
 
 #####################
 # Publish on NPM
