@@ -2,10 +2,25 @@
     "root": true,
     "extends": "airbnb-base",
     "rules": {
-        "no-unused-vars": ["error", {"argsIgnorePattern": "^_" }],
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_"
+            }
+        ],
         "no-nested-ternary": 0,
-        "no-multiple-empty-lines": ["error",
-            { "max": 2, "maxEOF": 1 }
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2,
+                "maxEOF": 1
+            }
+        ],
+        "no-plusplus": [
+            "error",
+            {
+                "allowForLoopAfterthoughts": true
+            }
         ]
     }
 }

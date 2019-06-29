@@ -56,7 +56,11 @@ describe('Normalizer', () => {
       rawNormalizedOptions: 'o_png',
     });
     expect(result.output).toHaveLength(1);
-    expect(result.output[0]).toHaveProperty('operation', 'jpeg');
+    expect(result.output[0]).toEqual({
+      name: 'o',
+      fn: expect.any(Function),
+      params: ['jpg'],
+    });
   });
 });
 

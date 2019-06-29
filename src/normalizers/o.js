@@ -7,36 +7,29 @@ module.exports = (value) => {
     .value()
     .toLowerCase();
 
+  let fn;
+
   switch (format) {
     case 'jpg':
     case 'jpeg':
-      return {
-        o: format,
-        output: [
-          {
-            name: 'o',
-            operation: 'jpeg',
-            params: [],
-          },
-        ],
-      };
+      fn = async sharp => sharp.jpeg();
+      break;
     case 'png':
     case 'webp':
     case 'tiff':
-      return {
-        o: format,
-        output: [
-          {
-            name: 'o',
-            operation: format,
-            params: [],
-          },
-        ],
-      };
+      fn = async sharp => sharp[format]();
+      break;
     default:
-      return {
-        o: 'original',
-      };
+      return {};
   }
+
+  return {
+    o: format,
+    output: [{
+      name: 'o',
+      fn,
+      params: [format],
+    }],
+  };
 };
 

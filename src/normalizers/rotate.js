@@ -18,7 +18,7 @@ module.exports = (value, rawColor) => {
     transformations: [
       {
         name: 'rotate',
-        operation: 'rotate',
+        fn: async sharp => sharp.rotate(...params),
         params,
       },
     ],

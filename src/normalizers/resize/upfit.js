@@ -1,14 +1,8 @@
-module.exports = pipeline => async (width, height/* , ...modeParams */) => {
-  const { width: iw, height: ih } = await pipeline.getMetadata();
+module.exports = sharp => async (width, height/* , ...modeParams */) => {
+  const { width: iw, height: ih } = await sharp.metadata();
   if (iw < width && ih < height) {
-    return [
-      {
-        name: 'resize_upfit',
-        operation: 'resize',
-        params: [width, height, { fit: 'inside' }],
-      },
-    ];
+    return sharp.resize(width, height, { fit: 'inside' });
   }
-  return [];
+  return sharp;
 };
 

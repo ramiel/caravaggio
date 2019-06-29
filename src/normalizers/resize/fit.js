@@ -1,12 +1,2 @@
-module.exports = (/* pipeline */) => async (width, height/* , modeParams */) => {
-  const operations = [
-    {
-      name: 'resize_fit',
-      operation: 'resize',
-      params: [width, height, { fit: 'inside' }],
-    },
-  ];
-
-  return operations;
-};
+module.exports = sharp => async (width, height/* , modeParams */) => sharp.resize(width, height, { fit: 'inside' });
 

@@ -21,14 +21,14 @@ const AVAILABLE_MODES = Object.keys(MODES);
 
 const RESIZE_PATTERN = /^(\d+(.\d+)?x\d+(.\d+)?|\d+(.\d+)?x?|x\d+(.\d+)?)$/;
 
-const percentageToPixel = async ({ width, height }, pipeline) => {
-  const metadata = await pipeline.getMetadata();
+const percentageToPixel = async ({ width, height }, sharp) => {
+  const metadata = await sharp.metadata();
   const w = width && (width < 1 ? Math.round(width * metadata.width) : width);
   const h = height && (height < 1 ? Math.round(height * metadata.height) : height);
   return { width: w, height: h };
 };
 
-const getWidthAndHeight = async (sizes, pipeline) => {
+const getWidthAndHeight = async (sizes, sharp) => {
   let width = null;
   let height = null;
   if (sizes.indexOf(':') !== -1) {
@@ -39,7 +39,7 @@ const getWidthAndHeight = async (sizes, pipeline) => {
     height = parseFloat(values[1], 10) || null;
     const isPercentage = (width && width < 1) || (height && height < 1);
     if (isPercentage) {
-      ({ width, height } = await percentageToPixel({ width, height }, pipeline));
+      ({ width, height } = await percentageToPixel({ width, height }, sharp));
     } else {
       width = width && Math.round(width);
       height = height && Math.round(height);
@@ -69,10 +69,11 @@ module.exports = (size, mode = 'scale', ...modeParams) => {
     transformations: [
       {
         name: 'resize',
-        operation: async (pipeline) => {
-          const [width, height] = await getWidthAndHeight(size, pipeline);
-          return MODES[mode](pipeline)(width, height, ...modeParams);
+        fn: async (sharp, pipeline) => {
+          const [width, height] = await getWidthAndHeight(size, sharp);
+          return MODES[mode](sharp, pipeline)(width, height, ...modeParams);
         },
+        params: [mode, size],
       },
     ],
   };

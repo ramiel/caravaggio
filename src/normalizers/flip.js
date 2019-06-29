@@ -7,11 +7,13 @@ module.exports = (value) => {
     .value()
     .toLowerCase();
 
+  const method = !operation || operation === 'x' ? 'flop' : 'flip';
+
   return {
     transformations: [
       {
         name: 'flip',
-        operation: !operation || operation === 'x' ? 'flop' : 'flip',
+        fn: async sharp => sharp[method](),
         params: [true],
       },
     ],

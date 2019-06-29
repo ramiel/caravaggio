@@ -11,7 +11,7 @@ module.exports = (value) => {
     transformations: [
       {
         name: 'blur',
-        operation: 'blur',
+        fn: async sharp => sharp.blur(v),
         params: [v],
       },
     ],

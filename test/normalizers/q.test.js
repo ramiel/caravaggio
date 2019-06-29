@@ -1,10 +1,16 @@
-const { URL } = require('url');
-const { createPipeline } = require('../mocks/pipeline');
+const pipeline = require('../mocks/pipeline.mock');
+const sharp = require('../mocks/sharp.mock');
+
 const q = require('../../src/normalizers/q');
 
 const normalizeQ = quality => (quality * 80) / 100;
 
 describe('Quality', () => {
+  beforeEach(() => {
+    sharp.mockClear();
+    pipeline.mockClear();
+  });
+
   test('q is a function', () => {
     expect(q).toBeInstanceOf(Function);
   });
@@ -14,7 +20,7 @@ describe('Quality', () => {
       output: [
         {
           name: 'q',
-          operation: expect.any(Function),
+          fn: expect.any(Function),
           params: [],
         },
       ],
@@ -22,243 +28,82 @@ describe('Quality', () => {
   });
 
   test('round the quality', async () => {
-    const qualityGenerator = q(47).output[0].operation;
-    const url = new URL('https://image.com/image.jpg');
-    const options = {
-      o: 'jpeg',
-      output: [
-        {
-          name: 'o',
-          operation: 'jpeg',
-          params: [],
-        },
-      ],
-    };
-    const pipeline = createPipeline(url, options);
-    const operations = await qualityGenerator(pipeline);
-    expect(operations).toEqual(expect.arrayContaining([
-      expect.objectContaining({
-        name: 'q',
-        operation: 'jpeg',
-        params: [{ quality: 38 }],
-      }),
-    ]));
+    const { output: [{ fn }] } = q(47);
+    await fn(sharp, pipeline);
+    expect(sharp.jpeg).toHaveBeenCalledTimes(1);
+    expect(sharp.jpeg).toHaveBeenCalledWith({ quality: 38 });
   });
 
-  describe('Given an output has been specified', () => {
+  describe('Evaluate quality', () => {
     const passedQuality = 90;
-    const qualityGenerator = q(passedQuality).output[0].operation;
+    const { output: [{ fn }] } = q(passedQuality);
 
-    test('add quality if the output is jpeg', async () => {
-      const url = new URL('https://image.com/image.jpg');
-      const options = {
-        o: 'jpeg',
-        output: [
-          {
-            name: 'o',
-            operation: 'jpeg',
-            params: [],
-          },
-        ],
-      };
-      const pipeline = createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'jpeg',
-          params: [{ quality: normalizeQ(passedQuality) }],
-        }),
-      ]));
+    describe('Given an output has been specified', () => {
+      test('add quality if the output is jpeg', async () => {
+        await fn(sharp, pipeline);
+        expect(sharp.jpeg).toHaveBeenCalledTimes(1);
+        expect(sharp.jpeg).toHaveBeenCalledWith({ quality: normalizeQ(passedQuality) });
+      });
+
+      test('add quality if the output is jpg', async () => {
+        pipeline.getOptions.mockReturnValueOnce({ o: 'jpg' });
+        await fn(sharp, pipeline);
+        expect(sharp.jpeg).toHaveBeenCalledTimes(1);
+        expect(sharp.jpeg).toHaveBeenCalledWith({ quality: normalizeQ(passedQuality) });
+      });
+
+      test('add quality if the output is webp', async () => {
+        pipeline.getOptions.mockReturnValueOnce({ o: 'webp' });
+        await fn(sharp, pipeline);
+        expect(sharp.webp).toHaveBeenCalledTimes(1);
+        expect(sharp.webp).toHaveBeenCalledWith({ quality: normalizeQ(passedQuality) });
+      });
+
+      test('add quality if the output is tiff', async () => {
+        pipeline.getOptions.mockReturnValueOnce({ o: 'tiff' });
+        await fn(sharp, pipeline);
+        expect(sharp.tiff).toHaveBeenCalledTimes(1);
+        expect(sharp.tiff).toHaveBeenCalledWith({ quality: normalizeQ(passedQuality) });
+      });
+
+      test('does nothing in case the output is png', async () => {
+        pipeline.getOptions.mockReturnValueOnce({ o: 'png' });
+        await fn(sharp, pipeline);
+        expect(sharp.png).not.toHaveBeenCalled();
+      });
     });
 
-    test('add quality if the output is jpg', async () => {
-      const url = new URL('https://image.com/image.jpg');
-      const options = {
-        o: 'jpg',
-        output: [
-          {
-            name: 'o',
-            operation: 'jpeg',
-            params: [],
-          },
-        ],
-      };
-      const pipeline = createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'jpeg',
-          params: [{ quality: normalizeQ(passedQuality) }],
-        }),
-      ]));
-    });
 
-    test('add quality if the output is webp', async () => {
-      const url = new URL('https://image.com/image.jpg');
-      const options = {
-        o: 'webp',
-        output: [
-          {
-            name: 'o',
-            operation: 'webp',
-            params: [],
-          },
-        ],
-      };
-      const pipeline = createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'webp',
-          params: [{ quality: normalizeQ(passedQuality) }],
-        }),
-      ]));
-    });
+    describe('Given the output as "original"', () => {
+      beforeEach(() => {
+        pipeline.getOptions.mockReturnValueOnce({ o: 'original' });
+      });
 
-    test('add quality if the output is tiff', async () => {
-      const url = new URL('https://image.com/image.jpg');
-      const options = {
-        o: 'tiff',
-        output: [
-          {
-            name: 'o',
-            operation: 'tiff',
-            params: [],
-          },
-        ],
-      };
-      const pipeline = await createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'tiff',
-          params: [{ quality: normalizeQ(passedQuality) }],
-        }),
-      ]));
-    });
+      test('add quality if the output is jpeg', async () => {
+        await fn(sharp, pipeline);
+        expect(sharp.jpeg).toHaveBeenCalledTimes(1);
+        expect(sharp.jpeg).toHaveBeenCalledWith({ quality: normalizeQ(passedQuality) });
+      });
 
-    test('does nothing in case the output is png', async () => {
-      const url = new URL('https://image.com/image.jpg');
-      const options = {
-        o: 'png',
-        output: [
-          {
-            name: 'o',
-            operation: 'png',
-            params: [],
-          },
-        ],
-      };
-      const pipeline = createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toHaveLength(0);
-    });
-  });
+      test('add quality if the output is webp', async () => {
+        sharp.metadata.mockResolvedValueOnce({ format: 'webp' });
+        await fn(sharp, pipeline);
+        expect(sharp.webp).toHaveBeenCalledTimes(1);
+        expect(sharp.webp).toHaveBeenCalledWith({ quality: normalizeQ(passedQuality) });
+      });
 
-  describe('Given the output as "original"', () => {
-    const qualityGenerator = q(90).output[0].operation;
+      test('add quality if the output is tiff', async () => {
+        sharp.metadata.mockResolvedValueOnce({ format: 'tiff' });
+        await fn(sharp, pipeline);
+        expect(sharp.tiff).toHaveBeenCalledTimes(1);
+        expect(sharp.tiff).toHaveBeenCalledWith({ quality: normalizeQ(passedQuality) });
+      });
 
-    test('add quality if the output is jpeg', async () => {
-      const url = new URL('https://image.com/image.jpeg');
-      const options = {
-        o: 'original',
-        output: [],
-      };
-      const pipeline = createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'jpeg',
-          params: [{ quality: normalizeQ(90) }],
-        }),
-      ]));
-    });
-
-    test('add quality if the output is jpg', async () => {
-      const url = new URL('https://image.com/image.jpg');
-      const options = {
-        o: 'original',
-        output: [],
-      };
-      const pipeline = createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'jpeg',
-          params: [{ quality: normalizeQ(90) }],
-        }),
-      ]));
-    });
-
-    test('add quality if the output is webp', async () => {
-      const url = new URL('https://image.com/image.webp');
-      const options = {
-        o: 'original',
-        output: [],
-      };
-      const pipeline = createPipeline(url, options);
-      pipeline.setMetadata({ format: 'webp' });
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'webp',
-          params: [{ quality: normalizeQ(90) }],
-        }),
-      ]));
-    });
-
-    test('add quality if the output is tiff', async () => {
-      const url = new URL('https://image.com/image.tiff');
-      const options = {
-        o: 'original',
-        output: [],
-      };
-      const pipeline = createPipeline(url, options);
-      pipeline.setMetadata({ format: 'tiff' });
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'tiff',
-          params: [{ quality: normalizeQ(90) }],
-        }),
-      ]));
-    });
-
-    test('does nothing in case the output is png', async () => {
-      const url = new URL('https://image.com/image.png');
-      const options = {
-        o: 'original',
-        output: [],
-      };
-      const pipeline = createPipeline(url, options);
-      pipeline.setMetadata({ format: 'png' });
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toHaveLength(0);
-    });
-
-    test('add quality even if the url has no extension', async () => {
-      const url = new URL('https://image.com/image');
-      const options = {
-        o: 'original',
-        output: [],
-      };
-      const pipeline = createPipeline(url, options);
-      const operations = await qualityGenerator(pipeline);
-      expect(operations).toEqual(expect.arrayContaining([
-        expect.objectContaining({
-          name: 'q',
-          operation: 'jpeg',
-          params: [{ quality: normalizeQ(90) }],
-        }),
-      ]));
+      test('does nothing in case the output is png', async () => {
+        sharp.metadata.mockResolvedValueOnce({ format: 'png' });
+        await fn(sharp, pipeline);
+        expect(sharp.png).not.toHaveBeenCalled();
+      });
     });
   });
 });

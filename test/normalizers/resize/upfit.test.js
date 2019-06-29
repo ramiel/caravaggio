@@ -1,61 +1,30 @@
-const config = require('config');
-const sharp = require('sharp');
 const upfit = require('normalizers/resize/upfit');
-const { createPipeline } = require('mocks/pipeline');
-const { parseOptions } = require('parser')(config);
-const { convert } = require('pipelines/index');
+const sharp = require('../../mocks/sharp.mock');
 
 describe('Upfit', () => {
-  // metadata 640x480 where not specified
-  const pipeline = createPipeline('http://any.com/any.jpeg');
-  const getUpfit = upfit(pipeline);
+  const fn = upfit(sharp);
+
+  beforeEach(() => {
+    sharp.mockClear();
+  });
 
   test('do nothing if the image is larger', async () => {
-    const operations = await getUpfit(300, 300);
-    expect(operations).toEqual([]);
+    sharp.metadata.mockResolvedValueOnce({ width: 400, height: 400 });
+    await fn(300, 300);
+    expect(sharp.resize).not.toHaveBeenCalled();
   });
 
   test('not resize if one is larger', async () => {
-    const operations = await getUpfit(800, 300);
-    expect(operations).toEqual([]);
+    sharp.metadata.mockResolvedValueOnce({ width: 400, height: 150 });
+    await fn(300, 300);
+    expect(sharp.resize).not.toHaveBeenCalled();
   });
 
   test('resize fitting the image', async () => {
-    const pip = createPipeline('http://any.com/little.jpeg');
-    pip.setMetadata({ width: 150, height: 150 });
-    const operations = await upfit(pip)(300, 300);
-    expect(operations).toEqual([
-      {
-        name: 'resize_upfit',
-        operation: 'resize',
-        params: [300, 300, { fit: 'inside' }],
-      },
-    ]);
-  });
-
-  describe('through pipeline', () => {
-    const imageUrl = '300x300.jpg';
-
-    test('resize if image width and height are both smaller then desired', async () => {
-      const options = parseOptions('rs_400x400_upfit');
-      const { width, height } = await sharp(await convert(imageUrl, options)).metadata();
-      expect(width).toBe(400);
-      expect(height).toBe(400);
-    });
-
-    test('do not resize if only image width is larger then desired', async () => {
-      const options = parseOptions('rs_200x400_upfit');
-      const { width, height } = await sharp(await convert(imageUrl, options)).metadata();
-      expect(width).toBe(300);
-      expect(height).toBe(300);
-    });
-
-    test('do not resize if only image height is larger then desired', async () => {
-      const options = parseOptions('rs_400x200_upfit');
-      const { width, height } = await sharp(await convert(imageUrl, options)).metadata();
-      expect(width).toBe(300);
-      expect(height).toBe(300);
-    });
+    sharp.metadata.mockResolvedValueOnce({ width: 200, height: 160 });
+    await fn(300, 300);
+    expect(sharp.resize).toHaveBeenCalledTimes(1);
+    expect(sharp.resize).toHaveBeenCalledWith(300, 300, { fit: 'inside' });
   });
 });
 

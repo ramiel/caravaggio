@@ -22,20 +22,18 @@ module.exports = (x, y, w, h) => {
     transformations: [
       {
         name: 'extract',
-        operation: async (pipeline) => {
-          const { width: iw, height: ih } = await pipeline.getMetadata();
-          return [
-            {
-              name: 'extract',
-              operation: 'extract',
-              params: [{
-                left: isPercentage(left) ? percentageToPixel(left, iw) : left,
-                top: isPercentage(top) ? percentageToPixel(top, ih) : top,
-                width: isPercentage(width) ? percentageToPixel(width, iw) : width,
-                height: isPercentage(height) ? percentageToPixel(height, ih) : height,
-              }],
-            },
-          ];
+        params: [{
+          left, top, width, height,
+        }],
+        fn: async (sharp) => {
+          const { width: iw, height: ih } = await sharp.metadata();
+          const extractOptions = {
+            left: isPercentage(left) ? percentageToPixel(left, iw) : left,
+            top: isPercentage(top) ? percentageToPixel(top, ih) : top,
+            width: isPercentage(width) ? percentageToPixel(width, iw) : width,
+            height: isPercentage(height) ? percentageToPixel(height, ih) : height,
+          };
+          return sharp.extract(extractOptions);
         },
       },
     ],

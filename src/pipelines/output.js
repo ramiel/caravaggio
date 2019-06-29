@@ -1,5 +1,5 @@
 const logger = require('../logger');
-const { getPipelineOperationSortFunction } = require('../utils');
+const { getPipelineOperationSortFunction, stringifyParams } = require('../utils');
 
 const OPERATION_ORDER = [
   'o',
@@ -8,21 +8,15 @@ const OPERATION_ORDER = [
 ];
 const sortFunction = getPipelineOperationSortFunction(OPERATION_ORDER);
 
-const reducer = async (acc, { name, operation, params }) => acc.then(async (pipeline) => {
-  if (operation instanceof Function) {
-    return (await operation(pipeline)).reduce(reducer, Promise.resolve(pipeline));
-  }
-  if (!pipeline.hasOperation(operation)) {
-    throw new Error(`Invalid operation: ${operation}`);
-  }
-  logger.debug(`Applying output operation "${name}:${operation}" with parameters: ${JSON.stringify(params, null, '')}`);
-  return pipeline.applyOperation(operation, ...params);
-});
+const reducer = pipeline => async (acc, { name, fn, params }) => {
+  logger.debug(`Applying output operation "${name}":"${stringifyParams(params)}"`);
+  return acc.then(sharp => fn(sharp, pipeline));
+};
 
-module.exports = pipeline => pipeline.getOptions().output
+module.exports = pipeline => sharp => pipeline.getOptions().output
   .sort(sortFunction)
   .reduce(
-    reducer,
-    Promise.resolve(pipeline),
+    reducer(pipeline),
+    Promise.resolve(sharp),
   );
 

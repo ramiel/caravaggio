@@ -1,36 +1,8 @@
 const cohercer = require('../cohercer');
+const { getOutputType } = require('./utils');
+
 
 const normalizeQ = value => Math.round((value * 80) / 100);
-
-const getOutputType = async pipeline => (pipeline.getOptions().o !== 'original'
-  ? pipeline.getOptions().o
-  : (await pipeline.getMetadata()).format);
-
-const subOperationGenerator = value => async (pipeline) => {
-  const format = await getOutputType(pipeline);
-  switch (format) {
-    case 'jpeg':
-    case 'jpg':
-      return [
-        {
-          name: 'q',
-          operation: 'jpeg',
-          params: [{ quality: normalizeQ(value) }],
-        },
-      ];
-    case 'webp':
-    case 'tiff':
-      return [
-        {
-          name: 'q',
-          operation: format,
-          params: [{ quality: normalizeQ(value) }],
-        },
-      ];
-    default:
-      return [];
-  }
-};
 
 module.exports = (value) => {
   const v = cohercer(value, 'Quality must be a value between 1 and 100.', 'quality.html')
@@ -42,7 +14,19 @@ module.exports = (value) => {
     output: [
       {
         name: 'q',
-        operation: subOperationGenerator(v),
+        fn: async (sharp, pipeline) => {
+          const format = await getOutputType(sharp, pipeline);
+          switch (format) {
+            case 'jpeg':
+            case 'jpg':
+              return sharp.jpeg({ quality: normalizeQ(v) });
+            case 'webp':
+            case 'tiff':
+              return sharp[format]({ quality: normalizeQ(v) });
+            default:
+              return sharp;
+          }
+        },
         params: [],
       },
     ],

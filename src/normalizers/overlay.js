@@ -34,14 +34,15 @@ module.exports = (config) => {
       transformations: [
         {
           name: 'overlay',
-          operation: async (pipeline) => {
+          params: [overlayUrl, ...params],
+          fn: async (sharp) => {
             let overlay;
             try {
               overlay = await image.get(url);
             } catch (e) {
               throw new Error(`An error occurred while getting overlay image. ${e.message}`);
             }
-            const { width: iw, height: ih } = await pipeline.getMetadata();
+            const { width: iw, height: ih } = await sharp.metadata();
 
             const options = {
               gravity,
@@ -59,11 +60,7 @@ module.exports = (config) => {
             if (!options.top && options.left !== undefined) {
               options.top = 0;
             }
-            return [{
-              name: 'overlay',
-              operation: 'overlayWith',
-              params: [overlay, options],
-            }];
+            return sharp.overlayWith(overlay, options);
           },
         },
       ],

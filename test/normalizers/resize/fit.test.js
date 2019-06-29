@@ -1,16 +1,17 @@
 const fitresize = require('../../../src/normalizers/resize/fit');
-const { createPipeline } = require('../../mocks/pipeline');
+const sharp = require('../../mocks/sharp.mock');
+
 
 describe('Fit', () => {
+  const fn = fitresize(sharp);
+
+  beforeEach(() => {
+    sharp.mockClear();
+  });
+
   test('resize fitting the image', async () => {
-    const pipeline = createPipeline('http://any.com/any.jpeg');
-    const operations = await fitresize(pipeline)(300, 300);
-    expect(operations).toEqual([
-      {
-        name: 'resize_fit',
-        operation: 'resize',
-        params: [300, 300, { fit: 'inside' }],
-      },
-    ]);
+    await fn(300, 300);
+    expect(sharp.resize).toHaveBeenCalledTimes(1);
+    expect(sharp.resize).toHaveBeenCalledWith(300, 300, { fit: 'inside' });
   });
 });

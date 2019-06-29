@@ -1,6 +1,11 @@
 const o = require('../../src/normalizers/o');
+const sharp = require('../mocks/sharp.mock');
 
 describe('Output', () => {
+  beforeEach(() => {
+    sharp.mockClear();
+  });
+
   test('original does not add an operation', () => {
     const result = o('original');
     expect(result).not.toHaveProperty('output');
@@ -17,8 +22,8 @@ describe('Output', () => {
       output: [
         {
           name: 'o',
-          operation: 'jpeg',
-          params: [],
+          fn: expect.any(Function),
+          params: ['jpg'],
         },
       ],
     }));
@@ -31,11 +36,17 @@ describe('Output', () => {
       output: [
         {
           name: 'o',
-          operation: 'jpeg',
-          params: [],
+          fn: expect.any(Function),
+          params: ['jpeg'],
         },
       ],
     }));
+  });
+
+  test('output to jpeg', async () => {
+    const { output: [{ fn }] } = o('jpeg');
+    await fn(sharp);
+    expect(sharp.jpeg).toHaveBeenCalledTimes(1);
   });
 
   test('"png" is handled', () => {
@@ -45,11 +56,17 @@ describe('Output', () => {
       output: [
         {
           name: 'o',
-          operation: 'png',
-          params: [],
+          fn: expect.any(Function),
+          params: ['png'],
         },
       ],
     }));
+  });
+
+  test('output to png', async () => {
+    const { output: [{ fn }] } = o('png');
+    await fn(sharp);
+    expect(sharp.png).toHaveBeenCalledTimes(1);
   });
 
   test('"webp" is handled', () => {
@@ -59,11 +76,17 @@ describe('Output', () => {
       output: [
         {
           name: 'o',
-          operation: 'webp',
-          params: [],
+          fn: expect.any(Function),
+          params: ['webp'],
         },
       ],
     }));
+  });
+
+  test('output to webp', async () => {
+    const { output: [{ fn }] } = o('webp');
+    await fn(sharp);
+    expect(sharp.webp).toHaveBeenCalledTimes(1);
   });
 
   test('"tiff" is handled', () => {
@@ -73,11 +96,17 @@ describe('Output', () => {
       output: [
         {
           name: 'o',
-          operation: 'tiff',
-          params: [],
+          fn: expect.any(Function),
+          params: ['tiff'],
         },
       ],
     }));
+  });
+
+  test('output to tiff', async () => {
+    const { output: [{ fn }] } = o('tiff');
+    await fn(sharp);
+    expect(sharp.tiff).toHaveBeenCalledTimes(1);
   });
 });
 

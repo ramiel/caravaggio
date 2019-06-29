@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const fetch = require('node-fetch'); // this is a mock
 const config = require('config');
 const Image = require('image');
 const Sharp = require('sharp');

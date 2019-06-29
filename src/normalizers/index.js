@@ -1,4 +1,5 @@
 const blurNormalizer = require('./blur');
+const duotoneNormalizer = require('./duotone');
 const extractNormalizer = require('./extract');
 const flipNormalizer = require('./flip');
 const oNormalizer = require('./o');
@@ -13,6 +14,7 @@ const UnknownOperationError = require('../errors/UnknownOperationError');
 module.exports = (config) => {
   const normalizers = {
     blur: blurNormalizer,
+    duotone: duotoneNormalizer,
     ex: extractNormalizer,
     extract: extractNormalizer,
     flip: flipNormalizer,

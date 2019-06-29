@@ -1,37 +1,58 @@
 const extract = require('normalizers/extract');
-const { createPipeline } = require('mocks/pipeline');
+const sharp = require('../mocks/sharp.mock');
 
 describe('Extract', () => {
-  test('extract the desired sub image', async () => {
-    const extractGenerator = extract('95', '35', '100', '200').transformations[0].operation;
-    const pip = createPipeline('http://any.com/little.jpeg');
-    pip.setMetadata({ width: 640, height: 480 });
-    const operations = await extractGenerator(pip);
-    expect(operations).toEqual([
-      {
-        name: 'extract',
-        operation: 'extract',
-        params: [{
-          left: 95, top: 35, width: 100, height: 200,
-        }],
-      },
-    ]);
+  beforeEach(() => {
+    sharp.mockClear();
+  });
+
+  test('extract the desired sub image', () => {
+    const operations = extract('95', '35', '100', '200');
+
+    expect(operations).toEqual({
+      transformations: [
+        {
+          name: 'extract',
+          fn: expect.any(Function),
+          params: [{
+            left: 95, top: 35, width: 100, height: 200,
+          }],
+        },
+      ],
+    });
+  });
+
+  test('apply extraction', async () => {
+    const { transformations: [{ fn }] } = extract('95', '35', '100', '200');
+    await fn(sharp);
+    expect(sharp.extract).toHaveBeenCalledTimes(1);
+    expect(sharp.extract).toHaveBeenCalledWith({
+      left: 95, top: 35, width: 100, height: 200,
+    });
   });
 
   test('all parameters can be expressed as percentage', async () => {
-    const extractGenerator = extract('0.1', '0.1', '0.5', '0.5').transformations[0].operation;
-    const pip = createPipeline('http://any.com/little.jpeg');
-    pip.setMetadata({ width: 640, height: 480 });
-    const operations = await extractGenerator(pip);
-    expect(operations).toEqual([
-      {
-        name: 'extract',
-        operation: 'extract',
-        params: [{
-          left: 64, top: 48, width: 320, height: 240,
-        }],
-      },
-    ]);
+    const operations = extract('0.1', '0.1', '0.5', '0.5');
+    expect(operations).toEqual({
+      transformations: [
+        {
+          name: 'extract',
+          fn: expect.any(Function),
+          params: [{
+            left: 0.1, top: 0.1, width: 0.5, height: 0.5,
+          }],
+        },
+      ],
+    });
+  });
+
+  test('apply extraction with percentage', async () => {
+    const { transformations: [{ fn }] } = extract('0.1', '0.1', '0.5', '0.5');
+    await fn(sharp);
+    expect(sharp.extract).toHaveBeenCalledTimes(1);
+    expect(sharp.extract).toHaveBeenCalledWith({
+      left: 64, top: 48, width: 320, height: 240,
+    });
   });
 
   test('a missing parameter throws an error', () => {
