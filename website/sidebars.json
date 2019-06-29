@@ -16,7 +16,8 @@
       "quality",
       "rotate",
       "flip",
-      "blur"
+      "blur",
+      "duotone"
     ],
     "More": [
       "attributions",

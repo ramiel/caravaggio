@@ -17,6 +17,10 @@
         "title": "Configuration",
         "sidebar_label": "Configuration"
       },
+      "duotone": {
+        "title": "Duotone",
+        "sidebar_label": "Duotone"
+      },
       "extract": {
         "title": "Extract",
         "sidebar_label": "Extract"
