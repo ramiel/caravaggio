@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
 const os = require('os');
-const path = require('path');
 const yargs = require('yargs');
+const merge = require('lodash/merge');
+const defaultConfig = require('../src/config');
+const caravaggio = require('../index');
 
 ['SIGINT', 'SIGTERM'].forEach((signal) => {
   process.on(signal, () => process.exit(0));
@@ -150,7 +152,7 @@ switch (options.inputcache) {
     break;
 }
 
-const configuration = {
+const cliConfig = {
   port: options.port,
   caches: {
     output: {
@@ -177,9 +179,5 @@ const configuration = {
   compress: options.compress,
 };
 
-process.env.NODE_CONFIG_DIR = path.join(__dirname, '..', '/config');
-process.env.NODE_CONFIG = JSON.stringify(configuration);
-process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-
-require('../index');
+caravaggio(merge(defaultConfig, cliConfig));
 

@@ -26,7 +26,7 @@ module.exports = (config) => {
     rotate: rotateNormalizer,
     rs: resizeNormalizer,
   };
-  const defaultTransformations = config.get('defaultTransformations');
+  const { defaultTransformations } = config;
 
   const findSameNameOperation = name => element => element[0] === name;
 

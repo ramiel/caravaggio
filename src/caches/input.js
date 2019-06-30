@@ -6,7 +6,7 @@ const KEY_BASE = 'original';
 module.exports = (config) => {
   let persistor;
   try {
-    persistor = PersistorFactory.create(config.get('caches.input'));
+    persistor = PersistorFactory.create(config.caches.input);
   } catch (e) {
     throw e;
   }

@@ -1,12 +1,14 @@
 const { URL } = require('url');
-const logger = require('../logger');
+const { getLogger } = require('../logger');
 const parser = require('../parser');
-const pipeline = require('../pipelines');
+const pipelineFactory = require('../pipelines');
 const sender = require('../sender');
 
 module.exports = (config) => {
   const { parseOptions } = parser(config);
   const { sendImage } = sender(config);
+  const pipeline = pipelineFactory(config);
+  const logger = getLogger();
 
   return cache => async (req, res) => {
     try {

@@ -8,6 +8,7 @@ const route = require('../../src/routes/index');
 const { compose } = require('../../src/utils');
 const errorHandlerMiddleware = require('../../src/middlewares/errorHandler');
 
+jest.mock('../../src/logger');
 const errorHandler = errorHandlerMiddleware(config);
 
 describe('Index route - getting images', () => {

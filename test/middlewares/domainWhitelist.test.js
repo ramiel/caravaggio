@@ -7,6 +7,7 @@ const domainWhitelistMiddleware = require('middlewares/domainWhitelist');
 const errorHandlerMiddleware = require('middlewares/errorHandler');
 const { compose } = require('utils');
 
+jest.mock('../../src/logger');
 const errorHandler = errorHandlerMiddleware(config);
 
 describe('Domain whitelist middleware', () => {

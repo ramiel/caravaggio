@@ -1,7 +1,8 @@
-const config = require('config');
 const router = require('./router');
 
-const whitelist = config.get('whitelist');
+module.exports = (config) => {
+  const { whitelist } = config;
 
-module.exports = router(config)({ whitelist });
+  return router(config)({ whitelist });
+};
 

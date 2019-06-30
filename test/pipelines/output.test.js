@@ -2,6 +2,8 @@ const output = require('../../src/pipelines/output');
 const pipeline = require('../mocks/pipeline.mock');
 const sharp = require('../mocks/sharp.mock');
 
+jest.mock('../../src/logger');
+
 describe('Output pipeline', () => {
   beforeEach(() => {
     pipeline.mockClear();

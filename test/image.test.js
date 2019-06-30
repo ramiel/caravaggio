@@ -1,9 +1,10 @@
 const fetch = require('node-fetch'); // this is a mock
-const config = require('config');
 const Image = require('image');
 const Sharp = require('sharp');
 const nonePersistor = require('persistors/none');
+const config = require('config');
 
+jest.mock('../src/logger');
 jest.mock('persistors/none', () => {
   const persistor = {
     read: jest.fn(() => Promise.resolve(null)),

@@ -4,8 +4,7 @@ const sharp = require('sharp');
 const compressor = require('./compressor');
 
 module.exports = (config) => {
-  const browserCache = config.get('browserCache');
-  const guessTypeByExtension = config.get('guessTypeByExtension');
+  const { browserCache, guessTypeByExtension } = config;
   const sendFactory = compressor(config);
 
   const getTypeByUrl = resourceName => path.extname(resourceName)

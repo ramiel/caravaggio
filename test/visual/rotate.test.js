@@ -1,6 +1,6 @@
 require('./init'); // eslint-disable-line import/order
 const micro = require('micro');
-const caravaggio = require('index');
+const caravaggio = require('dev');
 const listen = require('test-listen');
 const got = require('got');
 const { toMatchImageSnapshot } = require('jest-image-snapshot');

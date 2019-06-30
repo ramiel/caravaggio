@@ -1,7 +1,7 @@
 const path = require('path');
 const { URL } = require('url');
 const Cache = require('caches/output');
-const config = require('../mocks/config.mock');
+const config = require('config');
 
 jest.mock('persistors', () => {
   const dummyPersistor = {
@@ -26,16 +26,6 @@ describe('Cache', () => {
     o: 'png',
     rawNormalizedOptions: 'o_png,w_200',
   };
-
-  beforeEach(() => {
-    config.mockClear();
-  });
-
-  test('the cache configuration is correctly looked up in the config', () => {
-    Cache(config);
-    expect(config.get).toHaveBeenCalledTimes(1);
-    expect(config.get).toHaveBeenCalledWith('caches.output');
-  });
 
   test('given the same url and options, return the same filename', () => {
     const cache = Cache(config);

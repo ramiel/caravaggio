@@ -1,11 +1,12 @@
 const CError = require('./errors/CError');
-const logger = require('./logger');
+const { getLogger } = require('./logger');
 
 const createError = (statusCode, message, webUri) => new CError(message, webUri, statusCode);
 const emptyPlugins = { onRouteEntry: [] };
 let loadedPlugins = null;
 
 const pluginsLoader = (config, skipLoaded = false) => {
+  const logger = getLogger();
   const { pluginPaths, pluginsDisabled } = config;
   if (pluginsDisabled) {
     return emptyPlugins;

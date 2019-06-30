@@ -1,6 +1,8 @@
 const config = require('config');
+const { convert } = require('../../src/pipelines/index')(config);
 const { parseOptions } = require('../../src/parser')(config);
-const { convert } = require('../../src/pipelines/index');
+
+jest.mock('../../src/logger');
 
 const imageUrl = 'http://res.cloudinary.com/ramiel/image/upload/v1478374142/gomitolo2_bxd1ti.png';
 

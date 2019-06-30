@@ -1,6 +1,7 @@
 const file = require('persistors/file');
 const fs = require('fs-extra');
 
+jest.mock('../../src/logger');
 jest.mock('fs-extra', () => {
   let files = {};
   const implementation = {

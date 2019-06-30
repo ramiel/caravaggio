@@ -1,6 +1,7 @@
 const config = require('config');
 const normalizerFactory = require('../../src/normalizers/');
 
+jest.mock('../../src/logger');
 const normalizer = normalizerFactory(config);
 
 describe('Normalizer', () => {

@@ -1,5 +1,5 @@
 const { send } = require('micro');
-const logger = require('../logger');
+const { getLogger } = require('../logger');
 const { buildDocumentationLink } = require('../utils');
 
 const UNKNOWN_ERROR_MESSAGE = 'An unknown error happened :(';
@@ -77,7 +77,7 @@ See ${buildDocumentationLink(err.docUri)}` : ''}`;
 
 module.exports = (config) => {
   let build;
-  switch (config.get('errors')) {
+  switch (config.errors) {
     case 'html':
       build = buildHtmlError;
       break;
@@ -89,7 +89,9 @@ module.exports = (config) => {
       build = buildErrorText;
       break;
   }
+
   return fn => async (req, res) => {
+    const logger = getLogger();
     try {
       return await fn(req, res);
     } catch (err) {

@@ -1,12 +1,13 @@
 const fetch = require('node-fetch');
 const sharp = require('sharp');
 const InputCacheFactory = require('./caches/input');
-const logger = require('./logger');
+const { getLogger } = require('./logger');
 
 
 module.exports = (config) => {
+  const logger = getLogger();
   const cache = InputCacheFactory(config);
-  sharp.cache(config.get('sharp.cache'));
+  sharp.cache(config.sharp.cache);
 
   const Image = {
     get: async (url) => {

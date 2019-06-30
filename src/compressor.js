@@ -19,7 +19,7 @@ const compressSend = method => (res, code, data) => {
 };
 
 module.exports = (config) => {
-  const sendMethod = config.get('compress') === true
+  const sendMethod = config.compress === true
     ? compressSend
     : () => microSend;
 

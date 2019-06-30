@@ -2,6 +2,7 @@ const pluginsLoader = require('pluginsLoader');
 
 const mockPlugin = jest.fn(() => ({}));
 jest.mock('./fixtures/dummyplugin', () => mockPlugin);
+jest.mock('../src/logger');
 
 const pluginPaths = [`${__dirname}/fixtures`];
 
@@ -28,7 +29,7 @@ describe('Plugins loader', () => {
   });
 
   test('the functionality returned by the plugin is available', async () => {
-    const fn = () => {};
+    const fn = () => { };
     mockPlugin.mockImplementationOnce(() => ({
       onRouteEntry: fn,
     }));
@@ -38,7 +39,7 @@ describe('Plugins loader', () => {
   });
 
   test('plugins can be disabled all in once', () => {
-    const fn = () => {};
+    const fn = () => { };
     mockPlugin.mockImplementationOnce(() => ({
       onRouteEntry: fn,
     }));

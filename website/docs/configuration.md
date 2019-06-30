@@ -131,7 +131,7 @@ By default this option is turned off because it's common to setup a CDN to compr
 
 ## Contributors and developers
 
-If you are a developer or run Caravaggio directly from the source, the default configuration file contains a lot of instructions. You can read it in <a href="https://gitlab.com/ramiel/caravaggio/blob/master/config/default.js" target="_blank">`config/default.js`</a>.
+If you are a developer or run Caravaggio directly from the source, the default configuration file contains a lot of instructions. You can read it in <a href="https://gitlab.com/ramiel/caravaggio/blob/master/src/config/index.js" target="_blank">`src/config/index.js`</a>.
 
 > __Note__: Any change to the schema of this file is not considered a breaking change, so the keys can change also because of a minor release.
 > This is because it is intended for developers only, while the only stable interface is the `cli`.

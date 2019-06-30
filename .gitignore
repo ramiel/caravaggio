@@ -114,3 +114,4 @@ ignoreme.*
 .serverless
 caravaggio
 config/local.*
+src/config/local.*

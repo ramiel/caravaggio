@@ -1,6 +1,8 @@
 const config = require('config');
 const { parseOptions } = require('../../src/parser')(config);
-const { convert } = require('../../src/pipelines/index');
+const { convert } = require('../../src/pipelines/index')(config);
+
+jest.mock('../../src/logger');
 
 describe('Pipeline - quality', () => {
   test('having all information', async () => {
