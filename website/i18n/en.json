@@ -18,8 +18,8 @@
         "sidebar_label": "Configuration"
       },
       "duotone": {
-        "title": "Duotone",
-        "sidebar_label": "Duotone"
+        "title": "Duotone [beta]",
+        "sidebar_label": "Duotone [beta]"
       },
       "extract": {
         "title": "Extract",
@@ -217,9 +217,13 @@
         "title": "Attributions",
         "sidebar_label": "Attributions"
       },
+      "version-2.7.0/version-2.7.0-configuration": {
+        "title": "Configuration",
+        "sidebar_label": "Configuration"
+      },
       "version-2.7.0/version-2.7.0-duotone": {
-        "title": "Duotone",
-        "sidebar_label": "Duotone"
+        "title": "Duotone [beta]",
+        "sidebar_label": "Duotone [beta]"
       },
       "version-2.7.0/version-2.7.0-license": {
         "title": "License",

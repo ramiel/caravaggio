@@ -1,27 +1,27 @@
 ---
 id: version-2.7.0-duotone
-title: Duotone
-sidebar_label: Duotone
+title: Duotone [beta]
+sidebar_label: Duotone [beta]
 original_id: duotone
 ---
 
 Apply a `duotone`<a href="#reference"><sup>*</sup></a> effect to the image.
 
-The paramters are, in order:
-- `highlight color`
-- `shadow color`
+The parameters are, in order:
+- `highlight` color
+- `shadow` color
 - `opacity` (optional)
 
 Colors can be expressed in any [accepted format](resize.md#colors).    
-If an opacity is given, an semi-transparent version of the duotone image will be composited with the
-original image. This way the original colors will be visible under the tones choosen.
+If an opacity is given, a semi-transparent version of the duotone image will be composited with the
+original image. This way the original colors will be visible under the choosen tones.
 
 ## Example
 
 Without opacity
 <pre><code class="hljs css html" data-preview data-previewimage="https://cvg-res.now.sh/family.jpeg">https://caravaggio.now.sh/<strong>duotone_7aff62_6b11ca</strong>/https://cvg-res.now.sh/family.jpeg</code></pre>
 
-With opacity to 0.6
+With opacity at 0.6
 <pre><code class="hljs css html" data-preview data-previewimage="https://cvg-res.now.sh/family.jpeg">https://caravaggio.now.sh/<strong>duotone_7aff62_6b11ca_0.6</strong>/https://cvg-res.now.sh/family.jpeg</code></pre>
 
 
