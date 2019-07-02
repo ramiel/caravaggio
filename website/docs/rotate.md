@@ -15,7 +15,7 @@ Any angle is accepted.
 **Result**     
 ![Two girls rotated](assets/example/rotate.jpeg)
 
-An optional background [color](resize#colors) can be set:
+An optional background [color](resize.md#colors) can be set:
 
 <pre><code class="hljs css html" data-preview>https://caravaggio.now.sh/<strong>rotate_12_ff0000</strong>/https://cvg-res.now.sh/girls.jpeg</code></pre>
 
