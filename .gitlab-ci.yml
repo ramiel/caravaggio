@@ -1,13 +1,23 @@
 image: node:10
 
+## Quality checkers by Gitlab
+
+# include:
+#   - template: Code-Quality.gitlab-ci.yml
+
+include:
+  template: Dependency-Scanning.gitlab-ci.yml
+
+include:
+  template: SAST.gitlab-ci.yml
+
+
 test:
   script:
    - npm ci
    - npm run test
   coverage: /^Statements\s*:\s*([^%]+)/
 
-# include:
-#   - template: Code-Quality.gitlab-ci.yml
 
 #####################
 # Publish on NPM
