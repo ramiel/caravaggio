@@ -7,7 +7,7 @@
 
 A blazing fast ⚡ image manipulation service.
 
-Read the complete documentation at [ramiel.gitlab.io/caravaggio](https://ramiel.gitlab.io/caravaggio)
+Read the complete documentation at [caravaggio.ramielcreations.com](https://caravaggio.ramielcreations.com)
 
 ## Note
 
@@ -53,7 +53,7 @@ and can be used sending a set of options and an image:
 
 ## Available operations
 
-Please, refer to the [documentation](https://ramiel.gitlab.io/caravaggio) to know what are the available operations.
+Please, refer to the [documentation](https://caravaggio.ramielcreations.com) to know what are the available operations.
 
 
 ## Thank you

@@ -56,28 +56,6 @@ now-tag:
     - now alias caravaggio-$VERSION.now.sh -t $NOW_TOKEN
     - now alias caravaggio.now.sh -t $NOW_TOKEN
 
-now-resources-master:
-  stage: deploy
-  only:
-    - master
-  script:
-    - cd website/docs/assets/example
-    - npm install -g --unsafe-perm now
-    - now deploy -t $NOW_TOKEN -m VERSION=$CI_COMMIT_SHORT_SHA -f
-    - now alias cvg-res-$CI_COMMIT_REF_NAME.now.sh -t $NOW_TOKEN
-
-now-resources-tag:
-  stage: deploy
-  only:
-    - tags
-  script:
-    - cd website/docs/assets/example
-    - export VERSION=`echo $CI_COMMIT_TAG | sed -r 's/[.]+/-/g'`
-    - npm install -g --unsafe-perm now
-    - now deploy -t $NOW_TOKEN -m VERSION=$VERSION -f
-    - now alias cvg-res-$VERSION.now.sh -t $NOW_TOKEN
-    - now alias cvg-res.now.sh -t $NOW_TOKEN
-
 #####################
 # Publish on Docker
 #####################
@@ -113,14 +91,10 @@ docker-tag:
 
 
 # Gitlab Pages
-pages:
-  only:
-    - master
+# This is disabled @see new project caravaggio-docs instead
+.pages:
   script:
-    - cd website
-    - npm install
-    - npm run build
-    - cp -r build/caravaggio ../public
+    - cp -r website public
   artifacts:
     paths:
       - public

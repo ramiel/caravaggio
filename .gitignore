@@ -109,7 +109,6 @@ GitHub.sublime-settings
 /cache/*
 !/cache/.empty
 /coverage
-website/build
 ignoreme.*
 .serverless
 caravaggio

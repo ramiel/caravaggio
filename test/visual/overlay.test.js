@@ -6,7 +6,7 @@ const got = require('got');
 const { toMatchImageSnapshot } = require('jest-image-snapshot');
 
 expect.extend({ toMatchImageSnapshot });
-const BASE_IMAGE = 'https://ramiel.gitlab.io/caravaggio/docs/assets/example/girls_small.jpeg';
+const BASE_IMAGE = 'https://caravaggio.ramielcreations.com/docs/assets/example/girls_small.jpeg';
 const QUALITY = 90;
 let service;
 let baseUrl;
@@ -23,19 +23,19 @@ afterAll(() => {
 describe('Image manipulation', () => {
   describe('Overlay', () => {
     test('add animage on a new layer', async () => {
-      const response = await got(`/overlay_https%3A%2F%2Framiel.gitlab.io%2Fcaravaggio%2Fimg%2Fcaravaggio-logo.jpeg,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
+      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fimg%2Fcaravaggio-logo.jpeg,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
       const image = response.body;
       expect(image).toMatchImageSnapshot();
     });
 
     test('add animage with specific gravity', async () => {
-      const response = await got(`/overlay_https%3A%2F%2Framiel.gitlab.io%2Fcaravaggio%2Fimg%2Fcaravaggio-logo.jpeg_gsw,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
+      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fimg%2Fcaravaggio-logo.jpeg_gsw,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
       const image = response.body;
       expect(image).toMatchImageSnapshot();
     });
 
     test('add animage with coordinates', async () => {
-      const response = await got(`/overlay_https%3A%2F%2Framiel.gitlab.io%2Fcaravaggio%2Fimg%2Fcaravaggio-logo.jpeg_x100_y0.6,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
+      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fimg%2Fcaravaggio-logo.jpeg_x100_y0.6,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
       const image = response.body;
       expect(image).toMatchImageSnapshot();
     });

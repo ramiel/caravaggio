@@ -6,7 +6,7 @@ const got = require('got');
 const { toMatchImageSnapshot } = require('jest-image-snapshot');
 
 expect.extend({ toMatchImageSnapshot });
-const BASE_IMAGE = 'https://ramiel.gitlab.io/caravaggio/docs/assets/example/girls_small.jpeg';
+const BASE_IMAGE = 'https://caravaggio.ramielcreations.com/docs/assets/example/girls_small.jpeg';
 let service;
 let baseUrl;
 
