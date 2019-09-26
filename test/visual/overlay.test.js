@@ -23,25 +23,25 @@ afterAll(() => {
 describe('Image manipulation', () => {
   describe('Overlay', () => {
     test('add animage on a new layer', async () => {
-      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fimg%2Fcaravaggio-logo.jpeg,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
+      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fdocs%2Fassets%2Fexample%2Fcaravaggio-logo.jpeg,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
       const image = response.body;
       expect(image).toMatchImageSnapshot();
     });
 
     test('add animage with specific gravity', async () => {
-      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fimg%2Fcaravaggio-logo.jpeg_gsw,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
+      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fdocs%2Fassets%2Fexample%2Fcaravaggio-logo.jpeg_gsw,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
       const image = response.body;
       expect(image).toMatchImageSnapshot();
     });
 
     test('add animage with coordinates', async () => {
-      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fimg%2Fcaravaggio-logo.jpeg_x100_y0.6,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
+      const response = await got(`/overlay_https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fdocs%2Fassets%2Fexample%2Fcaravaggio-logo.jpeg_x100_y0.6,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
       const image = response.body;
       expect(image).toMatchImageSnapshot();
     });
 
     test('add an image as watermark', async () => {
-      const response = await got(`/overlay_"https%3A%2F%2Fgitlab.com%2Framiel%2Fcaravaggio%2Fraw%2Fmaster%2Fwebsite%2Fstatic%2Fimg%2Foverlay.png%3Finline%3Dfalse"_watermark,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
+      const response = await got(`/overlay_"https%3A%2F%2Fcaravaggio.ramielcreations.com%2Fdocs%2Fassets%2Fexample%2Foverlay.png"_watermark,o_png,q_${QUALITY}/${BASE_IMAGE}`, { baseUrl, encoding: null });
       const image = response.body;
       expect(image).toMatchImageSnapshot();
     });
