@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.7.1
+  - Move to a custom config module
+    - This avoids to have external dependencies at runtime. Useful for future usage.
+  - Remove documentation from the project. Now it has its own project at https://gitlab.com/ramiel/caravaggio
+
 ## 2.7.0
   - ✨ New `duotone` effect. Shift your images to two color tones
   - Pipeline faster and more powerful
