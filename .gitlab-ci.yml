@@ -43,7 +43,7 @@ now-master:
   script:
     - npm install -g --unsafe-perm now
     - now deploy -t $NOW_TOKEN -m VERSION=$CI_COMMIT_SHORT_SHA -f
-    - now alias caravaggio-$CI_COMMIT_REF_NAME.now.sh -t $NOW_TOKEN
+    - now alias caravaggio-master.now.sh -t $NOW_TOKEN
 
 now-tag:
   stage: deploy
