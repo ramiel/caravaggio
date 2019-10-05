@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://gitlab.com/ramiel/caravaggio/issues"
   },
-  "homepage": "https://ramiel.gitlab.io/caravaggio/",
+  "homepage": "https://caravaggio.ramielcreations.com",
   "dependencies": {
     "fs-extra": "7.0.0",
     "lodash": "^4.17.11",

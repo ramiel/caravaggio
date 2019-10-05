@@ -1,9 +1,9 @@
 ## Caravaggio
 
-![logo](https://ramiel.gitlab.io/caravaggio/img/caravaggio-logo.jpeg)
+![logo](https://caravaggio.ramielcreations.com/img/caravaggio-logo.jpeg)
 
 Caravaggio is an image proxy to serve images over the web after manipulating them.
-You can find the complete documentation on the [Caravaggio website](https://ramiel.gitlab.io/caravaggio/).
+You can find the complete documentation on the [Caravaggio website](https://caravaggio.ramielcreations.com/).
 
 ### About this docker image
 
@@ -19,7 +19,7 @@ Starting a Caravaggio instance is simple:
 
 ### Configuration
 
-For a full description of all the configuration options refer to the [official documentation](https://ramiel.gitlab.io/caravaggio/docs/configuration.html) 
+For a full description of all the configuration options refer to the [official documentation](https://caravaggio.ramielcreations.com/docs/configuration.html) 
 i.e. to change the port and the cache system
 
 `$ docker run -ti --name some-caravaggio -p 3333:3333 -d ramielcreations/caravaggio:tag --port 3333 --cache none`
