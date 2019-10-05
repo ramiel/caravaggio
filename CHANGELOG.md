@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.2
+  - Moved documentation on its own repository
+  - Moved documentation to new website at [caravaggio.ramielcreations.com](https://caravaggio.ramielcreations.com)
+
 ## 2.7.1
   - Move to a custom config module
     - This avoids to have external dependencies at runtime. Useful for future usage.
