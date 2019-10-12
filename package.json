@@ -3,7 +3,9 @@
   "version": "2.7.2",
   "description": "A blazing fast image processor service",
   "main": "index.js",
-  "bin": "bin/caravaggio",
+  "bin": {
+    "caravaggio": "bin/caravaggio"
+  },
   "scripts": {
     "start": "NODE_ENV=production bin/caravaggio",
     "dev": "NODE_ENV=development micro-dev -p 3001 ./src/dev.js -s",
@@ -17,7 +19,10 @@
     "public": true,
     "type": "npm"
   },
-  "repository": "gitlab:ramiel/caravaggio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ramiel/caravaggio.git"
+  },
   "keywords": [
     "image",
     "proxy",
