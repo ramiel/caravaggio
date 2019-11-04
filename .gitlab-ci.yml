@@ -36,7 +36,7 @@ npm:
 # Mainly used to provide 
 # example on the website
 #####################
-now-master:
+.now-master:
   stage: deploy
   only:
     - master
@@ -45,7 +45,7 @@ now-master:
     - now deploy -t $NOW_TOKEN -m VERSION=$CI_COMMIT_SHORT_SHA -f
     - now alias caravaggio-master.now.sh -t $NOW_TOKEN
 
-now-tag:
+.now-tag:
   stage: deploy
   only:
     - tags
