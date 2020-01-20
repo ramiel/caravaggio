@@ -32,11 +32,11 @@ describe('Overlay', () => {
     await fn(sharp);
     expect(mockImageGet).toHaveBeenCalledTimes(1);
     expect(mockImageGet).toHaveBeenCalledWith('https://imageUrl');
-    expect(sharp.overlayWith).toHaveBeenCalledTimes(1);
-    expect(sharp.overlayWith).toHaveBeenCalledWith(
-      expect.any(Buffer),
-      { tile: false },
-    );
+    expect(sharp.composite).toHaveBeenCalledTimes(1);
+    expect(sharp.composite).toHaveBeenCalledWith([{
+      input: expect.any(Buffer),
+      tile: false,
+    }]);
   });
 
   test('a gravity can be set', () => {
@@ -55,11 +55,14 @@ describe('Overlay', () => {
   test('overlay with gravity applied', async () => {
     const { transformations: [{ fn }] } = overlay('https://imageUrl', 'gse');
     await fn(sharp);
-    expect(sharp.overlayWith).toHaveBeenCalledTimes(1);
-    expect(sharp.overlayWith).toHaveBeenCalledWith(
-      expect.any(Buffer),
-      { gravity: 'southeast', tile: false },
-    );
+    expect(sharp.composite).toHaveBeenCalledTimes(1);
+    expect(sharp.composite).toHaveBeenCalledWith([
+      {
+        input: expect.any(Buffer),
+        gravity: 'southeast',
+        tile: false,
+      },
+    ]);
   });
 
   test('x and y can be set', async () => {
@@ -78,11 +81,16 @@ describe('Overlay', () => {
   test('overlay with x and y applied', async () => {
     const { transformations: [{ fn }] } = overlay('https://imageUrl', 'x10', 'y20');
     await fn(sharp);
-    expect(sharp.overlayWith).toHaveBeenCalledTimes(1);
-    expect(sharp.overlayWith).toHaveBeenCalledWith(
-      expect.any(Buffer),
-      { left: 10, top: 20, tile: false },
-    );
+    expect(sharp.composite).toHaveBeenCalledTimes(1);
+    expect(sharp.composite).toHaveBeenCalledWith([
+      {
+
+        input: expect.any(Buffer),
+        left: 10,
+        top: 20,
+        tile: false,
+      },
+    ]);
   });
 
   test('x and y can be set as percentage', async () => {
@@ -101,11 +109,13 @@ describe('Overlay', () => {
   test('overlay with x and y as percentage applied', async () => {
     const { transformations: [{ fn }] } = overlay('https://imageUrl', 'x0.1', 'y0.2');
     await fn(sharp);
-    expect(sharp.overlayWith).toHaveBeenCalledTimes(1);
-    expect(sharp.overlayWith).toHaveBeenCalledWith(
-      expect.any(Buffer),
-      { left: 64, top: 96, tile: false },
-    );
+    expect(sharp.composite).toHaveBeenCalledTimes(1);
+    expect(sharp.composite).toHaveBeenCalledWith([{
+      input: expect.any(Buffer),
+      left: 64,
+      top: 96,
+      tile: false,
+    }]);
   });
 
   test('only x can be set. y will be 0', async () => {
@@ -124,11 +134,13 @@ describe('Overlay', () => {
   test('overlay with x  applied', async () => {
     const { transformations: [{ fn }] } = overlay('https://imageUrl', 'x10');
     await fn(sharp);
-    expect(sharp.overlayWith).toHaveBeenCalledTimes(1);
-    expect(sharp.overlayWith).toHaveBeenCalledWith(
-      expect.any(Buffer),
-      { left: 10, top: 0, tile: false },
-    );
+    expect(sharp.composite).toHaveBeenCalledTimes(1);
+    expect(sharp.composite).toHaveBeenCalledWith([{
+      input: expect.any(Buffer),
+      left: 10,
+      top: 0,
+      tile: false,
+    }]);
   });
 
   test('only y can be set. x will be 0', async () => {
@@ -147,11 +159,13 @@ describe('Overlay', () => {
   test('overlay with y  applied', async () => {
     const { transformations: [{ fn }] } = overlay('https://imageUrl', 'y40');
     await fn(sharp);
-    expect(sharp.overlayWith).toHaveBeenCalledTimes(1);
-    expect(sharp.overlayWith).toHaveBeenCalledWith(
-      expect.any(Buffer),
-      { left: 0, top: 40, tile: false },
-    );
+    expect(sharp.composite).toHaveBeenCalledTimes(1);
+    expect(sharp.composite).toHaveBeenCalledWith([{
+      input: expect.any(Buffer),
+      left: 0,
+      top: 40,
+      tile: false,
+    }]);
   });
 
   test('watermark can be set', async () => {
@@ -170,11 +184,11 @@ describe('Overlay', () => {
   test('overlay with watermark applied', async () => {
     const { transformations: [{ fn }] } = overlay('https://imageUrl', 'watermark');
     await fn(sharp);
-    expect(sharp.overlayWith).toHaveBeenCalledTimes(1);
-    expect(sharp.overlayWith).toHaveBeenCalledWith(
-      expect.any(Buffer),
-      { tile: true },
-    );
+    expect(sharp.composite).toHaveBeenCalledTimes(1);
+    expect(sharp.composite).toHaveBeenCalledWith([{
+      input: expect.any(Buffer),
+      tile: true,
+    }]);
   });
 
   test('if the image is not retrieved, an error is returned', async () => {

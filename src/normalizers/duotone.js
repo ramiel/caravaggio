@@ -53,9 +53,10 @@ const overlayAlphaImage = async (duotoneImage, originalImage, opacity, format) =
     .toBuffer();
 
   return originalImage
-    .overlayWith(duotoneWithTransparency, {
+    .composite([{
+      input: duotoneWithTransparency,
       raw: { width, height, channels: 4 },
-    })
+    }])
     .raw()
     .toBuffer({ resolveWithObject: true })
     .then(({ data, info: raw }) => sharp(data, { raw }).toFormat(format));

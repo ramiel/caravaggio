@@ -60,7 +60,7 @@ module.exports = (config) => {
             if (!options.top && options.left !== undefined) {
               options.top = 0;
             }
-            return sharp.overlayWith(overlay, options);
+            return sharp.composite([{ input: overlay, ...options }]);
           },
         },
       ],

@@ -3,7 +3,7 @@ const sharp = {
   extract: jest.fn(async () => sharp),
   flip: jest.fn(async () => sharp),
   flop: jest.fn(async () => sharp),
-  overlayWith: jest.fn(() => sharp),
+  composite: jest.fn(() => sharp),
   rotate: jest.fn(async () => sharp),
   resize: jest.fn(async () => sharp),
   jpeg: jest.fn(async () => sharp),
@@ -35,7 +35,7 @@ const sharp = {
     sharp.extract.mockClear();
     sharp.flip.mockClear();
     sharp.flop.mockClear();
-    sharp.overlayWith.mockClear();
+    sharp.composite.mockClear();
     sharp.rotate.mockClear();
     sharp.resize.mockClear();
     sharp.jpeg.mockClear();
