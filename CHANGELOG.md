@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.8.0
+  - Supprot Node.js v12
+  - Update sharp to version 0.24
+
 ## 2.7.2
   - Moved documentation on its own repository
   - Moved documentation to new website at [caravaggio.ramielcreations.com](https://caravaggio.ramielcreations.com)
