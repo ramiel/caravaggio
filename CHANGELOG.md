@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.3
+  - Fix per error in CI
+
 ## 3.0.2
   - Fix error link in error page
 
