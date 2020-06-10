@@ -28,7 +28,8 @@ npm:
     - tags
   script:
     - npm config set "//registry.npmjs.org/:_authToken" $NPM_TOKEN
-    - npm publish
+    - npm install --unsafe-perm
+    - npm publish --unsafe-perm
 
 
 #####################
