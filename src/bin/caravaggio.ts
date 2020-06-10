@@ -91,13 +91,6 @@ const options =
       group: 'log',
     })
     // .conflicts('verbose', 'quiet')
-    .options('guess-type-by-extension', {
-      describe:
-        'use the file extension to guess the file type instead of reading metadata (when possible)',
-      type: 'boolean',
-      default: false,
-      group: 'image manipulation',
-    })
     .options('progressive', {
       describe:
         'the output images are progressive by default (when applicable)',
