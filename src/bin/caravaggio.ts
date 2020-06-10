@@ -189,7 +189,13 @@ const { port } = options;
 const logger = createLogger(config);
 const server = micro(caravaggio(config));
 
-logger.debug(config);
+logger.debug({
+  ...config,
+  logger: {
+    ...config.logger,
+    destination: 'stdout',
+  },
+});
 
 server.listen(port);
 
