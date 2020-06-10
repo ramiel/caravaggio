@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.2
+  - Fix error link in error page
+
 ## 3.0.0
 
 - Codebase re-written in typescript.    
