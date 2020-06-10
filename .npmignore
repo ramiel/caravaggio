@@ -7,3 +7,12 @@ __mocks__/
 ignoreme.*
 /caravaggio
 .gitlab-ci.yml
+src_OLD/
+test_OLD
+dist/config/local.*
+/src
+Dockerfile
+DOCKER_README.md
+.*
+jest.config.js
+tsconfig.json

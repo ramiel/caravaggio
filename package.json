@@ -1,6 +1,6 @@
 {
   "name": "caravaggio",
-  "version": "3.0.0-beta.1",
+  "version": "3.0.0-beta.2",
   "description": "A blazing fast image processor service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "NODE_ENV=production node dist/server",
     "dev": "NODE_ENV=development tsnd --respawn src/server.ts",
-    "build": "rimraf dist/ && NODE_ENV=production tsc --build",
+    "build": "rimraf -G dist/ && NODE_ENV=production tsc --build",
     "prepublish": "npm run build",
     "test": "npm run lint && npm run test-only -- --coverage --colors=false",
     "test-only": "NODE_ENV=test jest",
