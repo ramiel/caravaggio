@@ -1,23 +1,21 @@
 {
   "name": "caravaggio",
-  "version": "2.8.0",
+  "version": "3.0.0-beta.1",
   "description": "A blazing fast image processor service",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
-    "caravaggio": "bin/caravaggio"
+    "caravaggio": "dist/bin/caravaggio.js"
   },
   "scripts": {
-    "start": "NODE_ENV=production bin/caravaggio",
-    "dev": "NODE_ENV=development micro-dev -p 3001 ./src/dev.js -s",
-    "now-start": "bin/caravaggio --cache memory --cache-limit 1024 --inputcache memory --inputcache-limit 1024 --errors html --whitelist ramiel.gitlab.io cvg-res.now.sh --verbose",
+    "start": "NODE_ENV=production node dist/server",
+    "dev": "NODE_ENV=development tsnd --respawn src/server.ts",
+    "build": "rimraf dist/ && NODE_ENV=production tsc --build",
+    "prepublish": "npm run build",
     "test": "npm run lint && npm run test-only -- --coverage --colors=false",
     "test-only": "NODE_ENV=test jest",
     "test-watch": "npm run test-only -- --watch",
     "lint": "eslint ."
-  },
-  "now": {
-    "public": true,
-    "type": "npm"
   },
   "repository": {
     "type": "git",
@@ -37,54 +35,44 @@
   },
   "homepage": "https://caravaggio.ramielcreations.com",
   "dependencies": {
-    "fs-extra": "7.0.0",
-    "lodash": "^4.17.11",
+    "configuring": "^0.3.2",
+    "express-compression": "^1.0.1",
+    "fs-extra": "^9.0.0",
     "md5": "^2.2.1",
-    "micro": "^9.3.3",
-    "micro-redirect": "^1.0.0",
-    "microrouter": "^3.1.2",
-    "node-fetch": "^2.1.2",
-    "pino": "^5.5.0",
-    "pino-pretty": "^2.2.0",
-    "sharp": "^0.24.0",
-    "yargs": "12.0.2"
+    "micro": "^9.3.4",
+    "microrouter": "^3.1.3",
+    "node-fetch": "^2.6.0",
+    "pino": "^6.2.1",
+    "pino-pretty": "^4.0.0",
+    "sharp": "^0.25.2",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-import-resolver-jest": "^2.1.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.22.0",
-    "got": "^9.5.0",
-    "jest": "^24.1.0",
-    "jest-image-snapshot": "^2.9.0",
-    "micro-dev": "^3.0.0",
-    "request-promise": "^4.2.2",
-    "test-listen": "^1.1.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "coverageReporters": [
-      "text-summary",
-      "html"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/config/",
-      "<rootDir>/node_modules/"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "src",
-      "test"
-    ]
-  },
-  "pkg": {
-    "assets": [
-      "config/**/*",
-      "static/**/*",
-      "node_modules/config/**/*.*"
-    ]
+    "@types/async": "^3.2.3",
+    "@types/fs-extra": "^8.1.0",
+    "@types/jest": "^25.2.1",
+    "@types/jest-image-snapshot": "^3.1.0",
+    "@types/md5": "^2.2.0",
+    "@types/micro": "^7.3.3",
+    "@types/microrouter": "^3.1.1",
+    "@types/node-fetch": "^2.5.7",
+    "@types/pino": "^6.0.0",
+    "@types/sharp": "^0.25.0",
+    "@types/test-listen": "^1.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "got": "^11.1.4",
+    "jest": "^26.0.1",
+    "jest-image-snapshot": "^4.0.0",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "test-listen": "^1.1.0",
+    "ts-jest": "^26.0.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.9.3"
   }
 }

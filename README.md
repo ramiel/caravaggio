@@ -1,6 +1,6 @@
-[![caravaggio logo](https://res.cloudinary.com/ramiel/image/upload/c_scale,r_0,w_100/v1517679412/caravaggio-logo_xdwpin.jpg)](https://res.cloudinary.com/ramiel/image/upload/c_scale,r_0,w_100/v1517679412/caravaggio-logo_xdwpin.jpg)    
-# Caravaggio
+[![caravaggio logo](https://res.cloudinary.com/ramiel/image/upload/c_scale,r_0,w_100/v1517679412/caravaggio-logo_xdwpin.jpg)](https://res.cloudinary.com/ramiel/image/upload/c_scale,r_0,w_100/v1517679412/caravaggio-logo_xdwpin.jpg)
 
+# Caravaggio
 
 [![pipeline status](https://gitlab.com/ramiel/caravaggio/badges/master/pipeline.svg)](https://gitlab.com/ramiel/caravaggio/commits/master)
 [![coverage report](https://gitlab.com/ramiel/caravaggio/badges/master/coverage.svg)](https://gitlab.com/ramiel/caravaggio/commits/master)
@@ -34,7 +34,6 @@ docker run --name caravaggio -p 8565:8565 -dti ramielcreations/caravaggio:latest
 
 Refer to the [page on the docker store](https://store.docker.com/community/images/ramielcreations/caravaggio) for its configuration
 
-
 ### Git
 
 ```
@@ -48,22 +47,21 @@ npm start
 
 The service is avaiable at `http://localhost:8565/`
 
-and can be used sending a set of options and an image:    
+and can be used sending a set of options and an image:  
 `http://localhost:8565/rotate_90/https://image.com/pony.jpg`
 
 ## Available operations
 
 Please, refer to the [documentation](https://caravaggio.ramielcreations.com) to know what are the available operations.
 
-
 ## Thank you
 
-This project is possible thanks to 
+This project is possible thanks to
+
 - [sharp](http://sharp.pixelplumbing.com/en/stable/) - A js image processing library
-- [micro](https://github.com/zeit/micro) - A fast microservice library 
+- [micro](https://github.com/zeit/micro) - A fast microservice library
 - A lot of other great developers
 - The amazing photographers on [pexels.com](https://www.pexels.com/)
-
 
 # Licensing
 

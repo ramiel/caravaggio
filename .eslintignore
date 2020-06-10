@@ -1,2 +1,5 @@
-coverage
-website
+/coverage
+/website
+/src_OLD
+/test_OLD
+/dist

@@ -7,7 +7,7 @@ You can find the complete documentation on the [Caravaggio website](https://cara
 
 ### About this docker image
 
-This docker image provide a production ready version of Caravaggio.    
+This docker image provide a production ready version of Caravaggio.
 
 ### Start a Caravaggio server instance
 
@@ -19,7 +19,7 @@ Starting a Caravaggio instance is simple:
 
 ### Configuration
 
-For a full description of all the configuration options refer to the [official documentation](https://caravaggio.ramielcreations.com/docs/configuration.html) 
+For a full description of all the configuration options refer to the [official documentation](https://caravaggio.ramielcreations.com/docs/configuration.html)
 i.e. to change the port and the cache system
 
 `$ docker run -ti --name some-caravaggio -p 3333:3333 -d ramielcreations/caravaggio:tag --port 3333 --cache none`

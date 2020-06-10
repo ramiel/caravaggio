@@ -1,0 +1,205 @@
+#!/usr/bin/env node
+import yargs from 'yargs';
+import os from 'os';
+import { createConfigManager, RecursivePartial } from 'configuring';
+import micro from 'micro';
+import defaultConfig, { Config, CacheConfig } from '../config/default';
+import createLogger from '../logger';
+import caravaggio from '../index';
+import { RawOperation } from '../utils/operationParser';
+
+['SIGINT', 'SIGTERM'].forEach((signal) => {
+  process.on(signal as 'SIGINT' | 'SIGTERM', () => process.exit(0));
+});
+
+const options =
+  // .help('Caravaggio')
+  yargs
+    .option('port', {
+      alias: 'p',
+      default: process.env.PORT ? parseInt(process.env.PORT) : 8565,
+      describe: 'the server will listen to this port',
+      type: 'number',
+    })
+    .option('cache', {
+      default: 'memory',
+      describe: 'Set the cache system',
+      type: 'string',
+      choices: ['memory', 'file', 'none'],
+      group: 'cache',
+    })
+    .option('cache-filepath', {
+      describe: '[when --cache=file] The file path for the file cache',
+      type: 'string',
+      default: os.tmpdir(),
+      group: 'cache',
+    })
+    .option('cache-limit', {
+      default: 100,
+      describe:
+        '[when --cache=memory] The maximum amount of memory to use in MB',
+      type: 'number',
+      group: 'cache',
+    })
+
+    .option('inputcache', {
+      default: 'none',
+      describe:
+        'Set the input cache system. This cache save the original images to avoid re-download',
+      type: 'string',
+      choices: ['memory', 'file', 'none'],
+      group: 'input cache',
+    })
+    .option('inputcache-filepath', {
+      describe: '[when --cache=file] The file path for the file cache',
+      type: 'string',
+      default: os.tmpdir(),
+      group: 'input cache',
+    })
+    .option('inputcache-limit', {
+      default: 100,
+      describe:
+        '[when --cache=memory] The maximum amount of memory to use in MB',
+      type: 'number',
+      group: 'input cache',
+    })
+
+    .option('whitelist', {
+      describe: 'Restrict the images to a list of domains',
+      type: 'array',
+      group: 'security',
+    })
+
+    .option('verbose', {
+      alias: 'v',
+      describe: 'Increase the verbosity of the application',
+      type: 'boolean',
+      // conflicts: 'quiet',
+      group: 'log',
+    })
+    .option('quiet', {
+      alias: 'q',
+      describe: 'Do not output anything',
+      type: 'boolean',
+      // conflicts: 'verbose',
+      group: 'log',
+    })
+    .option('json', {
+      describe: 'Output logs in json format.',
+      type: 'boolean',
+      default: false,
+      group: 'log',
+    })
+    // .conflicts('verbose', 'quiet')
+    .options('guess-type-by-extension', {
+      describe:
+        'use the file extension to guess the file type instead of reading metadata (when possible)',
+      type: 'boolean',
+      default: false,
+      group: 'image manipulation',
+    })
+    .options('progressive', {
+      describe:
+        'the output images are progressive by default (when applicable)',
+      type: 'boolean',
+      default: true,
+      group: 'image manipulation',
+    })
+    .options('errors', {
+      describe: 'set the error output format',
+      type: 'string',
+      choices: ['plain', 'html', 'json'],
+      default: 'json',
+      group: 'misc',
+    })
+    .options('compress', {
+      describe:
+        'compress the response through gzip/deflate/brotli if the browser asks for it',
+      type: 'boolean',
+      default: false,
+      group: 'misc',
+    }).argv;
+
+const defaultOperations: Array<RawOperation> = [];
+defaultOperations.push({
+  operation: 'progressive',
+  value: `${options.progressive}`,
+});
+
+let cacheOptions;
+switch (options.cache) {
+  case 'file':
+    cacheOptions = {
+      basePath: options['cache-filepath'],
+    };
+    break;
+  case 'memory':
+    cacheOptions = {
+      limit: options['cache-limit'],
+    };
+    break;
+  default:
+    cacheOptions = {};
+    break;
+}
+
+let inputCacheOptions;
+switch (options.inputcache) {
+  case 'file':
+    inputCacheOptions = {
+      basePath: options['inputcache-filepath'],
+    };
+    break;
+  case 'memory':
+    inputCacheOptions = {
+      limit: options['inputcache-limit'],
+    };
+    break;
+  default:
+    inputCacheOptions = {};
+    break;
+}
+
+const cliConfig: RecursivePartial<Config> = {
+  caches: {
+    output: {
+      type: options.cache,
+      options: cacheOptions,
+    } as CacheConfig,
+    input: {
+      type: options.inputcache,
+      options: inputCacheOptions,
+    } as CacheConfig,
+  },
+  logger: {
+    options: {
+      prettyPrint: !options.json,
+      level: options.verbose ? 'debug' : options.quiet ? 'silent' : 'info',
+    },
+  },
+  whitelist: (options.whitelist as string[]) || [],
+  errors: options.errors as 'json' | 'plain' | 'html' | undefined,
+  compress: options.compress,
+  defaultOperations,
+};
+
+const configManager = createConfigManager<Config>({
+  configurations: {
+    default: defaultConfig,
+    cli: cliConfig,
+  },
+});
+
+const config = configManager.getConfig('cli');
+const { port } = options;
+
+const logger = createLogger(config);
+const server = micro(caravaggio(config));
+
+logger.debug(config);
+
+server.listen(port);
+
+logger.info(
+  `Caravaggio started on port ${port}. Preview at http://localhost:${port}`
+);

@@ -1,43 +1,49 @@
 # Changelog
 
 ## 2.8.0
-  - Supprot Node.js v12
-  - Update sharp to version 0.24
+
+- Supprot Node.js v12
+- Update sharp to version 0.24
 
 ## 2.7.2
-  - Moved documentation on its own repository
-  - Moved documentation to new website at [caravaggio.ramielcreations.com](https://caravaggio.ramielcreations.com)
+
+- Moved documentation on its own repository
+- Moved documentation to new website at [caravaggio.ramielcreations.com](https://caravaggio.ramielcreations.com)
 
 ## 2.7.1
-  - Move to a custom config module
-    - This avoids to have external dependencies at runtime. Useful for future usage.
-  - Remove documentation from the project. Now it has its own project at https://gitlab.com/ramiel/caravaggio-docs
+
+- Move to a custom config module
+  - This avoids to have external dependencies at runtime. Useful for future usage.
+- Remove documentation from the project. Now it has its own project at https://gitlab.com/ramiel/caravaggio-docs
 
 ## 2.7.0
-  - ✨ New `duotone` effect. Shift your images to two color tones
-  - Pipeline faster and more powerful
+
+- ✨ New `duotone` effect. Shift your images to two color tones
+- Pipeline faster and more powerful
 
 ## 2.6.0
-  - ⚖️ Use new licesezero.com prosperity license
-  - Improvement: use native Map as memory cache
+
+- ⚖️ Use new licesezero.com prosperity license
+- Improvement: use native Map as memory cache
 
 ## 2.5.2
-  - Improved documentation
+
+- Improved documentation
 
 ## 2.5.1
-  - Fix documentation for domain whitelist (@tobiah)
-  - Update readme
-  - Updated docusaurus
+
+- Fix documentation for domain whitelist (@tobiah)
+- Update readme
+- Updated docusaurus
 
 ## 2.5.0
 
-- Allow rotations of any angle 
+- Allow rotations of any angle
 - Update sharp to version 0.21.1
 
 ## 2.4.0
 
 - Add `overlay` option. Now you can add watermarks to your images!
-
 
 ## 2.3.6
 
@@ -48,7 +54,6 @@
 
 - Caches are faster. Now the policy is to return the cached value before saving if possible
 - Fixed a bug which prevent running verbose mode in production
-
 
 ## 2.3.4
 
@@ -61,7 +66,6 @@
 ## 2.3.0
 
 - Dependencies security updates
-
 
 ## 2.2.2
 
@@ -106,11 +110,13 @@
 - Removed now example link in documentation until it's clear what to do about it
 - Now deploy is easier
 - Publish on npm and docker hub automatically!
+
 ## 1.3.5
 
 - ✨ Docker is much, much simpler!
 - Documentation have now integrated search...thanks [algolia](https://www.algolia.com/)! 🔍
 - Errors have link to documentation...so nice! 👩‍⚕️
+
 ## 1.3.4
 
 - Wrong values in operation result in 400 response
@@ -122,6 +128,7 @@
 - Documentation update
 - Remove console.log from code
 - Docker listen to port 8565 by default. For real now.
+
 ## 1.3.1
 
 - Cli global program
@@ -143,6 +150,7 @@
 - Send cache headers
 - Three stage pipeline
 - Add logger
+
 ## 1.1.0
 
 - Support new persistors
@@ -150,10 +158,9 @@
 - Error handler
 - Domain whitelist
 - Docker version (initial)
+
 ## 1.0.1
 
 - Basic working service
   - Supported operations: rotate, flip, blur
   - Supported persistence: file, memory
-  
-

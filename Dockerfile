@@ -1,4 +1,4 @@
-FROM node:10-alpine AS build
+FROM node:12-alpine AS build
 
 LABEL maintainer="Fabrizio Ruggeri"
 
@@ -21,11 +21,13 @@ WORKDIR /caravaggio
 
 COPY package.json package-lock.json /caravaggio/
 
-RUN npm install --production
+RUN npm install
 
 COPY . /caravaggio
 
-RUN pkg -t node10-alpine-x64 .
+RUN npm run build
+
+RUN pkg -t node12-alpine-x64 .
 
 RUN ls -l /caravaggio/node_modules/sharp/
 
