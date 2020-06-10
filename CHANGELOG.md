@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.0
+
+- Codebase re-written in typescript.    
+  The code is more readable and safer. Also lot of useless code has been removed
+- New url format, easier to read and more generic. Now order of parameters is not important anymore
+- Caravaggio is now much easier to deploy on Function as a service platforms.
+
 ## 2.8.0
 
 - Supprot Node.js v12
