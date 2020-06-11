@@ -2,10 +2,14 @@ import CError from '../errors/CError';
 import { buildDocumentationLink } from '../utils/misc';
 import { Context } from '..';
 import { send } from 'micro';
-import { AugmentedRequestHandler } from 'microrouter';
+import { AugmentedRequestHandler, ServerResponse } from 'microrouter';
+
+type ErrorBuilder = (err: CError, res: ServerResponse) => unknown;
 
 const UNKNOWN_ERROR_MESSAGE = 'An unknown error happened :(';
-const buildHtmlError = (err: CError) => `
+const buildHtmlError: ErrorBuilder = (err, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+  return `
 <!doctype html>
 <html class="no-js" lang="">
   <head>
@@ -76,24 +80,32 @@ const buildHtmlError = (err: CError) => `
   </body>
 </html>
 `;
+};
 
-const buildJsonError = (err: CError) => ({
-  statusCode: err.statusCode,
-  error: err.message || UNKNOWN_ERROR_MESSAGE,
-  see: buildDocumentationLink(err.docUri),
-});
+const buildJsonError: ErrorBuilder = (err, res) => {
+  res.setHeader('Content-Type', 'application/json');
 
-const buildErrorText = (err: CError) =>
-  `${err.message || UNKNOWN_ERROR_MESSAGE}${
+  return {
+    statusCode: err.statusCode,
+    error: err.message || UNKNOWN_ERROR_MESSAGE,
+    see: buildDocumentationLink(err.docUri),
+  };
+};
+
+const buildErrorText: ErrorBuilder = (err, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=UTF-8');
+
+  return `${err.message || UNKNOWN_ERROR_MESSAGE}${
     err.docUri !== null
       ? `
 See ${buildDocumentationLink(err.docUri)}`
       : ''
   }`;
+};
 
 const errorHandler = (context: Context) => {
   const { config, logger } = context;
-  let build: (err: CError) => unknown;
+  let build: ErrorBuilder;
   switch (config.errors) {
     case 'html':
       build = buildHtmlError;
@@ -115,7 +127,7 @@ const errorHandler = (context: Context) => {
       return await fn(req, res);
     } catch (err) {
       logger.error(err);
-      return send(res, err.statusCode || 500, build(err));
+      return send(res, err.statusCode || 500, build(err, res));
     }
   };
 };
