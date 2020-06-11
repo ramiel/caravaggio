@@ -14,7 +14,7 @@ export interface Context {
   pluginManager: PluginManager;
 }
 
-export default (config: Config) => {
+export const caravaggio = (config: Config) => {
   const logger = createLogger(config);
   const pluginManager = pluginLoader(config, logger);
 
@@ -35,3 +35,5 @@ export default (config: Config) => {
     )
   );
 };
+
+export default caravaggio;
