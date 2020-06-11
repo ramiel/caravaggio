@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.4
+  Fix: error content-type is now correctly set.
+
 ## 3.0.3
   - Fix per error in CI
 
