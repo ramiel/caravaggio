@@ -1,4 +1,4 @@
-[![caravaggio logo](https://res.cloudinary.com/ramiel/image/upload/c_scale,r_0,w_100/v1517679412/caravaggio-logo_xdwpin.jpg)](https://res.cloudinary.com/ramiel/image/upload/c_scale,r_0,w_100/v1517679412/caravaggio-logo_xdwpin.jpg)
+<img src="https://caravaggio.ramielcreations.com/img/caravaggio-logo.png" alt="caravaggio logo" width="200" />
 
 # Caravaggio
 
@@ -36,11 +36,13 @@ Refer to the [page on the docker store](https://store.docker.com/community/image
 
 ### Git
 
+You can run caravaggio directly from the git repository, but it's meant for development purpose only.
+
 ```
 git clone git@gitlab.com:ramiel/caravaggio.git
 cd caravaggio
 npm install
-npm start
+npm run dev
 ```
 
 ## Using the service
@@ -48,7 +50,7 @@ npm start
 The service is avaiable at `http://localhost:8565/`
 
 and can be used sending a set of options and an image:  
-`http://localhost:8565/rotate_90/https://image.com/pony.jpg`
+`http://localhost:8565/rotate:90?image=https://image.com/pony.jpg`
 
 ## Available operations
 
