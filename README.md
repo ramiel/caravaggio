@@ -67,7 +67,8 @@ This project is possible thanks to
 
 # Licensing
 
-This package is free to use for commercial purposes for a trial period under the terms of the [Prosperity Public License](./LICENSE).
+This package is free to use for non-commercial purposes.    
+For commercial purposes it is free to use for a trial period under the terms of the [Prosperity Public License](./LICENSE).
 
 Licenses for long-term commercial use are available via [licensezero.com](https://licensezero.com).
 
