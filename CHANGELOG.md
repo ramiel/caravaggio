@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.1
+  - Add missing dependency (lodash)
+
 ## 3.1.0
   - Add `auto` to output operation to automatically return (non-cachable) webp based on browser support  
 
