@@ -1,7 +1,10 @@
 # Changelog
 
+## 3.1.0
+  - Add `auto` to output operation to automatically return (non-cachable) webp based on browser support  
+
 ## 3.0.4
-  Fix: error content-type is now correctly set.
+  - Fix: error content-type is now correctly set.
 
 ## 3.0.3
   - Fix per error in CI
