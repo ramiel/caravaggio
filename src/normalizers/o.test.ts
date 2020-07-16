@@ -28,6 +28,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['jpg'],
+          skipCache: false,
         },
       ])
     );
@@ -40,6 +41,7 @@ describe('Output', () => {
         name: 'o',
         op: expect.any(Function),
         params: ['jpeg'],
+        skipCache: false,
       },
     ]);
   });
@@ -58,6 +60,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['png'],
+          skipCache: false,
         },
       ])
     );
@@ -77,6 +80,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['webp'],
+          skipCache: false,
         },
       ])
     );
@@ -96,6 +100,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['tiff'],
+          skipCache: false,
         },
       ])
     );
@@ -105,5 +110,38 @@ describe('Output', () => {
     const [{ op }] = o({ operation: 'o', value: 'tiff' });
     await op({ image: sharp, otherOps: [], req });
     expect(sharp.tiff).toHaveBeenCalledTimes(1);
+  });
+
+  test('output to auto', async () => {
+    const [{ op }] = o({ operation: 'o', value: 'auto' });
+    await op({ image: sharp, otherOps: [], req });
+    expect(sharp.webp).toHaveBeenCalledTimes(0);
+  });
+
+  test('output to auto when webp is accepted', async () => {
+    const [{ op }] = o({ operation: 'o', value: 'auto' });
+    await op({
+      image: sharp,
+      otherOps: [],
+      req: {
+        ...req,
+        headers: { accept: 'image/webp' },
+      } as ServerRequest,
+    });
+    expect(sharp.webp).toHaveBeenCalledTimes(1);
+  });
+
+  test('if output is auto, cache is skipped', async () => {
+    const result = o({ operation: 'o', value: 'auto' });
+    expect(result).toEqual(
+      expect.objectContaining([
+        {
+          name: 'o',
+          op: expect.any(Function),
+          params: ['auto'],
+          skipCache: true,
+        },
+      ])
+    );
   });
 });

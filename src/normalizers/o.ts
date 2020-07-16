@@ -6,6 +6,8 @@ interface ORawOp extends RawOperation {
   value: string;
 }
 
+const WEBP_ACCEPT_REGEXP = /image\/webp/i;
+
 const o: Normalizer<ORawOp> = ({ value }) => {
   const format = cohercer(
     value,
@@ -13,7 +15,7 @@ const o: Normalizer<ORawOp> = ({ value }) => {
     'output.html'
   )
     .toString()
-    .enum(['original', 'jpg', 'jpeg', 'png', 'webp', 'tiff'])
+    .enum(['original', 'jpg', 'jpeg', 'png', 'webp', 'tiff', 'auto'])
     .value()
     .toLowerCase() as typeof value;
 
@@ -29,6 +31,14 @@ const o: Normalizer<ORawOp> = ({ value }) => {
     case 'tiff':
       fn = async ({ image }) => image[format]();
       break;
+    case 'auto':
+      fn = async ({ image, req }) => {
+        if (WEBP_ACCEPT_REGEXP.test(req.headers?.accept || '')) {
+          return image.webp();
+        }
+        return image;
+      };
+      break;
     default:
       return [];
   }
@@ -38,6 +48,7 @@ const o: Normalizer<ORawOp> = ({ value }) => {
       name: 'o',
       op: fn,
       params: [format],
+      skipCache: format === 'auto',
     },
   ];
 };

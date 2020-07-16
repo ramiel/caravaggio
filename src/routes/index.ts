@@ -31,8 +31,10 @@ const indexRoute = (context: Context) => {
     logger.debug(rawOperations, 'Raw operations');
 
     const result = await pipeline({ url: imageUrl, rawOperations, req });
-    await sender.sendImage(result, req, res);
-    await cache.set(url, result);
+    await sender.sendImage(result, req, res, result.skipCache);
+    if (!result.skipCache) {
+      await cache.set(url, result);
+    }
   };
 
   return handler;

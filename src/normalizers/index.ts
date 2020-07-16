@@ -21,6 +21,7 @@ export interface Operation {
     req: ServerRequest;
   }) => Promise<Sharp>;
   params: Array<unknown>;
+  skipCache?: boolean;
 }
 
 export type Normalizer<O extends RawOperation = RawOperation> = (

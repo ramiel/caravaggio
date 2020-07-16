@@ -3,12 +3,13 @@ import { Context } from '..';
 import sharp from 'sharp';
 import imageLoader from '../utils/imageLoader';
 import { stringifyParams } from '../utils/misc';
-import normalizer from '../normalizers';
+import normalizer, { Operation } from '../normalizers';
 import { ServerRequest } from 'microrouter';
 
 export interface PipelineResult {
   data: Buffer;
   format?: string;
+  skipCache?: boolean;
 }
 
 export type Pipeline = (opt: {
@@ -16,6 +17,12 @@ export type Pipeline = (opt: {
   rawOperations: Array<RawOperation>;
   req: ServerRequest;
 }) => Promise<PipelineResult>;
+
+/**
+ * Returns true if the operations provide a non-cachable result
+ */
+const shouldSkipChache = (operations: Operation[]) =>
+  operations.findIndex((o) => o.skipCache) !== -1;
 
 const pipelineCreator = (context: Context): Pipeline => {
   const loader = imageLoader(context);
@@ -29,7 +36,6 @@ const pipelineCreator = (context: Context): Pipeline => {
     const buffer = await loader.get(url);
     const image = sharp(buffer);
     const operations = normalize([...defaultOperations, ...rawOperations]);
-
     const result = await operations.reduce(
       async (acc, { name, op, params }) => {
         if (logger.isLevelEnabled('debug')) {
@@ -48,6 +54,7 @@ const pipelineCreator = (context: Context): Pipeline => {
     return {
       data,
       format: info.format,
+      skipCache: shouldSkipChache(operations),
     };
   };
 };

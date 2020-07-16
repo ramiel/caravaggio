@@ -36,12 +36,13 @@ const senderCreator = (config: Config) => {
     sendImage: async (
       resource: SendArtifact,
       req: ServerRequest,
-      res: ServerResponse
+      res: ServerResponse,
+      skipCache = false
     ) => {
       const send = sendFactory(req);
       switch (resource.type || 'buffer') {
         case 'buffer': {
-          if (cacheControlHeader) {
+          if (!skipCache && cacheControlHeader) {
             res.setHeader('cache-control', cacheControlHeader);
           }
           res.setHeader('Content-Type', await getMimeType(resource));
