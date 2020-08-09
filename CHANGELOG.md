@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.2.0
+  - Can define a `basePath` to work in a subfolder
+  - All the options are optional
+
 ## 3.1.1
   - Add missing dependency (lodash). Fix a bug that prevented deployment on vercel.
 
