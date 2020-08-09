@@ -67,13 +67,10 @@ const buildHtmlError: ErrorBuilder = (err, res) => {
         <div>
           <h1>Error</h1>
           <p>${err.message || UNKNOWN_ERROR_MESSAGE}
-          ${
-            err.docUri !== null
-              ? `<br />See <a target="_blank" href="${buildDocumentationLink(
-                  err.docUri
-                )}">${buildDocumentationLink(err.docUri)}</a>`
-              : ''
-          }</p>
+            <br />See <a target="_blank" href="${buildDocumentationLink(
+              err.docUri
+            )}">${buildDocumentationLink(err.docUri)}</a>
+          </p>
         </div>
       </div>
     </div>
@@ -95,12 +92,8 @@ const buildJsonError: ErrorBuilder = (err, res) => {
 const buildErrorText: ErrorBuilder = (err, res) => {
   res.setHeader('Content-Type', 'text/plain; charset=UTF-8');
 
-  return `${err.message || UNKNOWN_ERROR_MESSAGE}${
-    err.docUri !== null
-      ? `
-See ${buildDocumentationLink(err.docUri)}`
-      : ''
-  }`;
+  return `${err.message || UNKNOWN_ERROR_MESSAGE}
+  See ${buildDocumentationLink(err.docUri)}`;
 };
 
 const errorHandler = (context: Context) => {

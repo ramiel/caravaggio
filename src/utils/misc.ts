@@ -39,8 +39,10 @@ export const isPercentage = (percentage: string | number | null) =>
 export const percentageToPixel = (percentage: number, dimension: number) =>
   Math.round(percentage * dimension);
 
-export const buildDocumentationLink = (doc: string) =>
-  `https://caravaggio.ramielcreations.com/docs/${doc}`;
+export const buildDocumentationLink = (doc: string | null) =>
+  doc
+    ? `https://caravaggio.ramielcreations.com/docs/${doc}`
+    : 'https://caravaggio.ramielcreations.com/docs';
 
 export const compose = (...fns: Function[]) =>
   fns.reduce((f, g) => (...args: unknown[]) => f(g(...args)));

@@ -6,7 +6,10 @@ let logger: pino.Logger;
 const createLogger = (config: Config) => {
   if (logger) return logger;
   const {
-    logger: { options, destination },
+    logger: { options = {}, destination = process.stdout } = {
+      destination: process.stdout,
+      options: {},
+    },
   } = config;
   logger = pino(options, destination);
 

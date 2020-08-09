@@ -1,5 +1,11 @@
 import { Context } from '..';
 import cache from '../caches/cache';
+import { CacheConfig } from '../config/default';
+
+const defaultInputCache: CacheConfig = {
+  type: 'none',
+  options: null,
+};
 
 interface ImageLoader {
   /**
@@ -11,7 +17,7 @@ interface ImageLoader {
 
 const imageLoader = (context: Context): ImageLoader => {
   const { logger } = context;
-  const inputCache = cache(context.config.caches.input);
+  const inputCache = cache(context.config.caches?.input || defaultInputCache);
   return {
     get: async (url) => {
       const cached = await inputCache.get(url);

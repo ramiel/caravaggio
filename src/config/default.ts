@@ -72,23 +72,27 @@ export type CacheOptions =
 
 export interface Config {
   /**
+   * Set this value if caravaggio is served from a subfolder. i.e "/api"
+   */
+  basePath?: string;
+  /**
    * Caravaggio has several caches
    */
-  caches: {
+  caches?: {
     /**
      * OUTPUT CACHE
      * Cache for the transformed images.
      * Given the same input url and the same transformation options,
      * this cache saves the output buffer to avoir re-compute the transformations
      */
-    output: CacheConfig;
+    output?: CacheConfig;
     /**
      * INPUT CACHE
      * This cache let you avoid download several time the same input image
      * Given the same url, the original image is cached and not re-downloaded
      * This accept the same type as the output cache
      */
-    input: CacheConfig;
+    input?: CacheConfig;
   };
   /**
    * Define the cache directive sent in the response
@@ -113,7 +117,7 @@ export interface Config {
   /**
    * Logger definition. Define how the application should log event
    */
-  logger: {
+  logger?: {
     /**
      * level: The log level. One among: fatal, error, warn, info, debug, trace, silent
      *        The log will appear from your choosen level and upon, i.e.
@@ -121,11 +125,11 @@ export interface Config {
      *        (info -> info, warn, error, fatal)
      * pretty: Print a pretty out instead of the json one
      */
-    options: LoggerOptions;
+    options?: LoggerOptions;
     /**
-     * destination: Where to stream the log. Can be `stdout`, `stderr` or a file path
+     * destination: Where to stream the log. Can be `process.stdout`, `process.stderr` or a file path
      */
-    destination: DestinationStream;
+    destination?: DestinationStream;
   };
   /**
    * Let you decide how to show errors.
