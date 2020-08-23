@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.3.0
+  - Change plugin specification.     
+    Plugins are still sperimental and their specific can change with a minor release
+  - Add a `transformUrl` hook in plugins
+
 ## 3.2.0
   - Can define a `basePath` to work in a subfolder
   - All the options are optional
