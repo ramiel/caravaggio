@@ -33,7 +33,7 @@ const pipelineCreator = (context: Context): Pipeline => {
   } = context;
 
   return async ({ url, rawOperations, req }) => {
-    const buffer = await loader.get(url);
+    const buffer = await loader.get(url, req);
     const image = sharp(buffer);
     const operations = normalize([...defaultOperations, ...rawOperations]);
     const result = await operations.reduce(

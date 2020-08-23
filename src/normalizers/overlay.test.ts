@@ -8,7 +8,7 @@ import pluginLoader from '../pluginLoader/pluginLoader';
 import { ServerRequest } from 'microrouter';
 
 const mockImageGet = jest.fn(async () => Buffer.from('an image buffer'));
-jest.mock('../basePlugins/webImageLoader', () => (/* config */) => ({
+jest.mock('../basePlugins/webImageLoader', () => () => (/* config */) => ({
   inputImageLoader: mockImageGet,
 }));
 const config = {} as Config;

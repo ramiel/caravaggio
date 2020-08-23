@@ -1,7 +1,7 @@
 import { PluginConstructor } from '../pluginLoader/pluginLoader';
 import fetch from 'node-fetch';
 
-const webImageLoaderFactory: PluginConstructor<{}> = ({
+const webImageLoaderFactory = (): PluginConstructor => ({
   PLUGIN_IGNORE_RESULT,
 }) => {
   return {

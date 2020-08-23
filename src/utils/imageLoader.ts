@@ -1,6 +1,7 @@
 import { Context } from '..';
 import cache from '../caches/cache';
 import { CacheConfig } from '../config/default';
+import { ServerRequest } from 'microrouter';
 
 const defaultInputCache: CacheConfig = {
   type: 'none',
@@ -12,14 +13,14 @@ interface ImageLoader {
    * Given an url, returns the loaded image or raises an error
    * @throws Error if cannot load the image
    */
-  get: (url: string) => Promise<Buffer>;
+  get: (url: string, req: ServerRequest) => Promise<Buffer>;
 }
 
 const imageLoader = (context: Context): ImageLoader => {
   const { logger } = context;
   const inputCache = cache(context.config.caches?.input || defaultInputCache);
   return {
-    get: async (url) => {
+    get: async (url, req) => {
       const cached = await inputCache.get(url);
       if (cached) {
         logger.debug(
@@ -27,8 +28,9 @@ const imageLoader = (context: Context): ImageLoader => {
         );
         return cached.data;
       }
+      const finalUrl = await context.pluginManager.urlTransform(url, req);
       const loaded = (await context.pluginManager.inputImageLoader(
-        url
+        finalUrl
       )) as Buffer | null;
       if (loaded === null) {
         throw new Error(`Cannot load image "${url}"`);

@@ -17,10 +17,9 @@ const config = {} as Config;
 describe('Domain Whitelist plugin', () => {
   describe('plugin behavior', () => {
     test('the factory returns a plugin', () => {
-      const plugin = domainWhitelistFactory({
+      const plugin = domainWhitelistFactory({})({
         PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
         config,
-        pluginOptions: {},
       });
       expect(plugin).toHaveProperty('getMiddlewares');
       expect(plugin.getMiddlewares?.()).toHaveLength(1);
@@ -28,14 +27,6 @@ describe('Domain Whitelist plugin', () => {
   });
 
   describe('middleware', () => {
-    // const plugin = domainWhitelistFactory({
-    //   PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
-    //   config,
-    //   pluginOptions: {
-    //     whitelist: ['caravaggio.com'],
-    //   },
-    // });
-    // const middleware = plugin.getMiddlewares?.()[0];
     const spy = jest.fn();
     const req = ({
       query: {
@@ -49,10 +40,9 @@ describe('Domain Whitelist plugin', () => {
     });
 
     test('if no whitelist is provide, next is called', () => {
-      const plugin = domainWhitelistFactory({
+      const plugin = domainWhitelistFactory({})({
         PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
         config,
-        pluginOptions: {},
       });
       const middleware = plugin.getMiddlewares?.()[0];
       middleware?.(spy)(req, res);
@@ -61,11 +51,10 @@ describe('Domain Whitelist plugin', () => {
 
     test('if whitelist is empty, next is called', () => {
       const plugin = domainWhitelistFactory({
+        whitelist: [],
+      })({
         PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
         config,
-        pluginOptions: {
-          whitelist: [],
-        },
       });
       const middleware = plugin.getMiddlewares?.()[0];
       middleware?.(spy)(req, res);
@@ -74,11 +63,10 @@ describe('Domain Whitelist plugin', () => {
 
     test('if no image is provided, next is called', () => {
       const plugin = domainWhitelistFactory({
+        whitelist: ['anything.com'],
+      })({
         PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
         config,
-        pluginOptions: {
-          whitelist: ['anything.com'],
-        },
       });
       const middleware = plugin.getMiddlewares?.()[0];
       const req = ({ query: {} } as unknown) as ServerRequest;
@@ -88,11 +76,10 @@ describe('Domain Whitelist plugin', () => {
 
     test('if image is not in domain, an error is thrown', () => {
       const plugin = domainWhitelistFactory({
+        whitelist: ['anything.com'],
+      })({
         PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
         config,
-        pluginOptions: {
-          whitelist: ['anything.com'],
-        },
       });
       const middleware = plugin.getMiddlewares?.()[0];
       const req = ({
@@ -104,11 +91,10 @@ describe('Domain Whitelist plugin', () => {
 
     test('if image is not in a valid url, next is called', () => {
       const plugin = domainWhitelistFactory({
+        whitelist: ['anything.com'],
+      })({
         PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
         config,
-        pluginOptions: {
-          whitelist: ['anything.com'],
-        },
       });
       const middleware = plugin.getMiddlewares?.()[0];
       const req = ({

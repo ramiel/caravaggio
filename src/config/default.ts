@@ -1,5 +1,6 @@
 import { LoggerOptions, DestinationStream } from 'pino';
 import { RawOperation } from '../utils/operationParser';
+import type { PluginConstructor } from '../pluginLoader/pluginLoader';
 
 interface CacheBaseConfig {
   type: 'memory' | 'file' | 'none' | Function;
@@ -151,16 +152,16 @@ export interface Config {
     /**
      * A series of path where to look for plugins
      */
-    paths: string[];
+    paths?: string[];
     /**
      * All the plugins
      */
-    plugins: {
-      [name: string]: {
-        disabled?: boolean;
-        options?: unknown;
-      };
-    };
+    plugins: Array<{
+      name: string;
+      instance?: PluginConstructor;
+      disabled?: boolean;
+      options?: unknown;
+    }>;
   };
 
   defaultOperations?: Array<RawOperation>;

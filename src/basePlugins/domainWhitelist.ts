@@ -12,10 +12,9 @@ interface DomainWhitelistOptions {
   whitelist?: Array<string>;
 }
 
-const domainWhitelistFactory: PluginConstructor<DomainWhitelistOptions> = ({
-  // PLUGIN_IGNORE_RESULT,
-  pluginOptions,
-}) => {
+const domainWhitelistFactory = (
+  pluginOptions: DomainWhitelistOptions
+): PluginConstructor => () => {
   const { whitelist = [] } = pluginOptions || {};
   const validDomains = buildRegex(whitelist);
   return {
