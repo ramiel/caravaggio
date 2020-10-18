@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.3.1
+  - Update sharp to version 0.26.x
+
 ## 3.3.0
   - Change plugin specification.     
     Plugins are still sperimental and their specific can change with a minor release
