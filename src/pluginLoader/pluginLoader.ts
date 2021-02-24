@@ -2,7 +2,7 @@ import type { Config } from '../config/default';
 import { tryEach } from '../utils/flow';
 import webImageLoader from '../basePlugins/webImageLoader';
 import { Logger } from 'pino';
-import { AugmentedRequestHandler, ServerRequest, options } from 'microrouter';
+import { AugmentedRequestHandler, ServerRequest } from 'microrouter';
 import domainWhitelistFactory from '../basePlugins/domainWhitelist';
 import flatten from 'lodash/flatten';
 

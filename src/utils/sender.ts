@@ -1,7 +1,6 @@
 import { Config } from '../config/default';
 import sharp from 'sharp';
 import { ServerRequest, ServerResponse } from 'microrouter';
-import { send } from 'micro';
 import { CacheArtifact, CacheArtifactType } from '../persistors';
 import { PipelineResult } from '../pipeline';
 import compressor from './compressor';
@@ -43,7 +42,7 @@ const senderCreator = (config: Config) => {
       switch (resource.type || 'buffer') {
         case 'buffer': {
           if (!skipCache && cacheControlHeader) {
-            res.setHeader('cache-control', cacheControlHeader);
+            res.setHeader('Cache-Control', cacheControlHeader);
           }
           res.setHeader('Content-Type', await getMimeType(resource));
           return send(res, 200, resource.data);
