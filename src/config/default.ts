@@ -3,7 +3,7 @@ import { RawOperation } from '../utils/operationParser';
 import type { PluginConstructor } from '../pluginLoader/pluginLoader';
 
 interface CacheBaseConfig {
-  type: 'memory' | 'file' | 'none' | Function;
+  type: 'memory' | 'file' | 'none' | (() => unknown);
   options: unknown;
 }
 
@@ -44,7 +44,7 @@ interface MemoryCacheConfig extends CacheBaseConfig {
   options: MemoryCacheOptions;
 }
 
-export type NoneCacheOptions = {} | null;
+export type NoneCacheOptions = unknown | null;
 
 /**
  * Disk-less

@@ -8,6 +8,7 @@ import { ServerRequest } from 'microrouter';
 const req = {} as ServerRequest;
 
 jest.mock('sharp', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require('../tests/mocks/sharp.mock').default.sharpConstructor;
 });
 

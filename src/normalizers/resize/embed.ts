@@ -1,12 +1,12 @@
 import { ResizeModeOperator } from '.';
-import { Color } from '../../utils/colors';
+// import { Color } from '../../utils/colors';
 
-const fallbackColor: Color = {
-  r: 0,
-  g: 0,
-  b: 0,
-  alpha: 1,
-};
+// const fallbackColor: Color = {
+//   r: 0,
+//   g: 0,
+//   b: 0,
+//   alpha: 1,
+// };
 
 const embed: ResizeModeOperator = ({ image }) => async ({
   width,

@@ -1,6 +1,5 @@
 import { Sharp } from 'sharp';
 import { Operation } from '../normalizers';
-import path from 'path';
 
 const jsonReplacer = (key: string | null, value: unknown): unknown => {
   if (Buffer.isBuffer(value)) {
@@ -44,5 +43,6 @@ export const buildDocumentationLink = (doc: string | null) =>
     ? `https://caravaggio.ramielcreations.com/docs/${doc}`
     : 'https://caravaggio.ramielcreations.com/docs';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export const compose = (...fns: Function[]) =>
   fns.reduce((f, g) => (...args: unknown[]) => f(g(...args)));
