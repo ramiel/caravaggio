@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.3.2
+  - Update sharp to 0.28
+  - Add 'auto' to rotate allowed values
+  - Fix error links
+
 ## 3.3.1
   - Update sharp to version 0.26.x
 
