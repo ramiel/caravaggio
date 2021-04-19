@@ -38,9 +38,11 @@ export const isPercentage = (percentage: string | number | null) =>
 export const percentageToPixel = (percentage: number, dimension: number) =>
   Math.round(percentage * dimension);
 
-export const buildDocumentationLink = (doc: string | null) =>
+export const buildDocumentationLink = (doc: string | null, stripExt = true) =>
   doc
-    ? `https://caravaggio.ramielcreations.com/docs/${doc}`
+    ? `https://caravaggio.ramielcreations.com/docs/${
+        stripExt ? doc.replace('.html', '') : doc
+      }`
     : 'https://caravaggio.ramielcreations.com/docs';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
