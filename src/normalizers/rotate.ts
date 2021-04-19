@@ -10,9 +10,14 @@ interface RotateRawOp extends RawOperation {
 }
 
 const rotate: Normalizer<RotateRawOp> = ({ v, b }) => {
-  const angle = cohercer(v, 'Angle must be a number', 'rotate.html')
-    .toInt()
-    .value();
+  let angle: number | undefined;
+  if (v !== 'auto') {
+    angle = cohercer(v, 'Angle must be a number', 'rotate.html')
+      .toInt()
+      .value();
+  } else {
+    angle = undefined;
+  }
 
   const options: RotateOptions = {};
   if (b) {
