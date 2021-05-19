@@ -5,11 +5,12 @@ import imageLoader from '../utils/imageLoader';
 import { stringifyParams } from '../utils/misc';
 import normalizer, { Operation } from '../normalizers';
 import { ServerRequest } from 'microrouter';
+import type { CacheControlStrategy } from '../utils/sender';
 
 export interface PipelineResult {
   data: Buffer;
   format?: string;
-  skipCache?: boolean;
+  cacheStrategy?: CacheControlStrategy;
 }
 
 export type Pipeline = (opt: {
@@ -19,10 +20,21 @@ export type Pipeline = (opt: {
 }) => Promise<PipelineResult>;
 
 /**
- * Returns true if the operations provide a non-cachable result
+ * Returns the strict-est cache strategy
  */
-const shouldSkipChache = (operations: Operation[]) =>
-  operations.findIndex((o) => o.skipCache) !== -1;
+export const strictestCacheStrategy = (
+  operations: Operation[]
+): CacheControlStrategy => {
+  return operations.reduce<CacheControlStrategy>((acc, op) => {
+    const strategy = op.cacheStrategy || 'public';
+    if (acc === 'skip') return acc;
+    return strategy === 'skip'
+      ? strategy
+      : strategy === 'private'
+      ? strategy
+      : acc;
+  }, 'public');
+};
 
 const pipelineCreator = (context: Context): Pipeline => {
   const loader = imageLoader(context);
@@ -32,7 +44,7 @@ const pipelineCreator = (context: Context): Pipeline => {
     config: { defaultOperations = [] },
   } = context;
 
-  return async ({ url, rawOperations, req }) => {
+  return async ({ url, rawOperations, req }): Promise<PipelineResult> => {
     const buffer = await loader.get(url, req);
     const image = sharp(buffer);
     const operations = normalize([...defaultOperations, ...rawOperations]);
@@ -54,7 +66,7 @@ const pipelineCreator = (context: Context): Pipeline => {
     return {
       data,
       format: info.format,
-      skipCache: shouldSkipChache(operations),
+      cacheStrategy: strictestCacheStrategy(operations),
     };
   };
 };

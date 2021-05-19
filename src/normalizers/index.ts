@@ -13,6 +13,7 @@ import progressive from './progressive';
 import rotate from './rotate';
 import resize from './resize';
 import { ServerRequest } from 'microrouter';
+import { CacheControlStrategy } from '../utils/sender';
 export interface Operation {
   name: string;
   op: (opt: {
@@ -21,7 +22,7 @@ export interface Operation {
     req: ServerRequest;
   }) => Promise<Sharp>;
   params: Array<unknown>;
-  skipCache?: boolean;
+  cacheStrategy?: CacheControlStrategy;
 }
 
 export type Normalizer<O extends RawOperation = RawOperation> = (

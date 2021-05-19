@@ -104,11 +104,9 @@ export interface Config {
    *    maxAge: 60, // Define the max-age in seconds
    * }
    */
-  browserCache?:
-    | string
-    | {
-        maxAge: number;
-      };
+  browserCache?: {
+    maxAge: number;
+  };
   /**
    * Allow only files in the domain whitelist.
    * This can be an array of domains and wildcard are supported

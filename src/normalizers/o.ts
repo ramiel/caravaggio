@@ -48,7 +48,7 @@ const o: Normalizer<ORawOp> = ({ value }) => {
       name: 'o',
       op: fn,
       params: [format],
-      skipCache: format === 'auto',
+      cacheStrategy: format === 'auto' ? 'private' : 'public',
     },
   ];
 };
