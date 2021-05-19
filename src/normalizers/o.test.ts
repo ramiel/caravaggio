@@ -28,7 +28,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['jpg'],
-          skipCache: false,
+          cacheStrategy: 'public',
         },
       ])
     );
@@ -41,7 +41,7 @@ describe('Output', () => {
         name: 'o',
         op: expect.any(Function),
         params: ['jpeg'],
-        skipCache: false,
+        cacheStrategy: 'public',
       },
     ]);
   });
@@ -60,7 +60,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['png'],
-          skipCache: false,
+          cacheStrategy: 'public',
         },
       ])
     );
@@ -80,7 +80,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['webp'],
-          skipCache: false,
+          cacheStrategy: 'public',
         },
       ])
     );
@@ -100,7 +100,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['tiff'],
-          skipCache: false,
+          cacheStrategy: 'public',
         },
       ])
     );
@@ -131,7 +131,7 @@ describe('Output', () => {
     expect(sharp.webp).toHaveBeenCalledTimes(1);
   });
 
-  test('if output is auto, cache is skipped', async () => {
+  test('if output is auto, cache is skipprivateped', async () => {
     const result = o({ operation: 'o', value: 'auto' });
     expect(result).toEqual(
       expect.objectContaining([
@@ -139,7 +139,7 @@ describe('Output', () => {
           name: 'o',
           op: expect.any(Function),
           params: ['auto'],
-          skipCache: true,
+          cacheStrategy: 'private',
         },
       ])
     );
