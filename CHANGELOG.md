@@ -1,41 +1,56 @@
 # Changelog
 
+## 3.4.0
+
+- Allow more cache options. An image can now be cached privately in the user browser.
+  Before only `public` or `nothing` was available
+- A custom cache string cannot be set anymore
+
 ## 3.3.2
-  - Update sharp to 0.28
-  - Add 'auto' to rotate allowed values
-  - Fix error links
+
+- Update sharp to 0.28
+- Add 'auto' to rotate allowed values
+- Fix error links
 
 ## 3.3.1
-  - Update sharp to version 0.26.x
+
+- Update sharp to version 0.26.x
 
 ## 3.3.0
-  - Change plugin specification.     
-    Plugins are still sperimental and their specific can change with a minor release
-  - Add a `transformUrl` hook in plugins
+
+- Change plugin specification.  
+  Plugins are still sperimental and their specific can change with a minor release
+- Add a `transformUrl` hook in plugins
 
 ## 3.2.0
-  - Can define a `basePath` to work in a subfolder
-  - All the options are optional
+
+- Can define a `basePath` to work in a subfolder
+- All the options are optional
 
 ## 3.1.1
-  - Add missing dependency (lodash). Fix a bug that prevented deployment on vercel.
+
+- Add missing dependency (lodash). Fix a bug that prevented deployment on vercel.
 
 ## 3.1.0
-  - Add `auto` to output operation to automatically return (non-cachable) webp based on browser support  
+
+- Add `auto` to output operation to automatically return (non-cachable) webp based on browser support
 
 ## 3.0.4
-  - Fix: error content-type is now correctly set.
+
+- Fix: error content-type is now correctly set.
 
 ## 3.0.3
-  - Fix per error in CI
+
+- Fix per error in CI
 
 ## 3.0.2
-  - Fix error link in error page
+
+- Fix error link in error page
 
 ## 3.0.0
 
 - ⚠️ Breaking Changes ⚠️
-- Codebase re-written in typescript.    
+- Codebase re-written in typescript.  
   The code is more readable and safer. Also lot of useless code has been removed
 - New url format, easier to read and more generic. Now order of parameters is not important anymore
 - Caravaggio is now much easier to deploy on Function as a service platforms.
