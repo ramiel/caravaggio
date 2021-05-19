@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.1
+
+- Some minor fix on tests
+
 ## 3.4.0
 
 - Allow more cache options. An image can now be cached privately in the user browser.
