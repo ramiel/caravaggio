@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const sharp: any = {
   blur: jest.fn(async () => sharp),
   extract: jest.fn(async () => sharp),
