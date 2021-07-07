@@ -15,7 +15,7 @@ const o: Normalizer<ORawOp> = ({ value }) => {
     'output.html'
   )
     .toString()
-    .enum(['original', 'jpg', 'jpeg', 'png', 'webp', 'tiff', 'auto'])
+    .enum(['original', 'jpg', 'jpeg', 'png', 'webp', 'tiff', 'avif', 'auto'])
     .value()
     .toLowerCase() as typeof value;
 
@@ -30,6 +30,9 @@ const o: Normalizer<ORawOp> = ({ value }) => {
     case 'webp':
     case 'tiff':
       fn = async ({ image }) => image[format]();
+      break;
+    case 'avif':
+      fn = async ({ image }) => image.toFormat(format);
       break;
     case 'auto':
       fn = async ({ image, req }) => {

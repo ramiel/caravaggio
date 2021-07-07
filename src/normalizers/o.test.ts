@@ -112,6 +112,13 @@ describe('Output', () => {
     expect(sharp.tiff).toHaveBeenCalledTimes(1);
   });
 
+  test('output to avif', async () => {
+    const [{ op }] = o({ operation: 'o', value: 'avif' });
+    await op({ image: sharp, otherOps: [], req });
+    expect(sharp.toFormat).toHaveBeenCalledTimes(1);
+    expect(sharp.toFormat).toHaveBeenCalledWith('avif');
+  });
+
   test('output to auto', async () => {
     const [{ op }] = o({ operation: 'o', value: 'auto' });
     await op({ image: sharp, otherOps: [], req });
