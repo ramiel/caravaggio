@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.5.0
+
+- Add upport for AVIF file format
+
 ## 3.4.1
 
 - Some minor fix on tests
