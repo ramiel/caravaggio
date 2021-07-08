@@ -2,7 +2,7 @@
 
 ## 3.5.0
 
-- Add upport for AVIF file format
+- ✨ Add support for AVIF file format
 
 ## 3.4.1
 
