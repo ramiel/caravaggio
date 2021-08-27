@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.6.0
+
+- Simpler Docker image
+- Update Sharp to version 0.29.0
+
 ## 3.5.0
 
 - ✨ Add support for AVIF file format
