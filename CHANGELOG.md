@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.6.1
+
+- Update typescript
+- Use Github as main repository entry
+
 ## 3.6.0
 
 - Simpler Docker image
