@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/ramiel/caravaggio.git"
+    "url": "git+https://github.com/ramiel/caravaggio.git"
   },
   "keywords": [
     "image",
@@ -31,7 +31,7 @@
   "author": "Fabrizio Ruggeri",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://gitlab.com/ramiel/caravaggio/issues"
+    "url": "https://github.com/ramiel/caravaggio/issues"
   },
   "homepage": "https://caravaggio.ramielcreations.com",
   "dependencies": {
@@ -74,6 +74,6 @@
     "test-listen": "^1.1.0",
     "ts-jest": "^26.5.2",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.2.4"
+    "typescript": "^4.4.3"
   }
 }

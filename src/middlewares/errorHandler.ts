@@ -119,8 +119,12 @@ const errorHandler = (context: Context) => {
     try {
       return await fn(req, res);
     } catch (err) {
-      logger.error(err);
-      return send(res, err.statusCode || 500, build(err, res));
+      logger.error(err as CError);
+      return send(
+        res,
+        (err as CError).statusCode || 500,
+        build(err as CError, res)
+      );
     }
   };
 };

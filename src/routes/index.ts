@@ -14,7 +14,7 @@ const defaultOutputCacheConfig: CacheConfig = {
   },
 };
 
-const indexRoute = (context: Context) => {
+const indexRoute = (context: Context): AugmentedRequestHandler => {
   const { logger, config } = context;
   const cache = cacheFactory(config.caches?.output || defaultOutputCacheConfig);
   const sender = senderCreator(config);

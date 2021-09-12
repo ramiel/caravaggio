@@ -50,7 +50,7 @@ const filePersistor: (opt: FileCacheOptions) => Persistor = (
         });
       } catch (e) {
         logger.error(
-          e,
+          e as Error,
           `File persistor failed to save file ${completeFilename}`
         );
       }

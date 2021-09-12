@@ -20,7 +20,7 @@ export const tryEach = <T, TArgs extends unknown[]>(
           return pluginresult;
         }
       } catch (e) {
-        opt?.onError?.(e);
+        opt?.onError?.(e as Error);
       }
     }
     throw new Error(`TryEach failed. No function returned a value`);

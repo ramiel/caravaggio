@@ -57,7 +57,9 @@ const overlay = (context: Context): Normalizer<OverlayRawOp> => {
             overlay = (await inputImageLoader(url)) as Buffer;
           } catch (e) {
             throw new Error(
-              `An error occurred while getting overlay image. ${e.message}`
+              `An error occurred while getting overlay image. ${
+                (e as Error).message
+              }`
             );
           }
           const { width: iw, height: ih } = await image.metadata();
