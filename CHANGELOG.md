@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.6.2
+
+- Export Config type
+- Some dependency updates
+
 ## 3.6.1
 
 - Update typescript
