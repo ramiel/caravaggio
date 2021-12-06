@@ -8,6 +8,8 @@ import { compose } from './utils/misc';
 import errorHandler from './middlewares/errorHandler';
 import faviconRoute from './routes/favicon';
 
+export { Config };
+
 export interface Context {
   config: Config;
   logger: Logger;
