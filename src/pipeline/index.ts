@@ -2,7 +2,7 @@ import { RawOperation } from '../utils/operationParser';
 import { Context } from '..';
 import sharp from 'sharp';
 import imageLoader from '../utils/imageLoader';
-import { stringifyParams } from '../utils/misc';
+import { getImageDensityByUrl, stringifyParams } from '../utils/misc';
 import normalizer, { Operation } from '../normalizers';
 import { ServerRequest } from 'microrouter';
 import type { CacheControlStrategy } from '../utils/sender';
@@ -46,7 +46,7 @@ const pipelineCreator = (context: Context): Pipeline => {
 
   return async ({ url, rawOperations, req }): Promise<PipelineResult> => {
     const buffer = await loader.get(url, req);
-    const image = sharp(buffer);
+    const image = sharp(buffer, { density: getImageDensityByUrl(url) });
     const operations = normalize([...defaultOperations, ...rawOperations]);
     const result = await operations.reduce(
       async (acc, { name, op, params }) => {

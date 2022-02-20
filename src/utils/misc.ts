@@ -48,3 +48,8 @@ export const buildDocumentationLink = (doc: string | null, stripExt = true) =>
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const compose = (...fns: Function[]) =>
   fns.reduce((f, g) => (...args: unknown[]) => f(g(...args)));
+
+export const getImageDensityByUrl = (url: string): number | undefined => {
+  const ext = url.split('.').pop()?.split(/#|\?/)[0];
+  if (ext === 'svg') return 600;
+};
