@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.7.0
+
+- Handle SVG density. use a default value for density
+
 ## 3.6.2
 
 - Export Config type
