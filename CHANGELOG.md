@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.7.1
+
+- Correctly build
+
 ## 3.7.0
 
 - Handle SVG density. use a default value for density
