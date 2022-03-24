@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.7.2
+
+- Browser cache can be a string (users can define it as they want)
+
 ## 3.7.1
 
 - Correctly build
