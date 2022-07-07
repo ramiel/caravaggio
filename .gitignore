@@ -117,3 +117,4 @@ src_OLD/
 test_OLD
 dist/
 *-diff.png
+.vercel
