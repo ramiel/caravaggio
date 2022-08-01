@@ -20,6 +20,7 @@ const server = caravaggio({
       },
     },
   },
+  whitelist: ['ramielcreations.com', 'caravaggio.ramielcreations.com'],
   logger: {
     options: {
       prettyPrint: false,
