@@ -37,7 +37,7 @@ const domainWhitelistFactory = (
           }
           if (!valid) {
             throw new CError(
-              'The image url is not accessible due to domain restrictions',
+              `The image url (${req.query.image}) is not accessible due to domain restrictions`,
               'configuration#domains-whitelist',
               403
             );
