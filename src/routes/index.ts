@@ -33,12 +33,13 @@ const indexRoute = (context: Context): AugmentedRequestHandler => {
     const [path] = url.split('?');
     const rawOperations = operationParser(path);
     const imageUrl = req.query.image;
-
+    const referer = req.headers.host;
     if (!imageUrl) {
       throw new CError('You must provide an image url', '', 500);
     }
 
     logger.debug(imageUrl, 'Image URL');
+    logger.debug(referer || 'No referer available', 'Referer');
     logger.debug(rawOperations, 'Raw operations');
 
     const result = await pipeline({ url: imageUrl, rawOperations, req });

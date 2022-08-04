@@ -20,7 +20,6 @@ const domainWhitelistFactory = (
   return {
     getMiddlewares: () => {
       return [
-        // First middleware
         (next) => (req, res) => {
           if (!validDomains || validDomains.length === 0 || !req.query.image) {
             return next(req, res);

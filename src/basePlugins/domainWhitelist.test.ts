@@ -97,5 +97,20 @@ describe('Domain Whitelist plugin', () => {
       middleware?.(spy)(req, res);
       expect(spy).toHaveBeenCalledTimes(1);
     });
+
+    test('if image is in a valid url, next is called', () => {
+      const plugin = domainWhitelistFactory({
+        whitelist: ['anything.com'],
+      })({
+        PLUGIN_IGNORE_RESULT: PLUGIN_IGNORE_RESULT,
+        config,
+      });
+      const middleware = plugin.getMiddlewares?.()[0];
+      const req = ({
+        query: { image: 'https://anything.com/image.jpg' },
+      } as unknown) as ServerRequest;
+      expect(() => middleware?.(spy)(req, res)).not.toThrow(CError);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
   });
 });

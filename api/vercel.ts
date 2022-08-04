@@ -27,6 +27,7 @@ const server = caravaggio({
   ],
   logger: {
     options: {
+      level: process.env.LOG_LEVEL,
       prettyPrint: false,
     },
   },

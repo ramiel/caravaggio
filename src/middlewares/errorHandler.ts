@@ -120,6 +120,9 @@ const errorHandler = (context: Context) => {
       return await fn(req, res);
     } catch (err) {
       logger.error(err as CError);
+      logger.error(
+        `Previous error caused by "${req.headers.host || 'no referrer'}"`
+      );
       return send(
         res,
         (err as CError).statusCode || 500,
