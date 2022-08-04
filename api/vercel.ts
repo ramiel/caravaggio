@@ -20,7 +20,11 @@ const server = caravaggio({
       },
     },
   },
-  whitelist: ['ramielcreations.com', 'caravaggio.ramielcreations.com'],
+  whitelist: [
+    '*.ramielcreations.com',
+    'caravaggio.ramielcreations.com',
+    'cvg-res.now.sh',
+  ],
   logger: {
     options: {
       prettyPrint: false,
