@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.7.3
+
+- Fix input image loader in overlay
+
 ## 3.7.2
 
 - Browser cache can be a string (users can define it as they want)
