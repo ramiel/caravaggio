@@ -4,6 +4,7 @@ import cohercer from '../utils/cohercer';
 import { RawOperation } from '../utils/operationParser';
 import { Context } from '..';
 import { isPercentage, percentageToPixel } from '../utils/misc';
+import imageLoader from '../utils/imageLoader';
 
 interface OverlayRawOp extends RawOperation {
   url: string;
@@ -14,7 +15,7 @@ interface OverlayRawOp extends RawOperation {
 }
 
 const overlay = (context: Context): Normalizer<OverlayRawOp> => {
-  const { inputImageLoader } = context.pluginManager;
+  const { get: inputImageLoader } = imageLoader(context);
 
   return ({ url: overlayUrl, g, watermark: wtrmrk, x, y }) => {
     const gravity = getGravityFromParameter(g);
@@ -51,10 +52,10 @@ const overlay = (context: Context): Normalizer<OverlayRawOp> => {
     return [
       {
         name: 'overlay',
-        op: async ({ image }) => {
+        op: async ({ image, req }) => {
           let overlay: Buffer;
           try {
-            overlay = (await inputImageLoader(url)) as Buffer;
+            overlay = (await inputImageLoader(url, req)) as Buffer;
           } catch (e) {
             throw new Error(
               `An error occurred while getting overlay image. ${
