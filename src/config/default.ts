@@ -3,7 +3,7 @@ import { RawOperation } from '../utils/operationParser';
 import type { PluginConstructor } from '../pluginLoader/pluginLoader';
 
 interface CacheBaseConfig {
-  type: 'memory' | 'file' | 'none' | (() => unknown);
+  type: 'memory' | 'redis' | 'file' | 'none' | (() => unknown);
   options: unknown;
 }
 
@@ -44,6 +44,24 @@ interface MemoryCacheConfig extends CacheBaseConfig {
   options: MemoryCacheOptions;
 }
 
+/**
+ * Redis
+ * type: 'redis'
+ */
+export interface RedisCacheOptions {
+  /**
+   * The limit expressed in MB. When defined uses 'maxmemory-policy: allkey-lru' strategy.
+   * Default to no limit (managed by Redis).
+   */
+  limit?: number;
+  url?: string;
+}
+
+interface RedisCacheConfig extends CacheBaseConfig {
+  type: 'redis';
+  options: RedisCacheOptions;
+}
+
 export type NoneCacheOptions = unknown | null;
 
 /**
@@ -65,10 +83,16 @@ interface NoneCacheConfig extends CacheBaseConfig {
  *           CloudFlare.
  * s3:       Save the images on Amazon S3 (not yet available)
  */
-export type CacheConfig = FileCacheConfig | MemoryCacheConfig | NoneCacheConfig;
+export type CacheConfig =
+  | FileCacheConfig
+  | MemoryCacheConfig
+  | RedisCacheConfig
+  | NoneCacheConfig;
+
 export type CacheOptions =
   | FileCacheOptions
   | MemoryCacheOptions
+  | RedisCacheOptions
   | NoneCacheOptions;
 
 export interface Config {

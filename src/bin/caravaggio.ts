@@ -25,7 +25,7 @@ const options =
       default: 'memory',
       describe: 'Set the cache system',
       type: 'string',
-      choices: ['memory', 'file', 'none'],
+      choices: ['memory', 'file', 'redis', 'none'],
       group: 'cache',
     })
     .option('cache-filepath', {
@@ -37,8 +37,14 @@ const options =
     .option('cache-limit', {
       default: 100,
       describe:
-        '[when --cache=memory] The maximum amount of memory to use in MB',
+        '[when --cache=memory|redis] The maximum amount of memory to use in MB. [when --cache=redis] Use the Redis configuration default.',
       type: 'number',
+      group: 'cache',
+    })
+    .option('cache-url', {
+      default: process.env.REDIS_URL || '',
+      describe: "[when --cache=redis] The Redis cache's URL",
+      type: 'string',
       group: 'cache',
     })
 
@@ -47,11 +53,11 @@ const options =
       describe:
         'Set the input cache system. This cache save the original images to avoid re-download',
       type: 'string',
-      choices: ['memory', 'file', 'none'],
+      choices: ['memory', 'file', 'redis', 'none'],
       group: 'input cache',
     })
     .option('inputcache-filepath', {
-      describe: '[when --cache=file] The file path for the file cache',
+      describe: '[when --inputcache=file] The file path for the file cache',
       type: 'string',
       default: os.tmpdir(),
       group: 'input cache',
@@ -59,9 +65,15 @@ const options =
     .option('inputcache-limit', {
       default: 100,
       describe:
-        '[when --cache=memory] The maximum amount of memory to use in MB',
+        '[when --inputcache=memory|redis] The maximum amount of memory to use in MB.',
       type: 'number',
       group: 'input cache',
+    })
+    .option('inputcache-url', {
+      default: process.env.REDIS_URL || '',
+      describe: "[when --inputcache=redis] The Redis cache's URL",
+      type: 'string',
+      group: 'cache',
     })
 
     .option('whitelist', {
@@ -131,6 +143,12 @@ switch (options.cache) {
       limit: options['cache-limit'],
     };
     break;
+  case 'redis':
+    cacheOptions = {
+      limit: options['cache-limit'],
+      url: options['cache-url'],
+    };
+    break;
   default:
     cacheOptions = {};
     break;
@@ -146,6 +164,12 @@ switch (options.inputcache) {
   case 'memory':
     inputCacheOptions = {
       limit: options['inputcache-limit'],
+    };
+    break;
+  case 'redis':
+    cacheOptions = {
+      limit: options['cache-limit'],
+      url: options['inputcache-url'],
     };
     break;
   default:

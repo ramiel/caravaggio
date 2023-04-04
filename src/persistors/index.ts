@@ -1,10 +1,12 @@
 import file from './file';
 import memory from './memory';
+import redis from './redis';
 import none from './none';
 import {
   FileCacheOptions,
   MemoryCacheOptions,
   NoneCacheOptions,
+  RedisCacheOptions,
 } from '../config/default';
 
 export type CacheArtifactType = 'buffer';
@@ -15,15 +17,18 @@ export type CacheArtifact = {
 };
 
 export interface Persistor {
+  init?: () => Promise<Persistor>;
   flush?: () => Promise<void>;
   has: (key: string) => Promise<boolean>;
   read: (key: string) => Promise<CacheArtifact | null>;
   save: (key: string, buf: Buffer) => Promise<CacheArtifact>;
+  shutdown?: () => Promise<void>;
 }
 
 const basePersitorByType = {
   file,
   memory,
+  redis,
   none,
 };
 
@@ -37,6 +42,10 @@ type CreateOptions =
       options: MemoryCacheOptions;
     }
   | {
+      type: 'redis';
+      options: RedisCacheOptions;
+    }
+  | {
       type: 'none';
       options: NoneCacheOptions;
     };
@@ -48,6 +57,13 @@ export default {
         return basePersitorByType.file(options as FileCacheOptions);
       case 'memory':
         return basePersitorByType.memory(options as MemoryCacheOptions);
+      case 'redis': {
+        const redisPersistor = basePersitorByType.redis(
+          options as RedisCacheOptions
+        );
+        redisPersistor.init?.();
+        return redisPersistor;
+      }
       case 'none':
         return basePersitorByType.none(options as NoneCacheOptions);
       default:
