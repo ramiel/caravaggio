@@ -5,6 +5,10 @@ image: node:16
 # include:
 #   - template: Code-Quality.gitlab-ci.yml
 
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
 include:
   template: Dependency-Scanning.gitlab-ci.yml
 
