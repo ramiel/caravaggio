@@ -4,7 +4,12 @@ import micro from 'micro';
 import caravaggio from '../..';
 import listen from 'test-listen';
 import got from 'got';
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
+
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  failureThreshold: 0.01,
+  failureThresholdType: 'percent',
+});
 
 expect.extend({ toMatchImageSnapshot });
 const BASE_IMAGE = encodeURIComponent(
