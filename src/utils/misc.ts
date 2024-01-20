@@ -1,4 +1,4 @@
-import { Sharp } from 'sharp';
+import { FormatEnum, Sharp } from 'sharp';
 import { Operation } from '../normalizers';
 
 const jsonReplacer = (key: string | null, value: unknown): unknown => {
@@ -22,14 +22,14 @@ export const stringifyParams = (params: Array<unknown>) =>
 export const getOutputType = async (
   sharp: Sharp,
   operations: Operation[]
-): Promise<string | undefined> => {
+): Promise<keyof FormatEnum | undefined> => {
   const outputOp = operations.find((op) => {
     return op.name === 'o';
   });
   if (!outputOp || outputOp.params[0] === 'original') {
     return (await sharp.metadata()).format;
   }
-  return outputOp.params[0] as string;
+  return outputOp.params[0] as keyof FormatEnum;
 };
 
 export const isPercentage = (percentage: string | number | null) =>
@@ -47,7 +47,11 @@ export const buildDocumentationLink = (doc: string | null, stripExt = true) =>
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const compose = (...fns: Function[]) =>
-  fns.reduce((f, g) => (...args: unknown[]) => f(g(...args)));
+  fns.reduce(
+    (f, g) =>
+      (...args: unknown[]) =>
+        f(g(...args))
+  );
 
 export const getImageDensityByUrl = (url: string): number | undefined => {
   const ext = url.split('.').pop()?.split(/#|\?/)[0];

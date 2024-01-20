@@ -8,17 +8,14 @@ import { ResizeModeOperator } from '.';
 //   alpha: 1,
 // };
 
-const embed: ResizeModeOperator = ({ image }) => async ({
-  width,
-  height,
-  gravity,
-  background,
-}) => {
-  return image.resize(width, height, {
-    fit: 'contain',
-    position: gravity,
-    background,
-  });
-};
+const embed: ResizeModeOperator =
+  ({ image }) =>
+  async ({ width, height, gravity, background }) => {
+    return image.resize(width, height, {
+      fit: 'contain',
+      position: gravity,
+      background,
+    });
+  };
 
 export default embed;

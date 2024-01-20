@@ -24,7 +24,7 @@ describe('Operation parser', () => {
   });
 
   test('one operation with one named parameter and a basic value, si forbidden', () => {
-    expect(() => operationParser('/rs:1,s:200x300')).toThrowError(
+    expect(() => operationParser('/rs:1,s:200x300')).toThrow(
       '"rs:1" is invalid'
     );
   });
@@ -40,7 +40,7 @@ describe('Operation parser', () => {
   });
 
   test('a parameter cannot be named "operation"', () => {
-    expect(() => operationParser('/rs,operation:scale')).toThrowError(
+    expect(() => operationParser('/rs,operation:scale')).toThrow(
       'An operation cannot have a property called "operation"'
     );
   });

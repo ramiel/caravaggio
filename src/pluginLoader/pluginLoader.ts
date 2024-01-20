@@ -60,9 +60,11 @@ const pluginLoader = (config: Config, logger?: Logger): PluginManager => {
           plugin = instance;
         } else {
           // eslint-disable-next-line @typescript-eslint/no-var-requires
-          const loaded = require(require.resolve(name, {
-            paths,
-          }));
+          const loaded = require(
+            require.resolve(name, {
+              paths,
+            })
+          );
           plugin = loaded(options);
         }
         return [

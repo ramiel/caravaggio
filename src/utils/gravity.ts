@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 import cohercer from './cohercer';
 
-const GRAVITY_PARAM_REGEX = /^g?(c|n|ne|nw|e|w|s|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest)$/;
-const EXTENDED_GRAVITY_PARAM_REGEX = /^g?(c|n|ne|nw|e|w|s|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest|auto)$/;
+const GRAVITY_PARAM_REGEX =
+  /^g?(c|n|ne|nw|e|w|s|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest)$/;
+const EXTENDED_GRAVITY_PARAM_REGEX =
+  /^g?(c|n|ne|nw|e|w|s|se|sw|center|centre|north|northeast|northwest|east|west|south|southeast|southwest|auto)$/;
 export enum GRAVITY {
   c = 'center',
   n = 'north',

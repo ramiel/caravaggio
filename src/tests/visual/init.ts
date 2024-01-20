@@ -11,7 +11,7 @@ import testConfig from '../../config/test';
 const fs = fsOrig.promises;
 const cache = new Map();
 
-((fetch as unknown) as jest.Mock).mockImplementation(async (url: string) => {
+(fetch as unknown as jest.Mock).mockImplementation(async (url: string) => {
   const knownLocation =
     'https://caravaggio.ramielcreations.com/docs/assets/example';
   if (url.indexOf(knownLocation) === 0) {

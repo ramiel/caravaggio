@@ -2,7 +2,7 @@
 import file from './file';
 import fs from 'fs-extra';
 
-const mockedFs = (fs as unknown) as jest.Mock<typeof fs>;
+const mockedFs = fs as unknown as jest.Mock<typeof fs>;
 
 jest.mock('../logger', () => ({
   getMainLogger: () => ({
@@ -60,7 +60,7 @@ describe('File persistor', () => {
   });
 
   test('returns null if a file is not saved', async () => {
-    ((mockedFs as unknown) as any).readFile.mockImplementationOnce(async () => {
+    (mockedFs as unknown as any).readFile.mockImplementationOnce(async () => {
       const error: any = new Error();
       error.code = 'ENOENT';
       throw error;
@@ -77,7 +77,7 @@ describe('File persistor', () => {
   });
 
   test('tell if a file not exists', async () => {
-    ((mockedFs as unknown) as any).access.mockImplementationOnce(async () => {
+    (mockedFs as unknown as any).access.mockImplementationOnce(async () => {
       throw new Error();
     });
     const result = await file(opt).has('afile.png');

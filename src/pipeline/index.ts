@@ -31,8 +31,8 @@ export const strictestCacheStrategy = (
     return strategy === 'skip'
       ? strategy
       : strategy === 'private'
-      ? strategy
-      : acc;
+        ? strategy
+        : acc;
   }, 'public');
 };
 

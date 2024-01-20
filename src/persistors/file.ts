@@ -33,7 +33,7 @@ const filePersistor: (opt: FileCacheOptions) => Persistor = (
             ({
               type: 'buffer',
               data: buffer,
-            } as CacheArtifact)
+            }) as CacheArtifact
         )
         .catch((err) => {
           if (err.code === 'ENOENT') return null;
@@ -46,7 +46,7 @@ const filePersistor: (opt: FileCacheOptions) => Persistor = (
         await fs.outputFile(completeFilename, buffer, {
           // Due to an error in definition of this property
           // @see https://github.com/DefinitelyTyped/DefinitelyTyped/pull/44637
-          encoding: (null as unknown) as string,
+          encoding: null as unknown as string,
         });
       } catch (e) {
         logger.error(

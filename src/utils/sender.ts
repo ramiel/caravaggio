@@ -20,14 +20,14 @@ const senderCreator = (config: Config) => {
         return typeof browserCache === 'string'
           ? browserCache
           : browserCache && browserCache.maxAge
-          ? `max-age=${browserCache.maxAge}`
-          : false;
+            ? `max-age=${browserCache.maxAge}`
+            : false;
       case 'private':
         return typeof browserCache === 'string'
           ? false
           : browserCache && browserCache.maxAge
-          ? `private, max-age=${browserCache.maxAge}`
-          : false;
+            ? `private, max-age=${browserCache.maxAge}`
+            : false;
       case 'skip':
       default:
         return false;

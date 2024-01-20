@@ -1,4 +1,9 @@
-image: node:18
+image: node:20
+
+stages:
+  - test
+  - build
+  - deploy
 
 ## Quality checkers by Gitlab
 
@@ -8,14 +13,17 @@ image: node:18
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_TAG
 
 include:
   template: Dependency-Scanning.gitlab-ci.yml
 
-include:
-  template: SAST.gitlab-ci.yml
+# include:
+#   template: SAST.gitlab-ci.yml
 
 test:
+  stage: test
   script:
     - npm ci
     - npm run test

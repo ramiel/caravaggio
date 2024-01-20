@@ -68,7 +68,9 @@ const overlayAlphaImage = async (
     .raw()
     .toBuffer({ resolveWithObject: true })
     .then(({ data, info: raw }) =>
-      sharp(data, { raw: raw as Raw }).toFormat(format as string)
+      sharp(data, { raw: raw as Raw }).toFormat(
+        format as keyof sharp.FormatEnum
+      )
     );
 };
 

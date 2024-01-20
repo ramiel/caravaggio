@@ -8,5 +8,5 @@ module.exports = {
     '<rootDir>/dist',
   ],
   coverageReporters: ['text-summary', 'html'],
-  collectCoverageFrom: ['src/**/*.ts'],
+  collectCoverageFrom: ['src/**/*.ts', '!src/bin/*.ts'],
 };

@@ -17,7 +17,7 @@ describe('Resize', () => {
   test('mode must be available', async () => {
     expect(() =>
       getResize({ operation: 'resize', s: '200x300', m: 'fantasycrop' })
-    ).toThrowError();
+    ).toThrow();
   });
 
   test('mode scale is available', async () => {
@@ -166,19 +166,15 @@ describe('Resize', () => {
   });
 
   test('a non number throws an error', async () => {
-    expect(() => getResize({ operation: 'resize', s: 'abc' })).toThrowError();
+    expect(() => getResize({ operation: 'resize', s: 'abc' })).toThrow();
   });
 
   test('a wrong height will throw', async () => {
-    expect(() =>
-      getResize({ operation: 'resize', s: '200xabc' })
-    ).toThrowError();
+    expect(() => getResize({ operation: 'resize', s: '200xabc' })).toThrow();
   });
 
   test('a wrong height and a missing "x" will throw', async () => {
-    expect(() =>
-      getResize({ operation: 'resize', s: '200abc' })
-    ).toThrowError();
+    expect(() => getResize({ operation: 'resize', s: '200abc' })).toThrow();
   });
 
   test('the percentage is calculated', async () => {

@@ -22,11 +22,11 @@ describe('Domain Whitelist plugin', () => {
 
   describe('middleware', () => {
     const spy = jest.fn();
-    const req = ({
+    const req = {
       query: {
         image: 'http://image.com/image.jpg',
       },
-    } as unknown) as ServerRequest;
+    } as unknown as ServerRequest;
     const res = {} as ServerResponse;
 
     beforeEach(() => {
@@ -63,7 +63,7 @@ describe('Domain Whitelist plugin', () => {
         config,
       });
       const middleware = plugin.getMiddlewares?.()[0];
-      const req = ({ query: {} } as unknown) as ServerRequest;
+      const req = { query: {} } as unknown as ServerRequest;
       middleware?.(spy)(req, res);
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -76,9 +76,9 @@ describe('Domain Whitelist plugin', () => {
         config,
       });
       const middleware = plugin.getMiddlewares?.()[0];
-      const req = ({
+      const req = {
         query: { image: 'https://somethingelse.com' },
-      } as unknown) as ServerRequest;
+      } as unknown as ServerRequest;
       expect(() => middleware?.(spy)(req, res)).toThrow(CError);
       expect(spy).not.toHaveBeenCalled();
     });
@@ -91,9 +91,9 @@ describe('Domain Whitelist plugin', () => {
         config,
       });
       const middleware = plugin.getMiddlewares?.()[0];
-      const req = ({
+      const req = {
         query: { image: 'notanurl' },
-      } as unknown) as ServerRequest;
+      } as unknown as ServerRequest;
       middleware?.(spy)(req, res);
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -106,9 +106,9 @@ describe('Domain Whitelist plugin', () => {
         config,
       });
       const middleware = plugin.getMiddlewares?.()[0];
-      const req = ({
+      const req = {
         query: { image: 'https://anything.com/image.jpg' },
-      } as unknown) as ServerRequest;
+      } as unknown as ServerRequest;
       expect(() => middleware?.(spy)(req, res)).not.toThrow(CError);
       expect(spy).toHaveBeenCalledTimes(1);
     });

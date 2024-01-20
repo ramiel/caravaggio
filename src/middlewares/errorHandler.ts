@@ -112,24 +112,22 @@ const errorHandler = (context: Context) => {
       break;
   }
 
-  return (fn: AugmentedRequestHandler): AugmentedRequestHandler => async (
-    req,
-    res
-  ) => {
-    try {
-      return await fn(req, res);
-    } catch (err) {
-      logger.error(err as CError);
-      logger.error(
-        `Previous error caused by "${req.headers.host || 'no referrer'}"`
-      );
-      return send(
-        res,
-        (err as CError).statusCode || 500,
-        build(err as CError, res)
-      );
-    }
-  };
+  return (fn: AugmentedRequestHandler): AugmentedRequestHandler =>
+    async (req, res) => {
+      try {
+        return await fn(req, res);
+      } catch (err) {
+        logger.error(err as CError);
+        logger.error(
+          `Previous error caused by "${req.headers.host || 'no referrer'}"`
+        );
+        return send(
+          res,
+          (err as CError).statusCode || 500,
+          build(err as CError, res)
+        );
+      }
+    };
 };
 
 export default errorHandler;
