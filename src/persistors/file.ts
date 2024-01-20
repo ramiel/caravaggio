@@ -1,14 +1,14 @@
-import fs from 'fs-extra';
 import os from 'os';
 import path from 'path';
-import { getMainLogger } from '../logger';
+import fs from 'fs-extra';
+import { CacheArtifact, Persistor } from '.';
 import { FileCacheOptions } from '../config/default';
-import { Persistor, CacheArtifact } from '.';
+import { getMainLogger } from '../logger';
 
 const DEFAULT_TEMP_DIR = os.tmpdir();
 
 const filePersistor: (opt: FileCacheOptions) => Persistor = (
-  { basePath = DEFAULT_TEMP_DIR } = { basePath: DEFAULT_TEMP_DIR }
+  { basePath = DEFAULT_TEMP_DIR } = { basePath: DEFAULT_TEMP_DIR },
 ) => {
   const logger = getMainLogger();
   const subdir = 'caravaggioCache';
@@ -33,7 +33,7 @@ const filePersistor: (opt: FileCacheOptions) => Persistor = (
             ({
               type: 'buffer',
               data: buffer,
-            }) as CacheArtifact
+            }) as CacheArtifact,
         )
         .catch((err) => {
           if (err.code === 'ENOENT') return null;
@@ -51,7 +51,7 @@ const filePersistor: (opt: FileCacheOptions) => Persistor = (
       } catch (e) {
         logger.error(
           e as Error,
-          `File persistor failed to save file ${completeFilename}`
+          `File persistor failed to save file ${completeFilename}`,
         );
       }
       return {

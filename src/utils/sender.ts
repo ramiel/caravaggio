@@ -1,6 +1,6 @@
-import { Config } from '../config/default';
-import sharp from 'sharp';
 import { ServerRequest, ServerResponse } from 'microrouter';
+import sharp from 'sharp';
+import { Config } from '../config/default';
 import { CacheArtifact, CacheArtifactType } from '../persistors';
 import { PipelineResult } from '../pipeline';
 import compressor from './compressor';
@@ -19,16 +19,15 @@ const senderCreator = (config: Config) => {
       case 'public':
         return typeof browserCache === 'string'
           ? browserCache
-          : browserCache && browserCache.maxAge
+          : browserCache?.maxAge
             ? `max-age=${browserCache.maxAge}`
             : false;
       case 'private':
         return typeof browserCache === 'string'
           ? false
-          : browserCache && browserCache.maxAge
+          : browserCache?.maxAge
             ? `private, max-age=${browserCache.maxAge}`
             : false;
-      case 'skip':
       default:
         return false;
     }
@@ -51,7 +50,7 @@ const senderCreator = (config: Config) => {
       resource: SendArtifact,
       req: ServerRequest,
       res: ServerResponse,
-      cacheStrategy: CacheControlStrategy = 'public'
+      cacheStrategy: CacheControlStrategy = 'public',
     ) => {
       const send = sendFactory(req);
       switch (resource.type || 'buffer') {

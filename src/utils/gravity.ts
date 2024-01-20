@@ -58,7 +58,7 @@ interface GravityOps {
 
 export const getGravityFromParameter = (
   gravity: string | undefined,
-  opt?: GravityOps
+  opt?: GravityOps,
 ) => {
   if (!gravity) return;
   const { acceptAuto, error } = {

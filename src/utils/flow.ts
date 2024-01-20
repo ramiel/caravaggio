@@ -9,7 +9,7 @@ export const tryEach = <T, TArgs extends unknown[]>(
   opt?: {
     onError?: (e: Error) => void;
     ignoreResult?: (result: unknown) => boolean;
-  }
+  },
 ) => {
   const { ignoreResult = () => false } = opt || {};
   return async (...args: TArgs) => {
@@ -23,6 +23,6 @@ export const tryEach = <T, TArgs extends unknown[]>(
         opt?.onError?.(e as Error);
       }
     }
-    throw new Error(`TryEach failed. No function returned a value`);
+    throw new Error('TryEach failed. No function returned a value');
   };
 };

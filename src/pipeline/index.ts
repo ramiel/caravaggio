@@ -1,10 +1,10 @@
-import { RawOperation } from '../utils/operationParser';
-import { Context } from '..';
+import { ServerRequest } from 'microrouter';
 import sharp from 'sharp';
+import { Context } from '..';
+import normalizer, { Operation } from '../normalizers';
 import imageLoader from '../utils/imageLoader';
 import { getImageDensityByUrl, stringifyParams } from '../utils/misc';
-import normalizer, { Operation } from '../normalizers';
-import { ServerRequest } from 'microrouter';
+import { RawOperation } from '../utils/operationParser';
 import type { CacheControlStrategy } from '../utils/sender';
 
 export interface PipelineResult {
@@ -23,7 +23,7 @@ export type Pipeline = (opt: {
  * Returns the strict-est cache strategy
  */
 export const strictestCacheStrategy = (
-  operations: Operation[]
+  operations: Operation[],
 ): CacheControlStrategy => {
   return operations.reduce<CacheControlStrategy>((acc, op) => {
     const strategy = op.cacheStrategy || 'public';
@@ -52,13 +52,13 @@ const pipelineCreator = (context: Context): Pipeline => {
       async (acc, { name, op, params }) => {
         if (logger.isLevelEnabled('debug')) {
           logger.debug(
-            `Applying operation "${name}":"${stringifyParams(params)}"`
+            `Applying operation "${name}":"${stringifyParams(params)}"`,
           );
         }
         const prevStepImage = await acc;
         return op({ image: prevStepImage, otherOps: operations, req });
       },
-      Promise.resolve(image)
+      Promise.resolve(image),
     );
 
     const { data, info } = await result.toBuffer({ resolveWithObject: true });

@@ -1,6 +1,6 @@
-import { LoggerOptions, DestinationStream } from 'pino';
-import { RawOperation } from '../utils/operationParser';
+import { DestinationStream, LoggerOptions } from 'pino';
 import type { PluginConstructor } from '../pluginLoader/pluginLoader';
+import { RawOperation } from '../utils/operationParser';
 
 interface CacheBaseConfig {
   type: 'memory' | 'redis' | 'file' | 'none' | (() => unknown);

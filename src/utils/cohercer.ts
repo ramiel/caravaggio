@@ -6,7 +6,7 @@ import BadRequestError from '../errors/BadRequestError';
 const numberValidators = (
   parsed: number,
   errorMessage: string,
-  docUri: string
+  docUri: string,
 ) => {
   const valuedValidators = {
     min: (min: number) => {
@@ -38,7 +38,7 @@ const numberValidators = (
 const stringValidators = (
   parsed: string,
   errorMessage: string,
-  docUri: string
+  docUri: string,
 ) => {
   const valueValidators = {
     enum: (accept: string[] = []) => {
@@ -61,7 +61,7 @@ const stringValidators = (
 const boolValidators = (
   parsed: boolean,
   errorMessage: string,
-  docUri: string
+  docUri: string,
 ) => {
   const valueValidators = {
     isTrue: () => {
@@ -84,7 +84,7 @@ const boolValidators = (
 const cohercerFactory = (
   value: string,
   errorMessage = 'The value is in the wrong format',
-  docUri = 'docs.html'
+  docUri = 'docs.html',
 ) => {
   /**
    * Coherce a string to a typed value and return a set of validators on that value

@@ -1,6 +1,6 @@
+import fs from 'fs-extra';
 /* eslint-env jest */
 import file from './file';
-import fs from 'fs-extra';
 
 const mockedFs = fs as unknown as jest.Mock<typeof fs>;
 
@@ -60,8 +60,9 @@ describe('File persistor', () => {
   });
 
   test('returns null if a file is not saved', async () => {
-    (mockedFs as unknown as any).readFile.mockImplementationOnce(async () => {
-      const error: any = new Error();
+    // biome-ignore lint/suspicious/noExplicitAny: Ignore the mock
+    (mockedFs as any).readFile.mockImplementationOnce(async () => {
+      const error = new Error() as Error & { code: string };
       error.code = 'ENOENT';
       throw error;
     });
@@ -77,6 +78,7 @@ describe('File persistor', () => {
   });
 
   test('tell if a file not exists', async () => {
+    // biome-ignore lint/suspicious/noExplicitAny: Ignore mock
     (mockedFs as unknown as any).access.mockImplementationOnce(async () => {
       throw new Error();
     });
@@ -95,6 +97,7 @@ describe('File persistor', () => {
   });
 
   test('returns the buffer before saving the file (returns even if failing) [INVALID TEST]', async () => {
+    // biome-ignore lint/suspicious/noExplicitAny: Ignore mock
     (mockedFs as any).outputFile.mockImplementationOnce(async () => {
       throw new Error();
     });

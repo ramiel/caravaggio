@@ -1,7 +1,7 @@
+import { CacheConfig } from '../config/default';
+import { Persistor } from '../persistors/index';
 /* eslint-env jest */
 import cacheFactory from './cache';
-import { Persistor } from '../persistors/index';
-import { CacheConfig } from '../config/default';
 
 jest.mock('../persistors', () => {
   const dummyPersistor: Persistor = {
@@ -31,7 +31,7 @@ describe('Cache', () => {
       expect.objectContaining({
         type: 'buffer',
         data: expect.any(Buffer),
-      })
+      }),
     );
   });
 
@@ -42,7 +42,7 @@ describe('Cache', () => {
       expect.objectContaining({
         type: 'buffer',
         data: expect.any(Buffer),
-      })
+      }),
     );
   });
 });

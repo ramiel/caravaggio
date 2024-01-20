@@ -1,11 +1,10 @@
-import { PluginConstructor } from '../pluginLoader/pluginLoader';
 import CError from '../errors/CError';
+import { PluginConstructor } from '../pluginLoader/pluginLoader';
 
 const buildRegex = (domains: Array<string>) =>
-  domains &&
-  domains.map(
+  domains?.map(
     (domain) =>
-      new RegExp(`^${domain.replace(/\./g, '\\.').replace(/\*/g, '.*')}`)
+      new RegExp(`^${domain.replace(/\./g, '\\.').replace(/\*/g, '.*')}`),
   );
 
 interface DomainWhitelistOptions {
@@ -28,12 +27,12 @@ const domainWhitelistFactory =
             ) {
               return next(req, res);
             }
-            let valid;
+            let valid: boolean;
             try {
               const url = new URL(req.query.image);
               valid = validDomains.reduce(
                 (acc, test) => acc || test.test(url.host),
-                false
+                false,
               );
             } catch (e) {
               return next(req, res);
@@ -42,7 +41,7 @@ const domainWhitelistFactory =
               throw new CError(
                 `The image url (${req.query.image}) is not accessible due to domain restrictions`,
                 'configuration#domains-whitelist',
-                403
+                403,
               );
             }
             return next(req, res);

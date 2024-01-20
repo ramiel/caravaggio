@@ -1,10 +1,10 @@
-import { MemoryCacheOptions } from '../config/default';
 import { Persistor } from '.';
+import { MemoryCacheOptions } from '../config/default';
 
 const BToMB = (B: number) => Math.round((B / 1024 / 1024) * 100) / 100;
 
 const memoryPersistor: (opt: MemoryCacheOptions) => Persistor = (
-  { limit } = { limit: 100 }
+  { limit } = { limit: 100 },
 ) => {
   const fileCache = new Map();
   let size = 0;

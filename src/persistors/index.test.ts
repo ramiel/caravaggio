@@ -7,7 +7,7 @@ describe('Persistor Factory', () => {
 
   test('return an existing persistor', () => {
     expect(() =>
-      PersistorFactory.create({ type: 'none', options: {} })
+      PersistorFactory.create({ type: 'none', options: {} }),
     ).not.toThrow();
   });
 });

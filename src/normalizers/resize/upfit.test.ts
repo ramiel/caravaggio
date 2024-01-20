@@ -1,5 +1,5 @@
-import upfit from './upfit';
 import sharp from '../../tests/mocks/sharp.mock';
+import upfit from './upfit';
 
 describe('Upfit', () => {
   const fn = upfit({ image: sharp, otherOps: [] });

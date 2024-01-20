@@ -1,17 +1,17 @@
+import flatten from 'lodash/flatten';
+import { AugmentedRequestHandler, ServerRequest } from 'microrouter';
+import { Logger } from 'pino';
+import domainWhitelistFactory from '../basePlugins/domainWhitelist';
+import webImageLoader from '../basePlugins/webImageLoader';
 import type { Config } from '../config/default';
 import { tryEach } from '../utils/flow';
-import webImageLoader from '../basePlugins/webImageLoader';
-import { Logger } from 'pino';
-import { AugmentedRequestHandler, ServerRequest } from 'microrouter';
-import domainWhitelistFactory from '../basePlugins/domainWhitelist';
-import flatten from 'lodash/flatten';
 
 export const PLUGIN_IGNORE_RESULT = Symbol('PLUGIN_IGNORE_RESULT');
 
 export interface Plugin {
   urlTransform?: (url: string, req: ServerRequest) => Promise<string>;
   inputImageLoader?: (
-    imageUrl: string
+    imageUrl: string,
   ) => Promise<Buffer | typeof PLUGIN_IGNORE_RESULT | null>;
   getMiddlewares?: () => Array<
     (next: AugmentedRequestHandler) => AugmentedRequestHandler
@@ -63,20 +63,18 @@ const pluginLoader = (config: Config, logger?: Logger): PluginManager => {
           const loaded = require(
             require.resolve(name, {
               paths,
-            })
+            }),
           );
           plugin = loaded(options);
         }
-        return [
-          ...acc,
-          {
-            name,
-            instance: plugin({
-              config,
-              PLUGIN_IGNORE_RESULT,
-            }),
-          },
-        ];
+        acc.push({
+          name,
+          instance: plugin({
+            config,
+            PLUGIN_IGNORE_RESULT,
+          }),
+        });
+        return acc;
       }, loadedPlugins);
   }
 
@@ -114,7 +112,7 @@ const pluginLoader = (config: Config, logger?: Logger): PluginManager => {
         return result;
       } catch (e) {
         throw new Error(
-          `[PLUGIN:inputImageLoader] failed. No plugin is able to download "${imageUrl}"`
+          `[PLUGIN:inputImageLoader] failed. No plugin is able to download "${imageUrl}"`,
         );
       }
     },

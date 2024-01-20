@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: No need to be clear in the mock
 const sharp: any = {
   blur: jest.fn(async () => sharp),
   extract: jest.fn(async () => sharp),

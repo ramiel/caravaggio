@@ -24,7 +24,7 @@ export const hexToRGB = (hex: string) => {
 export const getColorFromParameter = (
   param: string,
   errorMessage = `Invalid color paramter "${param}".`,
-  docUri = 'resize.html#colors'
+  docUri = 'resize.html#colors',
 ): Color => {
   const value = cohercer(param, errorMessage, docUri)
     .toString()

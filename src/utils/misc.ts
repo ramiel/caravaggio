@@ -21,7 +21,7 @@ export const stringifyParams = (params: Array<unknown>) =>
  */
 export const getOutputType = async (
   sharp: Sharp,
-  operations: Operation[]
+  operations: Operation[],
 ): Promise<keyof FormatEnum | undefined> => {
   const outputOp = operations.find((op) => {
     return op.name === 'o';
@@ -45,12 +45,12 @@ export const buildDocumentationLink = (doc: string | null, stripExt = true) =>
       }`
     : 'https://caravaggio.ramielcreations.com/docs';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// biome-ignore lint/complexity/noBannedTypes: compose it's too generic to bound to a specific function signature
 export const compose = (...fns: Function[]) =>
   fns.reduce(
     (f, g) =>
       (...args: unknown[]) =>
-        f(g(...args))
+        f(g(...args)),
   );
 
 export const getImageDensityByUrl = (url: string): number | undefined => {

@@ -1,7 +1,7 @@
+import { ServerRequest } from 'microrouter';
+import sharp from '../tests/mocks/sharp.mock';
 /* eslint-env jest */
 import rotate from './rotate';
-import sharp from '../tests/mocks/sharp.mock';
-import { ServerRequest } from 'microrouter';
 
 const req = {} as ServerRequest;
 
@@ -18,7 +18,7 @@ describe('Rotate', () => {
           op: expect.any(Function),
           params: [180, {}],
         },
-      ])
+      ]),
     );
   });
 
@@ -30,7 +30,7 @@ describe('Rotate', () => {
           op: expect.any(Function),
           params: [-180, {}],
         },
-      ])
+      ]),
     );
   });
 
@@ -42,7 +42,7 @@ describe('Rotate', () => {
           op: expect.any(Function),
           params: [450, {}],
         },
-      ])
+      ]),
     );
   });
 
@@ -54,7 +54,7 @@ describe('Rotate', () => {
           op: expect.any(Function),
           params: [42, {}],
         },
-      ])
+      ]),
     );
   });
 
@@ -83,7 +83,7 @@ describe('Rotate', () => {
             },
           ],
         },
-      ])
+      ]),
     );
   });
 
@@ -105,7 +105,7 @@ describe('Rotate', () => {
             },
           ],
         },
-      ])
+      ]),
     );
   });
 

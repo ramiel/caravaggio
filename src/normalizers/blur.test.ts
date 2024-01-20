@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
+import { ServerRequest } from 'microrouter';
 import sharp from '../tests/mocks/sharp.mock';
 import blur from './blur';
-import { ServerRequest } from 'microrouter';
 
 const req = {} as ServerRequest;
 
@@ -19,7 +19,7 @@ describe('Blur', () => {
           op: expect.any(Function),
           params: [10],
         },
-      ])
+      ]),
     );
   });
 

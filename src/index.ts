@@ -1,12 +1,12 @@
+import { get, router } from 'microrouter';
+import { Logger } from 'pino';
 import { Config } from './config/default';
 import createLogger from './logger';
-import pluginLoader, { PluginManager } from './pluginLoader/pluginLoader';
-import { Logger } from 'pino';
-import { router, get } from 'microrouter';
-import indexRoute from './routes';
-import { compose } from './utils/misc';
 import errorHandler from './middlewares/errorHandler';
+import pluginLoader, { PluginManager } from './pluginLoader/pluginLoader';
+import indexRoute from './routes';
 import faviconRoute from './routes/favicon';
+import { compose } from './utils/misc';
 
 export { Config };
 
@@ -32,9 +32,9 @@ export const caravaggio = (config: Config) => {
       '/**',
       compose(
         errorHandler(context),
-        ...pluginManager.getMiddlewares()
-      )(indexRoute(context))
-    )
+        ...pluginManager.getMiddlewares(),
+      )(indexRoute(context)),
+    ),
   );
 };
 

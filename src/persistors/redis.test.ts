@@ -1,7 +1,7 @@
 import { RedisMemoryServer } from 'redis-memory-server';
 
-import redisPersistor from './redis';
 import { Persistor } from '.';
+import redisPersistor from './redis';
 
 describe('Redis persistor', () => {
   const redisServer = new RedisMemoryServer();
@@ -29,7 +29,7 @@ describe('Redis persistor', () => {
   });
 
   test('returns null if a file is not saved', async () => {
-    const result = await cache.read(Date.now() + '.png');
+    const result = await cache.read(`${Date.now()}.png`);
     expect(result).toBe(null);
   });
 

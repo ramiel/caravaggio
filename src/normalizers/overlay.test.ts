@@ -1,11 +1,11 @@
 /* eslint-env jest */
 
+import { ServerRequest } from 'microrouter';
+import { Logger } from 'pino';
+import { Config } from '../config/default';
+import pluginLoader from '../pluginLoader/pluginLoader';
 import sharp from '../tests/mocks/sharp.mock';
 import overlayCreator from './overlay';
-import { Config } from '../config/default';
-import { Logger } from 'pino';
-import pluginLoader from '../pluginLoader/pluginLoader';
-import { ServerRequest } from 'microrouter';
 
 const mockImageGet = jest.fn(async () => Buffer.from('an image buffer'));
 jest.mock('../basePlugins/webImageLoader', () => () => (/* config */) => ({
@@ -300,7 +300,7 @@ describe('Overlay', () => {
       watermark: 'true',
     });
     await expect(
-      op({ image: sharp, otherOps: [], req })
+      op({ image: sharp, otherOps: [], req }),
     ).rejects.toBeInstanceOf(Error);
   });
 });

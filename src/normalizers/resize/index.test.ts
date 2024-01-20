@@ -1,6 +1,6 @@
-import resize, { ResizeRawOp } from './index';
-import sharp from '../../tests/mocks/sharp.mock';
 import { ServerRequest } from 'microrouter';
+import sharp from '../../tests/mocks/sharp.mock';
+import resize, { ResizeRawOp } from './index';
 
 const mockResize = jest.fn(async () => sharp);
 jest.mock('./scale', () => () => mockResize);
@@ -16,7 +16,7 @@ describe('Resize', () => {
 
   test('mode must be available', async () => {
     expect(() =>
-      getResize({ operation: 'resize', s: '200x300', m: 'fantasycrop' })
+      getResize({ operation: 'resize', s: '200x300', m: 'fantasycrop' }),
     ).toThrow();
   });
 
@@ -26,7 +26,7 @@ describe('Resize', () => {
         image: sharp,
         otherOps: [],
         req,
-      })
+      }),
     ).resolves.toBeDefined();
   });
 
@@ -36,7 +36,7 @@ describe('Resize', () => {
         image: sharp,
         otherOps: [],
         req,
-      })
+      }),
     ).resolves.toBeDefined();
   });
 
@@ -46,7 +46,7 @@ describe('Resize', () => {
         image: sharp,
         otherOps: [],
         req,
-      })
+      }),
     ).resolves.toBeDefined();
   });
 
@@ -56,7 +56,7 @@ describe('Resize', () => {
         image: sharp,
         otherOps: [],
         req,
-      })
+      }),
     ).resolves.toBeDefined();
   });
 
@@ -66,7 +66,7 @@ describe('Resize', () => {
         image: sharp,
         otherOps: [],
         req,
-      })
+      }),
     ).resolves.toBeDefined();
   });
 
@@ -76,7 +76,7 @@ describe('Resize', () => {
         image: sharp,
         otherOps: [],
         req,
-      })
+      }),
     ).resolves.toBeDefined();
   });
 
@@ -86,7 +86,7 @@ describe('Resize', () => {
         image: sharp,
         otherOps: [],
         req,
-      })
+      }),
     ).resolves.toBeDefined();
   });
 

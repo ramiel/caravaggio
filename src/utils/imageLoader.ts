@@ -1,7 +1,7 @@
+import { ServerRequest } from 'microrouter';
 import { Context } from '..';
 import cache from '../caches/cache';
 import { CacheConfig } from '../config/default';
-import { ServerRequest } from 'microrouter';
 
 const defaultInputCache: CacheConfig = {
   type: 'none',
@@ -24,13 +24,13 @@ const imageLoader = (context: Context): ImageLoader => {
       const cached = await inputCache.get(url);
       if (cached) {
         logger.debug(
-          `Input cache hit for url "${url}". Do not re-download it.`
+          `Input cache hit for url "${url}". Do not re-download it.`,
         );
         return cached.data;
       }
       const finalUrl = await context.pluginManager.urlTransform(url, req);
       const loaded = (await context.pluginManager.inputImageLoader(
-        finalUrl
+        finalUrl,
       )) as Buffer | null;
       if (loaded === null) {
         throw new Error(`Cannot load image "${url}"`);

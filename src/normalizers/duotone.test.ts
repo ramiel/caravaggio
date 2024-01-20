@@ -1,9 +1,9 @@
 /* eslint-env jest */
 
+import { ServerRequest } from 'microrouter';
+import { Operation } from '.';
 import sharp from '../tests/mocks/sharp.mock';
 import duotone from './duotone';
-import { Operation } from '.';
-import { ServerRequest } from 'microrouter';
 
 const req = {} as ServerRequest;
 
@@ -33,13 +33,13 @@ describe('Duotone', () => {
           op: expect.any(Function),
           params: ['FFAA00', '1122DC'],
         },
-      ])
+      ]),
     );
   });
 
   test('Accept two colors and the opacity', () => {
     expect(
-      duotone({ operation: 'duotone', h: 'FFAA00', s: '1122DC', o: '0.8' })
+      duotone({ operation: 'duotone', h: 'FFAA00', s: '1122DC', o: '0.8' }),
     ).toEqual(
       expect.objectContaining([
         {
@@ -47,7 +47,7 @@ describe('Duotone', () => {
           op: expect.any(Function),
           params: ['FFAA00', '1122DC', 0.8],
         },
-      ])
+      ]),
     );
   });
 
@@ -104,7 +104,7 @@ describe('Duotone', () => {
         operation: 'duotone',
         h: 'FFAA00',
         s: 'hello',
-      })
+      }),
     ).toThrow();
   });
 
@@ -114,7 +114,7 @@ describe('Duotone', () => {
         operation: 'duotone',
         h: 'FFAA00',
         s: '',
-      })
+      }),
     ).toThrow();
   });
 });

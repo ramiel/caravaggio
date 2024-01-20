@@ -1,6 +1,6 @@
-import embed from './embed';
 import sharp from '../../tests/mocks/sharp.mock';
 import { GRAVITY } from '../../utils/gravity';
+import embed from './embed';
 
 describe('Embed', () => {
   const fn = embed({ image: sharp, otherOps: [] });

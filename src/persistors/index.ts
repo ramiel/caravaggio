@@ -1,13 +1,13 @@
-import file from './file';
-import memory from './memory';
-import redis from './redis';
-import none from './none';
 import {
   FileCacheOptions,
   MemoryCacheOptions,
   NoneCacheOptions,
   RedisCacheOptions,
 } from '../config/default';
+import file from './file';
+import memory from './memory';
+import none from './none';
+import redis from './redis';
 
 export type CacheArtifactType = 'buffer';
 
@@ -59,7 +59,7 @@ export default {
         return basePersitorByType.memory(options as MemoryCacheOptions);
       case 'redis': {
         const redisPersistor = basePersitorByType.redis(
-          options as RedisCacheOptions
+          options as RedisCacheOptions,
         );
         redisPersistor.init?.();
         return redisPersistor;
@@ -68,7 +68,7 @@ export default {
         return basePersitorByType.none(options as NoneCacheOptions);
       default:
         throw new Error(
-          `Unknown persistor type ${type}. Check your configuration`
+          `Unknown persistor type ${type}. Check your configuration`,
         );
     }
   },

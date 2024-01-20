@@ -2,7 +2,7 @@ import { Sharp } from 'sharp';
 
 export const sizePercentageToPixel = async (
   opt: { width: number | null; height: number | null },
-  image: Sharp
+  image: Sharp,
 ) => {
   const { width, height } = opt;
   const metadata = await image.metadata();
@@ -25,20 +25,16 @@ export const sizeToPixel = async (size: string, image: Sharp) => {
   let height = null;
   if (size.indexOf(':') !== -1) {
     throw new Error('Aspect ratio not implemented yet');
+  }
+  const values = size.split('x');
+  width = parseFloat(values[0]) || null;
+  height = parseFloat(values[1]) || null;
+  const isPercentage = (width && width < 1) || (height && height < 1);
+  if (isPercentage) {
+    ({ width, height } = await sizePercentageToPixel({ width, height }, image));
   } else {
-    const values = size.split('x');
-    width = parseFloat(values[0]) || null;
-    height = parseFloat(values[1]) || null;
-    const isPercentage = (width && width < 1) || (height && height < 1);
-    if (isPercentage) {
-      ({ width, height } = await sizePercentageToPixel(
-        { width, height },
-        image
-      ));
-    } else {
-      width = width && Math.round(width);
-      height = height && Math.round(height);
-    }
+    width = width && Math.round(width);
+    height = height && Math.round(height);
   }
   return [width, height];
 };

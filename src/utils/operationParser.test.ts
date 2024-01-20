@@ -25,7 +25,7 @@ describe('Operation parser', () => {
 
   test('one operation with one named parameter and a basic value, si forbidden', () => {
     expect(() => operationParser('/rs:1,s:200x300')).toThrow(
-      '"rs:1" is invalid'
+      '"rs:1" is invalid',
     );
   });
 
@@ -41,13 +41,13 @@ describe('Operation parser', () => {
 
   test('a parameter cannot be named "operation"', () => {
     expect(() => operationParser('/rs,operation:scale')).toThrow(
-      'An operation cannot have a property called "operation"'
+      'An operation cannot have a property called "operation"',
     );
   });
 
   test('one operation with a  parameter that is an url', () => {
     const result = operationParser(
-      `/overlay,url:${encodeURIComponent('http://an_url.com')}`
+      `/overlay,url:${encodeURIComponent('http://an_url.com')}`,
     );
     expect(result).toEqual([
       { operation: 'overlay', url: 'http://an_url.com' },
@@ -56,7 +56,7 @@ describe('Operation parser', () => {
 
   test('one operation with a  parameter that is an url and other paramenters', () => {
     const result = operationParser(
-      `/overlay,url:${encodeURIComponent('http://an_url.com')},watermark`
+      `/overlay,url:${encodeURIComponent('http://an_url.com')},watermark`,
     );
     expect(result).toEqual([
       { operation: 'overlay', url: 'http://an_url.com', watermark: 'true' },
@@ -66,8 +66,8 @@ describe('Operation parser', () => {
   test('multiple operations', () => {
     const result = operationParser(
       `/rs,s:200x300,m:scale/overlay,url:${encodeURIComponent(
-        'http://an_url.com'
-      )}/progressive/o:jpeg/blur,auto`
+        'http://an_url.com',
+      )}/progressive/o:jpeg/blur,auto`,
     );
     expect(result).toEqual([
       {

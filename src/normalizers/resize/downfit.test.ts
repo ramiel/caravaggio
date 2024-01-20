@@ -1,5 +1,5 @@
-import downfit from './downfit';
 import sharp from '../../tests/mocks/sharp.mock';
+import downfit from './downfit';
 
 describe('Downfit', () => {
   const fn = downfit({ image: sharp, otherOps: [] });

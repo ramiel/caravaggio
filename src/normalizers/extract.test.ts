@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
+import { ServerRequest } from 'microrouter';
 import sharp from '../tests/mocks/sharp.mock';
 import extract from './extract';
-import { ServerRequest } from 'microrouter';
 
 const req = {} as ServerRequest;
 
@@ -104,7 +104,7 @@ describe('Extract', () => {
         y: '0.1',
         w: '0.5',
         h: '',
-      })
+      }),
     ).toThrow();
   });
 
@@ -116,7 +116,7 @@ describe('Extract', () => {
         y: '0.1',
         w: 'aba',
         h: '0.5',
-      })
+      }),
     ).toThrow();
   });
 });

@@ -1,7 +1,7 @@
 import { Normalizer } from '.';
 import cohercer from '../utils/cohercer';
-import { RawOperation } from '../utils/operationParser';
 import { isPercentage, percentageToPixel } from '../utils/misc';
+import { RawOperation } from '../utils/operationParser';
 
 interface ExtractRawOp extends RawOperation {
   x: string;
@@ -13,7 +13,7 @@ interface ExtractRawOp extends RawOperation {
 function isImageWidthAvailable(
   iw: number | undefined,
   isPercentageWidth: boolean,
-  isPercentageLeft: boolean
+  isPercentageLeft: boolean,
 ): iw is number {
   return iw !== undefined || (!isPercentageWidth && !isPercentageLeft);
 }
@@ -21,7 +21,7 @@ function isImageWidthAvailable(
 function isImageHeightAvailable(
   ih: number | undefined,
   isPercentageHeight: boolean,
-  isPercentageTop: boolean
+  isPercentageTop: boolean,
 ): ih is number {
   return ih !== undefined || (!isPercentageHeight && !isPercentageTop);
 }
@@ -30,7 +30,7 @@ const extract: Normalizer<ExtractRawOp> = ({ x, y, w, h }) => {
   const left = cohercer(
     x,
     'Extract: the x parameter in in the wrong format.',
-    'extract.html'
+    'extract.html',
   )
     .toFloat()
     .value();
@@ -38,7 +38,7 @@ const extract: Normalizer<ExtractRawOp> = ({ x, y, w, h }) => {
   const top = cohercer(
     y,
     'Extract: the y parameter in in the wrong format.',
-    'extract.html'
+    'extract.html',
   )
     .toFloat()
     .value();
@@ -46,7 +46,7 @@ const extract: Normalizer<ExtractRawOp> = ({ x, y, w, h }) => {
   const width = cohercer(
     w,
     'Extract: the y parameter in in the wrong format.',
-    'extract.html'
+    'extract.html',
   )
     .toFloat()
     .value();
@@ -54,7 +54,7 @@ const extract: Normalizer<ExtractRawOp> = ({ x, y, w, h }) => {
   const height = cohercer(
     h,
     'Extract: the y parameter in in the wrong format.',
-    'extract.html'
+    'extract.html',
   )
     .toFloat()
     .value();
@@ -72,13 +72,13 @@ const extract: Normalizer<ExtractRawOp> = ({ x, y, w, h }) => {
 
         if (!isImageWidthAvailable(iw, isPercentageWidth, isPercentageLeft)) {
           throw new Error(
-            'Cannot extract percentage described portion for this image which size is not defined'
+            'Cannot extract percentage described portion for this image which size is not defined',
           );
         }
 
         if (!isImageHeightAvailable(ih, isPercentageHeight, isPercentageTop)) {
           throw new Error(
-            'Cannot extract percentage described portion for this image which size is not defined'
+            'Cannot extract percentage described portion for this image which size is not defined',
           );
         }
 

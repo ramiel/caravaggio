@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-import yargs from 'yargs';
 import os from 'os';
-import { createConfigManager, RecursivePartial } from 'configuring';
+import { RecursivePartial, createConfigManager } from 'configuring';
 import micro from 'micro';
+import yargs from 'yargs';
 import defaultConfig, { Config, CacheConfig } from '../config/default';
-import createLogger from '../logger';
 import caravaggio from '../index';
+import createLogger from '../logger';
 import { RawOperation } from '../utils/operationParser';
 
+// biome-ignore lint/complexity/noForEach: Too few cases, it's safe
 ['SIGINT', 'SIGTERM'].forEach((signal) => {
   process.on(signal as 'SIGINT' | 'SIGTERM', () => process.exit(0));
 });
@@ -132,7 +133,7 @@ async function run() {
     value: `${options.progressive}`,
   });
 
-  let cacheOptions;
+  let cacheOptions: Record<string, unknown>;
   switch (options.cache) {
     case 'file':
       cacheOptions = {
@@ -155,7 +156,7 @@ async function run() {
       break;
   }
 
-  let inputCacheOptions;
+  let inputCacheOptions: Record<string, unknown> | undefined;
   switch (options.inputcache) {
     case 'file':
       inputCacheOptions = {
@@ -225,7 +226,7 @@ async function run() {
   server.listen(port);
 
   logger.info(
-    `Caravaggio started on port ${port}. Preview at http://localhost:${port}`
+    `Caravaggio started on port ${port}. Preview at http://localhost:${port}`,
   );
 }
 

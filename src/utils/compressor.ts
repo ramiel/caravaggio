@@ -1,7 +1,7 @@
-import { Config } from '../config/default';
-import { ServerRequest, ServerResponse } from 'microrouter';
 import zlib from 'zlib';
 import { send as microSend } from 'micro';
+import { ServerRequest, ServerResponse } from 'microrouter';
+import { Config } from '../config/default';
 
 const BROTLI_REGEX = /\bbr\b/;
 const DEFLATE_REGEX = /\bdeflate\b/;
@@ -25,7 +25,7 @@ const compressSend =
     return promise.then((compressedData) => {
       res.setHeader(
         'Content-Encoding',
-        method === COMPRESSION_METHODS.br ? 'br' : method
+        method === COMPRESSION_METHODS.br ? 'br' : method,
       );
       microSend(res, code, compressedData);
     });

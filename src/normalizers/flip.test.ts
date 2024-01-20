@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
+import { ServerRequest } from 'microrouter';
 import sharp from '../tests/mocks/sharp.mock';
 import flip from './flip';
-import { ServerRequest } from 'microrouter';
 
 const req = {} as ServerRequest;
 
@@ -19,7 +19,7 @@ describe('Flip', () => {
           op: expect.any(Function),
           params: ['x'],
         },
-      ])
+      ]),
     );
   });
 
@@ -31,7 +31,7 @@ describe('Flip', () => {
           op: expect.any(Function),
           params: ['x'],
         },
-      ])
+      ]),
     );
   });
 
@@ -49,7 +49,7 @@ describe('Flip', () => {
           op: expect.any(Function),
           params: ['y'],
         },
-      ])
+      ]),
     );
   });
 

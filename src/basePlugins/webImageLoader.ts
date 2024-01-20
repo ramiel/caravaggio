@@ -1,5 +1,5 @@
-import { PluginConstructor } from '../pluginLoader/pluginLoader';
 import fetch from 'node-fetch';
+import { PluginConstructor } from '../pluginLoader/pluginLoader';
 
 const webImageLoaderFactory =
   (): PluginConstructor =>

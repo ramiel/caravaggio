@@ -1,10 +1,10 @@
 /* eslint-env jest */
 
-import fetch from 'node-fetch';
 import fsOrig from 'fs';
 import path from 'path';
-import got from 'got';
 import { createConfigManager } from 'configuring';
+import got from 'got';
+import fetch from 'node-fetch';
 import defaultConfig, { Config } from '../../config/default';
 import testConfig from '../../config/test';
 
@@ -21,7 +21,7 @@ const cache = new Map();
       data = cache.get(relativePath);
     } else {
       data = await fs.readFile(
-        path.join(__dirname, '..', 'fixtures', 'test-images', relativePath)
+        path.join(__dirname, '..', 'fixtures', 'test-images', relativePath),
       );
       cache.set(relativePath, data);
     }

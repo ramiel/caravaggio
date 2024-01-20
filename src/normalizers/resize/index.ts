@@ -1,17 +1,17 @@
 import { Sharp } from 'sharp';
-import { sizeToPixel } from '../../utils/sizes';
 import { Normalizer, Operation } from '..';
-import { RawOperation } from '../../utils/operationParser';
 import cohercer from '../../utils/cohercer';
-import { GRAVITY, getGravityFromParameter } from '../../utils/gravity';
 import { Color, getColorFromParameter } from '../../utils/colors';
-import scale from './scale';
-import fit from './fit';
-import downfit from './downfit';
-import upfit from './upfit';
-import fill from './fill';
+import { GRAVITY, getGravityFromParameter } from '../../utils/gravity';
+import { RawOperation } from '../../utils/operationParser';
+import { sizeToPixel } from '../../utils/sizes';
 import downfill from './downfill';
+import downfit from './downfit';
 import embed from './embed';
+import fill from './fill';
+import fit from './fit';
+import scale from './scale';
+import upfit from './upfit';
 
 export type ResizeModeOperator = (opt: {
   image: Sharp;
@@ -62,7 +62,7 @@ const resize: Normalizer<ResizeRawOp> = ({
   const size = cohercer(
     s,
     'Resize: the size parameter is in the wrong format.',
-    'resize.html#sizes'
+    'resize.html#sizes',
   )
     .toString()
     .match(RESIZE_PATTERN)

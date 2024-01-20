@@ -1,11 +1,11 @@
-import cacheFactory from '../caches/cache';
 import { AugmentedRequestHandler } from 'microrouter';
 import { Context } from '..';
-import operationParser from '../utils/operationParser';
-import pipelineCreator from '../pipeline';
-import senderCreator from '../utils/sender';
-import CError from '../errors/CError';
+import cacheFactory from '../caches/cache';
 import { CacheConfig } from '../config/default';
+import CError from '../errors/CError';
+import pipelineCreator from '../pipeline';
+import operationParser from '../utils/operationParser';
+import senderCreator from '../utils/sender';
 
 const defaultOutputCacheConfig: CacheConfig = {
   type: 'memory',

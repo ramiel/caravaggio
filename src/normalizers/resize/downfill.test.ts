@@ -1,6 +1,6 @@
-import downfill from './downfill';
-import { GRAVITY } from '../../utils/gravity';
 import sharp from '../../tests/mocks/sharp.mock';
+import { GRAVITY } from '../../utils/gravity';
+import downfill from './downfill';
 
 describe('Down fill', () => {
   const fn = downfill({ image: sharp, otherOps: [] });

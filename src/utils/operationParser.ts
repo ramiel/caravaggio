@@ -8,7 +8,7 @@ type OperationParser = (
     OPERATION_DELIMITER?: string;
     KEY_VALUE_DELIMITER?: string;
     OPTION_DELIMITER?: string;
-  }
+  },
 ) => Array<RawOperation>;
 
 /**
@@ -17,7 +17,7 @@ type OperationParser = (
  * @param path URL pathname to transform into operations
  * @param opt Define delimiter characters
  */
-const operationParser: OperationParser = (path = '', opt) => {
+const operationParser: OperationParser = (path = '', opt = {}) => {
   const {
     OPERATION_DELIMITER = '/',
     KEY_VALUE_DELIMITER = ':',
@@ -44,17 +44,15 @@ const operationParser: OperationParser = (path = '', opt) => {
           const [key, value] = opt.split(KEY_VALUE_DELIMITER);
           if (key === 'operation') {
             throw new Error(
-              'An operation cannot have a property called "operation"'
+              'An operation cannot have a property called "operation"',
             );
           }
-          return {
-            ...acc,
-            [key]: value !== undefined ? decodeURIComponent(value) : 'true',
-          };
+          acc[key] = value !== undefined ? decodeURIComponent(value) : 'true';
+          return acc;
         },
         {
           operation: op,
-        }
+        },
       );
     });
 };

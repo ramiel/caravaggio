@@ -1,7 +1,7 @@
 import { Normalizer } from '.';
 import cohercer from '../utils/cohercer';
-import { RawOperation } from '../utils/operationParser';
 import { getOutputType } from '../utils/misc';
+import { RawOperation } from '../utils/operationParser';
 
 interface ProgressiveRawOp extends RawOperation {
   value: string;
@@ -11,7 +11,7 @@ const progressive: Normalizer<ProgressiveRawOp> = ({ value }) => {
   const progressive = cohercer(
     value,
     'Progressive value is not valid.',
-    'progressive.html'
+    'progressive.html',
   )
     .toBool()
     .value();

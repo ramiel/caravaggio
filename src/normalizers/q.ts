@@ -13,7 +13,7 @@ const q: Normalizer<QRawOp> = ({ value }) => {
   const v = cohercer(
     value,
     'Quality must be a value between 1 and 100.',
-    'quality.html'
+    'quality.html',
   )
     .toInt()
     .min(1)

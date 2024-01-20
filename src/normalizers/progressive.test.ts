@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
-import progressive from './progressive';
-import sharp from '../tests/mocks/sharp.mock';
 import { ServerRequest } from 'microrouter';
+import sharp from '../tests/mocks/sharp.mock';
+import progressive from './progressive';
 
 const req = {} as ServerRequest;
 
@@ -17,13 +17,13 @@ describe('Progressive', () => {
 
   test('progressive throw if the value is not a boolean', () => {
     expect(() =>
-      progressive({ operation: 'progressive', value: 'hello' })
+      progressive({ operation: 'progressive', value: 'hello' }),
     ).toThrow();
   });
 
   test('progressive does throw if the value is missing', () => {
     expect(() =>
-      progressive({ operation: 'progressive', value: '' })
+      progressive({ operation: 'progressive', value: '' }),
     ).toThrow();
   });
 
@@ -35,7 +35,7 @@ describe('Progressive', () => {
           op: expect.any(Function),
           params: [true],
         },
-      ])
+      ]),
     );
   });
 

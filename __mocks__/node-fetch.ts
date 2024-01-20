@@ -9,11 +9,12 @@ const getImage = (name = 'caravaggio.jpg') =>
       (err, data) => {
         if (err) return reject(err);
         return resolve(data);
-      }
+      },
     );
   });
 
 export default jest.fn((/* url */) =>
   getImage().then((buffer) => ({
     buffer: () => buffer,
-  })));
+  })),
+);

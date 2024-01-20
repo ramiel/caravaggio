@@ -1,6 +1,6 @@
-import fill from './fill';
 import sharp from '../../tests/mocks/sharp.mock';
 import { GRAVITY } from '../../utils/gravity';
+import fill from './fill';
 
 describe('Fill', () => {
   const fn = fill({ image: sharp, otherOps: [] });

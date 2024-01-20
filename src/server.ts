@@ -1,7 +1,7 @@
-import micro from 'micro';
 import { createConfigManager } from 'configuring';
-import caravaggio from './index';
+import micro from 'micro';
 import defaultConfig, { Config } from './config/default';
+import caravaggio from './index';
 import createLogger from './logger';
 
 const configManager = createConfigManager<Config>({
@@ -19,5 +19,5 @@ const server = micro(caravaggio(config));
 server.listen(port);
 
 logger.info(
-  `Caravaggio started on port ${port}. Preview at http://localhost:${port}`
+  `Caravaggio started on port ${port}. Preview at http://localhost:${port}`,
 );

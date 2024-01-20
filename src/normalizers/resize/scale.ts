@@ -1,5 +1,5 @@
-import { ResizeModeOperator } from '.';
 import { ResizeOptions } from 'sharp';
+import { ResizeModeOperator } from '.';
 
 const scale: ResizeModeOperator =
   ({ image }) =>

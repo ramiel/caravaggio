@@ -29,6 +29,12 @@ test:
     - npm run test
   coverage: /^Statements\s*:\s*([^%]+)/
 
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+
 #####################
 # Publish on NPM
 #####################

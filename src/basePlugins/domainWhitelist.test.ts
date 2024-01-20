@@ -1,10 +1,10 @@
 /* eslint-env jest */
 
-import domainWhitelistFactory from './domainWhitelist';
-import { PLUGIN_IGNORE_RESULT } from '../pluginLoader/pluginLoader';
-import { Config } from '../config/default';
 import { ServerRequest, ServerResponse } from 'microrouter';
+import { Config } from '../config/default';
 import CError from '../errors/CError';
+import { PLUGIN_IGNORE_RESULT } from '../pluginLoader/pluginLoader';
+import domainWhitelistFactory from './domainWhitelist';
 
 const config = {} as Config;
 

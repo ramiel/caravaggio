@@ -1,19 +1,19 @@
+import { ServerRequest } from 'microrouter';
 import { Sharp } from 'sharp';
-import { RawOperation } from '../utils/operationParser';
 import { Context } from '..';
-import blur from './blur';
-import o from './o';
-import q from './q';
 import UnknownOperationError from '../errors/UnknownOperationError';
+import { RawOperation } from '../utils/operationParser';
+import { CacheControlStrategy } from '../utils/sender';
+import blur from './blur';
 import duotone from './duotone';
 import extract from './extract';
 import flip from './flip';
+import o from './o';
 import overlay from './overlay';
 import progressive from './progressive';
-import rotate from './rotate';
+import q from './q';
 import resize from './resize';
-import { ServerRequest } from 'microrouter';
-import { CacheControlStrategy } from '../utils/sender';
+import rotate from './rotate';
 export interface Operation {
   name: string;
   op: (opt: {
@@ -26,7 +26,7 @@ export interface Operation {
 }
 
 export type Normalizer<O extends RawOperation = RawOperation> = (
-  rawOp: O
+  rawOp: O,
 ) => Operation[];
 
 const normalizer = (context: Context) => {
@@ -52,7 +52,8 @@ const normalizer = (context: Context) => {
         if (!normalizer) {
           throw new UnknownOperationError(rawOp.operation);
         }
-        return [...acc, ...normalizer(rawOp)];
+        acc.push(...normalizer(rawOp));
+        return acc;
       }, []);
       return operations;
     },

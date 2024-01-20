@@ -1,13 +1,13 @@
-import { createClient, commandOptions } from 'redis';
+import { commandOptions, createClient } from 'redis';
 
-import { RedisCacheOptions } from '../config/default';
 import { Persistor } from '.';
+import { RedisCacheOptions } from '../config/default';
 
 const maxRetries = parseInt(process.env.REDIS_MAX_RETRIES || '') || 20;
-const nameSpace = (process.env.REDIS_NAMESPACE || 'cvg') + '_';
+const nameSpace = `${process.env.REDIS_NAMESPACE || 'cvg'}_`;
 
 const redisPersistor: (opt: RedisCacheOptions) => Persistor = (
-  { url, limit } = { url: '', limit: 0 }
+  { url, limit } = { url: '', limit: 0 },
 ) => {
   const redisClient = createClient({
     socket: {
@@ -45,7 +45,7 @@ const redisPersistor: (opt: RedisCacheOptions) => Persistor = (
     read: async (filename) => {
       const data = await redisClient.get(
         commandOptions({ returnBuffers: true }),
-        getKey(filename)
+        getKey(filename),
       );
 
       if (data) {
@@ -53,9 +53,8 @@ const redisPersistor: (opt: RedisCacheOptions) => Persistor = (
           type: 'buffer',
           data,
         };
-      } else {
-        return null;
       }
+      return null;
     },
 
     save: async (filename, buffer) => {

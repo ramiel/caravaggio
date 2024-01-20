@@ -1,7 +1,7 @@
+import { ServerRequest } from 'microrouter';
+import sharp from '../tests/mocks/sharp.mock';
 /* eslint-env jest */
 import q from './q';
-import sharp from '../tests/mocks/sharp.mock';
-import { ServerRequest } from 'microrouter';
 
 const req = {} as ServerRequest;
 const normalizeQ = (quality: number) => (quality * 80) / 100;
@@ -34,7 +34,7 @@ describe('Quality', () => {
 
   describe('Evaluate quality', () => {
     const passedQuality = 90;
-    const [{ op }] = q({ operation: 'q', value: '' + passedQuality });
+    const [{ op }] = q({ operation: 'q', value: `${passedQuality}` });
 
     describe('Given an output has been specified', () => {
       test('add quality if the output is jpeg', async () => {

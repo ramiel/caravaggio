@@ -1,5 +1,5 @@
-import { Config } from './default';
 import type { RecursivePartial } from 'configuring';
+import { Config } from './default';
 
 const testConfig: RecursivePartial<Config> = {
   logger: {

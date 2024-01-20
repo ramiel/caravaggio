@@ -1,7 +1,7 @@
 import md5 from 'md5';
+import { CacheConfig } from '../config/default';
 import PersistorFactory, { CacheArtifact } from '../persistors';
 import { PipelineResult } from '../pipeline';
-import { CacheConfig } from '../config/default';
 
 export interface CaravaggioCache {
   has: (url: string) => Promise<boolean>;

@@ -1,9 +1,9 @@
+import sharp, { Raw, Sharp } from 'sharp';
 import { Normalizer } from '.';
 import cohercer from '../utils/cohercer';
-import { RawOperation } from '../utils/operationParser';
-import { getColorFromParameter, Color } from '../utils/colors';
-import sharp, { Raw, Sharp } from 'sharp';
+import { Color, getColorFromParameter } from '../utils/colors';
 import { getOutputType } from '../utils/misc';
+import { RawOperation } from '../utils/operationParser';
 
 interface DuotoneRawOp extends RawOperation {
   h: string; //highlight
@@ -43,7 +43,7 @@ const overlayAlphaImage = async (
   duotoneImage: Sharp,
   originalImage: Sharp,
   opacity: number,
-  format?: string
+  format?: string,
 ) => {
   const metadata = await duotoneImage.flatten().metadata();
   const width = metadata.width as number;
@@ -69,8 +69,8 @@ const overlayAlphaImage = async (
     .toBuffer({ resolveWithObject: true })
     .then(({ data, info: raw }) =>
       sharp(data, { raw: raw as Raw }).toFormat(
-        format as keyof sharp.FormatEnum
-      )
+        format as keyof sharp.FormatEnum,
+      ),
     );
 };
 
@@ -81,7 +81,7 @@ const duotone: Normalizer<DuotoneRawOp> = ({
 }) => {
   const gradient = createGradient(
     getColorFromParameter(highlightColor, errorMessage, docUri),
-    getColorFromParameter(shadowColor, errorMessage, docUri)
+    getColorFromParameter(shadowColor, errorMessage, docUri),
   );
   let opacityValue: number | null = null;
   if (opacity) {
@@ -122,7 +122,7 @@ const duotone: Normalizer<DuotoneRawOp> = ({
             newImage.clone(),
             image.clone(),
             opacityValue,
-            format
+            format,
           );
         }
         return format ? newImage.toFormat(format) : newImage;

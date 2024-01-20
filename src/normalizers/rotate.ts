@@ -1,8 +1,8 @@
+import { RotateOptions } from 'sharp';
 import { Normalizer } from '.';
 import cohercer from '../utils/cohercer';
-import { RawOperation } from '../utils/operationParser';
 import { getColorFromParameter } from '../utils/colors';
-import { RotateOptions } from 'sharp';
+import { RawOperation } from '../utils/operationParser';
 
 interface RotateRawOp extends RawOperation {
   v: string;

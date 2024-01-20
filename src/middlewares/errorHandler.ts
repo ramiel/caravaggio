@@ -1,8 +1,8 @@
-import CError from '../errors/CError';
-import { buildDocumentationLink } from '../utils/misc';
-import { Context } from '..';
 import { send } from 'micro';
 import { AugmentedRequestHandler, ServerResponse } from 'microrouter';
+import { Context } from '..';
+import CError from '../errors/CError';
+import { buildDocumentationLink } from '../utils/misc';
 
 type ErrorBuilder = (err: CError, res: ServerResponse) => unknown;
 
@@ -68,7 +68,7 @@ const buildHtmlError: ErrorBuilder = (err, res) => {
           <h1>Error</h1>
           <p>${err.message || UNKNOWN_ERROR_MESSAGE}
             <br />See <a target="_blank" href="${buildDocumentationLink(
-              err.docUri
+              err.docUri,
             )}">${buildDocumentationLink(err.docUri)}</a>
           </p>
         </div>
@@ -106,7 +106,6 @@ const errorHandler = (context: Context) => {
     case 'json':
       build = buildJsonError;
       break;
-    case 'plain':
     default:
       build = buildErrorText;
       break;
@@ -119,12 +118,12 @@ const errorHandler = (context: Context) => {
       } catch (err) {
         logger.error(err as CError);
         logger.error(
-          `Previous error caused by "${req.headers.host || 'no referrer'}"`
+          `Previous error caused by "${req.headers.host || 'no referrer'}"`,
         );
         return send(
           res,
           (err as CError).statusCode || 500,
-          build(err as CError, res)
+          build(err as CError, res),
         );
       }
     };

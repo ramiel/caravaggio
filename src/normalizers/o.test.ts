@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
+import { ServerRequest } from 'microrouter';
 import sharp from '../tests/mocks/sharp.mock';
 import o from './o';
-import { ServerRequest } from 'microrouter';
 
 const req = {} as ServerRequest;
 
@@ -30,7 +30,7 @@ describe('Output', () => {
           params: ['jpg'],
           cacheStrategy: 'public',
         },
-      ])
+      ]),
     );
   });
 
@@ -62,7 +62,7 @@ describe('Output', () => {
           params: ['png'],
           cacheStrategy: 'public',
         },
-      ])
+      ]),
     );
   });
 
@@ -82,7 +82,7 @@ describe('Output', () => {
           params: ['webp'],
           cacheStrategy: 'public',
         },
-      ])
+      ]),
     );
   });
 
@@ -102,7 +102,7 @@ describe('Output', () => {
           params: ['tiff'],
           cacheStrategy: 'public',
         },
-      ])
+      ]),
     );
   });
 
@@ -148,7 +148,7 @@ describe('Output', () => {
           params: ['auto'],
           cacheStrategy: 'private',
         },
-      ])
+      ]),
     );
   });
 });

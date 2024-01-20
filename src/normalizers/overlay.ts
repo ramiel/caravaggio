@@ -1,10 +1,10 @@
-import { getGravityFromParameter, GRAVITY } from '../utils/gravity';
 import { Normalizer } from '.';
-import cohercer from '../utils/cohercer';
-import { RawOperation } from '../utils/operationParser';
 import { Context } from '..';
-import { isPercentage, percentageToPixel } from '../utils/misc';
+import cohercer from '../utils/cohercer';
+import { GRAVITY, getGravityFromParameter } from '../utils/gravity';
 import imageLoader from '../utils/imageLoader';
+import { isPercentage, percentageToPixel } from '../utils/misc';
+import { RawOperation } from '../utils/operationParser';
 
 interface OverlayRawOp extends RawOperation {
   url: string;
@@ -24,7 +24,7 @@ const overlay = (context: Context): Normalizer<OverlayRawOp> => {
     const url = cohercer(
       overlayUrl,
       'Overlay, url is mandatory',
-      'overlay.html'
+      'overlay.html',
     )
       .toString()
       .value();
@@ -33,7 +33,7 @@ const overlay = (context: Context): Normalizer<OverlayRawOp> => {
       ? cohercer(
           x,
           'Extract: the x parameter in in the wrong format.',
-          'overlay.html'
+          'overlay.html',
         )
           .toFloat()
           .value()
@@ -43,7 +43,7 @@ const overlay = (context: Context): Normalizer<OverlayRawOp> => {
       ? cohercer(
           y,
           'Extract: the x parameter in in the wrong format.',
-          'overlay.html'
+          'overlay.html',
         )
           .toFloat()
           .value()
@@ -60,7 +60,7 @@ const overlay = (context: Context): Normalizer<OverlayRawOp> => {
             throw new Error(
               `An error occurred while getting overlay image. ${
                 (e as Error).message
-              }`
+              }`,
             );
           }
           const { width: iw, height: ih } = await image.metadata();

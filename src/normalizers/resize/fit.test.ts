@@ -1,5 +1,5 @@
-import fitFn from './fit';
 import sharp from '../../tests/mocks/sharp.mock';
+import fitFn from './fit';
 
 describe('Fit', () => {
   const fn = fitFn({ image: sharp, otherOps: [] });

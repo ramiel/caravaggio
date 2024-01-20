@@ -23,21 +23,20 @@ describe('gravity', () => {
     'southwest',
   ];
 
-  gravityValues.forEach((value) =>
+  for (const value of gravityValues) {
     test(`"${value}" is accepted as gravity`, () => {
       expect(() => {
         getGravityFromParameter(value);
       }).not.toThrow();
-    })
-  );
-
-  gravityValues.forEach((value) =>
+    });
+  }
+  for (const value of gravityValues) {
     test(`"g${value}" is accepted as gravity`, () => {
       expect(() => {
         getGravityFromParameter(`g${value}`);
       }).not.toThrow();
-    })
-  );
+    });
+  }
 
   test('an unknown value is not accepted', () => {
     expect(() => {

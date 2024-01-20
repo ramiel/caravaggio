@@ -1,13 +1,13 @@
 import path from 'path';
 import fs from 'fs-extra';
-import { send, RequestHandler } from 'micro';
+import { RequestHandler, send } from 'micro';
 
 let favicon: Buffer | null = null;
 
 const getFavicon = async () => {
   if (!favicon) {
     favicon = await fs.readFile(
-      path.resolve(__dirname, '..', '..', 'static', 'favicon.ico')
+      path.resolve(__dirname, '..', '..', 'static', 'favicon.ico'),
     );
   }
   return favicon;
