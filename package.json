@@ -11,7 +11,7 @@
     "start": "NODE_ENV=production node dist/server",
     "dev": "NODE_ENV=development tsnd --respawn src/server.ts",
     "build": "rimraf -G dist/ && NODE_ENV=production tsc --build",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run test-only -- --coverage --colors=false",
     "test-only": "NODE_ENV=test jest",
     "test-watch": "npm run test-only -- --watch",
