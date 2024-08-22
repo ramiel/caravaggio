@@ -58,7 +58,7 @@ const pipelineCreator = (context: Context): Pipeline => {
         const prevStepImage = await acc;
         return op({ image: prevStepImage, otherOps: operations, req });
       },
-      Promise.resolve(image),
+      Promise.resolve(image.keepMetadata()),
     );
 
     const { data, info } = await result.toBuffer({ resolveWithObject: true });
