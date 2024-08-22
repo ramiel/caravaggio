@@ -47,7 +47,7 @@
     "pino": "^6.2.1",
     "pino-pretty": "^4.0.0",
     "redis": "^4.6.5",
-    "sharp": "^0.33.2",
+    "sharp": "^0.33.5",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
